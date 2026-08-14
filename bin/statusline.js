@@ -48,9 +48,10 @@ function runWrapped(command, stdin) {
  * child would be tied to a process Claude Code reaps as soon as it has our
  * stdout, killing the fetch partway through.
  */
-function triggerRefresh(pluginRoot, workspace) {
+function triggerRefresh(pluginRoot, workspace, mode) {
   try {
     const args = [path.join(pluginRoot, 'bin', 'refresh.js'), '--root', pluginRoot];
+    if (mode === 'rotate') args.push('--rotate');
     // Hand the refresh the workspace Claude Code reported, rather than letting
     // it infer one from cwd — that's what makes context track the session.
     if (workspace) args.push('--cwd', workspace);
@@ -90,7 +91,17 @@ function main() {
   const maxAgeMs = (cfg.contentMaxAgeMinutes ?? 20) * 60 * 1000;
   const age = cache && cache.generatedAt ? Date.now() - cache.generatedAt : Infinity;
 
-  if (age > maxAgeMs) triggerRefresh(pluginRoot, workspace);
+  // Two independent cadences. The network fetch is expensive and slow-moving,
+  // so it stays on contentMaxAgeMinutes. Re-dealing tips from the cached pool
+  // costs nothing, so it runs far more often — that is what makes the spinner
+  // text actually change while you sit there.
+  if (age > maxAgeMs) {
+    triggerRefresh(pluginRoot, workspace);
+  } else {
+    const rotateMs = (cfg.rotateIntervalSeconds ?? 90) * 1000;
+    const rotatedAge = cache && cache.rotatedAt ? Date.now() - cache.rotatedAt : Infinity;
+    if (rotatedAge > rotateMs) triggerRefresh(pluginRoot, workspace, 'rotate');
+  }
 
   const item = pickStatus(cache && cache.status, cfg.refreshIntervalSeconds ?? 30);
   if (item && item.text) lines.push(`${DIM}${item.text}${RESET}`);

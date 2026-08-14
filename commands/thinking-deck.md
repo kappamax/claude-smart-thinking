@@ -6,20 +6,32 @@ Manage the user's learning deck at `~/.claude/smart-thinking/deck.json`.
 
 If that file doesn't exist, seed it from `${CLAUDE_PLUGIN_ROOT}/data/deck.sample.json`.
 
-Deck format — `url` is required, not optional:
+Deck format — `url` is required; `action` is required for anything practical:
 
 ```json
-{ "cards": [ { "id": "unique-slug", "tag": "Biology", "text": "One line.", "url": "https://…" } ] }
+{ "cards": [ {
+  "id": "unique-slug", "tag": "Bread",
+  "text": "The mechanism — what is actually happening.",
+  "action": "What to do differently tomorrow.",
+  "url": "https://…"
+} ] }
 ```
 
 Rules for good cards, since they render in a narrow single-line spinner slot:
 
+- **Carry your own context.** Write for someone meeting this cold, mid-task, with no setup. "Abraham Wald argued for armouring where returning bombers had no bullet holes" is unreadable unless you already know the story — it names the person and jumps to the conclusion without ever stating the problem. Give the situation, then the insight. A card that needs a Wikipedia trip to parse has failed before the link is clicked.
+- **End with what to do.** A card that explains starch retrogradation and stops has told the reader something true and left them holding it. "Freeze what you won't eat in two days, never refrigerate" is the part that changes tomorrow. Put the mechanism in `text` and the instruction in `action`; don't restate one in the other. Omit `action` only where there genuinely isn't one — Knuth's reward cheques are worth knowing and nothing follows from them.
+- **Teach a mechanism, not a fact.** The highest bar. "Cleopatra lived closer to the Moon landing than to the Great Pyramid" is inert — nobody is different for knowing it. "Flour contains no gluten; glutenin and gliadin only link once hydrated, and kneading aligns them into sheets that trap gas" changes how someone bakes. Prefer systems the reader actually touches: bread, coffee, sleep, their own tools.
+- **Health claims must cite primary research.** Not Wikipedia, not a magazine. A systematic review or meta-analysis beats an RCT, which beats a cohort study. Name the study design in the card and link PubMed. If the finding is disputed, say so in the text — the corpus in `data/wellness.evidence.json` is the model, and `contested` is a valid, useful tier.
+- **Correcting a myth is high value.** "Microwaves hit water's resonant frequency" and "pressure melts ice under a skate" are both wrong and both widely believed. Replacing a false model beats adding a true fact.
+- **A nugget, not a manual entry.** This is the single most important rule. "A composite index on (a, b) can't serve a query filtering on b alone" is line 10 of the Postgres manual — the reader can look it up the moment they need it, and won't remember it now. "Knuth pays $2.56 for each error found in his books — one hexadecimal dollar" is something they'll repeat to someone. Aim for the second. If a card reads like reference documentation, cut it.
+- **The test: would you say this out loud at dinner?** Surprise, a name, a person, a story, or a number that doesn't sound real. Techniques qualify when they have a story ("the strangler fig grows around a tree and outlives it"); API details don't.
 - **One useful line plus one link.** The line has to pay for itself on its own; the link is how the reader goes deeper. A fact with no way to follow up is trivia.
 - **The link must actually resolve.** Prefer a stable canonical source — Wikipedia, official docs, a standards body — over a blog post or a search URL. Never invent a plausible-looking URL.
 - **One fact per card.** If it needs an "and also", split it.
-- **Specific and falsifiable.** "Indexes speed up reads" teaches nothing; "a composite index on (a, b) can't serve a query filtering on b alone" does.
+- **Specific and falsifiable.** Vague gestures teach nothing. "Sleep helps memory" is worthless; "slow-wave sleep replays the day's hippocampal traces into cortex, so studying without sleeping largely wastes the study" is a claim someone could check.
 - **Unique `id`** — exposure tracking is keyed on it, so reusing an id inherits the old card's history.
-- **Go wide.** The deck is not a work feed. Biology, history, travel, physics, statistics, economics, cooking, health, language, art, philosophy all belong alongside engineering.
+- **Go wide, but not into trivia.** Chemistry, medicine, technique, craft, and economics all belong alongside engineering. Isolated dates, records, and "closer in time than you think" comparisons do not — breadth means more kinds of understanding, not more facts.
 
 $ARGUMENTS
 

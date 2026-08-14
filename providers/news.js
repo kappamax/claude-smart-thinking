@@ -5,10 +5,21 @@ const { fetchText } = require('../lib/fetch');
 /**
  * Deliberately a headline reader, not an article reader.
  *
- * A tip is one line in a spinner; there is no room for a summary and no way to
- * click through. Pulling full article bodies would mean fetching, extracting,
- * and summarizing text nobody can act on from this surface. Titles from feeds
- * the user already chose to follow is the honest scope.
+ * A tip is one line in a spinner; there is no room for a summary. Pulling full
+ * article bodies would mean fetching, extracting, and summarizing text nobody
+ * can act on from this surface. Titles plus the link is the honest scope.
+ *
+ * Two modes, because "feed" covers two different things:
+ *
+ *   recent    — take the newest items, filtered by age. Correct for outlets
+ *               that are actually publishing news.
+ *   evergreen — sample anywhere in the archive, ignoring age. Correct for
+ *               writers whose five-year-old post is as good as today's.
+ *
+ * Evergreen exists because breaking news is the most replaceable thing this
+ * surface could show: you will get it elsewhere anyway. A 2019 post on Roman
+ * logistics is new to you whenever it appears. Several curated feeds carry
+ * 100-200 item archives, so there is real depth to sample.
  */
 
 const ENTITIES = {
@@ -56,6 +67,29 @@ function extractLink(block) {
   return null;
 }
 
+/**
+ * Draw n items from anywhere in the archive.
+ *
+ * Seeded off the clock rather than Math.random so that a refresh and the
+ * rotation that follows it don't fight over which items exist, while
+ * successive refreshes still land somewhere new.
+ */
+function sample(items, n, now) {
+  if (items.length <= n) return items.slice();
+  const seed = Math.floor(now / 600000); // advances every 10 minutes
+  const out = [];
+  const used = new Set();
+  let k = seed;
+  while (out.length < n && used.size < items.length) {
+    k = (k * 1103515245 + 12345) & 0x7fffffff; // LCG, deterministic per seed
+    const idx = k % items.length;
+    if (used.has(idx)) continue;
+    used.add(idx);
+    out.push(items[idx]);
+  }
+  return out;
+}
+
 function parseFeed(xml) {
   // Handles RSS <item> and Atom <entry> with the same shape.
   const blocks = xml.match(/<(item|entry)(?:\s[^>]*)?>[\s\S]*?<\/\1>/gi) || [];
@@ -91,14 +125,20 @@ async function collect(cfg, ctx) {
       // healthy feeds were being dropped as if they were broken.
       const xml = await fetchText(url, { timeoutMs: 10000 });
       const parsed = parseFeed(xml);
-      const fresh = parsed
-        .filter((it) => it.ts === null || now - it.ts <= maxAgeMs)
-        .slice(0, perFeed)
-        .map((it) => {
-          let text = label ? `${label} — ${it.title}` : it.title;
-          if (cfg.showLinks !== false && it.url) text += ` → ${it.url}`;
-          return { text, source: 'news', url: it.url, ts: it.ts };
-        });
+      const mode = (typeof feed === 'object' && feed.mode) || 'recent';
+
+      const candidates = mode === 'evergreen'
+        ? sample(parsed, perFeed, now)
+        : parsed.filter((it) => it.ts === null || now - it.ts <= maxAgeMs).slice(0, perFeed);
+
+      const fresh = candidates
+        .map((it) => ({
+          category: label || 'News',
+          text: it.title,
+          url: it.url,
+          source: 'news',
+          ts: it.ts,
+        }));
       return { url, parsed: parsed.length, fresh };
     }),
   );
@@ -115,8 +155,11 @@ async function collect(cfg, ctx) {
       warnings.push(`news: ${url} failed — ${r.reason && r.reason.message ? r.reason.message : r.reason}`);
       return;
     }
+    const mode = (typeof feeds[i] === 'object' && feeds[i].mode) || 'recent';
     if (r.value.parsed === 0) warnings.push(`news: ${url} returned no parseable items`);
-    else if (r.value.fresh.length === 0) warnings.push(`news: ${url} had no items newer than ${cfg.maxAgeHours ?? 24}h`);
+    else if (r.value.fresh.length === 0 && mode !== 'evergreen') {
+      warnings.push(`news: ${url} had no items newer than ${cfg.maxAgeHours ?? 24}h`);
+    }
     tips.push(...r.value.fresh);
   });
 
@@ -124,4 +167,4 @@ async function collect(cfg, ctx) {
   return { tips, status: [], warnings };
 }
 
-module.exports = { name: 'news', collect, _parseFeed: parseFeed };
+module.exports = { name: 'news', collect, _parseFeed: parseFeed, _sample: sample };

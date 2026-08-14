@@ -9,6 +9,7 @@ const settings = require('../lib/settings');
 const context = require('../lib/context');
 const { readJson, writeJsonAtomic } = require('../lib/jsonio');
 const { collectAll, interleave } = require('../providers');
+const { formatTip } = require('../lib/format');
 
 const LOCK_STALE_MS = 2 * 60 * 1000;
 
@@ -57,9 +58,52 @@ function pluginRootFrom(argv) {
   return argValue(argv, '--root') || path.resolve(__dirname, '..');
 }
 
+/**
+ * Re-deal the visible tips from the cached pool. No network.
+ *
+ * This is what makes tips actually alternate. Claude Code scores tips by
+ * app-startup count, so within one session that score is frozen — once every
+ * tip has been shown the picker returns the first array element forever.
+ * Since tip ids are positional, changing which pool item sits at each index
+ * changes what's on screen even in that stuck state.
+ */
+function rotate(cfg) {
+  const cache = readJson(paths.cacheFile, null);
+  const pool = (cache && cache.pool) || [];
+  if (pool.length === 0) return false;
+
+  const count = Math.min(cfg.tipCount || 12, pool.length);
+  const offset = ((cache.rotationOffset || 0) + count) % pool.length;
+
+  const dealt = [];
+  for (let i = 0; i < count; i += 1) dealt.push(pool[(offset + i) % pool.length]);
+
+  writeJsonAtomic(paths.cacheFile, { ...cache, rotationOffset: offset, rotatedAt: Date.now() });
+
+  const style = cfg.linkStyle || 'auto';
+  settings.applyContent({
+    tips: dealt.map((t) => formatTip(t, style)),
+    verbs: cfg.spinnerVerbs && cfg.spinnerVerbs.enabled ? cfg.spinnerVerbs.verbs : null,
+  });
+  return true;
+}
+
 async function main() {
   const pluginRoot = pluginRootFrom(process.argv);
   if (!acquireLock()) return;
+
+  if (process.argv.includes('--rotate')) {
+    try {
+      const cfg = config.load();
+      const ok = rotate(cfg);
+      log(`rotate ${ok ? 'ok' : 'skipped (empty pool)'}`);
+    } catch (err) {
+      log(`rotate failed: ${err && err.message}`);
+    } finally {
+      releaseLock();
+    }
+    return;
+  }
 
   try {
     const cfg = config.load();
@@ -78,21 +122,27 @@ async function main() {
     }
 
     const previous = readJson(paths.cacheFile, {}) || {};
-    const orderedTips = interleave(tips, cfg.tipCount || 12);
+    // Keep a pool far larger than what's shown, so rotation has room to draw
+    // from without going back to the network.
+    const pool = interleave(tips, cfg.poolSize || 60);
+    const visible = pool.slice(0, cfg.tipCount || 12);
 
     writeJsonAtomic(paths.cacheFile, {
       generatedAt: Date.now(),
-      tips: orderedTips.length ? orderedTips : previous.tips || [],
+      rotatedAt: Date.now(),
+      rotationOffset: 0,
+      pool: pool.length ? pool : previous.pool || [],
       status: status.length ? status : previous.status || [],
     });
 
+    const style = cfg.linkStyle || 'auto';
     const applied = settings.applyContent({
-      tips: orderedTips.map((t) => t.text),
+      tips: visible.map((t) => formatTip(t, style)),
       verbs: cfg.spinnerVerbs && cfg.spinnerVerbs.enabled ? cfg.spinnerVerbs.verbs : null,
     });
 
     const topics = [...ctx.context.topics].sort().join(',') || 'none';
-    log(`refresh ok tips=${orderedTips.length} status=${status.length} settingsWritten=${applied} topics=${topics}`);
+    log(`refresh ok pool=${pool.length} shown=${visible.length} status=${status.length} settingsWritten=${applied} topics=${topics}`);
   } catch (err) {
     log(`refresh failed: ${err && err.stack ? err.stack : err}`);
     process.exitCode = 1;
