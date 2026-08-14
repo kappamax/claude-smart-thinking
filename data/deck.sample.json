@@ -1,5 +1,5 @@
 {
-  "name": "Starter deck — a wide one",
+  "name": "Starter deck \u2014 a wide one",
   "note": "Copy to ~/.claude/smart-thinking/deck.json and make it yours. Each card is one line that reads well in a narrow spinner slot. Breadth is the point: the surface is a few seconds of idle attention, so it suits things that are interesting out of context rather than material that needs a running start.",
   "cards": [
     {
@@ -11,7 +11,7 @@
     {
       "id": "knuth-reward",
       "tag": "Knuth",
-      "text": "Knuth pays $2.56 for each error found in his books — \"one hexadecimal dollar.\" The uncashed checks are famously treasured more than the money.",
+      "text": "Knuth pays $2.56 for each error found in his books \u2014 \"one hexadecimal dollar.\" The uncashed checks are famously treasured more than the money.",
       "url": "https://en.wikipedia.org/wiki/Knuth_reward_check"
     },
     {
@@ -23,7 +23,7 @@
     {
       "id": "knuth-dlx",
       "tag": "Knuth",
-      "text": "Dancing Links: in a doubly linked list, `x.left.right = x.right` removes a node — and `x.left.right = x` puts it back, because the removed node still points home. Backtracking for free.",
+      "text": "Dancing Links: in a doubly linked list, `x.left.right = x.right` removes a node \u2014 and `x.left.right = x` puts it back, because the removed node still points home. Backtracking for free.",
       "url": "https://en.wikipedia.org/wiki/Dancing_Links"
     },
     {
@@ -35,19 +35,19 @@
     {
       "id": "knuth-analysis",
       "tag": "Knuth",
-      "text": "Knuth popularized analyzing algorithms by counting operations rather than timing runs — a machine-independent measure that survives the hardware it was written on.",
+      "text": "Knuth popularized analyzing algorithms by counting operations rather than timing runs \u2014 a machine-independent measure that survives the hardware it was written on.",
       "url": "https://en.wikipedia.org/wiki/Analysis_of_algorithms"
     },
     {
       "id": "taocp-mmix",
       "tag": "Knuth",
-      "text": "TAOCP's example machine MIX was retired for MMIX because MIX's design had aged badly — Knuth revised a fictional computer for realism.",
+      "text": "TAOCP's example machine MIX was retired for MMIX because MIX's design had aged badly \u2014 Knuth revised a fictional computer for realism.",
       "url": "https://en.wikipedia.org/wiki/MMIX"
     },
     {
       "id": "bio-cell-ratio",
       "tag": "Biology",
-      "text": "The \"10 bacterial cells per human cell\" figure was a 1970s back-of-envelope estimate. A 2016 recount put it near 1:1 — roughly 38 trillion bacteria to 30 trillion human cells.",
+      "text": "The \"10 bacterial cells per human cell\" figure was a 1970s back-of-envelope estimate. A 2016 recount put it near 1:1 \u2014 roughly 38 trillion bacteria to 30 trillion human cells.",
       "url": "https://en.wikipedia.org/wiki/Human_microbiome"
     },
     {
@@ -65,13 +65,13 @@
     {
       "id": "bio-crispr",
       "tag": "Biology",
-      "text": "CRISPR is a bacterial immune system — bacteria file away snippets of virus DNA to recognize repeat attackers. Gene editing is us borrowing the filing system.",
+      "text": "CRISPR is a bacterial immune system \u2014 bacteria file away snippets of virus DNA to recognize repeat attackers. Gene editing is us borrowing the filing system.",
       "url": "https://en.wikipedia.org/wiki/CRISPR"
     },
     {
       "id": "bio-sickle",
       "tag": "Biology",
-      "text": "One copy of the sickle-cell allele protects against malaria; two copies cause disease. The gene persists precisely where malaria is common — heterozygote advantage.",
+      "text": "One copy of the sickle-cell allele protects against malaria; two copies cause disease. The gene persists precisely where malaria is common \u2014 heterozygote advantage.",
       "url": "https://en.wikipedia.org/wiki/Sickle_cell_trait"
     },
     {
@@ -83,7 +83,7 @@
     {
       "id": "bio-banana",
       "tag": "Biology",
-      "text": "Nearly every banana you've eaten is a Cavendish clone, genetically identical. Its predecessor, the Gros Michel, was wiped out commercially by a fungus — and the same thing is now happening to Cavendish.",
+      "text": "Nearly every banana you've eaten is a Cavendish clone, genetically identical. Its predecessor, the Gros Michel, was wiped out commercially by a fungus \u2014 and the same thing is now happening to Cavendish.",
       "url": "https://en.wikipedia.org/wiki/Cavendish_banana"
     },
     {
@@ -95,7 +95,7 @@
     {
       "id": "bio-tardigrade",
       "tag": "Biology",
-      "text": "Tardigrades survive vacuum and extreme radiation by expelling nearly all their water and turning their cytoplasm into a glass-like solid — suspended, not tough.",
+      "text": "Tardigrades survive vacuum and extreme radiation by expelling nearly all their water and turning their cytoplasm into a glass-like solid \u2014 suspended, not tough.",
       "url": "https://en.wikipedia.org/wiki/Tardigrade"
     },
     {
@@ -107,7 +107,7 @@
     {
       "id": "bio-cephalopod-rna",
       "tag": "Biology",
-      "text": "Squid and octopuses extensively edit their own RNA, tuning proteins on the fly — apparently trading away the usual pace of DNA evolution to do it.",
+      "text": "Squid and octopuses extensively edit their own RNA, tuning proteins on the fly \u2014 apparently trading away the usual pace of DNA evolution to do it.",
       "url": "https://en.wikipedia.org/wiki/RNA_editing"
     },
     {
@@ -125,7 +125,7 @@
     {
       "id": "hist-oxford",
       "tag": "History",
-      "text": "Teaching began at Oxford around 1096 — the university is older than the Aztec Empire, which was founded in 1428.",
+      "text": "Teaching began at Oxford around 1096 \u2014 the university is older than the Aztec Empire, which was founded in 1428.",
       "url": "https://en.wikipedia.org/wiki/University_of_Oxford"
     },
     {
@@ -137,7 +137,7 @@
     {
       "id": "hist-ottoman",
       "tag": "History",
-      "text": "The Ottoman Empire survived until 1922 — it existed alongside the telephone, the aeroplane, and jazz.",
+      "text": "The Ottoman Empire survived until 1922 \u2014 it existed alongside the telephone, the aeroplane, and jazz.",
       "url": "https://en.wikipedia.org/wiki/Ottoman_Empire"
     },
     {
@@ -149,7 +149,7 @@
     {
       "id": "hist-alexandria",
       "tag": "History",
-      "text": "The Library of Alexandria wasn't destroyed in one fire. It declined over centuries through funding cuts, purges of scholars, and neglect — institutions usually die slowly.",
+      "text": "The Library of Alexandria wasn't destroyed in one fire. It declined over centuries through funding cuts, purges of scholars, and neglect \u2014 institutions usually die slowly.",
       "url": "https://en.wikipedia.org/wiki/Library_of_Alexandria"
     },
     {
@@ -185,19 +185,19 @@
     {
       "id": "hist-greenland",
       "tag": "History",
-      "text": "Greenland was named by Erik the Red partly as a recruiting pitch — arguably the earliest documented case of misleading real-estate marketing.",
+      "text": "Greenland was named by Erik the Red partly as a recruiting pitch \u2014 arguably the earliest documented case of misleading real-estate marketing.",
       "url": "https://en.wikipedia.org/wiki/Erik_the_Red"
     },
     {
       "id": "travel-dcc",
       "tag": "Travel",
-      "text": "When a foreign card terminal offers to charge you in your home currency, decline. Dynamic currency conversion typically bakes in a 3–7% markup worse than your card's own rate.",
+      "text": "When a foreign card terminal offers to charge you in your home currency, decline. Dynamic currency conversion typically bakes in a 3\u20137% markup worse than your card's own rate.",
       "url": "https://en.wikipedia.org/wiki/Dynamic_currency_conversion"
     },
     {
       "id": "travel-eu261",
       "tag": "Travel",
-      "text": "EU261 entitles you to €250–600 cash for long delays and cancellations on flights departing the EU (or arriving on an EU carrier) — separate from a refund, and airlines rarely volunteer it.",
+      "text": "EU261 entitles you to \u20ac250\u2013600 cash for long delays and cancellations on flights departing the EU (or arriving on an EU carrier) \u2014 separate from a refund, and airlines rarely volunteer it.",
       "url": "https://en.wikipedia.org/wiki/Flight_Compensation_Regulation"
     },
     {
@@ -209,7 +209,7 @@
     {
       "id": "travel-schengen",
       "tag": "Travel",
-      "text": "The Schengen rule is 90 days within any rolling 180 — not per calendar year, and not reset by a quick hop out. It's a sliding window and overstays are logged.",
+      "text": "The Schengen rule is 90 days within any rolling 180 \u2014 not per calendar year, and not reset by a quick hop out. It's a sliding window and overstays are logged.",
       "url": "https://en.wikipedia.org/wiki/Schengen_Area"
     },
     {
@@ -233,7 +233,7 @@
     {
       "id": "travel-seat-release",
       "tag": "Travel",
-      "text": "Airlines commonly release held seats at check-in — around 24 hours out is often when better seats quietly become free without a fee.",
+      "text": "Airlines commonly release held seats at check-in \u2014 around 24 hours out is often when better seats quietly become free without a fee.",
       "url": "https://en.wikipedia.org/wiki/Airline_seat"
     },
     {
@@ -245,7 +245,7 @@
     {
       "id": "travel-esim",
       "tag": "Travel",
-      "text": "A local eSIM bought before departure usually beats roaming by an order of magnitude and activates before you land — no queue at the airport kiosk.",
+      "text": "A local eSIM bought before departure usually beats roaming by an order of magnitude and activates before you land \u2014 no queue at the airport kiosk.",
       "url": "https://en.wikipedia.org/wiki/ESIM"
     },
     {
@@ -257,7 +257,7 @@
     {
       "id": "math-survivorship",
       "tag": "Statistics",
-      "text": "Abraham Wald argued for armoring where returning bombers had no bullet holes — the planes hit there never came back. Missing data is data.",
+      "text": "Abraham Wald argued for armoring where returning bombers had no bullet holes \u2014 the planes hit there never came back. Missing data is data.",
       "url": "https://en.wikipedia.org/wiki/Survivorship_bias"
     },
     {
@@ -275,7 +275,7 @@
     {
       "id": "math-basrate",
       "tag": "Statistics",
-      "text": "A test that's 99% accurate for a disease affecting 1 in 10,000 still gives mostly false positives. Rarity dominates accuracy — always ask for the base rate.",
+      "text": "A test that's 99% accurate for a disease affecting 1 in 10,000 still gives mostly false positives. Rarity dominates accuracy \u2014 always ask for the base rate.",
       "url": "https://en.wikipedia.org/wiki/Base_rate_fallacy"
     },
     {
@@ -287,25 +287,25 @@
     {
       "id": "math-pvalue",
       "tag": "Statistics",
-      "text": "A p-value is the probability of data this extreme *if the null were true* — not the probability the null is true, and not a measure of effect size.",
+      "text": "A p-value is the probability of data this extreme *if the null were true* \u2014 not the probability the null is true, and not a measure of effect size.",
       "url": "https://en.wikipedia.org/wiki/Misuse_of_p-values"
     },
     {
       "id": "math-monty",
       "tag": "Statistics",
-      "text": "In Monty Hall, switching wins 2/3 of the time. The host's choice isn't random — it's information, and that's what breaks the 50/50 intuition.",
+      "text": "In Monty Hall, switching wins 2/3 of the time. The host's choice isn't random \u2014 it's information, and that's what breaks the 50/50 intuition.",
       "url": "https://en.wikipedia.org/wiki/Monty_Hall_problem"
     },
     {
       "id": "math-godel",
       "tag": "Mathematics",
-      "text": "Gödel showed any consistent system rich enough for arithmetic contains true statements it cannot prove. Completeness and consistency can't both be had.",
+      "text": "G\u00f6del showed any consistent system rich enough for arithmetic contains true statements it cannot prove. Completeness and consistency can't both be had.",
       "url": "https://en.wikipedia.org/wiki/G%C3%B6del%27s_incompleteness_theorems"
     },
     {
       "id": "math-euler",
       "tag": "Mathematics",
-      "text": "e^(iπ) + 1 = 0 links five fundamental constants in one line — it falls out of the fact that multiplying by e^(iθ) is a rotation.",
+      "text": "e^(i\u03c0) + 1 = 0 links five fundamental constants in one line \u2014 it falls out of the fact that multiplying by e^(i\u03b8) is a rotation.",
       "url": "https://en.wikipedia.org/wiki/Euler%27s_identity"
     },
     {
@@ -317,19 +317,19 @@
     {
       "id": "phys-venus",
       "tag": "Physics",
-      "text": "A day on Venus is longer than its year — it rotates once every 243 Earth days but orbits in 225, and it rotates backwards.",
+      "text": "A day on Venus is longer than its year \u2014 it rotates once every 243 Earth days but orbits in 225, and it rotates backwards.",
       "url": "https://en.wikipedia.org/wiki/Venus"
     },
     {
       "id": "phys-gps",
       "tag": "Physics",
-      "text": "GPS satellites must correct for relativity by about 38 microseconds a day. Skip it and positions drift some 10 km every day — relativity is infrastructure.",
+      "text": "GPS satellites must correct for relativity by about 38 microseconds a day. Skip it and positions drift some 10 km every day \u2014 relativity is infrastructure.",
       "url": "https://en.wikipedia.org/wiki/Error_analysis_for_the_Global_Positioning_System"
     },
     {
       "id": "phys-neutron",
       "tag": "Physics",
-      "text": "A teaspoon of neutron star weighs roughly as much as a mountain — the star is essentially one atomic nucleus the size of a city.",
+      "text": "A teaspoon of neutron star weighs roughly as much as a mountain \u2014 the star is essentially one atomic nucleus the size of a city.",
       "url": "https://en.wikipedia.org/wiki/Neutron_star"
     },
     {
@@ -353,13 +353,13 @@
     {
       "id": "phys-entropy-arrow",
       "tag": "Physics",
-      "text": "Almost every fundamental law is time-symmetric. The reason you can tell a film is running backwards is statistical — entropy, not the equations.",
+      "text": "Almost every fundamental law is time-symmetric. The reason you can tell a film is running backwards is statistical \u2014 entropy, not the equations.",
       "url": "https://en.wikipedia.org/wiki/Arrow_of_time"
     },
     {
       "id": "phys-chimborazo",
       "tag": "Geography",
-      "text": "Everest is the highest above sea level, but Chimborazo's summit is farthest from Earth's center — the planet bulges at the equator.",
+      "text": "Everest is the highest above sea level, but Chimborazo's summit is farthest from Earth's center \u2014 the planet bulges at the equator.",
       "url": "https://en.wikipedia.org/wiki/Chimborazo"
     },
     {
@@ -371,7 +371,7 @@
     {
       "id": "psy-testing",
       "tag": "Learning",
-      "text": "Retrieving an answer from memory strengthens it more than re-reading it. Testing isn't just measurement — it's the study method.",
+      "text": "Retrieving an answer from memory strengthens it more than re-reading it. Testing isn't just measurement \u2014 it's the study method.",
       "url": "https://en.wikipedia.org/wiki/Testing_effect"
     },
     {
@@ -407,7 +407,7 @@
     {
       "id": "psy-anchor",
       "tag": "Psychology",
-      "text": "Anchoring works even with numbers known to be irrelevant — a random figure shifts subsequent estimates. Whoever names a number first shapes the range.",
+      "text": "Anchoring works even with numbers known to be irrelevant \u2014 a random figure shifts subsequent estimates. Whoever names a number first shapes the range.",
       "url": "https://en.wikipedia.org/wiki/Anchoring_effect"
     },
     {
@@ -425,7 +425,7 @@
     {
       "id": "econ-comparative",
       "tag": "Economics",
-      "text": "Comparative advantage means trade helps even when one party is better at everything — what matters is relative opportunity cost, not absolute skill.",
+      "text": "Comparative advantage means trade helps even when one party is better at everything \u2014 what matters is relative opportunity cost, not absolute skill.",
       "url": "https://en.wikipedia.org/wiki/Comparative_advantage"
     },
     {
@@ -443,7 +443,7 @@
     {
       "id": "econ-baumol",
       "tag": "Economics",
-      "text": "Baumol's cost disease explains why live music and haircuts get more expensive relative to goods — wages rise economy-wide while the task itself can't be sped up.",
+      "text": "Baumol's cost disease explains why live music and haircuts get more expensive relative to goods \u2014 wages rise economy-wide while the task itself can't be sped up.",
       "url": "https://en.wikipedia.org/wiki/Baumol_effect"
     },
     {
@@ -455,7 +455,7 @@
     {
       "id": "econ-rule72",
       "tag": "Money",
-      "text": "Rule of 72: divide 72 by the annual return to get the doubling time. At 6%, money doubles in about 12 years — good enough for mental arithmetic.",
+      "text": "Rule of 72: divide 72 by the annual return to get the doubling time. At 6%, money doubles in about 12 years \u2014 good enough for mental arithmetic.",
       "url": "https://en.wikipedia.org/wiki/Rule_of_72"
     },
     {
@@ -467,19 +467,19 @@
     {
       "id": "econ-veblen",
       "tag": "Economics",
-      "text": "Veblen goods sell more as they get more expensive — price is the product. It breaks the demand curve taught in week one.",
+      "text": "Veblen goods sell more as they get more expensive \u2014 price is the product. It breaks the demand curve taught in week one.",
       "url": "https://en.wikipedia.org/wiki/Veblen_good"
     },
     {
       "id": "food-maillard",
       "tag": "Cooking",
-      "text": "The Maillard reaction needs roughly 140°C+, and water caps food at 100°C. That's why anything wet won't brown — dry the surface first.",
+      "text": "The Maillard reaction needs roughly 140\u00b0C+, and water caps food at 100\u00b0C. That's why anything wet won't brown \u2014 dry the surface first.",
       "url": "https://en.wikipedia.org/wiki/Maillard_reaction"
     },
     {
       "id": "food-searing",
       "tag": "Cooking",
-      "text": "Searing doesn't seal in juices; that was disproved over a century ago. Seared meat loses slightly more moisture — you do it for flavor.",
+      "text": "Searing doesn't seal in juices; that was disproved over a century ago. Seared meat loses slightly more moisture \u2014 you do it for flavor.",
       "url": "https://en.wikipedia.org/wiki/Searing"
     },
     {
@@ -491,7 +491,7 @@
     {
       "id": "food-salt-timing",
       "tag": "Cooking",
-      "text": "Salt meat well in advance or immediately before cooking — never in the 3–40 minute window, when it's drawn moisture out but not yet reabsorbed it.",
+      "text": "Salt meat well in advance or immediately before cooking \u2014 never in the 3\u201340 minute window, when it's drawn moisture out but not yet reabsorbed it.",
       "url": "https://en.wikipedia.org/wiki/Brining"
     },
     {
@@ -515,13 +515,13 @@
     {
       "id": "health-caffeine",
       "tag": "Health",
-      "text": "Caffeine's half-life is around 5–6 hours, so an afternoon coffee still has a quarter of its dose in you at midnight — often felt as poor sleep rather than wakefulness.",
+      "text": "Caffeine's half-life is around 5\u20136 hours, so an afternoon coffee still has a quarter of its dose in you at midnight \u2014 often felt as poor sleep rather than wakefulness.",
       "url": "https://en.wikipedia.org/wiki/Caffeine"
     },
     {
       "id": "health-vo2",
       "tag": "Health",
-      "text": "Cardiorespiratory fitness is among the strongest predictors of all-cause mortality — a larger effect than most single risk factors people worry about more.",
+      "text": "Cardiorespiratory fitness is among the strongest predictors of all-cause mortality \u2014 a larger effect than most single risk factors people worry about more.",
       "url": "https://en.wikipedia.org/wiki/VO2_max"
     },
     {
@@ -551,13 +551,13 @@
     {
       "id": "lang-basque",
       "tag": "Language",
-      "text": "Basque is a language isolate with no proven relatives — it was spoken in Western Europe before Indo-European arrived and simply never yielded.",
+      "text": "Basque is a language isolate with no proven relatives \u2014 it was spoken in Western Europe before Indo-European arrived and simply never yielded.",
       "url": "https://en.wikipedia.org/wiki/Basque_language"
     },
     {
       "id": "lang-sapir",
       "tag": "Language",
-      "text": "The strong claim that language determines thought is rejected; the weak version survives — language nudges what you notice and how fast you sort it.",
+      "text": "The strong claim that language determines thought is rejected; the weak version survives \u2014 language nudges what you notice and how fast you sort it.",
       "url": "https://en.wikipedia.org/wiki/Linguistic_relativity"
     },
     {
@@ -569,7 +569,7 @@
     {
       "id": "lang-pie",
       "tag": "Language",
-      "text": "English, Hindi, Farsi, Greek and Russian all descend from one unwritten language spoken ~6,000 years ago — reconstructed purely from patterned sound changes.",
+      "text": "English, Hindi, Farsi, Greek and Russian all descend from one unwritten language spoken ~6,000 years ago \u2014 reconstructed purely from patterned sound changes.",
       "url": "https://en.wikipedia.org/wiki/Proto-Indo-European_language"
     },
     {
@@ -581,7 +581,7 @@
     {
       "id": "art-monalisa",
       "tag": "Art",
-      "text": "The Mona Lisa became the world's most famous painting largely after it was stolen in 1911 — the empty wall drew bigger crowds than the picture had.",
+      "text": "The Mona Lisa became the world's most famous painting largely after it was stolen in 1911 \u2014 the empty wall drew bigger crowds than the picture had.",
       "url": "https://en.wikipedia.org/wiki/Mona_Lisa"
     },
     {
@@ -599,7 +599,7 @@
     {
       "id": "music-temperament",
       "tag": "Music",
-      "text": "Equal temperament makes every key equally usable by making every interval except the octave slightly out of tune — the piano is a negotiated compromise.",
+      "text": "Equal temperament makes every key equally usable by making every interval except the octave slightly out of tune \u2014 the piano is a negotiated compromise.",
       "url": "https://en.wikipedia.org/wiki/Equal_temperament"
     },
     {
@@ -617,13 +617,13 @@
     {
       "id": "phil-theseus",
       "tag": "Philosophy",
-      "text": "Replace a ship's planks one by one and it raises whether identity lives in material or continuity — the same question a long-refactored codebase eventually asks.",
+      "text": "Replace a ship's planks one by one and it raises whether identity lives in material or continuity \u2014 the same question a long-refactored codebase eventually asks.",
       "url": "https://en.wikipedia.org/wiki/Ship_of_Theseus"
     },
     {
       "id": "phil-occam",
       "tag": "Philosophy",
-      "text": "Occam's razor says don't multiply entities beyond necessity — a tiebreaker between theories that explain equally well, not a claim that simpler is truer.",
+      "text": "Occam's razor says don't multiply entities beyond necessity \u2014 a tiebreaker between theories that explain equally well, not a claim that simpler is truer.",
       "url": "https://en.wikipedia.org/wiki/Occam%27s_razor"
     },
     {
@@ -653,25 +653,25 @@
     {
       "id": "geo-canada-lakes",
       "tag": "Geography",
-      "text": "Canada holds more lake area than the rest of the world combined — a legacy of glaciers scouring the shield and leaving the hollows behind.",
+      "text": "Canada holds more lake area than the rest of the world combined \u2014 a legacy of glaciers scouring the shield and leaving the hollows behind.",
       "url": "https://en.wikipedia.org/wiki/List_of_lakes_of_Canada"
     },
     {
       "id": "geo-netherlands",
       "tag": "Geography",
-      "text": "About a sixth of the Netherlands was reclaimed from water, and much of the country sits below sea level — the landscape is infrastructure.",
+      "text": "About a sixth of the Netherlands was reclaimed from water, and much of the country sits below sea level \u2014 the landscape is infrastructure.",
       "url": "https://en.wikipedia.org/wiki/Land_reclamation_in_the_Netherlands"
     },
     {
       "id": "write-inverted",
       "tag": "Writing",
-      "text": "The inverted pyramid — conclusion first, detail after — comes from telegraph-era journalism, where the wire could cut out mid-story at any moment.",
+      "text": "The inverted pyramid \u2014 conclusion first, detail after \u2014 comes from telegraph-era journalism, where the wire could cut out mid-story at any moment.",
       "url": "https://en.wikipedia.org/wiki/Inverted_pyramid_(journalism)"
     },
     {
       "id": "write-line-length",
       "tag": "Design",
-      "text": "Set line length to roughly 45–75 characters. Longer and the eye loses the return sweep; shorter and the rhythm breaks every few words.",
+      "text": "Set line length to roughly 45\u201375 characters. Longer and the eye loses the return sweep; shorter and the rhythm breaks every few words.",
       "url": "https://en.wikipedia.org/wiki/Line_length"
     },
     {
@@ -683,32 +683,14 @@
     {
       "id": "design-fitts",
       "tag": "Design",
-      "text": "Fitts's law: time to hit a target falls with size and rises with distance. It's why screen corners are the most valuable real estate — infinitely deep targets.",
+      "text": "Fitts's law: time to hit a target falls with size and rises with distance. It's why screen corners are the most valuable real estate \u2014 infinitely deep targets.",
       "url": "https://en.wikipedia.org/wiki/Fitts%27s_law"
-    },
-    {
-      "id": "eng-pg-index-order",
-      "tag": "Postgres",
-      "text": "A composite index on (a, b) serves queries filtering on `a` alone, but not on `b` alone — leftmost prefix rule.",
-      "url": "https://www.postgresql.org/docs/current/indexes-multicolumn.html"
-    },
-    {
-      "id": "eng-null-compare",
-      "tag": "SQL",
-      "text": "NULL = NULL is NULL, not true. Use IS NULL, or IS DISTINCT FROM for null-safe inequality.",
-      "url": "https://www.postgresql.org/docs/current/functions-comparison.html"
     },
     {
       "id": "eng-git-reflog",
       "tag": "Git",
-      "text": "`git reflog` records every HEAD move for ~90 days — almost nothing committed is truly lost after a bad reset.",
+      "text": "`git reflog` records every HEAD move for ~90 days \u2014 almost nothing committed is truly lost after a bad reset.",
       "url": "https://git-scm.com/docs/git-reflog"
-    },
-    {
-      "id": "eng-http-401-403",
-      "tag": "HTTP",
-      "text": "401 means \"I don't know who you are\"; 403 means \"I know, and you still can't\". Returning 401 for an authorization failure invites retry loops.",
-      "url": "https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/403"
     },
     {
       "id": "eng-float-money",
@@ -735,28 +717,16 @@
       "url": "https://aws.amazon.com/builders-library/timeouts-retries-and-backoff-with-jitter/"
     },
     {
-      "id": "eng-timeout",
-      "tag": "Reliability",
-      "text": "A network call with no timeout is an outage waiting for a slow dependency. Default timeouts in many HTTP clients are infinite.",
-      "url": "https://en.wikipedia.org/wiki/Timeout_(computing)"
-    },
-    {
       "id": "eng-utc-storage",
       "tag": "Dates",
-      "text": "Store instants in UTC, but store future scheduled events with their intended timezone — legislatures move DST boundaries after you save the row.",
+      "text": "Store instants in UTC, but store future scheduled events with their intended timezone \u2014 legislatures move DST boundaries after you save the row.",
       "url": "https://en.wikipedia.org/wiki/Tz_database"
     },
     {
       "id": "eng-unicode-length",
       "tag": "Encoding",
-      "text": "String length counts UTF-16 code units, not characters. Emoji and many scripts count as 2+ — truncating by length can split a character in half.",
+      "text": "String length counts UTF-16 code units, not characters. Emoji and many scripts count as 2+ \u2014 truncating by length can split a character in half.",
       "url": "https://en.wikipedia.org/wiki/UTF-16"
-    },
-    {
-      "id": "eng-rename-atomic",
-      "tag": "Filesystems",
-      "text": "rename(2) is atomic within one filesystem — write to a temp file and rename over the target to avoid ever exposing a partial file.",
-      "url": "https://man7.org/linux/man-pages/man2/rename.2.html"
     },
     {
       "id": "eng-timing-safe",
@@ -765,28 +735,382 @@
       "url": "https://en.wikipedia.org/wiki/Timing_attack"
     },
     {
-      "id": "eng-hash-vs-encrypt",
-      "tag": "Security",
-      "text": "Passwords are hashed with a slow KDF (argon2, bcrypt), never encrypted — encryption implies a key that can reverse it.",
-      "url": "https://en.wikipedia.org/wiki/Key_derivation_function"
-    },
-    {
       "id": "eng-regex-catastrophic",
       "tag": "Security",
       "text": "Nested quantifiers like (a+)+ backtrack exponentially. A regex over user input is a denial-of-service surface.",
       "url": "https://en.wikipedia.org/wiki/ReDoS"
     },
     {
-      "id": "eng-n-plus-one",
-      "tag": "Performance",
-      "text": "An N+1 query is invisible in code review and obvious in a trace. Watch query *counts* per request, not just query duration.",
-      "url": "https://en.wikipedia.org/wiki/Object%E2%80%93relational_mapping"
-    },
-    {
       "id": "eng-p99",
       "tag": "Performance",
-      "text": "If a page makes 100 backend calls, your p99 latency is what a typical user experiences — averages hide the request that defines the page load.",
+      "text": "If a page makes 100 backend calls, your p99 latency is what a typical user experiences \u2014 averages hide the request that defines the page load.",
       "url": "https://en.wikipedia.org/wiki/Percentile"
+    },
+    {
+      "id": "knuth-email",
+      "tag": "Knuth",
+      "text": "Knuth gave up email in 1990: \"Email is a wonderful thing for people whose role in life is to be on top of things. But not for me; my role is to be on the bottom of things.\"",
+      "url": "https://www-cs-faculty.stanford.edu/~knuth/email.html"
+    },
+    {
+      "id": "knuth-tex-pi",
+      "tag": "Knuth",
+      "text": "TeX's version number converges to \u03c0 \u2014 3.14159265\u2026 \u2014 gaining a digit per release. METAFONT's converges to e. On Knuth's death both freeze permanently and any remaining bugs become features.",
+      "url": "https://en.wikipedia.org/wiki/TeX"
+    },
+    {
+      "id": "knuth-bounty-double",
+      "tag": "Knuth",
+      "text": "The TeX bug bounty started at $2.56 and doubled every year, reaching $327.68. Knuth was betting the bugs would run out before the money did.",
+      "url": "https://en.wikipedia.org/wiki/Knuth_reward_check"
+    },
+    {
+      "id": "knuth-san-serriffe",
+      "tag": "Knuth",
+      "text": "Knuth's reward checks are drawn on the Bank of San Serriffe \u2014 a fictional island nation invented by The Guardian for an April Fools' supplement in 1977.",
+      "url": "https://en.wikipedia.org/wiki/San_Serriffe"
+    },
+    {
+      "id": "knuth-proved-not-tried",
+      "tag": "Knuth",
+      "text": "\"Beware of bugs in the above code; I have only proved it correct, not tried it.\" \u2014 Knuth, 1977, and still the most honest sentence in computer science.",
+      "url": "https://en.wikipedia.org/wiki/Donald_Knuth"
+    },
+    {
+      "id": "knuth-scope-creep",
+      "tag": "Knuth",
+      "text": "TAOCP started in 1962 as a single book about compilers. It is now planned as seven volumes, and he is still writing \u2014 the most consequential scope creep in publishing.",
+      "url": "https://en.wikipedia.org/wiki/The_Art_of_Computer_Programming"
+    },
+    {
+      "id": "knuth-organ",
+      "tag": "Knuth",
+      "text": "Knuth has a pipe organ in his house and composed Fantasia Apocalyptica, a full-length organ work setting the Book of Revelation, premiered in 2018.",
+      "url": "https://en.wikipedia.org/wiki/Donald_Knuth"
+    },
+    {
+      "id": "knuth-surreal",
+      "tag": "Knuth",
+      "text": "Knuth wrote Surreal Numbers in a week in an Oslo hotel room \u2014 a novelette in which two people on a beach derive Conway's number system from scratch. A major mathematical idea introduced as fiction.",
+      "url": "https://en.wikipedia.org/wiki/Surreal_Numbers"
+    },
+    {
+      "id": "knuth-songs",
+      "tag": "Knuth",
+      "text": "Knuth published a straight-faced paper on the space complexity of songs, proving you can achieve arbitrarily long songs with constant memory. \"That was the song that never ends\" is the optimal result.",
+      "url": "https://en.wikipedia.org/wiki/The_Complexity_of_Songs"
+    },
+    {
+      "id": "knuth-turing-36",
+      "tag": "Knuth",
+      "text": "Knuth won the Turing Award in 1974, at 36, for work he had largely done in his twenties while writing what he thought was one book.",
+      "url": "https://en.wikipedia.org/wiki/Turing_Award"
+    },
+    {
+      "id": "knuth-basketball",
+      "tag": "Knuth",
+      "text": "As an undergraduate Knuth wrote a program to rate his college's basketball players by contribution rather than points scored. CBS covered it. The team won the league.",
+      "url": "https://en.wikipedia.org/wiki/Donald_Knuth"
+    },
+    {
+      "id": "knuth-mix-1009",
+      "tag": "Knuth",
+      "text": "MIX, the fictional machine in TAOCP, is numbered 1009 \u2014 chosen as roughly the average of the model numbers of real machines of the era, and MIX in Roman numerals reads 1009.",
+      "url": "https://en.wikipedia.org/wiki/MIX"
+    },
+    {
+      "id": "knuth-uparrow",
+      "tag": "Knuth",
+      "text": "Knuth's up-arrow notation extends exponentiation upward. 3\u2191\u2191\u21913 is already so large that writing it as a power tower would exhaust the observable universe.",
+      "url": "https://en.wikipedia.org/wiki/Knuth%27s_up-arrow_notation"
+    },
+    {
+      "id": "knuth-kmp",
+      "tag": "Knuth",
+      "text": "Knuth\u2013Morris\u2013Pratt searches text without ever backing up in the input: a failed match tells you exactly how far you may skip. The failure is the information.",
+      "url": "https://en.wikipedia.org/wiki/Knuth%E2%80%93Morris%E2%80%93Pratt_algorithm"
+    },
+    {
+      "id": "lore-first-bug",
+      "tag": "Computing lore",
+      "text": "The first computer \"bug\" was an actual moth, taped into a Harvard logbook in 1947 beside the note: \"First actual case of bug being found.\" The insect is still in the Smithsonian.",
+      "url": "https://en.wikipedia.org/wiki/Software_bug"
+    },
+    {
+      "id": "lore-hamilton",
+      "tag": "Computing lore",
+      "text": "Margaret Hamilton coined the term \"software engineering\" \u2014 partly to get the work taken seriously. Her Apollo scheduler shed low-priority tasks when the 1202 alarm fired during descent, which is why Apollo 11 landed.",
+      "url": "https://en.wikipedia.org/wiki/Margaret_Hamilton_(software_engineer)"
+    },
+    {
+      "id": "lore-lovelace",
+      "tag": "Computing lore",
+      "text": "Ada Lovelace's 1843 notes contain what is generally called the first published algorithm for a machine \u2014 and the observation that it could operate on symbols, not just numbers. Babbage had not seen that.",
+      "url": "https://en.wikipedia.org/wiki/Ada_Lovelace"
+    },
+    {
+      "id": "lore-mother-demo",
+      "tag": "Computing lore",
+      "text": "In 90 minutes in 1968, Engelbart demonstrated the mouse, hypertext, windows, version control and video conferencing. It is remembered as The Mother of All Demos; most of it took decades to arrive.",
+      "url": "https://en.wikipedia.org/wiki/The_Mother_of_All_Demos"
+    },
+    {
+      "id": "lore-mel",
+      "tag": "Computing lore",
+      "text": "The Story of Mel describes a programmer who placed instructions at the exact drum-memory positions the head would reach next, so the machine never waited. He considered optimizing compilers cheating.",
+      "url": "https://en.wikipedia.org/wiki/The_Story_of_Mel"
+    },
+    {
+      "id": "lore-trusting-trust",
+      "tag": "Computing lore",
+      "text": "Ken Thompson showed a compiler can be taught to insert a backdoor into any program \u2014 and into future copies of itself \u2014 leaving no trace in any source code you can read.",
+      "url": "https://en.wikipedia.org/wiki/Backdoor_(computing)"
+    },
+    {
+      "id": "lore-ewd",
+      "tag": "Computing lore",
+      "text": "Dijkstra wrote roughly 1,300 numbered manuscripts by fountain pen, photocopied them, and mailed them to colleagues. The EWDs functioned as a personal, analogue blog for forty years.",
+      "url": "https://en.wikipedia.org/wiki/Edsger_W._Dijkstra"
+    },
+    {
+      "id": "lore-therac",
+      "tag": "Computing lore",
+      "text": "The Therac-25 gave lethal radiation doses because of a race condition that only appeared when an operator typed the sequence fast enough \u2014 so it surfaced with experience, not inexperience.",
+      "url": "https://en.wikipedia.org/wiki/Therac-25"
+    },
+    {
+      "id": "lore-brain-virus",
+      "tag": "Computing lore",
+      "text": "The first PC virus, Brain (1986), contained its authors' real names, address and phone number in Lahore. They wrote it as copy protection and were surprised when it spread worldwide.",
+      "url": "https://en.wikipedia.org/wiki/Brain_(computer_virus)"
+    },
+    {
+      "id": "lore-hamming",
+      "tag": "Computing lore",
+      "text": "Hamming: \"The purpose of computing is insight, not numbers.\" He also asked colleagues at lunch what the most important problem in their field was, and why they weren't working on it.",
+      "url": "https://en.wikipedia.org/wiki/Richard_Hamming"
+    },
+    {
+      "id": "lore-y2k38",
+      "tag": "Computing lore",
+      "text": "32-bit Unix time overflows on 19 January 2038, at which point the clock reads 1901. The fix is well understood; finding every embedded system that needs it is not.",
+      "url": "https://en.wikipedia.org/wiki/Year_2038_problem"
+    },
+    {
+      "id": "tech-bloom",
+      "tag": "Technique",
+      "text": "A Bloom filter answers \"definitely not present\" or \"probably present\" \u2014 it can never miss something that is there. Chrome used one to check URLs against a malware list without shipping the list.",
+      "url": "https://en.wikipedia.org/wiki/Bloom_filter"
+    },
+    {
+      "id": "tech-hll",
+      "tag": "Technique",
+      "text": "HyperLogLog counts distinct items in about 1.5KB regardless of input size, with ~2% error. Redis uses it to count unique visitors in billions without storing a single one.",
+      "url": "https://en.wikipedia.org/wiki/HyperLogLog"
+    },
+    {
+      "id": "tech-consistent-hash",
+      "tag": "Technique",
+      "text": "Consistent hashing places servers on a ring so adding one moves only 1/n of the keys. Naive modulo hashing moves nearly all of them \u2014 the difference between a rolling deploy and an outage.",
+      "url": "https://en.wikipedia.org/wiki/Consistent_hashing"
+    },
+    {
+      "id": "tech-merkle",
+      "tag": "Technique",
+      "text": "A Merkle tree lets you prove two enormous structures differ, and find where, by comparing a single hash and then descending. Git, rsync, and blockchains all lean on it.",
+      "url": "https://en.wikipedia.org/wiki/Merkle_tree"
+    },
+    {
+      "id": "tech-cas",
+      "tag": "Technique",
+      "text": "Git names every object by the hash of its contents, so identical files are stored exactly once and renames are free. Content addressing turns deduplication into a side effect.",
+      "url": "https://en.wikipedia.org/wiki/Content-addressable_storage"
+    },
+    {
+      "id": "tech-crdt",
+      "tag": "Technique",
+      "text": "CRDTs are built so concurrent edits merge to the same result regardless of arrival order \u2014 collaborative editing with no central server and no conflict resolution step.",
+      "url": "https://en.wikipedia.org/wiki/Conflict-free_replicated_data_type"
+    },
+    {
+      "id": "tech-lsm",
+      "tag": "Technique",
+      "text": "LSM trees make writes fast by only ever appending, then merging sorted files in the background. It trades read amplification for write throughput \u2014 the reason Cassandra and RocksDB ingest so fast.",
+      "url": "https://en.wikipedia.org/wiki/Log-structured_merge-tree"
+    },
+    {
+      "id": "tech-wal",
+      "tag": "Technique",
+      "text": "Write-ahead logging gets durability by recording what you intend to do before doing it. After a crash you replay intent \u2014 the same trick a temp-file-then-rename gives you at file scale.",
+      "url": "https://en.wikipedia.org/wiki/Write-ahead_logging"
+    },
+    {
+      "id": "tech-cow",
+      "tag": "Technique",
+      "text": "Copy-on-write means fork() doesn't copy memory: both processes share pages until one writes. Snapshots in ZFS and Docker layers are the same idea at a different altitude.",
+      "url": "https://en.wikipedia.org/wiki/Copy-on-write"
+    },
+    {
+      "id": "tech-rope",
+      "tag": "Technique",
+      "text": "A rope stores text as a tree of fragments, so inserting a character in a 2GB file doesn't move 2GB of bytes. It's why serious editors don't slow down on huge files.",
+      "url": "https://en.wikipedia.org/wiki/Rope_(data_structure)"
+    },
+    {
+      "id": "tech-skiplist",
+      "tag": "Technique",
+      "text": "A skip list gets balanced-tree performance from coin flips instead of rotations. Far easier to make lock-free, which is why concurrent maps often use one.",
+      "url": "https://en.wikipedia.org/wiki/Skip_list"
+    },
+    {
+      "id": "tech-unionfind",
+      "tag": "Technique",
+      "text": "Union-Find with path compression runs in almost constant amortized time \u2014 the bound involves the inverse Ackermann function, which is under 5 for any input that fits in the universe.",
+      "url": "https://en.wikipedia.org/wiki/Disjoint-set_data_structure"
+    },
+    {
+      "id": "tech-strangler",
+      "tag": "Technique",
+      "text": "The strangler fig pattern replaces a legacy system by routing traffic away piece by piece until nothing reaches the old one. Named for a vine that grows around a tree and outlives it.",
+      "url": "https://martinfowler.com/bliki/StranglerFigApplication.html"
+    },
+    {
+      "id": "tech-parse-dont-validate",
+      "tag": "Technique",
+      "text": "\"Parse, don't validate\": instead of checking a value and returning a boolean, return a narrower type that cannot hold the invalid case. The check then can't be forgotten downstream.",
+      "url": "https://lexi-lambda.github.io/blog/2019/11/05/parse-don-t-validate/"
+    },
+    {
+      "id": "tech-illegal-states",
+      "tag": "Technique",
+      "text": "Make illegal states unrepresentable: if a record can't be both \"loading\" and \"loaded\", model it as one sum type rather than two booleans that permit four states, two of them nonsense.",
+      "url": "https://en.wikipedia.org/wiki/Algebraic_data_type"
+    },
+    {
+      "id": "tech-functional-core",
+      "tag": "Technique",
+      "text": "Functional core, imperative shell: keep decisions in pure functions and push all I/O to a thin outer layer. The core needs no mocks, and the shell has almost no branches to test.",
+      "url": "https://www.destroyallsoftware.com/screencasts/catalog/functional-core-imperative-shell"
+    },
+    {
+      "id": "tech-property-testing",
+      "tag": "Technique",
+      "text": "Property-based testing generates thousands of inputs against an invariant, then shrinks any failure to the smallest case that still breaks. You get the minimal reproduction for free.",
+      "url": "https://en.wikipedia.org/wiki/QuickCheck"
+    },
+    {
+      "id": "tech-mutation",
+      "tag": "Technique",
+      "text": "Mutation testing checks your tests by deliberately breaking the code \u2014 flip a comparison, delete a line. Tests that still pass were never testing that behaviour.",
+      "url": "https://en.wikipedia.org/wiki/Mutation_testing"
+    },
+    {
+      "id": "tech-expand-contract",
+      "tag": "Technique",
+      "text": "Expand-contract migrates a schema in three deploys: add the new column and write both, backfill and switch reads, then drop the old. No step requires downtime or a synchronized release.",
+      "url": "https://martinfowler.com/bliki/ParallelChange.html"
+    },
+    {
+      "id": "tech-branch-abstraction",
+      "tag": "Technique",
+      "text": "Branch by abstraction replaces a component on the main branch: introduce a seam, build the new implementation behind it, flip, delete. Long-lived feature branches stop being necessary.",
+      "url": "https://martinfowler.com/bliki/BranchByAbstraction.html"
+    },
+    {
+      "id": "tech-outbox",
+      "tag": "Technique",
+      "text": "The outbox pattern writes the message into the same database transaction as the data, then relays it separately \u2014 closing the gap where a commit succeeds and the publish doesn't.",
+      "url": "https://microservices.io/patterns/data/transactional-outbox.html"
+    },
+    {
+      "id": "tech-saga",
+      "tag": "Technique",
+      "text": "A saga replaces a distributed transaction with a sequence of local ones plus compensating actions. There's no rollback \u2014 only doing something that undoes the effect.",
+      "url": "https://en.wikipedia.org/wiki/Long-running_transaction"
+    },
+    {
+      "id": "tech-circuit-breaker",
+      "tag": "Technique",
+      "text": "A circuit breaker stops calling a failing dependency entirely for a while. Retrying a service that's already overloaded is how a partial outage becomes a total one.",
+      "url": "https://en.wikipedia.org/wiki/Circuit_breaker_design_pattern"
+    },
+    {
+      "id": "tech-backpressure",
+      "tag": "Technique",
+      "text": "Backpressure means a slow consumer can tell a fast producer to wait. Without it, queues grow until memory runs out \u2014 the failure surfaces far from the component that caused it.",
+      "url": "https://en.wikipedia.org/wiki/Back_pressure"
+    },
+    {
+      "id": "tech-littles-law",
+      "tag": "Technique",
+      "text": "Little's law: work in progress equals throughput times cycle time. Cutting the number of things in flight shortens delivery time without anyone working faster.",
+      "url": "https://en.wikipedia.org/wiki/Little%27s_law"
+    },
+    {
+      "id": "tech-conway",
+      "tag": "Technique",
+      "text": "Conway's law says systems mirror the communication structure of the organizations that build them. The inverse Conway manoeuvre reorganizes the teams to get the architecture you want.",
+      "url": "https://en.wikipedia.org/wiki/Conway%27s_law"
+    },
+    {
+      "id": "tech-worse-is-better",
+      "tag": "Technique",
+      "text": "\"Worse is Better\": a simpler design that ships and spreads often beats a more correct one that doesn't. Richard Gabriel argued this against his own preferences and never fully talked himself into it.",
+      "url": "https://en.wikipedia.org/wiki/Worse_is_better"
+    },
+    {
+      "id": "tech-postel",
+      "tag": "Technique",
+      "text": "Postel's law \u2014 be liberal in what you accept \u2014 built the early internet and is now considered partly harmful: every accepted deviation becomes a permanent de-facto part of the protocol.",
+      "url": "https://en.wikipedia.org/wiki/Robustness_principle"
+    },
+    {
+      "id": "tech-walking-skeleton",
+      "tag": "Technique",
+      "text": "A walking skeleton is a thin end-to-end slice that runs in production before any feature is complete. It flushes out integration and deployment problems while they're still cheap.",
+      "url": "https://wiki.c2.com/?WalkingSkeleton"
+    },
+    {
+      "id": "tech-bisect",
+      "tag": "Technique",
+      "text": "git bisect finds the commit that broke something in log\u2082(n) steps \u2014 10 tests across a thousand commits. With `git bisect run` it's fully automatic.",
+      "url": "https://git-scm.com/docs/git-bisect"
+    },
+    {
+      "id": "tech-chaos",
+      "tag": "Technique",
+      "text": "Chaos engineering injects failures deliberately in production, on the argument that the alternative isn't \"no failures\" but failures at 3am that nobody rehearsed.",
+      "url": "https://en.wikipedia.org/wiki/Chaos_engineering"
+    },
+    {
+      "id": "tech-zero-copy",
+      "tag": "Technique",
+      "text": "Zero-copy sends a file to a socket without ever moving bytes through user space. Kafka's throughput is substantially a story about not copying data.",
+      "url": "https://en.wikipedia.org/wiki/Zero-copy"
+    },
+    {
+      "id": "tech-arena",
+      "tag": "Technique",
+      "text": "Arena allocation frees an entire region at once instead of tracking individual objects. Per-request arenas make whole classes of leak and use-after-free structurally impossible.",
+      "url": "https://en.wikipedia.org/wiki/Region-based_memory_management"
+    },
+    {
+      "id": "tech-soa",
+      "tag": "Technique",
+      "text": "Structure-of-arrays instead of array-of-structures: store each field contiguously so a loop touching one field doesn't drag the others through cache. Often a several-fold speedup with no algorithmic change.",
+      "url": "https://en.wikipedia.org/wiki/AoS_and_SoA"
+    },
+    {
+      "id": "tech-amdahl",
+      "tag": "Technique",
+      "text": "Amdahl's law: if 10% of a program is serial, infinite processors still cap the speedup at 10\u00d7. Parallelism is bounded by the part you didn't parallelize.",
+      "url": "https://en.wikipedia.org/wiki/Amdahl%27s_law"
+    },
+    {
+      "id": "tech-second-system",
+      "tag": "Technique",
+      "text": "The second-system effect: the rewrite is where an engineer puts every idea they had to leave out of the first one. Brooks considered it the most dangerous system a person ever designs.",
+      "url": "https://en.wikipedia.org/wiki/Second-system_effect"
     }
   ]
 }

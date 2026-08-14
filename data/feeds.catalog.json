@@ -1,0 +1,104 @@
+{
+  "note": "Curated source catalog. Every feed here was fetched and parsed with this plugin's own parser before being listed. Organized into bundles so setup can offer taste rather than a blank text box.",
+  "principle": "This surface gets a few seconds of involuntary attention, so anything you'd encounter through your normal channels anyway is wasted width. Nothing here is a general tech-news site: you will see those stories regardless. Preference goes to independent and worker-owned outlets, writers with a distinctive angle, and archives deep enough to sample rather than feeds that only tell you what happened in the last hour.",
+  "modes": {
+    "recent": "Take the newest items, filtered by age. Right for outlets that are genuinely publishing news.",
+    "evergreen": "Sample anywhere in the feed's archive, ignoring age. Right for writers whose five-year-old post is as good as today's — which is most of the best ones."
+  },
+  "bundles": {
+    "indie": {
+      "label": "Independent & worker-owned",
+      "why": "Outlets that answer to their writers rather than to a traffic target. Low volume, high hit rate, and they break stories the trade press won't touch.",
+      "feeds": [
+        { "label": "404 Media", "url": "https://www.404media.co/rss/", "mode": "recent", "why": "Worker-owned tech reporting; the surveillance and platform-abuse stories nobody else runs." },
+        { "label": "Defector", "url": "https://defector.com/feed", "mode": "recent", "why": "Ex-Deadspin staff, employee-owned. Sports as a way into everything else." },
+        { "label": "Aftermath", "url": "https://aftermath.site/rss", "mode": "recent", "why": "Worker-owned games criticism, written by people with no publisher to please." },
+        { "label": "Rest of World", "url": "https://restofworld.org/feed/latest/", "mode": "recent", "why": "Technology outside the US and Europe — consistently the least duplicated reporting in this list." },
+        { "label": "Molly White", "url": "https://www.citationneeded.news/rss/", "mode": "recent", "why": "Rigorous, receipts-first accountability writing on crypto and tech power." },
+        { "label": "Anil Dash", "url": "https://www.anildash.com/feed.xml", "mode": "evergreen", "why": "Twenty-five years of writing about what the web is for." }
+      ]
+    },
+    "deep-eng": {
+      "label": "Deep engineering",
+      "why": "People who explain a system all the way down rather than summarizing a press release. Most of these have archives worth sampling at random.",
+      "feeds": [
+        { "label": "Julia Evans", "url": "https://jvns.ca/atom.xml", "mode": "evergreen", "why": "Makes hard systems topics genuinely legible without dumbing them down." },
+        { "label": "Dan Luu", "url": "https://danluu.com/atom.xml", "mode": "evergreen", "why": "Empirical and contrarian; checks the claims everyone else repeats. 128-post archive." },
+        { "label": "Bartosz Ciechanowski", "url": "https://ciechanow.ski/atom.xml", "mode": "evergreen", "why": "The best explanatory writing on the internet. Posts rarely; every one is worth the wait." },
+        { "label": "Ken Shirriff", "url": "https://www.righto.com/feeds/posts/default", "mode": "evergreen", "why": "Reverse-engineers silicon under a microscope — Apollo hardware, 1970s chips." },
+        { "label": "Fabien Sanglard", "url": "https://fabiensanglard.net/rss.xml", "mode": "evergreen", "why": "Game engine and hardware teardowns. 144-post archive." },
+        { "label": "Hillel Wayne", "url": "https://buttondown.com/hillelwayne/rss", "mode": "evergreen", "why": "Formal methods and what software engineering research actually shows." },
+        { "label": "Simon Willison", "url": "https://simonwillison.net/atom/everything/", "mode": "recent", "why": "The most reliable running commentary on what LLMs can currently do." },
+        { "label": "Cloudflare", "url": "https://blog.cloudflare.com/rss/", "mode": "recent", "why": "Real postmortems and protocol work at a scale most of us never see." },
+        { "label": "Nicole Tietz", "url": "https://ntietz.com/atom.xml", "mode": "evergreen", "why": "Software craft and the human side of it. 218-post archive." },
+        { "label": "Erik Bernhardsson", "url": "https://erikbern.com/index.xml", "mode": "evergreen", "why": "Data infrastructure with unusually good instincts about what matters. 172 posts." },
+        { "label": "Brandur", "url": "https://brandur.org/articles.atom", "mode": "evergreen", "why": "Careful long-form on Postgres, APIs, and idempotency." },
+        { "label": "Xe Iaso", "url": "https://xeiaso.net/blog.rss", "mode": "recent", "why": "Infrastructure writing with a voice." },
+        { "label": "Lobsters", "url": "https://lobste.rs/rss", "mode": "recent", "why": "Hacker News without the startup noise; a much higher technical floor." }
+      ]
+    },
+    "science": {
+      "label": "Science, properly done",
+      "why": "Including two feeds about how science goes wrong, which is usually more instructive than the press releases.",
+      "feeds": [
+        { "label": "Quanta", "url": "https://api.quantamagazine.org/feed/", "mode": "recent", "why": "Maths and physics reporting that respects the actual result." },
+        { "label": "In the Pipeline", "url": "https://www.science.org/blogs/pipeline/feed", "mode": "evergreen", "why": "Derek Lowe on drug discovery, including the legendary 'Things I Won't Work With'. 100-post archive." },
+        { "label": "Retraction Watch", "url": "https://retractionwatch.com/feed/", "mode": "recent", "why": "Where the scientific record gets corrected. A running education in how fraud works." },
+        { "label": "Andrew Gelman", "url": "https://statmodeling.stat.columbia.edu/feed/", "mode": "evergreen", "why": "Statistics done in public, mistakes included. 50-post archive." },
+        { "label": "Nautilus", "url": "https://nautil.us/feed/", "mode": "recent", "why": "Long-form science essays with room to breathe." },
+        { "label": "Undark", "url": "https://undark.org/feed/", "mode": "recent", "why": "Science journalism that reports on the institutions, not just the findings." },
+        { "label": "APOD", "url": "https://apod.nasa.gov/apod.rss", "mode": "recent", "why": "One astronomy picture a day, explained by astronomers. Running since 1995." }
+      ]
+    },
+    "history-culture": {
+      "label": "History & culture",
+      "why": "The strongest argument for evergreen sampling — a good post about the twelfth century does not get less relevant.",
+      "feeds": [
+        { "label": "ACOUP", "url": "https://acoup.blog/feed/", "mode": "evergreen", "why": "Bret Devereaux on pre-modern logistics and warfare. Unreasonably good on how societies actually fed armies." },
+        { "label": "Public Domain Review", "url": "https://publicdomainreview.org/rss.xml", "mode": "evergreen", "why": "Beautiful, strange artefacts out of copyright. 100-item archive." },
+        { "label": "JSTOR Daily", "url": "https://daily.jstor.org/feed/", "mode": "evergreen", "why": "Scholarship translated for people who won't read the paper, with the paper linked." },
+        { "label": "Language Log", "url": "https://languagelog.ldc.upenn.edu/nll/?feed=atom", "mode": "evergreen", "why": "Linguists puncturing linguistic myths, often the ones you believe." }
+      ]
+    },
+    "ideas": {
+      "label": "Ideas & essays",
+      "why": "Longer arguments worth carrying around. Deliberately spans positions rather than one house style.",
+      "feeds": [
+        { "label": "Aeon", "url": "https://aeon.co/feed.rss", "mode": "evergreen", "why": "Philosophy and science essays, edited hard." },
+        { "label": "Psyche", "url": "https://psyche.co/feed.rss", "mode": "evergreen", "why": "Aeon's psychology sibling; practical without being self-help." },
+        { "label": "Asterisk", "url": "https://asteriskmag.com/feed", "mode": "evergreen", "why": "Numerate essays on questions most magazines handle badly." },
+        { "label": "Noema", "url": "https://www.noemamag.com/feed/", "mode": "recent", "why": "Technology and governance at civilizational scale." },
+        { "label": "Crooked Timber", "url": "https://crookedtimber.org/feed/", "mode": "recent", "why": "Academics arguing in public, well." },
+        { "label": "Marginal Revolution", "url": "https://marginalrevolution.com/feed", "mode": "recent", "why": "High-volume economics links; unusually good at surfacing the obscure." },
+        { "label": "Astral Codex Ten", "url": "https://www.astralcodexten.com/feed", "mode": "recent", "why": "Long, argumentative, frequently wrong in interesting ways." },
+        { "label": "The Marginalian", "url": "https://www.themarginalian.org/feed/", "mode": "evergreen", "why": "Literature and science read together, with real archive depth." },
+        { "label": "Reasons to be Cheerful", "url": "https://reasonstobecheerful.world/feed/", "mode": "recent", "why": "Solutions journalism — what's actually working somewhere. A useful corrective." },
+        { "label": "Longreads", "url": "https://longreads.com/feed/", "mode": "recent", "why": "Curation rather than a publication; the best of everyone else's archive." }
+      ]
+    },
+    "how-things-work": {
+      "label": "How things get built",
+      "why": "Physical-world engineering. A reliable antidote to a day spent entirely inside software.",
+      "feeds": [
+        { "label": "Construction Physics", "url": "https://www.construction-physics.com/feed", "mode": "evergreen", "why": "Brian Potter on why building anything got so expensive." },
+        { "label": "Practical Engineering", "url": "https://practical.engineering/blog?format=rss", "mode": "evergreen", "why": "Civil infrastructure explained by someone who builds it." },
+        { "label": "The Pudding", "url": "https://pudding.cool/feed/index.xml", "mode": "evergreen", "why": "Visual essays that could not exist in any other medium." }
+      ]
+    },
+    "curious": {
+      "label": "Genuinely odd",
+      "why": "The bundle most likely to produce something you'd never have gone looking for, which is the whole point of the surface.",
+      "feeds": [
+        { "label": "Damn Interesting", "url": "https://www.damninteresting.com/feed/", "mode": "evergreen", "why": "Meticulously researched forgotten episodes of history." },
+        { "label": "Low-tech Magazine", "url": "https://solar.lowtechmagazine.com/feeds/all-en.atom.xml", "mode": "evergreen", "why": "Pre-industrial technology taken seriously. The site runs on a solar-powered server and goes offline when it's cloudy." },
+        { "label": "Atlas Obscura", "url": "https://www.atlasobscura.com/feeds/latest", "mode": "recent", "why": "Places and practices that shouldn't exist but do." },
+        { "label": "Futility Closet", "url": "https://www.futilitycloset.com/feed/", "mode": "evergreen", "why": "Puzzles, curiosities, and lateral historical oddities." },
+        { "label": "Kottke", "url": "https://feeds.kottke.org/main", "mode": "recent", "why": "Twenty-five years of one person with excellent taste linking things." },
+        { "label": "MetaFilter", "url": "https://feeds.feedburner.com/Metafilter", "mode": "recent", "why": "The last good community weblog; posts are researched before they're posted." },
+        { "label": "Web Curios", "url": "https://www.webcurios.co.uk/feed/", "mode": "recent", "why": "A weekly tour of the internet's far corners, written with genuine style." },
+        { "label": "Nicky Case", "url": "https://blog.ncase.me/rss/", "mode": "evergreen", "why": "Explorable explanations about systems, cooperation, and minds." },
+        { "label": "Sentiers", "url": "https://sentiers.media/rss/", "mode": "recent", "why": "Futures and complexity, curated by someone reading more widely than you are." }
+      ]
+    }
+  }
+}
