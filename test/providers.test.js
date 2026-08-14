@@ -1,0 +1,242 @@
+'use strict';
+
+/**
+ * Provider behaviour. Every test in this file is a regression: each one
+ * corresponds to a bug that shipped and was found by reading output rather
+ * than by any check.
+ */
+
+const fs = require('fs');
+const os = require('os');
+const path = require('path');
+
+const TMP = fs.mkdtempSync(path.join(os.tmpdir(), 'smart-thinking-prov-'));
+process.env.CLAUDE_CONFIG_DIR = TMP;
+
+const test = require('node:test');
+const assert = require('node:assert');
+
+const ROOT = path.resolve(__dirname, '..');
+const news = require('../providers/news');
+const learn = require('../providers/learn');
+const wellness = require('../providers/wellness');
+const context = require('../providers/context');
+const { interleave, collectAll } = require('../providers');
+
+// ---------------------------------------------------------------- news
+
+const RSS = `<rss><channel>
+  <item><title>First &amp; foremost</title><link>https://ex.test/a</link><pubDate>Wed, 13 Aug 2026 10:00:00 GMT</pubDate></item>
+  <item><title><![CDATA[Second <b>item</b>]]></title><guid isPermaLink="true">https://ex.test/b</guid><pubDate>Tue, 12 Aug 2026 10:00:00 GMT</pubDate></item>
+</channel></rss>`;
+
+const ATOM = `<feed xmlns="http://www.w3.org/2005/Atom">
+  <entry><title>Atom one</title>
+    <link rel="alternate" href="https://ex.test/atom1"/>
+    <updated>2026-08-13T10:00:00Z</updated></entry>
+</feed>`;
+
+test('news: parses RSS items, decoding entities and CDATA', () => {
+  const items = news._parseFeed(RSS);
+  assert.strictEqual(items.length, 2);
+  assert.strictEqual(items[0].title, 'First & foremost');
+  assert.strictEqual(items[1].title, 'Second item', 'CDATA and inner tags should be stripped');
+});
+
+test('news: extracts the article url from RSS <link> and from guid', () => {
+  // Regression: headlines shipped with no url at all, which is the least
+  // useful thing this surface can show.
+  const items = news._parseFeed(RSS);
+  assert.strictEqual(items[0].url, 'https://ex.test/a');
+  assert.strictEqual(items[1].url, 'https://ex.test/b', 'permalink guid should be used as a fallback');
+});
+
+test('news: extracts the url from an Atom link href attribute', () => {
+  const items = news._parseFeed(ATOM);
+  assert.strictEqual(items[0].url, 'https://ex.test/atom1');
+});
+
+test('news: sample draws across the whole archive, not just the head', () => {
+  const items = Array.from({ length: 100 }, (_, i) => ({ title: `t${i}`, ts: i }));
+  const picked = news._sample(items, 5, Date.now());
+  assert.strictEqual(picked.length, 5);
+  assert.strictEqual(new Set(picked.map((p) => p.title)).size, 5, 'sample returned duplicates');
+  assert.ok(picked.some((p) => items.indexOf(p) > 20), 'evergreen sampling never reached the archive');
+});
+
+test('news: sample is stable within a time slice and moves between them', () => {
+  const items = Array.from({ length: 100 }, (_, i) => ({ title: `t${i}` }));
+  const t = 1_700_000_000_000;
+  const a = news._sample(items, 3, t).map((x) => x.title);
+  const b = news._sample(items, 3, t + 1000).map((x) => x.title);
+  const c = news._sample(items, 3, t + 20 * 60 * 1000).map((x) => x.title);
+  assert.deepStrictEqual(a, b, 'a refresh and its rotation must agree');
+  assert.notDeepStrictEqual(a, c, 'successive slices should land somewhere new');
+});
+
+test('news: a dead feed is isolated and reported, not swallowed', async () => {
+  const res = await news.collect(
+    { feeds: [{ label: 'Dead', url: 'https://this-host-does-not-exist.invalid/rss' }], maxPerFeed: 2 },
+    { now: new Date() },
+  );
+  assert.deepStrictEqual(res.tips, [], 'a broken feed must not produce items');
+  assert.ok(res.warnings.length > 0, 'a feed that stops contributing must be visible in the log');
+});
+
+// ---------------------------------------------------------------- learn
+
+function deckCtx() {
+  return { pluginRoot: ROOT, now: new Date(), context: { topics: new Set() } };
+}
+
+test('learn: a fresh deck does not serve one topic in a row', async () => {
+  // Regression: unseen cards all scored Infinity, so the sort fell back to
+  // deck order and the first refresh returned six consecutive Knuth cards.
+  fs.rmSync(path.join(TMP, 'learn-state.json'), { force: true });
+  const res = await learn.collect({ count: 8, contextShare: 0 }, deckCtx());
+  const tags = res.tips.map((t) => t.category);
+  assert.ok(new Set(tags).size > 1, `expected a mix of topics, got ${tags.join(', ')}`);
+});
+
+test('learn: context-matched cards get a share of slots, not all of them', async () => {
+  fs.rmSync(path.join(TMP, 'learn-state.json'), { force: true });
+  const ctx = { pluginRoot: ROOT, now: new Date(), context: { topics: new Set(['git', 'sql', 'http']) } };
+  const res = await learn.collect({ count: 10, contextShare: 0.4 }, ctx);
+
+  const matched = res.tips.filter((t) => ['Git', 'SQL', 'HTTP'].includes(t.category)).length;
+  assert.ok(matched > 0, 'relevance never won a slot');
+  assert.ok(matched <= 4, `context took ${matched}/10 slots; the cap should hold it to 4`);
+});
+
+test('learn: no card is served twice in one draw', async () => {
+  fs.rmSync(path.join(TMP, 'learn-state.json'), { force: true });
+  const res = await learn.collect({ count: 20, contextShare: 0.4 }, deckCtx());
+  const texts = res.tips.map((t) => t.text);
+  assert.strictEqual(new Set(texts).size, texts.length, 'duplicate cards in a single draw');
+});
+
+test('learn: the action travels with the card', async () => {
+  fs.rmSync(path.join(TMP, 'learn-state.json'), { force: true });
+  const res = await learn.collect({ count: 30, contextShare: 0 }, deckCtx());
+  assert.ok(res.tips.some((t) => t.action), 'actions are being dropped before rendering');
+});
+
+// ---------------------------------------------------------------- wellness
+
+const wCfg = {
+  sleep: true, movement: true, sleepTipCount: 5,
+  lateNightStartHour: 22, lateNightEndHour: 5, wakeTime: '07:00',
+};
+
+function at(hour) {
+  const d = new Date(); d.setHours(hour, 30, 0, 0); return d;
+}
+
+test('wellness: sleep content appears late at night and not at midday', async () => {
+  const night = await wellness.collect(wCfg, { now: at(1), pluginRoot: ROOT });
+  assert.ok(night.tips.length > 0, 'no sleep content at 01:30');
+  assert.ok(night.tips.every((t) => t.category === 'Sleep'), 'late night should be sleep-weighted');
+
+  fs.rmSync(path.join(TMP, 'wellness-state.json'), { force: true });
+  const noon = await wellness.collect(wCfg, { now: at(13), pluginRoot: ROOT });
+  assert.ok(!noon.tips.some((t) => t.category === 'Sleep'), 'sleep content leaked into the afternoon');
+});
+
+test('wellness: repeated sleep tips are distinct', async () => {
+  // Regression: a strided pick shared a factor with the list length, so
+  // asking for four tips returned the same two twice.
+  const res = await wellness.collect(wCfg, { now: at(2), pluginRoot: ROOT });
+  const texts = res.tips.map((t) => t.text);
+  assert.strictEqual(new Set(texts).size, texts.length, `duplicates: ${texts.length - new Set(texts).size}`);
+});
+
+test('wellness: claims carry their evidence tier and a PubMed link', async () => {
+  const res = await wellness.collect(wCfg, { now: at(1), pluginRoot: ROOT });
+  for (const t of res.tips) {
+    assert.match(t.text, /\((meta-analysis|RCT|cohort|contested)\)$/, `missing evidence tier: ${t.text}`);
+    assert.match(t.url, /ncbi\.nlm\.nih\.gov/, 'health claims must link primary literature');
+    assert.ok(t.action, 'health claims must say what to do');
+  }
+});
+
+test('wellness: the late-night status line avoids sleep-cycle arithmetic', async () => {
+  // Regression: "sleeping now gets you 3 complete cycles" was false precision;
+  // cycles run 70-120 minutes and lengthen through the night.
+  const res = await wellness.collect(wCfg, { now: at(1), pluginRoot: ROOT });
+  const line = res.status.map((s) => s.text).join(' ');
+  assert.ok(!/complete (ones|cycles)/i.test(line), `cycle arithmetic is back: ${line}`);
+});
+
+// ---------------------------------------------------------------- context
+
+test('context: a repo with no commits reports no commit age', () => {
+  // Regression: `git log` exits non-zero on an empty repo, and Number(null)
+  // is 0 — which dated the last commit to 1970.
+  const git = { branch: 'main', dirty: 3, ahead: null, behind: null, lastCommitAgeHours: null };
+  const out = context.introspect({}, { context: { git, shape: {}, projectName: 'x' } });
+  assert.ok(!out.some((t) => /1970|20\d{3} day/.test(t.text)), 'epoch leaked into the output');
+});
+
+test('context: introspection fires on missing tests and stays quiet otherwise', () => {
+  const withTests = context.introspect({}, {
+    context: { projectName: 'x', shape: { fileCount: 40, hasTests: true, hasCi: true, hasReadme: true }, git: null },
+  });
+  assert.ok(!withTests.some((t) => /no test directory/.test(t.text)));
+
+  const without = context.introspect({}, {
+    context: { projectName: 'x', shape: { fileCount: 40, hasTests: false, hasReadme: true }, git: null },
+  });
+  assert.ok(without.some((t) => /no test directory/.test(t.text)));
+});
+
+// ---------------------------------------------------------------- registry
+
+test('interleave round-robins sources so one feed cannot crowd out the deck', () => {
+  const items = [
+    ...Array.from({ length: 40 }, (_, i) => ({ source: 'news', text: `n${i}` })),
+    ...Array.from({ length: 6 }, (_, i) => ({ source: 'learn', text: `l${i}` })),
+  ];
+  const out = interleave(items, 10);
+  const learned = out.filter((i) => i.source === 'learn').length;
+  assert.ok(learned >= 4, `learn got only ${learned}/10 slots against a large news feed`);
+});
+
+test('a throwing provider degrades that source only', async () => {
+  const cfg = { providers: { learn: { enabled: true, count: 3 }, news: { enabled: true, feeds: ['https://bad.invalid/x'] } } };
+  const res = await collectAll(cfg, deckCtx());
+  assert.ok(res.tips.length > 0, 'a failing provider took down the whole refresh');
+  assert.ok(res.errors.length > 0, 'the failure was not reported');
+});
+
+test.after(() => fs.rmSync(TMP, { recursive: true, force: true }));
+
+// --------------------------------------------------- pickDistinct contract
+
+test('pickDistinct never repeats, at any list length or stride', () => {
+  // The original bug was a strided index (seed + i*7) that collided whenever
+  // the stride shared a factor with the list length. Testing it through
+  // wellness.collect() could not reproduce it: the sleep corpus happens to
+  // hold 9 claims, and 7 is coprime with 9. A test that only passes because
+  // of the current corpus size is not testing anything, so the contract is
+  // checked directly across the lengths that would expose a bad stride.
+  for (const len of [2, 6, 7, 9, 12, 14, 21, 28]) {
+    const list = Array.from({ length: len }, (_, i) => ({ id: i }));
+    for (const n of [1, 2, 3, 4, 5, 7, len, len + 3]) {
+      for (const seed of [0, 1, 7, 13, 100, 12345]) {
+        const got = wellness._pickDistinct(list, seed, n);
+        const uniq = new Set(got.map((g) => g.id));
+        assert.strictEqual(uniq.size, got.length,
+          `duplicates at len=${len} n=${n} seed=${seed}`);
+        assert.strictEqual(got.length, Math.min(n, len),
+          `wrong count at len=${len} n=${n}`);
+      }
+    }
+  }
+});
+
+test('pickDistinct advances with the seed', () => {
+  const list = Array.from({ length: 14 }, (_, i) => ({ id: i }));
+  const a = wellness._pickDistinct(list, 0, 4).map((x) => x.id);
+  const b = wellness._pickDistinct(list, 5, 4).map((x) => x.id);
+  assert.notDeepStrictEqual(a, b, 'successive refreshes should show different claims');
+});

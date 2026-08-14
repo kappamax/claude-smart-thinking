@@ -157,4 +157,4 @@ async function collect(cfg, ctx) {
   return { tips, status };
 }
 
-module.exports = { name: 'wellness', collect, loadEvidence };
+module.exports = { name: 'wellness', collect, loadEvidence, _pickDistinct: pickDistinct };

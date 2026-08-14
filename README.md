@@ -210,6 +210,23 @@ The status line hot path never blocks on the network, never writes to disk, and 
 ## Development
 
 ```bash
+node --test                 # 57 unit tests, no dependencies
+npm run test:links          # network: verify every deck url and feed still resolves
+claude plugin validate .
+```
+
+Every test in the suite corresponds to a defect that actually shipped: the
+duplicate-hooks declaration that made the plugin refuse to load, the strided
+pick that returned the same sleep tip twice, `git log` on a commitless repo
+dating the last commit to 1970, and actions that merely restated their own
+card. The content checks that used to be throwaway scripts run at release time
+are now enforced on every commit.
+
+Two of those tests were themselves wrong until mutation testing caught them —
+reintroducing the original bug and confirming the suite goes red is worth doing
+before trusting a green run.
+
+```bash
 # Exercise everything against a throwaway config dir instead of your real one
 CLAUDE_CONFIG_DIR=/tmp/fake-claude node bin/refresh.js --root "$PWD" --cwd "$PWD"
 CLAUDE_CONFIG_DIR=/tmp/fake-claude node bin/setup.js status
