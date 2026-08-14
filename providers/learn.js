@@ -130,6 +130,7 @@ async function collect(cfg, ctx) {
   const tips = ranked.map(({ card }) => ({
     category: card.tag || 'Learn',
     text: card.text,
+    action: card.action || null,
     url: card.url || null,
     source: 'learn',
   }));

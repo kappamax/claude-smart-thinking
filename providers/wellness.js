@@ -67,6 +67,7 @@ function toTip(claim) {
   return {
     category: claim.topic,
     text: `${claim.text} (${claim.evidence})`,
+    action: claim.action || null,
     url: claim.source,
     source: 'wellness',
   };

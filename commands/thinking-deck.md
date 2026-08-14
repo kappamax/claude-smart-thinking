@@ -6,14 +6,20 @@ Manage the user's learning deck at `~/.claude/smart-thinking/deck.json`.
 
 If that file doesn't exist, seed it from `${CLAUDE_PLUGIN_ROOT}/data/deck.sample.json`.
 
-Deck format — `url` is required, not optional:
+Deck format — `url` is required; `action` is required for anything practical:
 
 ```json
-{ "cards": [ { "id": "unique-slug", "tag": "Biology", "text": "One line.", "url": "https://…" } ] }
+{ "cards": [ {
+  "id": "unique-slug", "tag": "Bread",
+  "text": "The mechanism — what is actually happening.",
+  "action": "What to do differently tomorrow.",
+  "url": "https://…"
+} ] }
 ```
 
 Rules for good cards, since they render in a narrow single-line spinner slot:
 
+- **End with what to do.** A card that explains starch retrogradation and stops has told the reader something true and left them holding it. "Freeze what you won't eat in two days, never refrigerate" is the part that changes tomorrow. Put the mechanism in `text` and the instruction in `action`; don't restate one in the other. Omit `action` only where there genuinely isn't one — Knuth's reward cheques are worth knowing and nothing follows from them.
 - **Teach a mechanism, not a fact.** The highest bar. "Cleopatra lived closer to the Moon landing than to the Great Pyramid" is inert — nobody is different for knowing it. "Flour contains no gluten; glutenin and gliadin only link once hydrated, and kneading aligns them into sheets that trap gas" changes how someone bakes. Prefer systems the reader actually touches: bread, coffee, sleep, their own tools.
 - **Health claims must cite primary research.** Not Wikipedia, not a magazine. A systematic review or meta-analysis beats an RCT, which beats a cohort study. Name the study design in the card and link PubMed. If the finding is disputed, say so in the text — the corpus in `data/wellness.evidence.json` is the model, and `contested` is a valid, useful tier.
 - **Correcting a myth is high value.** "Microwaves hit water's resonant frequency" and "pressure melts ice under a skate" are both wrong and both widely believed. Replacing a false model beats adding a true fact.
