@@ -57,12 +57,6 @@
       "url": "https://en.wikipedia.org/wiki/Mitochondrial_DNA"
     },
     {
-      "id": "bio-octopus",
-      "tag": "Biology",
-      "text": "Octopuses have three hearts and copper-based blue blood; the main heart stops when they swim, which is part of why they'd rather crawl.",
-      "url": "https://en.wikipedia.org/wiki/Octopus"
-    },
-    {
       "id": "bio-crispr",
       "tag": "Biology",
       "text": "CRISPR is a bacterial immune system \u2014 bacteria file away snippets of virus DNA to recognize repeat attackers. Gene editing is us borrowing the filing system.",
@@ -111,42 +105,6 @@
       "url": "https://en.wikipedia.org/wiki/RNA_editing"
     },
     {
-      "id": "bio-whale-heart",
-      "tag": "Biology",
-      "text": "A blue whale's heart beats as slowly as 2 bpm during a deep dive and its aorta is wide enough for a human head.",
-      "url": "https://en.wikipedia.org/wiki/Blue_whale"
-    },
-    {
-      "id": "hist-cleopatra",
-      "tag": "History",
-      "text": "Cleopatra lived closer in time to the Moon landing than to the building of the Great Pyramid. Egypt was already ancient to the Egyptians she ruled.",
-      "url": "https://en.wikipedia.org/wiki/Cleopatra"
-    },
-    {
-      "id": "hist-oxford",
-      "tag": "History",
-      "text": "Teaching began at Oxford around 1096 \u2014 the university is older than the Aztec Empire, which was founded in 1428.",
-      "url": "https://en.wikipedia.org/wiki/University_of_Oxford"
-    },
-    {
-      "id": "hist-fax",
-      "tag": "History",
-      "text": "The fax machine predates the telephone: Alexander Bain patented an image-transmitting device in 1843, Bell's telephone came in 1876.",
-      "url": "https://en.wikipedia.org/wiki/Fax"
-    },
-    {
-      "id": "hist-ottoman",
-      "tag": "History",
-      "text": "The Ottoman Empire survived until 1922 \u2014 it existed alongside the telephone, the aeroplane, and jazz.",
-      "url": "https://en.wikipedia.org/wiki/Ottoman_Empire"
-    },
-    {
-      "id": "hist-vikings",
-      "tag": "History",
-      "text": "Norse settlers reached Newfoundland around 1000 CE. L'Anse aux Meadows is the physical proof, roughly five centuries before Columbus.",
-      "url": "https://en.wikipedia.org/wiki/L%27Anse_aux_Meadows"
-    },
-    {
       "id": "hist-alexandria",
       "tag": "History",
       "text": "The Library of Alexandria wasn't destroyed in one fire. It declined over centuries through funding cuts, purges of scholars, and neglect \u2014 institutions usually die slowly.",
@@ -159,18 +117,6 @@
       "url": "https://en.wikipedia.org/wiki/Late_Bronze_Age_collapse"
     },
     {
-      "id": "hist-zanzibar",
-      "tag": "History",
-      "text": "The Anglo-Zanzibar War of 1896 lasted about 38 minutes, making it the shortest recorded war in history.",
-      "url": "https://en.wikipedia.org/wiki/Anglo-Zanzibar_War"
-    },
-    {
-      "id": "hist-nintendo",
-      "tag": "History",
-      "text": "Nintendo was founded in 1889 making handmade playing cards, and tried instant rice and love hotels before landing on video games.",
-      "url": "https://en.wikipedia.org/wiki/Nintendo"
-    },
-    {
       "id": "hist-rosetta",
       "tag": "History",
       "text": "The Rosetta Stone worked because it repeated one decree in three scripts. Champollion cracked hieroglyphs by realizing they encoded sounds, not just ideas.",
@@ -181,12 +127,6 @@
       "tag": "History",
       "text": "Movable type existed in China and Korea centuries before Gutenberg. His decisive additions were the metal alloy, the oil-based ink, and the screw press.",
       "url": "https://en.wikipedia.org/wiki/Printing_press"
-    },
-    {
-      "id": "hist-greenland",
-      "tag": "History",
-      "text": "Greenland was named by Erik the Red partly as a recruiting pitch \u2014 arguably the earliest documented case of misleading real-estate marketing.",
-      "url": "https://en.wikipedia.org/wiki/Erik_the_Red"
     },
     {
       "id": "travel-dcc",
@@ -229,12 +169,6 @@
       "tag": "Travel",
       "text": "Global Entry includes TSA PreCheck for a modest premium over PreCheck alone, and many travel credit cards reimburse the fee outright.",
       "url": "https://www.cbp.gov/travel/trusted-traveler-programs/global-entry"
-    },
-    {
-      "id": "travel-seat-release",
-      "tag": "Travel",
-      "text": "Airlines commonly release held seats at check-in \u2014 around 24 hours out is often when better seats quietly become free without a fee.",
-      "url": "https://en.wikipedia.org/wiki/Airline_seat"
     },
     {
       "id": "travel-carryon-battery",
@@ -315,12 +249,6 @@
       "url": "https://en.wikipedia.org/wiki/Cantor%27s_diagonal_argument"
     },
     {
-      "id": "phys-venus",
-      "tag": "Physics",
-      "text": "A day on Venus is longer than its year \u2014 it rotates once every 243 Earth days but orbits in 225, and it rotates backwards.",
-      "url": "https://en.wikipedia.org/wiki/Venus"
-    },
-    {
       "id": "phys-gps",
       "tag": "Physics",
       "text": "GPS satellites must correct for relativity by about 38 microseconds a day. Skip it and positions drift some 10 km every day \u2014 relativity is infrastructure.",
@@ -355,12 +283,6 @@
       "tag": "Physics",
       "text": "Almost every fundamental law is time-symmetric. The reason you can tell a film is running backwards is statistical \u2014 entropy, not the equations.",
       "url": "https://en.wikipedia.org/wiki/Arrow_of_time"
-    },
-    {
-      "id": "phys-chimborazo",
-      "tag": "Geography",
-      "text": "Everest is the highest above sea level, but Chimborazo's summit is farthest from Earth's center \u2014 the planet bulges at the equator.",
-      "url": "https://en.wikipedia.org/wiki/Chimborazo"
     },
     {
       "id": "psy-spacing",
@@ -573,40 +495,16 @@
       "url": "https://en.wikipedia.org/wiki/Proto-Indo-European_language"
     },
     {
-      "id": "lang-set",
-      "tag": "Language",
-      "text": "\"Set\" has one of the longest entries in the OED, running to hundreds of senses. The commonest words carry the most ambiguity.",
-      "url": "https://en.wikipedia.org/wiki/Oxford_English_Dictionary"
-    },
-    {
-      "id": "art-monalisa",
-      "tag": "Art",
-      "text": "The Mona Lisa became the world's most famous painting largely after it was stolen in 1911 \u2014 the empty wall drew bigger crowds than the picture had.",
-      "url": "https://en.wikipedia.org/wiki/Mona_Lisa"
-    },
-    {
       "id": "art-golden",
       "tag": "Art",
       "text": "The golden ratio in the Parthenon and Renaissance painting is mostly retrofitted numerology; the measurements are chosen after the fact to fit.",
       "url": "https://en.wikipedia.org/wiki/Golden_ratio"
     },
     {
-      "id": "art-impressionism",
-      "tag": "Art",
-      "text": "\"Impressionism\" began as an insult from a critic mocking Monet's *Impression, Sunrise*. Several movement names started as reviews.",
-      "url": "https://en.wikipedia.org/wiki/Impressionism"
-    },
-    {
       "id": "music-temperament",
       "tag": "Music",
       "text": "Equal temperament makes every key equally usable by making every interval except the octave slightly out of tune \u2014 the piano is a negotiated compromise.",
       "url": "https://en.wikipedia.org/wiki/Equal_temperament"
-    },
-    {
-      "id": "music-440",
-      "tag": "Music",
-      "text": "A=440 Hz is a 20th-century standardization, not a natural constant. Baroque ensembles often tune near 415, roughly a semitone lower.",
-      "url": "https://en.wikipedia.org/wiki/A440_(pitch_standard)"
     },
     {
       "id": "phil-chesterton",
@@ -643,24 +541,6 @@
       "tag": "Geography",
       "text": "Mercator badly understates equatorial regions: Africa fits the US, China, India and most of Europe inside it, despite looking comparable to Greenland.",
       "url": "https://en.wikipedia.org/wiki/Mercator_projection"
-    },
-    {
-      "id": "geo-russia-timezones",
-      "tag": "Geography",
-      "text": "Russia spans 11 time zones. When it's Monday morning in Kaliningrad, it's already Monday evening in Kamchatka.",
-      "url": "https://en.wikipedia.org/wiki/Time_in_Russia"
-    },
-    {
-      "id": "geo-canada-lakes",
-      "tag": "Geography",
-      "text": "Canada holds more lake area than the rest of the world combined \u2014 a legacy of glaciers scouring the shield and leaving the hollows behind.",
-      "url": "https://en.wikipedia.org/wiki/List_of_lakes_of_Canada"
-    },
-    {
-      "id": "geo-netherlands",
-      "tag": "Geography",
-      "text": "About a sixth of the Netherlands was reclaimed from water, and much of the country sits below sea level \u2014 the landscape is infrastructure.",
-      "url": "https://en.wikipedia.org/wiki/Land_reclamation_in_the_Netherlands"
     },
     {
       "id": "write-inverted",
@@ -805,18 +685,6 @@
       "tag": "Knuth",
       "text": "Knuth won the Turing Award in 1974, at 36, for work he had largely done in his twenties while writing what he thought was one book.",
       "url": "https://en.wikipedia.org/wiki/Turing_Award"
-    },
-    {
-      "id": "knuth-basketball",
-      "tag": "Knuth",
-      "text": "As an undergraduate Knuth wrote a program to rate his college's basketball players by contribution rather than points scored. CBS covered it. The team won the league.",
-      "url": "https://en.wikipedia.org/wiki/Donald_Knuth"
-    },
-    {
-      "id": "knuth-mix-1009",
-      "tag": "Knuth",
-      "text": "MIX, the fictional machine in TAOCP, is numbered 1009 \u2014 chosen as roughly the average of the model numbers of real machines of the era, and MIX in Roman numerals reads 1009.",
-      "url": "https://en.wikipedia.org/wiki/MIX"
     },
     {
       "id": "knuth-uparrow",
@@ -1111,6 +979,138 @@
       "tag": "Technique",
       "text": "The second-system effect: the rewrite is where an engineer puts every idea they had to leave out of the first one. Brooks considered it the most dangerous system a person ever designs.",
       "url": "https://en.wikipedia.org/wiki/Second-system_effect"
+    },
+    {
+      "id": "mech-gluten",
+      "tag": "Bread",
+      "text": "Flour has no gluten in it. Glutenin and gliadin only link into gluten once hydrated \u2014 glutenin supplies elasticity, gliadin extensibility, and kneading aligns them into sheets that can trap gas.",
+      "url": "https://en.wikipedia.org/wiki/Gluten"
+    },
+    {
+      "id": "mech-oven-spring",
+      "tag": "Bread",
+      "text": "Oven spring is three things at once: trapped CO2 expanding, water turning to steam, and ethanol from fermentation boiling off at 78\u00b0C. The yeast also sprints, then dies around 60\u00b0C.",
+      "url": "https://en.wikipedia.org/wiki/Baking"
+    },
+    {
+      "id": "mech-staling",
+      "tag": "Bread",
+      "text": "Stale bread isn't dry \u2014 it's starch retrogradation, amylopectin recrystallising. That's why a stale loaf revives in the oven, and why the fridge stales bread faster than the counter.",
+      "url": "https://en.wikipedia.org/wiki/Retrogradation_(starch)"
+    },
+    {
+      "id": "mech-steam",
+      "tag": "Bread",
+      "text": "Steam in the oven keeps the crust soft long enough for the loaf to finish expanding, and gelatinises surface starch into gloss. Without it the crust sets early and the bread tears where it wanted to rise.",
+      "url": "https://en.wikipedia.org/wiki/Baking"
+    },
+    {
+      "id": "mech-sourdough",
+      "tag": "Bread",
+      "text": "In a sourdough starter, lactic acid bacteria outnumber yeast by roughly 100 to 1. They make the acid; the yeast makes the gas. The acidity also strengthens gluten and slows staling.",
+      "url": "https://en.wikipedia.org/wiki/Sourdough"
+    },
+    {
+      "id": "mech-salt-dough",
+      "tag": "Bread",
+      "text": "Salt slows fermentation and tightens gluten by screening the charges that make protein chains repel each other. Forget it and dough ferments fast, then slackens and tears.",
+      "url": "https://en.wikipedia.org/wiki/Gluten"
+    },
+    {
+      "id": "mech-shortening",
+      "tag": "Bread",
+      "text": "Fat is called shortening because it physically shortens gluten strands \u2014 coating proteins so they can't link. That's the whole difference between bread and cake crumb.",
+      "url": "https://en.wikipedia.org/wiki/Shortening"
+    },
+    {
+      "id": "mech-maillard-vs-caramel",
+      "tag": "Cooking",
+      "text": "Maillard browning and caramelisation are different reactions: Maillard needs an amino acid plus a reducing sugar and starts near 140\u00b0C; caramelisation is sugar decomposing alone, and needs more heat.",
+      "url": "https://en.wikipedia.org/wiki/Maillard_reaction"
+    },
+    {
+      "id": "mech-ice-slippery",
+      "tag": "Chemistry",
+      "text": "Ice is not slippery because pressure melts it \u2014 that effect is far too small at skating temperatures. The surface carries a molecularly thin premelted liquid layer that exists regardless of pressure.",
+      "url": "https://en.wikipedia.org/wiki/Premelting"
+    },
+    {
+      "id": "mech-microwave",
+      "tag": "Physics",
+      "text": "Microwaves don't hit a resonant frequency of water \u2014 that's a persistent myth. They rotate water's dipoles through a flipping field, and the friction of that rotation is the heat.",
+      "url": "https://en.wikipedia.org/wiki/Dielectric_heating"
+    },
+    {
+      "id": "mech-bicycle",
+      "tag": "Physics",
+      "text": "Bicycles do not stay up because of gyroscopic effects. A 2011 Science paper built one with counter-rotating wheels cancelling both gyroscopic and trail effects, and it still self-stabilised.",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/21493854/"
+    },
+    {
+      "id": "mech-glass-flow",
+      "tag": "Materials",
+      "text": "Old cathedral glass is thicker at the bottom because of how it was made, not because glass flows. At room temperature the flow rate is effectively zero over the age of the universe.",
+      "url": "https://en.wikipedia.org/wiki/Glass"
+    },
+    {
+      "id": "mech-soap",
+      "tag": "Chemistry",
+      "text": "Soap works because its molecules are split-personality: a water-loving head and a fat-loving tail. Against enveloped viruses it does something blunter \u2014 it dissolves the lipid membrane holding them together.",
+      "url": "https://en.wikipedia.org/wiki/Soap"
+    },
+    {
+      "id": "mech-stainless",
+      "tag": "Materials",
+      "text": "Stainless steel doesn't resist rust by being inert. Chromium oxidises instantly into a dense passive layer a few atoms thick, which re-forms the moment you scratch it.",
+      "url": "https://en.wikipedia.org/wiki/Passivation_(chemistry)"
+    },
+    {
+      "id": "mech-cast-iron",
+      "tag": "Cooking",
+      "text": "Seasoning a cast iron pan isn't oil soaking into pores. It's polymerisation \u2014 heat cross-links the fat into a hard plastic-like layer bonded to the metal.",
+      "url": "https://en.wikipedia.org/wiki/Seasoning_(cookware)"
+    },
+    {
+      "id": "mech-emulsion",
+      "tag": "Cooking",
+      "text": "Mayonnaise is oil suspended in water, held apart by lecithin from egg yolk sitting at every droplet boundary. Adding oil too fast leaves droplets unprotected, and the emulsion breaks.",
+      "url": "https://en.wikipedia.org/wiki/Emulsion"
+    },
+    {
+      "id": "mech-chocolate-temper",
+      "tag": "Cooking",
+      "text": "Cocoa butter crystallises in six different forms. Tempering coaxes it into Form V \u2014 the only one that's glossy, snaps, and melts at body temperature. Untempered chocolate is the same molecules, badly stacked.",
+      "url": "https://en.wikipedia.org/wiki/Types_of_chocolate"
+    },
+    {
+      "id": "mech-coffee-extraction",
+      "tag": "Coffee",
+      "text": "Coffee extracts in order: acids first, then sugars, then bitter compounds. Sour coffee is under-extracted and bitter coffee over-extracted \u2014 often from grind size, not from the beans.",
+      "url": "https://en.wikipedia.org/wiki/Coffee_preparation"
+    },
+    {
+      "id": "mech-anesthesia",
+      "tag": "Medicine",
+      "text": "We have used general anaesthesia since 1846 and still cannot fully explain how it works. The molecular mechanism by which it produces unconsciousness remains genuinely open.",
+      "url": "https://en.wikipedia.org/wiki/General_anaesthesia"
+    },
+    {
+      "id": "mech-hangover",
+      "tag": "Medicine",
+      "text": "Hangover severity tracks acetaldehyde and inflammatory cytokines more than dehydration. Congeners in darker spirits worsen it, which is why the drink matters as much as the dose.",
+      "url": "https://en.wikipedia.org/wiki/Hangover"
+    },
+    {
+      "id": "mech-capsaicin",
+      "tag": "Chemistry",
+      "text": "Capsaicin binds the receptor that detects actual heat, so your nerves report a burn that isn't there. It's fat-soluble, which is why milk works and water doesn't.",
+      "url": "https://en.wikipedia.org/wiki/Capsaicin"
+    },
+    {
+      "id": "mech-bakingsoda-acid",
+      "tag": "Cooking",
+      "text": "Baking soda needs an acid and reacts immediately; baking powder carries its own acid and usually reacts twice, once wet and once hot. Swapping them without adjusting acid gives you a soapy tang.",
+      "url": "https://en.wikipedia.org/wiki/Baking_powder"
     }
   ]
 }

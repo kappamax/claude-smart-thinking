@@ -1,0 +1,166 @@
+{
+  "note": "Health content, graded by evidence and linked to primary literature rather than Wikipedia. Every claim here names its study design. Anything contested is labelled contested and states both sides.",
+  "principle": "Health is the one category where being interesting is not enough. A confidently-worded wrong claim about your body is worse than no claim, and this surface gives no room for caveats \u2014 so the caveat goes in the text or the card doesn't ship. Preference order: systematic review or meta-analysis > large RCT > large cohort. Mechanism alone is not evidence of benefit.",
+  "tiers": {
+    "meta-analysis": "Systematic review or meta-analysis of controlled trials.",
+    "RCT": "One or more randomised controlled trials.",
+    "cohort": "Large observational study; association, not proof of cause.",
+    "contested": "Active scientific dispute. The card must say so."
+  },
+  "claims": [
+    {
+      "id": "med-goyal-baseline",
+      "topic": "Meditation",
+      "evidence": "meta-analysis",
+      "text": "The largest meta-analysis of meditation trials found moderate evidence it reduces anxiety, depression and pain \u2014 and low or insufficient evidence for attention, sleep, mood, weight or substance use. It works, for less than it's sold for",
+      "source": "https://pubmed.ncbi.nlm.nih.gov/24395196/"
+    },
+    {
+      "id": "med-mbsr-escitalopram",
+      "topic": "Meditation",
+      "evidence": "RCT",
+      "text": "In a 2023 randomised non-inferiority trial, eight weeks of mindfulness-based stress reduction matched escitalopram for treating anxiety disorders",
+      "source": "https://pubmed.ncbi.nlm.nih.gov/36350591/"
+    },
+    {
+      "id": "med-mind-the-hype",
+      "topic": "Meditation",
+      "evidence": "meta-analysis",
+      "text": "\"Mind the Hype\": a review by mindfulness researchers themselves found the field plagued by inconsistent definitions, weak controls and overstated claims. Treat confident mindfulness statistics with suspicion",
+      "source": "https://pubmed.ncbi.nlm.nih.gov/29016274/"
+    },
+    {
+      "id": "med-breathwork",
+      "topic": "Breathing",
+      "evidence": "RCT",
+      "text": "Five minutes a day of cyclic sighing \u2014 a long inhale, a second shorter one, a slow extended exhale \u2014 improved mood and lowered respiratory rate more than equal-time mindfulness meditation in a randomised trial",
+      "source": "https://pubmed.ncbi.nlm.nih.gov/36630953/"
+    },
+    {
+      "id": "ex-depression",
+      "topic": "Exercise",
+      "evidence": "meta-analysis",
+      "text": "A 2024 BMJ network meta-analysis of 218 trials found walking, jogging, yoga and strength training all produced meaningful reductions in depression, with larger effects at higher intensity",
+      "source": "https://pubmed.ncbi.nlm.nih.gov/38355154/"
+    },
+    {
+      "id": "ex-fitness-mortality",
+      "topic": "Exercise",
+      "evidence": "cohort",
+      "text": "Across 122,000 treadmill tests, cardiorespiratory fitness tracked mortality with no observed ceiling \u2014 the fittest group kept gaining, and being unfit carried risk comparable to established disease",
+      "source": "https://pubmed.ncbi.nlm.nih.gov/30646252/"
+    },
+    {
+      "id": "ex-sitting-corrected",
+      "topic": "Exercise",
+      "evidence": "meta-analysis",
+      "text": "Sitting is often called \"the new smoking\", but a harmonised meta-analysis of over a million people found 60\u201375 minutes of daily moderate activity essentially eliminated the association between sitting time and mortality",
+      "source": "https://pubmed.ncbi.nlm.nih.gov/27475271/"
+    },
+    {
+      "id": "sleep-cbti",
+      "topic": "Sleep",
+      "evidence": "meta-analysis",
+      "text": "Cognitive behavioural therapy for insomnia, not medication, is the guideline-recommended first-line treatment for chronic insomnia \u2014 and unlike hypnotics its benefit persists after treatment stops",
+      "source": "https://pubmed.ncbi.nlm.nih.gov/27136449/"
+    },
+    {
+      "id": "sleep-weekend-debt",
+      "topic": "Sleep",
+      "evidence": "RCT",
+      "text": "In a controlled laboratory study, weekend recovery sleep failed to prevent the metabolic damage of weekday sleep restriction. Insulin sensitivity was worse in the catch-up group than in those who stayed short",
+      "source": "https://pubmed.ncbi.nlm.nih.gov/30827911/"
+    },
+    {
+      "id": "sleep-vaccine",
+      "topic": "Sleep",
+      "evidence": "meta-analysis",
+      "text": "A 2023 meta-analysis found that sleeping under six hours around the time of vaccination substantially reduced antibody response \u2014 with the effect clearest in men and in adults under 60",
+      "source": "https://pubmed.ncbi.nlm.nih.gov/36917932/"
+    },
+    {
+      "id": "sleep-glymphatic-contested",
+      "topic": "Sleep",
+      "evidence": "contested",
+      "text": "The popular claim that sleep flushes waste from the brain is genuinely disputed: a 2024 Nature Neuroscience study measured clearance as *reduced* during sleep, and a later commentary disputed its methods. The story is not settled",
+      "source": "https://pubmed.ncbi.nlm.nih.gov/38741022/"
+    },
+    {
+      "id": "sleep-warm-bath",
+      "topic": "Sleep",
+      "evidence": "meta-analysis",
+      "text": "A warm bath or shower one to two hours before bed shortens the time it takes to fall asleep \u2014 the mechanism is peripheral vasodilation dumping core heat, not the warmth itself",
+      "source": "https://pubmed.ncbi.nlm.nih.gov/31102877/"
+    },
+    {
+      "id": "sleep-caffeine-6h",
+      "topic": "Sleep",
+      "evidence": "RCT",
+      "text": "400mg of caffeine six hours before bed cut objectively measured sleep by over an hour \u2014 and participants did not notice the disruption they were measurably experiencing",
+      "source": "https://pubmed.ncbi.nlm.nih.gov/24235903/"
+    },
+    {
+      "id": "sleep-cycle-caveat",
+      "topic": "Sleep",
+      "evidence": "contested",
+      "text": "The \"90-minute sleep cycle\" is an average, not a schedule: real cycles run roughly 70\u2013120 minutes, lengthen across the night and vary by person. Timing a nap to land between cycles is a heuristic, not a measurement",
+      "source": "https://www.ncbi.nlm.nih.gov/books/NBK526132/"
+    },
+    {
+      "id": "sleep-alcohol-rem",
+      "topic": "Sleep",
+      "evidence": "meta-analysis",
+      "text": "Alcohol shortens the time to fall asleep and then suppresses REM and fragments the second half of the night. It sedates rather than rests, and tolerance to the sedation develops faster than to the disruption",
+      "source": "https://pubmed.ncbi.nlm.nih.gov/23347102/"
+    },
+    {
+      "id": "nut-vitamin-d",
+      "topic": "Nutrition",
+      "evidence": "RCT",
+      "text": "VITAL randomised nearly 26,000 adults to vitamin D or placebo for five years: no reduction in cancer or cardiovascular disease. Supplementing a normal level fixes a number, not an outcome",
+      "source": "https://pubmed.ncbi.nlm.nih.gov/30415629/"
+    },
+    {
+      "id": "nut-omega3",
+      "topic": "Nutrition",
+      "evidence": "meta-analysis",
+      "text": "A Cochrane review of omega-3 supplements across 80,000+ participants found little or no effect on cardiovascular mortality \u2014 one of the clearest gaps between supplement marketing and trial evidence",
+      "source": "https://pubmed.ncbi.nlm.nih.gov/32114706/"
+    },
+    {
+      "id": "nut-hydration-myth",
+      "topic": "Nutrition",
+      "evidence": "meta-analysis",
+      "text": "The \"eight glasses of water a day\" rule has no identifiable scientific origin. A physiologist went looking for the source and found none \u2014 thirst regulates intake well in healthy adults",
+      "source": "https://pubmed.ncbi.nlm.nih.gov/12376390/"
+    },
+    {
+      "id": "eyes-202020-weak",
+      "topic": "Eyes",
+      "evidence": "contested",
+      "text": "The 20-20-20 rule is recommended everywhere and supported by very little: a randomised trial of scheduled 20-second breaks found no significant effect on eye-strain symptoms. Blinking and blink quality may matter more",
+      "source": "https://pubmed.ncbi.nlm.nih.gov/36473088/"
+    },
+    {
+      "id": "social-connection",
+      "topic": "Wellbeing",
+      "evidence": "meta-analysis",
+      "text": "A meta-analysis of 148 studies found strong social relationships associated with a 50% greater likelihood of survival \u2014 an effect size comparable to quitting smoking and larger than obesity or inactivity",
+      "source": "https://pubmed.ncbi.nlm.nih.gov/20668659/"
+    },
+    {
+      "id": "stretch-injury",
+      "topic": "Exercise",
+      "evidence": "RCT",
+      "text": "A pragmatic randomised trial of stretching before and after activity found it did not meaningfully reduce injury risk. Warming up by moving is supported; holding a stretch first is not",
+      "source": "https://pubmed.ncbi.nlm.nih.gov/19525241/"
+    },
+    {
+      "id": "sleep-duration-u",
+      "topic": "Sleep",
+      "evidence": "cohort",
+      "text": "The association between sleep duration and mortality is U-shaped: both short and long sleep track higher risk. Long sleep is more likely a marker of underlying illness than a cause of it",
+      "source": "https://pubmed.ncbi.nlm.nih.gov/20469800/"
+    }
+  ]
+}

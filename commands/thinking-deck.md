@@ -14,6 +14,9 @@ Deck format — `url` is required, not optional:
 
 Rules for good cards, since they render in a narrow single-line spinner slot:
 
+- **Teach a mechanism, not a fact.** The highest bar. "Cleopatra lived closer to the Moon landing than to the Great Pyramid" is inert — nobody is different for knowing it. "Flour contains no gluten; glutenin and gliadin only link once hydrated, and kneading aligns them into sheets that trap gas" changes how someone bakes. Prefer systems the reader actually touches: bread, coffee, sleep, their own tools.
+- **Health claims must cite primary research.** Not Wikipedia, not a magazine. A systematic review or meta-analysis beats an RCT, which beats a cohort study. Name the study design in the card and link PubMed. If the finding is disputed, say so in the text — the corpus in `data/wellness.evidence.json` is the model, and `contested` is a valid, useful tier.
+- **Correcting a myth is high value.** "Microwaves hit water's resonant frequency" and "pressure melts ice under a skate" are both wrong and both widely believed. Replacing a false model beats adding a true fact.
 - **A nugget, not a manual entry.** This is the single most important rule. "A composite index on (a, b) can't serve a query filtering on b alone" is line 10 of the Postgres manual — the reader can look it up the moment they need it, and won't remember it now. "Knuth pays $2.56 for each error found in his books — one hexadecimal dollar" is something they'll repeat to someone. Aim for the second. If a card reads like reference documentation, cut it.
 - **The test: would you say this out loud at dinner?** Surprise, a name, a person, a story, or a number that doesn't sound real. Techniques qualify when they have a story ("the strangler fig grows around a tree and outlives it"); API details don't.
 - **One useful line plus one link.** The line has to pay for itself on its own; the link is how the reader goes deeper. A fact with no way to follow up is trivia.
@@ -21,7 +24,7 @@ Rules for good cards, since they render in a narrow single-line spinner slot:
 - **One fact per card.** If it needs an "and also", split it.
 - **Specific and falsifiable.** Vague gestures teach nothing. "Sleep helps memory" is worthless; "slow-wave sleep replays the day's hippocampal traces into cortex, so studying without sleeping largely wastes the study" is a claim someone could check.
 - **Unique `id`** — exposure tracking is keyed on it, so reusing an id inherits the old card's history.
-- **Go wide.** The deck is not a work feed. Biology, history, travel, physics, statistics, economics, cooking, health, language, art, philosophy all belong alongside engineering.
+- **Go wide, but not into trivia.** Chemistry, medicine, technique, craft, and economics all belong alongside engineering. Isolated dates, records, and "closer in time than you think" comparisons do not — breadth means more kinds of understanding, not more facts.
 
 $ARGUMENTS
 
