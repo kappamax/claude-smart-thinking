@@ -94,11 +94,13 @@ async function collect(cfg, ctx) {
       const fresh = parsed
         .filter((it) => it.ts === null || now - it.ts <= maxAgeMs)
         .slice(0, perFeed)
-        .map((it) => {
-          let text = label ? `${label} — ${it.title}` : it.title;
-          if (cfg.showLinks !== false && it.url) text += ` → ${it.url}`;
-          return { text, source: 'news', url: it.url, ts: it.ts };
-        });
+        .map((it) => ({
+          category: label || 'News',
+          text: it.title,
+          url: it.url,
+          source: 'news',
+          ts: it.ts,
+        }));
       return { url, parsed: parsed.length, fresh };
     }),
   );

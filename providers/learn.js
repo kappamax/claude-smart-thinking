@@ -127,17 +127,16 @@ async function collect(cfg, ctx) {
 
   // A fact with no way to go deeper is trivia. The line is the hook; the link
   // is what makes the surface worth the attention it takes.
-  const showLinks = cfg.showLinks !== false;
-
-  const tips = ranked.map(({ card }) => {
-    let text = card.tag ? `${card.tag} — ${card.text}` : card.text;
-    if (showLinks && card.url) text += ` → ${card.url}`;
-    return { text, source: 'learn', url: card.url || null };
-  });
+  const tips = ranked.map(({ card }) => ({
+    category: card.tag || 'Learn',
+    text: card.text,
+    url: card.url || null,
+    source: 'learn',
+  }));
 
   const warnings = [];
   const missing = ranked.filter(({ card }) => !card.url).length;
-  if (showLinks && missing > 0) warnings.push(`learn: ${missing} of ${ranked.length} supplied cards have no url`);
+  if (missing > 0) warnings.push(`learn: ${missing} of ${ranked.length} supplied cards have no url`);
 
   return { tips, status: [], warnings };
 }
