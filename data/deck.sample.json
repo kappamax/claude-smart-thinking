@@ -1,0 +1,792 @@
+{
+  "name": "Starter deck — a wide one",
+  "note": "Copy to ~/.claude/smart-thinking/deck.json and make it yours. Each card is one line that reads well in a narrow spinner slot. Breadth is the point: the surface is a few seconds of idle attention, so it suits things that are interesting out of context rather than material that needs a running start.",
+  "cards": [
+    {
+      "id": "knuth-premature",
+      "tag": "Knuth",
+      "text": "The famous \"premature optimization is the root of all evil\" line comes with a qualifier people drop: \"We should forget about small efficiencies, say about 97% of the time.\" The other 3% he meant seriously.",
+      "url": "https://en.wikipedia.org/wiki/Program_optimization"
+    },
+    {
+      "id": "knuth-reward",
+      "tag": "Knuth",
+      "text": "Knuth pays $2.56 for each error found in his books — \"one hexadecimal dollar.\" The uncashed checks are famously treasured more than the money.",
+      "url": "https://en.wikipedia.org/wiki/Knuth_reward_check"
+    },
+    {
+      "id": "knuth-tex",
+      "tag": "Knuth",
+      "text": "Knuth paused The Art of Computer Programming for nearly a decade to build TeX, because he couldn't stand how the second edition was typeset.",
+      "url": "https://en.wikipedia.org/wiki/TeX"
+    },
+    {
+      "id": "knuth-dlx",
+      "tag": "Knuth",
+      "text": "Dancing Links: in a doubly linked list, `x.left.right = x.right` removes a node — and `x.left.right = x` puts it back, because the removed node still points home. Backtracking for free.",
+      "url": "https://en.wikipedia.org/wiki/Dancing_Links"
+    },
+    {
+      "id": "knuth-literate",
+      "tag": "Knuth",
+      "text": "Literate programming inverts the usual order: you write for a human reader and the compiler extracts the code, rather than writing for the compiler and apologizing in comments.",
+      "url": "https://en.wikipedia.org/wiki/Literate_programming"
+    },
+    {
+      "id": "knuth-analysis",
+      "tag": "Knuth",
+      "text": "Knuth popularized analyzing algorithms by counting operations rather than timing runs — a machine-independent measure that survives the hardware it was written on.",
+      "url": "https://en.wikipedia.org/wiki/Analysis_of_algorithms"
+    },
+    {
+      "id": "taocp-mmix",
+      "tag": "Knuth",
+      "text": "TAOCP's example machine MIX was retired for MMIX because MIX's design had aged badly — Knuth revised a fictional computer for realism.",
+      "url": "https://en.wikipedia.org/wiki/MMIX"
+    },
+    {
+      "id": "bio-cell-ratio",
+      "tag": "Biology",
+      "text": "The \"10 bacterial cells per human cell\" figure was a 1970s back-of-envelope estimate. A 2016 recount put it near 1:1 — roughly 38 trillion bacteria to 30 trillion human cells.",
+      "url": "https://en.wikipedia.org/wiki/Human_microbiome"
+    },
+    {
+      "id": "bio-mito",
+      "tag": "Biology",
+      "text": "Mitochondria carry their own DNA and are inherited almost entirely from your mother, which makes mtDNA a clean maternal-line clock for tracing ancestry.",
+      "url": "https://en.wikipedia.org/wiki/Mitochondrial_DNA"
+    },
+    {
+      "id": "bio-octopus",
+      "tag": "Biology",
+      "text": "Octopuses have three hearts and copper-based blue blood; the main heart stops when they swim, which is part of why they'd rather crawl.",
+      "url": "https://en.wikipedia.org/wiki/Octopus"
+    },
+    {
+      "id": "bio-crispr",
+      "tag": "Biology",
+      "text": "CRISPR is a bacterial immune system — bacteria file away snippets of virus DNA to recognize repeat attackers. Gene editing is us borrowing the filing system.",
+      "url": "https://en.wikipedia.org/wiki/CRISPR"
+    },
+    {
+      "id": "bio-sickle",
+      "tag": "Biology",
+      "text": "One copy of the sickle-cell allele protects against malaria; two copies cause disease. The gene persists precisely where malaria is common — heterozygote advantage.",
+      "url": "https://en.wikipedia.org/wiki/Sickle_cell_trait"
+    },
+    {
+      "id": "bio-genes",
+      "tag": "Biology",
+      "text": "Humans have ~20,000 protein-coding genes, fewer than a grain of rice. Complexity lives in regulation and splicing, not gene count.",
+      "url": "https://en.wikipedia.org/wiki/Human_genome"
+    },
+    {
+      "id": "bio-banana",
+      "tag": "Biology",
+      "text": "Nearly every banana you've eaten is a Cavendish clone, genetically identical. Its predecessor, the Gros Michel, was wiped out commercially by a fungus — and the same thing is now happening to Cavendish.",
+      "url": "https://en.wikipedia.org/wiki/Cavendish_banana"
+    },
+    {
+      "id": "bio-mycorrhizal",
+      "tag": "Biology",
+      "text": "Trees trade sugar for phosphorus with fungal networks threading the soil, and can pass carbon to neighbors through them. The \"wood wide web\" framing is contested; the trading is not.",
+      "url": "https://en.wikipedia.org/wiki/Mycorrhizal_network"
+    },
+    {
+      "id": "bio-tardigrade",
+      "tag": "Biology",
+      "text": "Tardigrades survive vacuum and extreme radiation by expelling nearly all their water and turning their cytoplasm into a glass-like solid — suspended, not tough.",
+      "url": "https://en.wikipedia.org/wiki/Tardigrade"
+    },
+    {
+      "id": "bio-hgt",
+      "tag": "Biology",
+      "text": "Bacteria swap genes sideways between living cells, not just down to offspring. That horizontal transfer is why antibiotic resistance spreads across species so fast.",
+      "url": "https://en.wikipedia.org/wiki/Horizontal_gene_transfer"
+    },
+    {
+      "id": "bio-cephalopod-rna",
+      "tag": "Biology",
+      "text": "Squid and octopuses extensively edit their own RNA, tuning proteins on the fly — apparently trading away the usual pace of DNA evolution to do it.",
+      "url": "https://en.wikipedia.org/wiki/RNA_editing"
+    },
+    {
+      "id": "bio-whale-heart",
+      "tag": "Biology",
+      "text": "A blue whale's heart beats as slowly as 2 bpm during a deep dive and its aorta is wide enough for a human head.",
+      "url": "https://en.wikipedia.org/wiki/Blue_whale"
+    },
+    {
+      "id": "hist-cleopatra",
+      "tag": "History",
+      "text": "Cleopatra lived closer in time to the Moon landing than to the building of the Great Pyramid. Egypt was already ancient to the Egyptians she ruled.",
+      "url": "https://en.wikipedia.org/wiki/Cleopatra"
+    },
+    {
+      "id": "hist-oxford",
+      "tag": "History",
+      "text": "Teaching began at Oxford around 1096 — the university is older than the Aztec Empire, which was founded in 1428.",
+      "url": "https://en.wikipedia.org/wiki/University_of_Oxford"
+    },
+    {
+      "id": "hist-fax",
+      "tag": "History",
+      "text": "The fax machine predates the telephone: Alexander Bain patented an image-transmitting device in 1843, Bell's telephone came in 1876.",
+      "url": "https://en.wikipedia.org/wiki/Fax"
+    },
+    {
+      "id": "hist-ottoman",
+      "tag": "History",
+      "text": "The Ottoman Empire survived until 1922 — it existed alongside the telephone, the aeroplane, and jazz.",
+      "url": "https://en.wikipedia.org/wiki/Ottoman_Empire"
+    },
+    {
+      "id": "hist-vikings",
+      "tag": "History",
+      "text": "Norse settlers reached Newfoundland around 1000 CE. L'Anse aux Meadows is the physical proof, roughly five centuries before Columbus.",
+      "url": "https://en.wikipedia.org/wiki/L%27Anse_aux_Meadows"
+    },
+    {
+      "id": "hist-alexandria",
+      "tag": "History",
+      "text": "The Library of Alexandria wasn't destroyed in one fire. It declined over centuries through funding cuts, purges of scholars, and neglect — institutions usually die slowly.",
+      "url": "https://en.wikipedia.org/wiki/Library_of_Alexandria"
+    },
+    {
+      "id": "hist-bronze-collapse",
+      "tag": "History",
+      "text": "Around 1177 BCE most Eastern Mediterranean civilizations collapsed within decades of each other. The leading explanation isn't one invader but a cascade of failures across a tightly coupled trade network.",
+      "url": "https://en.wikipedia.org/wiki/Late_Bronze_Age_collapse"
+    },
+    {
+      "id": "hist-zanzibar",
+      "tag": "History",
+      "text": "The Anglo-Zanzibar War of 1896 lasted about 38 minutes, making it the shortest recorded war in history.",
+      "url": "https://en.wikipedia.org/wiki/Anglo-Zanzibar_War"
+    },
+    {
+      "id": "hist-nintendo",
+      "tag": "History",
+      "text": "Nintendo was founded in 1889 making handmade playing cards, and tried instant rice and love hotels before landing on video games.",
+      "url": "https://en.wikipedia.org/wiki/Nintendo"
+    },
+    {
+      "id": "hist-rosetta",
+      "tag": "History",
+      "text": "The Rosetta Stone worked because it repeated one decree in three scripts. Champollion cracked hieroglyphs by realizing they encoded sounds, not just ideas.",
+      "url": "https://en.wikipedia.org/wiki/Rosetta_Stone"
+    },
+    {
+      "id": "hist-printing",
+      "tag": "History",
+      "text": "Movable type existed in China and Korea centuries before Gutenberg. His decisive additions were the metal alloy, the oil-based ink, and the screw press.",
+      "url": "https://en.wikipedia.org/wiki/Printing_press"
+    },
+    {
+      "id": "hist-greenland",
+      "tag": "History",
+      "text": "Greenland was named by Erik the Red partly as a recruiting pitch — arguably the earliest documented case of misleading real-estate marketing.",
+      "url": "https://en.wikipedia.org/wiki/Erik_the_Red"
+    },
+    {
+      "id": "travel-dcc",
+      "tag": "Travel",
+      "text": "When a foreign card terminal offers to charge you in your home currency, decline. Dynamic currency conversion typically bakes in a 3–7% markup worse than your card's own rate.",
+      "url": "https://en.wikipedia.org/wiki/Dynamic_currency_conversion"
+    },
+    {
+      "id": "travel-eu261",
+      "tag": "Travel",
+      "text": "EU261 entitles you to €250–600 cash for long delays and cancellations on flights departing the EU (or arriving on an EU carrier) — separate from a refund, and airlines rarely volunteer it.",
+      "url": "https://en.wikipedia.org/wiki/Flight_Compensation_Regulation"
+    },
+    {
+      "id": "travel-passport-6mo",
+      "tag": "Travel",
+      "text": "Many countries refuse entry unless your passport is valid 6+ months beyond arrival. The airline enforces it at check-in, so a technically-unexpired passport can still strand you.",
+      "url": "https://en.wikipedia.org/wiki/Passport_validity"
+    },
+    {
+      "id": "travel-schengen",
+      "tag": "Travel",
+      "text": "The Schengen rule is 90 days within any rolling 180 — not per calendar year, and not reset by a quick hop out. It's a sliding window and overstays are logged.",
+      "url": "https://en.wikipedia.org/wiki/Schengen_Area"
+    },
+    {
+      "id": "travel-incognito",
+      "tag": "Travel",
+      "text": "Incognito mode doesn't lower airfare. Prices swing on demand and inventory; the cookie-tracking theory has never held up in controlled tests.",
+      "url": "https://en.wikipedia.org/wiki/Dynamic_pricing"
+    },
+    {
+      "id": "travel-jetlag",
+      "tag": "Travel",
+      "text": "Light timing beats melatonin for jet lag: seek morning light when flying east, evening light when flying west. Light is the signal your circadian clock actually reads.",
+      "url": "https://en.wikipedia.org/wiki/Jet_lag"
+    },
+    {
+      "id": "travel-global-entry",
+      "tag": "Travel",
+      "text": "Global Entry includes TSA PreCheck for a modest premium over PreCheck alone, and many travel credit cards reimburse the fee outright.",
+      "url": "https://www.cbp.gov/travel/trusted-traveler-programs/global-entry"
+    },
+    {
+      "id": "travel-seat-release",
+      "tag": "Travel",
+      "text": "Airlines commonly release held seats at check-in — around 24 hours out is often when better seats quietly become free without a fee.",
+      "url": "https://en.wikipedia.org/wiki/Airline_seat"
+    },
+    {
+      "id": "travel-carryon-battery",
+      "tag": "Travel",
+      "text": "Lithium batteries and power banks must fly in the cabin, never checked. A fire in the hold is far harder to reach than one in the aisle.",
+      "url": "https://www.faa.gov/hazmat/packsafe/lithium-batteries"
+    },
+    {
+      "id": "travel-esim",
+      "tag": "Travel",
+      "text": "A local eSIM bought before departure usually beats roaming by an order of magnitude and activates before you land — no queue at the airport kiosk.",
+      "url": "https://en.wikipedia.org/wiki/ESIM"
+    },
+    {
+      "id": "math-simpson",
+      "tag": "Statistics",
+      "text": "Simpson's paradox: a trend can reverse when groups are combined. A treatment better for men and better for women can look worse overall if the groups differ in size and baseline risk.",
+      "url": "https://en.wikipedia.org/wiki/Simpson%27s_paradox"
+    },
+    {
+      "id": "math-survivorship",
+      "tag": "Statistics",
+      "text": "Abraham Wald argued for armoring where returning bombers had no bullet holes — the planes hit there never came back. Missing data is data.",
+      "url": "https://en.wikipedia.org/wiki/Survivorship_bias"
+    },
+    {
+      "id": "math-benford",
+      "tag": "Statistics",
+      "text": "In many natural datasets, the leading digit is 1 about 30% of the time and 9 under 5%. Benford's law is used to flag fabricated books, because forgers spread digits evenly.",
+      "url": "https://en.wikipedia.org/wiki/Benford%27s_law"
+    },
+    {
+      "id": "math-birthday",
+      "tag": "Statistics",
+      "text": "In a room of 23 people, there's a better-than-even chance two share a birthday. There are 253 pairs, and the intuition fails because we count people instead of pairs.",
+      "url": "https://en.wikipedia.org/wiki/Birthday_problem"
+    },
+    {
+      "id": "math-basrate",
+      "tag": "Statistics",
+      "text": "A test that's 99% accurate for a disease affecting 1 in 10,000 still gives mostly false positives. Rarity dominates accuracy — always ask for the base rate.",
+      "url": "https://en.wikipedia.org/wiki/Base_rate_fallacy"
+    },
+    {
+      "id": "math-regression",
+      "tag": "Statistics",
+      "text": "Regression to the mean explains why praise seems to backfire and criticism seems to work: extreme performances are followed by ordinary ones regardless of what you say.",
+      "url": "https://en.wikipedia.org/wiki/Regression_toward_the_mean"
+    },
+    {
+      "id": "math-pvalue",
+      "tag": "Statistics",
+      "text": "A p-value is the probability of data this extreme *if the null were true* — not the probability the null is true, and not a measure of effect size.",
+      "url": "https://en.wikipedia.org/wiki/Misuse_of_p-values"
+    },
+    {
+      "id": "math-monty",
+      "tag": "Statistics",
+      "text": "In Monty Hall, switching wins 2/3 of the time. The host's choice isn't random — it's information, and that's what breaks the 50/50 intuition.",
+      "url": "https://en.wikipedia.org/wiki/Monty_Hall_problem"
+    },
+    {
+      "id": "math-godel",
+      "tag": "Mathematics",
+      "text": "Gödel showed any consistent system rich enough for arithmetic contains true statements it cannot prove. Completeness and consistency can't both be had.",
+      "url": "https://en.wikipedia.org/wiki/G%C3%B6del%27s_incompleteness_theorems"
+    },
+    {
+      "id": "math-euler",
+      "tag": "Mathematics",
+      "text": "e^(iπ) + 1 = 0 links five fundamental constants in one line — it falls out of the fact that multiplying by e^(iθ) is a rotation.",
+      "url": "https://en.wikipedia.org/wiki/Euler%27s_identity"
+    },
+    {
+      "id": "math-cantor",
+      "tag": "Mathematics",
+      "text": "Some infinities are larger than others: the reals cannot be put in one-to-one correspondence with the integers. Cantor's diagonal argument fits in a paragraph.",
+      "url": "https://en.wikipedia.org/wiki/Cantor%27s_diagonal_argument"
+    },
+    {
+      "id": "phys-venus",
+      "tag": "Physics",
+      "text": "A day on Venus is longer than its year — it rotates once every 243 Earth days but orbits in 225, and it rotates backwards.",
+      "url": "https://en.wikipedia.org/wiki/Venus"
+    },
+    {
+      "id": "phys-gps",
+      "tag": "Physics",
+      "text": "GPS satellites must correct for relativity by about 38 microseconds a day. Skip it and positions drift some 10 km every day — relativity is infrastructure.",
+      "url": "https://en.wikipedia.org/wiki/Error_analysis_for_the_Global_Positioning_System"
+    },
+    {
+      "id": "phys-neutron",
+      "tag": "Physics",
+      "text": "A teaspoon of neutron star weighs roughly as much as a mountain — the star is essentially one atomic nucleus the size of a city.",
+      "url": "https://en.wikipedia.org/wiki/Neutron_star"
+    },
+    {
+      "id": "phys-tunneling",
+      "tag": "Physics",
+      "text": "The Sun isn't hot enough to fuse hydrogen classically. It shines because quantum tunneling lets protons pass a barrier they can't clear.",
+      "url": "https://en.wikipedia.org/wiki/Proton%E2%80%93proton_chain"
+    },
+    {
+      "id": "phys-moon-drift",
+      "tag": "Physics",
+      "text": "The Moon recedes about 3.8 cm per year, and Earth's day lengthens to match. Tidal friction is slowly trading our rotation for its orbit.",
+      "url": "https://en.wikipedia.org/wiki/Tidal_acceleration"
+    },
+    {
+      "id": "phys-olbers",
+      "tag": "Physics",
+      "text": "Olbers' paradox: in an infinite, eternal, uniform universe, every sightline ends on a star and the night sky should blaze. Darkness is evidence the universe had a beginning.",
+      "url": "https://en.wikipedia.org/wiki/Olbers%27_paradox"
+    },
+    {
+      "id": "phys-entropy-arrow",
+      "tag": "Physics",
+      "text": "Almost every fundamental law is time-symmetric. The reason you can tell a film is running backwards is statistical — entropy, not the equations.",
+      "url": "https://en.wikipedia.org/wiki/Arrow_of_time"
+    },
+    {
+      "id": "phys-chimborazo",
+      "tag": "Geography",
+      "text": "Everest is the highest above sea level, but Chimborazo's summit is farthest from Earth's center — the planet bulges at the equator.",
+      "url": "https://en.wikipedia.org/wiki/Chimborazo"
+    },
+    {
+      "id": "psy-spacing",
+      "tag": "Learning",
+      "text": "Spacing beats massing: the same total study time spread over days produces markedly better retention than one block. Cramming optimizes for the test, not the year.",
+      "url": "https://en.wikipedia.org/wiki/Spacing_effect"
+    },
+    {
+      "id": "psy-testing",
+      "tag": "Learning",
+      "text": "Retrieving an answer from memory strengthens it more than re-reading it. Testing isn't just measurement — it's the study method.",
+      "url": "https://en.wikipedia.org/wiki/Testing_effect"
+    },
+    {
+      "id": "psy-generation",
+      "tag": "Learning",
+      "text": "You remember an answer you guessed wrong before being corrected better than one you were simply told. The failed attempt does the work.",
+      "url": "https://en.wikipedia.org/wiki/Generation_effect"
+    },
+    {
+      "id": "psy-peakend",
+      "tag": "Psychology",
+      "text": "We judge an experience by its most intense moment and its ending, largely ignoring duration. A longer ordeal with a gentler finish is remembered as better.",
+      "url": "https://en.wikipedia.org/wiki/Peak%E2%80%93end_rule"
+    },
+    {
+      "id": "psy-curse",
+      "tag": "Psychology",
+      "text": "The curse of knowledge: once you know something, you can't model not knowing it. It's why experts write bad documentation without noticing.",
+      "url": "https://en.wikipedia.org/wiki/Curse_of_knowledge"
+    },
+    {
+      "id": "psy-zeigarnik",
+      "tag": "Psychology",
+      "text": "Unfinished tasks occupy memory more than finished ones. Stopping mid-sentence is a genuine trick for making tomorrow's start easier.",
+      "url": "https://en.wikipedia.org/wiki/Zeigarnik_effect"
+    },
+    {
+      "id": "psy-loss",
+      "tag": "Psychology",
+      "text": "Losses feel roughly twice as strong as equivalent gains, which is why the identical choice flips when framed as avoiding a loss.",
+      "url": "https://en.wikipedia.org/wiki/Loss_aversion"
+    },
+    {
+      "id": "psy-anchor",
+      "tag": "Psychology",
+      "text": "Anchoring works even with numbers known to be irrelevant — a random figure shifts subsequent estimates. Whoever names a number first shapes the range.",
+      "url": "https://en.wikipedia.org/wiki/Anchoring_effect"
+    },
+    {
+      "id": "psy-dunning",
+      "tag": "Psychology",
+      "text": "Dunning-Kruger is weaker and more contested than its pop version: some of the effect is a statistical artifact of noisy self-estimates regressing to the mean.",
+      "url": "https://en.wikipedia.org/wiki/Dunning%E2%80%93Kruger_effect"
+    },
+    {
+      "id": "psy-cognitive-load",
+      "tag": "Psychology",
+      "text": "Working memory holds about four chunks, not seven. Expertise is mostly building bigger chunks, not holding more of them.",
+      "url": "https://en.wikipedia.org/wiki/Working_memory"
+    },
+    {
+      "id": "econ-comparative",
+      "tag": "Economics",
+      "text": "Comparative advantage means trade helps even when one party is better at everything — what matters is relative opportunity cost, not absolute skill.",
+      "url": "https://en.wikipedia.org/wiki/Comparative_advantage"
+    },
+    {
+      "id": "econ-goodhart",
+      "tag": "Economics",
+      "text": "Goodhart's law: when a measure becomes a target, it stops being a good measure. The metric gets optimized; the thing it proxied for doesn't.",
+      "url": "https://en.wikipedia.org/wiki/Goodhart%27s_law"
+    },
+    {
+      "id": "econ-jevons",
+      "tag": "Economics",
+      "text": "Jevons paradox: making a resource more efficient to use can increase total consumption, because efficiency makes it cheaper to use more.",
+      "url": "https://en.wikipedia.org/wiki/Jevons_paradox"
+    },
+    {
+      "id": "econ-baumol",
+      "tag": "Economics",
+      "text": "Baumol's cost disease explains why live music and haircuts get more expensive relative to goods — wages rise economy-wide while the task itself can't be sped up.",
+      "url": "https://en.wikipedia.org/wiki/Baumol_effect"
+    },
+    {
+      "id": "econ-sunk",
+      "tag": "Economics",
+      "text": "Money already spent should never affect the next decision. That it reliably does is why \"we've come this far\" is such an expensive sentence.",
+      "url": "https://en.wikipedia.org/wiki/Sunk_cost"
+    },
+    {
+      "id": "econ-rule72",
+      "tag": "Money",
+      "text": "Rule of 72: divide 72 by the annual return to get the doubling time. At 6%, money doubles in about 12 years — good enough for mental arithmetic.",
+      "url": "https://en.wikipedia.org/wiki/Rule_of_72"
+    },
+    {
+      "id": "econ-fees",
+      "tag": "Money",
+      "text": "A 1% annual fee sounds trivial and eats roughly a quarter of a portfolio over 30 years, because it compounds against you every single year.",
+      "url": "https://en.wikipedia.org/wiki/Expense_ratio"
+    },
+    {
+      "id": "econ-veblen",
+      "tag": "Economics",
+      "text": "Veblen goods sell more as they get more expensive — price is the product. It breaks the demand curve taught in week one.",
+      "url": "https://en.wikipedia.org/wiki/Veblen_good"
+    },
+    {
+      "id": "food-maillard",
+      "tag": "Cooking",
+      "text": "The Maillard reaction needs roughly 140°C+, and water caps food at 100°C. That's why anything wet won't brown — dry the surface first.",
+      "url": "https://en.wikipedia.org/wiki/Maillard_reaction"
+    },
+    {
+      "id": "food-searing",
+      "tag": "Cooking",
+      "text": "Searing doesn't seal in juices; that was disproved over a century ago. Seared meat loses slightly more moisture — you do it for flavor.",
+      "url": "https://en.wikipedia.org/wiki/Searing"
+    },
+    {
+      "id": "food-msg",
+      "tag": "Cooking",
+      "text": "\"Chinese restaurant syndrome\" traces to a single 1968 letter and never survived double-blind testing. Glutamate is abundant in parmesan and tomatoes.",
+      "url": "https://en.wikipedia.org/wiki/Monosodium_glutamate"
+    },
+    {
+      "id": "food-salt-timing",
+      "tag": "Cooking",
+      "text": "Salt meat well in advance or immediately before cooking — never in the 3–40 minute window, when it's drawn moisture out but not yet reabsorbed it.",
+      "url": "https://en.wikipedia.org/wiki/Brining"
+    },
+    {
+      "id": "food-resting",
+      "tag": "Cooking",
+      "text": "Resting meat lets the temperature even out and the proteins relax their grip on moisture. Cut immediately and it runs onto the board.",
+      "url": "https://en.wikipedia.org/wiki/Doneness"
+    },
+    {
+      "id": "food-onion",
+      "tag": "Cooking",
+      "text": "Onion tears come from a volatile sulfur compound that dissolves in water on your eye. Chilling the onion and keeping it wet both help; holding your breath doesn't.",
+      "url": "https://en.wikipedia.org/wiki/Syn-Propanethial-S-oxide"
+    },
+    {
+      "id": "food-baking-soda",
+      "tag": "Cooking",
+      "text": "Baking soda needs an acid to work; baking powder brings its own. Swapping them without adjusting acid gives you a metallic tang or a flat cake.",
+      "url": "https://en.wikipedia.org/wiki/Baking_powder"
+    },
+    {
+      "id": "health-caffeine",
+      "tag": "Health",
+      "text": "Caffeine's half-life is around 5–6 hours, so an afternoon coffee still has a quarter of its dose in you at midnight — often felt as poor sleep rather than wakefulness.",
+      "url": "https://en.wikipedia.org/wiki/Caffeine"
+    },
+    {
+      "id": "health-vo2",
+      "tag": "Health",
+      "text": "Cardiorespiratory fitness is among the strongest predictors of all-cause mortality — a larger effect than most single risk factors people worry about more.",
+      "url": "https://en.wikipedia.org/wiki/VO2_max"
+    },
+    {
+      "id": "health-alcohol-rem",
+      "tag": "Health",
+      "text": "Alcohol shortens time to sleep and then suppresses REM and fragments the second half of the night. It sedates rather than rests.",
+      "url": "https://en.wikipedia.org/wiki/Alcohol_and_health"
+    },
+    {
+      "id": "health-8glasses",
+      "tag": "Health",
+      "text": "The \"8 glasses of water a day\" rule has no solid evidence base and ignores water in food and other drinks. Thirst is a decent controller.",
+      "url": "https://en.wikipedia.org/wiki/Drinking_water"
+    },
+    {
+      "id": "health-nap",
+      "tag": "Health",
+      "text": "Nap 20 minutes or 90, not 45. Waking from deep sleep mid-cycle produces the grogginess that makes people believe naps don't work for them.",
+      "url": "https://en.wikipedia.org/wiki/Power_nap"
+    },
+    {
+      "id": "health-stretching",
+      "tag": "Health",
+      "text": "Static stretching before exercise doesn't prevent injury and can slightly reduce power output. Warm up by moving; save long holds for afterwards.",
+      "url": "https://en.wikipedia.org/wiki/Stretching"
+    },
+    {
+      "id": "lang-basque",
+      "tag": "Language",
+      "text": "Basque is a language isolate with no proven relatives — it was spoken in Western Europe before Indo-European arrived and simply never yielded.",
+      "url": "https://en.wikipedia.org/wiki/Basque_language"
+    },
+    {
+      "id": "lang-sapir",
+      "tag": "Language",
+      "text": "The strong claim that language determines thought is rejected; the weak version survives — language nudges what you notice and how fast you sort it.",
+      "url": "https://en.wikipedia.org/wiki/Linguistic_relativity"
+    },
+    {
+      "id": "lang-sign",
+      "tag": "Language",
+      "text": "Sign languages are full natural languages with their own grammar, not encodings of speech. British and American Sign Language are mutually unintelligible.",
+      "url": "https://en.wikipedia.org/wiki/Sign_language"
+    },
+    {
+      "id": "lang-pie",
+      "tag": "Language",
+      "text": "English, Hindi, Farsi, Greek and Russian all descend from one unwritten language spoken ~6,000 years ago — reconstructed purely from patterned sound changes.",
+      "url": "https://en.wikipedia.org/wiki/Proto-Indo-European_language"
+    },
+    {
+      "id": "lang-set",
+      "tag": "Language",
+      "text": "\"Set\" has one of the longest entries in the OED, running to hundreds of senses. The commonest words carry the most ambiguity.",
+      "url": "https://en.wikipedia.org/wiki/Oxford_English_Dictionary"
+    },
+    {
+      "id": "art-monalisa",
+      "tag": "Art",
+      "text": "The Mona Lisa became the world's most famous painting largely after it was stolen in 1911 — the empty wall drew bigger crowds than the picture had.",
+      "url": "https://en.wikipedia.org/wiki/Mona_Lisa"
+    },
+    {
+      "id": "art-golden",
+      "tag": "Art",
+      "text": "The golden ratio in the Parthenon and Renaissance painting is mostly retrofitted numerology; the measurements are chosen after the fact to fit.",
+      "url": "https://en.wikipedia.org/wiki/Golden_ratio"
+    },
+    {
+      "id": "art-impressionism",
+      "tag": "Art",
+      "text": "\"Impressionism\" began as an insult from a critic mocking Monet's *Impression, Sunrise*. Several movement names started as reviews.",
+      "url": "https://en.wikipedia.org/wiki/Impressionism"
+    },
+    {
+      "id": "music-temperament",
+      "tag": "Music",
+      "text": "Equal temperament makes every key equally usable by making every interval except the octave slightly out of tune — the piano is a negotiated compromise.",
+      "url": "https://en.wikipedia.org/wiki/Equal_temperament"
+    },
+    {
+      "id": "music-440",
+      "tag": "Music",
+      "text": "A=440 Hz is a 20th-century standardization, not a natural constant. Baroque ensembles often tune near 415, roughly a semitone lower.",
+      "url": "https://en.wikipedia.org/wiki/A440_(pitch_standard)"
+    },
+    {
+      "id": "phil-chesterton",
+      "tag": "Philosophy",
+      "text": "Chesterton's fence: don't remove something until you know why it was put there. The reason it exists is often invisible precisely because it's working.",
+      "url": "https://en.wikipedia.org/wiki/Chesterton%27s_fence"
+    },
+    {
+      "id": "phil-theseus",
+      "tag": "Philosophy",
+      "text": "Replace a ship's planks one by one and it raises whether identity lives in material or continuity — the same question a long-refactored codebase eventually asks.",
+      "url": "https://en.wikipedia.org/wiki/Ship_of_Theseus"
+    },
+    {
+      "id": "phil-occam",
+      "tag": "Philosophy",
+      "text": "Occam's razor says don't multiply entities beyond necessity — a tiebreaker between theories that explain equally well, not a claim that simpler is truer.",
+      "url": "https://en.wikipedia.org/wiki/Occam%27s_razor"
+    },
+    {
+      "id": "phil-rawls",
+      "tag": "Philosophy",
+      "text": "Rawls' veil of ignorance: design the rules without knowing which position you'll occupy. It converts self-interest into a fairness test.",
+      "url": "https://en.wikipedia.org/wiki/Veil_of_ignorance"
+    },
+    {
+      "id": "phil-stoic",
+      "tag": "Philosophy",
+      "text": "The Stoic dichotomy of control: sort everything into what you govern and what you don't, then spend effort only on the first pile.",
+      "url": "https://en.wikipedia.org/wiki/Stoicism"
+    },
+    {
+      "id": "geo-africa",
+      "tag": "Geography",
+      "text": "Mercator badly understates equatorial regions: Africa fits the US, China, India and most of Europe inside it, despite looking comparable to Greenland.",
+      "url": "https://en.wikipedia.org/wiki/Mercator_projection"
+    },
+    {
+      "id": "geo-russia-timezones",
+      "tag": "Geography",
+      "text": "Russia spans 11 time zones. When it's Monday morning in Kaliningrad, it's already Monday evening in Kamchatka.",
+      "url": "https://en.wikipedia.org/wiki/Time_in_Russia"
+    },
+    {
+      "id": "geo-canada-lakes",
+      "tag": "Geography",
+      "text": "Canada holds more lake area than the rest of the world combined — a legacy of glaciers scouring the shield and leaving the hollows behind.",
+      "url": "https://en.wikipedia.org/wiki/List_of_lakes_of_Canada"
+    },
+    {
+      "id": "geo-netherlands",
+      "tag": "Geography",
+      "text": "About a sixth of the Netherlands was reclaimed from water, and much of the country sits below sea level — the landscape is infrastructure.",
+      "url": "https://en.wikipedia.org/wiki/Land_reclamation_in_the_Netherlands"
+    },
+    {
+      "id": "write-inverted",
+      "tag": "Writing",
+      "text": "The inverted pyramid — conclusion first, detail after — comes from telegraph-era journalism, where the wire could cut out mid-story at any moment.",
+      "url": "https://en.wikipedia.org/wiki/Inverted_pyramid_(journalism)"
+    },
+    {
+      "id": "write-line-length",
+      "tag": "Design",
+      "text": "Set line length to roughly 45–75 characters. Longer and the eye loses the return sweep; shorter and the rhythm breaks every few words.",
+      "url": "https://en.wikipedia.org/wiki/Line_length"
+    },
+    {
+      "id": "design-contrast",
+      "tag": "Design",
+      "text": "WCAG asks for 4.5:1 contrast on body text. Most \"elegant\" light grey on white fails it, which is why the design looks fine on your monitor and not in sunlight.",
+      "url": "https://www.w3.org/WAI/WCAG21/Understanding/contrast-minimum.html"
+    },
+    {
+      "id": "design-fitts",
+      "tag": "Design",
+      "text": "Fitts's law: time to hit a target falls with size and rises with distance. It's why screen corners are the most valuable real estate — infinitely deep targets.",
+      "url": "https://en.wikipedia.org/wiki/Fitts%27s_law"
+    },
+    {
+      "id": "eng-pg-index-order",
+      "tag": "Postgres",
+      "text": "A composite index on (a, b) serves queries filtering on `a` alone, but not on `b` alone — leftmost prefix rule.",
+      "url": "https://www.postgresql.org/docs/current/indexes-multicolumn.html"
+    },
+    {
+      "id": "eng-null-compare",
+      "tag": "SQL",
+      "text": "NULL = NULL is NULL, not true. Use IS NULL, or IS DISTINCT FROM for null-safe inequality.",
+      "url": "https://www.postgresql.org/docs/current/functions-comparison.html"
+    },
+    {
+      "id": "eng-git-reflog",
+      "tag": "Git",
+      "text": "`git reflog` records every HEAD move for ~90 days — almost nothing committed is truly lost after a bad reset.",
+      "url": "https://git-scm.com/docs/git-reflog"
+    },
+    {
+      "id": "eng-http-401-403",
+      "tag": "HTTP",
+      "text": "401 means \"I don't know who you are\"; 403 means \"I know, and you still can't\". Returning 401 for an authorization failure invites retry loops.",
+      "url": "https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/403"
+    },
+    {
+      "id": "eng-float-money",
+      "tag": "Numbers",
+      "text": "0.1 + 0.2 !== 0.3 in binary floating point. Represent money in integer minor units or a decimal type.",
+      "url": "https://en.wikipedia.org/wiki/Floating-point_arithmetic"
+    },
+    {
+      "id": "eng-idempotency",
+      "tag": "Distributed",
+      "text": "Any retryable write across a network needs an idempotency key. \"The request timed out\" never tells you whether the work happened.",
+      "url": "https://en.wikipedia.org/wiki/Idempotence"
+    },
+    {
+      "id": "eng-exactly-once",
+      "tag": "Distributed",
+      "text": "Exactly-once delivery is impossible; exactly-once *processing* is achievable via at-least-once delivery plus idempotent handlers.",
+      "url": "https://en.wikipedia.org/wiki/Two_Generals%27_Problem"
+    },
+    {
+      "id": "eng-backoff-jitter",
+      "tag": "Reliability",
+      "text": "Exponential backoff without jitter re-synchronizes your clients into a thundering herd. Randomize the delay.",
+      "url": "https://aws.amazon.com/builders-library/timeouts-retries-and-backoff-with-jitter/"
+    },
+    {
+      "id": "eng-timeout",
+      "tag": "Reliability",
+      "text": "A network call with no timeout is an outage waiting for a slow dependency. Default timeouts in many HTTP clients are infinite.",
+      "url": "https://en.wikipedia.org/wiki/Timeout_(computing)"
+    },
+    {
+      "id": "eng-utc-storage",
+      "tag": "Dates",
+      "text": "Store instants in UTC, but store future scheduled events with their intended timezone — legislatures move DST boundaries after you save the row.",
+      "url": "https://en.wikipedia.org/wiki/Tz_database"
+    },
+    {
+      "id": "eng-unicode-length",
+      "tag": "Encoding",
+      "text": "String length counts UTF-16 code units, not characters. Emoji and many scripts count as 2+ — truncating by length can split a character in half.",
+      "url": "https://en.wikipedia.org/wiki/UTF-16"
+    },
+    {
+      "id": "eng-rename-atomic",
+      "tag": "Filesystems",
+      "text": "rename(2) is atomic within one filesystem — write to a temp file and rename over the target to avoid ever exposing a partial file.",
+      "url": "https://man7.org/linux/man-pages/man2/rename.2.html"
+    },
+    {
+      "id": "eng-timing-safe",
+      "tag": "Security",
+      "text": "Comparing secrets with == leaks length and prefix through timing. Use a constant-time comparison for tokens and signatures.",
+      "url": "https://en.wikipedia.org/wiki/Timing_attack"
+    },
+    {
+      "id": "eng-hash-vs-encrypt",
+      "tag": "Security",
+      "text": "Passwords are hashed with a slow KDF (argon2, bcrypt), never encrypted — encryption implies a key that can reverse it.",
+      "url": "https://en.wikipedia.org/wiki/Key_derivation_function"
+    },
+    {
+      "id": "eng-regex-catastrophic",
+      "tag": "Security",
+      "text": "Nested quantifiers like (a+)+ backtrack exponentially. A regex over user input is a denial-of-service surface.",
+      "url": "https://en.wikipedia.org/wiki/ReDoS"
+    },
+    {
+      "id": "eng-n-plus-one",
+      "tag": "Performance",
+      "text": "An N+1 query is invisible in code review and obvious in a trace. Watch query *counts* per request, not just query duration.",
+      "url": "https://en.wikipedia.org/wiki/Object%E2%80%93relational_mapping"
+    },
+    {
+      "id": "eng-p99",
+      "tag": "Performance",
+      "text": "If a page makes 100 backend calls, your p99 latency is what a typical user experiences — averages hide the request that defines the page load.",
+      "url": "https://en.wikipedia.org/wiki/Percentile"
+    }
+  ]
+}

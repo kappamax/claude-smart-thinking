@@ -1,0 +1,44 @@
+# OS
+.DS_Store
+Thumbs.db
+
+# Editors / IDE
+.idea/
+*.iml
+.vscode/
+*.swp
+*~
+
+# Node (the plugin has zero dependencies today; this is for if that changes —
+# note package-lock.json should be committed, not ignored)
+node_modules/
+npm-debug.log*
+
+# Logs
+*.log
+
+# Local runtime state.
+#
+# The plugin never writes into its own directory at runtime — all state lives in
+# ~/.claude/smart-thinking/, because ${CLAUDE_PLUGIN_ROOT} is version-stamped and
+# reaped a couple of weeks after an update. These patterns exist only to catch
+# stray output from testing with CLAUDE_CONFIG_DIR pointed at the repo.
+#
+# Leading slash anchors each to the repo root. Unanchored, "config.json" would
+# also swallow data/config.json or lib/config.json in future.
+/cache.json
+/config.json
+/deck.json
+/learn-state.json
+/settings.backup.json
+/refresh.log
+
+# NOTE: do not add a blanket dot-file rule such as ".*" — it would exclude
+# .claude-plugin/, which holds plugin.json and marketplace.json. Without those
+# the repo is not a plugin and not a marketplace.
+#
+# NOTE: never ignore bin/. Here it is hand-written source, not build output.
+# Most language templates (Go, Java, .NET) ignore bin/ by default, so pasting
+# one in would silently gut the plugin: the SessionStart hook, the status line,
+# and all five slash commands invoke bin/*.js by path. Same goes for lib/ and
+# providers/ — nothing in this repo is generated, so nothing is safe to drop.

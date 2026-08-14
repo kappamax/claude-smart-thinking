@@ -1,0 +1,33 @@
+{
+  "name": "kappamax",
+  "owner": {
+    "name": "Kirk Lashley",
+    "email": "plugins@kirklashley.com"
+  },
+  "description": "Claude Code plugins by Kirk Lashley",
+  "plugins": [
+    {
+      "name": "smart-thinking",
+      "displayName": "Smart Thinking",
+      "source": "./",
+      "description": "Replaces Claude Code's idle spinner text with personalized, linked content: a wide learning deck, weather before you leave, your news feeds, and live repo state.",
+      "version": "0.1.0",
+      "author": {
+        "name": "Kirk Lashley"
+      },
+      "homepage": "https://github.com/kappamax/claude-smart-thinking",
+      "repository": "https://github.com/kappamax/claude-smart-thinking",
+      "license": "MIT",
+      "category": "productivity",
+      "keywords": [
+        "spinner",
+        "statusline",
+        "learning",
+        "spaced-repetition",
+        "weather",
+        "news",
+        "rss"
+      ]
+    }
+  ]
+}
