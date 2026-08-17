@@ -2,6 +2,7 @@
   "note": "Health content, graded by evidence and linked to primary literature rather than Wikipedia. Every claim here names its study design. Anything contested is labelled contested and states both sides.",
   "principle": "Health is the one category where being interesting is not enough. A confidently-worded wrong claim about your body is worse than no claim, and this surface gives no room for caveats \u2014 so the caveat goes in the text or the card doesn't ship. Preference order: systematic review or meta-analysis > large RCT > large cohort. Mechanism alone is not evidence of benefit.",
   "tiers": {
+    "umbrella-review": "Systematic review of meta-analyses \u2014 the strongest tier here, because it weighs many independent reviews rather than one.",
     "meta-analysis": "Systematic review or meta-analysis of controlled trials.",
     "RCT": "One or more randomised controlled trials.",
     "cohort": "Large observational study; association, not proof of cause.",
@@ -183,6 +184,94 @@
       "text": "The association between sleep duration and mortality is U-shaped: both short and long sleep track higher risk. Long sleep is more likely a marker of underlying illness than a cause of it",
       "source": "https://pubmed.ncbi.nlm.nih.gov/20469800/",
       "action": "Aim for your natural duration rather than maximising. Long sleep is usually a symptom, not a strategy."
+    },
+    {
+      "id": "alc-jcurve",
+      "topic": "Alcohol",
+      "evidence": "umbrella-review",
+      "text": "The claim that moderate drinking protects the heart does not survive bias correction. Across 107 cohorts, people who quit drinking because they were already ill had been counted as abstainers \u2014 remove that 'sick quitter' effect and the apparent benefit at low doses disappears",
+      "action": "Don't count drinking as cardioprotective. If you drink, drink for the reasons you actually drink.",
+      "source": "https://pubmed.ncbi.nlm.nih.gov/38465993/"
+    },
+    {
+      "id": "ex-steps-plateau",
+      "topic": "Exercise",
+      "evidence": "meta-analysis",
+      "text": "The 10,000-step target came from the name of a 1965 Japanese pedometer \u2014 manpo-kei, '10,000-step meter' \u2014 not from research. Pooling 15 cohorts, mortality risk flattens around 6,000\u20138,000 steps over 60, and 8,000\u201310,000 under",
+      "action": "Treat 7,000 as the number that matters. Past the plateau you are buying very little.",
+      "source": "https://pubmed.ncbi.nlm.nih.gov/35247352/"
+    },
+    {
+      "id": "nut-upf",
+      "topic": "Nutrition",
+      "evidence": "umbrella-review",
+      "text": "An umbrella review of 45 pooled meta-analyses covering nearly 10 million people found consistent links between higher ultra-processed food intake and all-cause mortality, cardiovascular death and common mental disorders",
+      "action": "Judge food by how heavily it is processed, not only by its macros.",
+      "source": "https://pubmed.ncbi.nlm.nih.gov/38418082/"
+    },
+    {
+      "id": "ex-strength-dose",
+      "topic": "Exercise",
+      "evidence": "meta-analysis",
+      "text": "Muscle-strengthening work tracks 10\u201320% lower all-cause mortality independent of any aerobic exercise \u2014 and the curve is J-shaped, with the benefit maximal at 30\u201360 minutes a week and no further gain beyond about an hour",
+      "action": "Two half-hour sessions a week. For this outcome, more is not better.",
+      "source": "https://pubmed.ncbi.nlm.nih.gov/35228201/"
+    },
+    {
+      "id": "nut-fibre",
+      "topic": "Nutrition",
+      "evidence": "meta-analysis",
+      "text": "A Lancet-commissioned series of systematic reviews found 25\u201330g of fibre a day associated with 15\u201330% lower mortality and disease incidence, with the benefit still rising at higher intakes",
+      "action": "Fibre is the most under-eaten thing with this weight of evidence behind it. Aim for 25\u201330g.",
+      "source": "https://pubmed.ncbi.nlm.nih.gov/30638909/"
+    },
+    {
+      "id": "hearing-cognition",
+      "topic": "Hearing",
+      "evidence": "RCT",
+      "text": "ACHIEVE randomised 977 older adults to hearing aids or health education. Among those at higher risk of decline, hearing intervention cut three-year cognitive loss by around half \u2014 though it showed no effect in the healthier subgroup",
+      "action": "Treat hearing loss as a modifiable cognitive risk, not a cosmetic inconvenience.",
+      "source": "https://pubmed.ncbi.nlm.nih.gov/37478886/"
+    },
+    {
+      "id": "nut-protein",
+      "topic": "Nutrition",
+      "evidence": "meta-analysis",
+      "text": "Protein's benefit for muscle gain plateaus near 1.6g per kg of bodyweight per day. Beyond that, added protein produced no further gain in mass or strength",
+      "action": "About 1.6g/kg a day if you train. Past that you are buying expensive urine.",
+      "source": "https://pubmed.ncbi.nlm.nih.gov/28698222/"
+    },
+    {
+      "id": "mh-behavioural-activation",
+      "topic": "Mental health",
+      "evidence": "RCT",
+      "text": "Behavioural activation \u2014 systematically scheduling activity you value, without the cognitive work \u2014 was non-inferior to full CBT for depression, delivered by less specialised staff at substantially lower cost",
+      "action": "If CBT waiting lists are long, behavioural activation is evidence-equivalent and far easier to access.",
+      "source": "https://pubmed.ncbi.nlm.nih.gov/27461440/"
+    },
+    {
+      "id": "nut-breakfast",
+      "topic": "Nutrition",
+      "evidence": "meta-analysis",
+      "text": "A systematic review of randomised trials found adding breakfast did not cause weight loss and skipping it did not cause weight gain. People who ate breakfast consumed slightly more over the day, not less",
+      "action": "Eat breakfast if you want it. It is not a weight-loss lever.",
+      "source": "https://pubmed.ncbi.nlm.nih.gov/30700403/"
+    },
+    {
+      "id": "nut-trf",
+      "topic": "Nutrition",
+      "evidence": "RCT",
+      "text": "Time-restricted eating on a 16:8 window produced no meaningful weight advantage over eating across the whole day at matched calories \u2014 and a notable share of what was lost was lean mass",
+      "action": "Use an eating window if it helps you eat less. The window itself is not the mechanism.",
+      "source": "https://pubmed.ncbi.nlm.nih.gov/32986097/"
+    },
+    {
+      "id": "back-imaging",
+      "topic": "Back pain",
+      "evidence": "meta-analysis",
+      "text": "For ordinary low back pain with no red flags, early imaging does not improve pain, function or recovery \u2014 and is associated with more surgery. Scans routinely find degeneration in people who have no pain at all",
+      "action": "Skip the scan for ordinary back pain absent red flags, and keep moving rather than resting.",
+      "source": "https://pubmed.ncbi.nlm.nih.gov/19200918/"
     }
   ]
 }
