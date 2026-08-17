@@ -100,6 +100,29 @@ test('durations read the way a person says them', () => {
   assert.strictEqual(formatDuration(72 * h), '3d');
 });
 
+test('precision drops as the duration grows, the way speech does', () => {
+  const m = 60_000;
+  const h = 60 * m;
+  // Nobody says "1 hour 47 minutes"; they round without thinking about it.
+  assert.strictEqual(formatDuration(1 * h + 47 * m), '1h 45m');
+  assert.strictEqual(formatDuration(1 * h + 58 * m), '2h');
+  // And nobody quotes minutes for something a day old.
+  assert.strictEqual(formatDuration(23 * h + 59 * m), '1d');
+  assert.strictEqual(formatDuration(47 * h + 50 * m), '2d');
+  assert.strictEqual(formatDuration(25 * h), '1d 1h');
+  // Below an hour the minute still matters, so it is kept.
+  assert.strictEqual(formatDuration(47 * m), '47m');
+});
+
+test('no duration past a day ever reports minutes', () => {
+  const DAY = 24 * 3_600_000;
+  for (let ms = DAY; ms <= 10 * DAY; ms += 917_000) {
+    const out = formatDuration(ms);
+    assert.ok(!/m$/.test(out), `minutes leaked into a multi-day duration: ${out}`);
+    assert.match(out, /^\d+d( \d+h)?$/, `unexpected shape past a day: ${out}`);
+  }
+});
+
 test('formatHours matches formatDuration', () => {
   assert.strictEqual(formatHours(1.75), '1h 45m');
   assert.strictEqual(formatHours(0.5), '30m');
@@ -116,7 +139,7 @@ test('rounding never emits an impossible unit', () => {
   // 59.7 minutes must become "1h", not "60m". Sweeping the whole range is
   // what catches an off-by-one at a boundary; two spot checks would not.
   assert.strictEqual(formatDuration(59.7 * 60_000), '1h', '59.7m should roll up to an hour');
-  assert.strictEqual(formatDuration(23.99 * 3_600_000), '23h 59m', 'no need to force a day boundary');
+  assert.strictEqual(formatDuration(23.99 * 3_600_000), '1d', '23h 59m is "a day" to a person');
 
   for (let ms = 0; ms <= 4 * 24 * 3_600_000; ms += 37_000) {
     const out = formatDuration(ms);
