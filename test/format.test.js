@@ -79,3 +79,49 @@ test('FORCE_HYPERLINK overrides detection in both directions', () => {
 test('osc8 produces a well-formed sequence', () => {
   assert.strictEqual(osc8('label', 'https://x.test'), '\x1b]8;;https://x.test\x07label\x1b]8;;\x07');
 });
+
+// ------------------------------------------------------ duration formatting
+
+const { formatDuration, formatHours } = require('../lib/format');
+
+test('durations read the way a person says them', () => {
+  // "1.8h active" is a machine reporting a float; nobody says that out loud.
+  const m = 60_000;
+  const h = 60 * m;
+  assert.strictEqual(formatDuration(10_000), 'under a minute');
+  assert.strictEqual(formatDuration(30_000), '1m', '30s rounds up rather than vanishing');
+  assert.strictEqual(formatDuration(1 * m), '1m');
+  assert.strictEqual(formatDuration(45 * m), '45m');
+  assert.strictEqual(formatDuration(1 * h), '1h');
+  assert.strictEqual(formatDuration(105 * m), '1h 45m');
+  assert.strictEqual(formatDuration(2 * h), '2h');
+  assert.strictEqual(formatDuration(5.5 * h), '5h 30m');
+  assert.strictEqual(formatDuration(26 * h), '1d 2h');
+  assert.strictEqual(formatDuration(72 * h), '3d');
+});
+
+test('formatHours matches formatDuration', () => {
+  assert.strictEqual(formatHours(1.75), '1h 45m');
+  assert.strictEqual(formatHours(0.5), '30m');
+  assert.strictEqual(formatHours(24), '1d');
+});
+
+test('no decimal hours survive anywhere in the rendered output', () => {
+  // Guards against a caller reintroducing `.toFixed(1)}h`.
+  assert.ok(!/\d\.\d+h/.test(formatHours(1.8)), 'decimal hours leaked through');
+  assert.ok(!/\d\.\d+h/.test(formatDuration(6_540_000)), 'decimal hours leaked through');
+});
+
+test('rounding never emits an impossible unit', () => {
+  // 59.7 minutes must become "1h", not "60m". Sweeping the whole range is
+  // what catches an off-by-one at a boundary; two spot checks would not.
+  assert.strictEqual(formatDuration(59.7 * 60_000), '1h', '59.7m should roll up to an hour');
+  assert.strictEqual(formatDuration(23.99 * 3_600_000), '23h 59m', 'no need to force a day boundary');
+
+  for (let ms = 0; ms <= 4 * 24 * 3_600_000; ms += 37_000) {
+    const out = formatDuration(ms);
+    assert.ok(!/\b60m\b/.test(out), `emitted 60m at ${ms}ms: ${out}`);
+    assert.ok(!/\b24h\b/.test(out), `emitted 24h at ${ms}ms: ${out}`);
+    assert.ok(!/NaN|undefined|-/.test(out), `malformed output at ${ms}ms: ${out}`);
+  }
+});

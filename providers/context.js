@@ -1,5 +1,8 @@
 'use strict';
 
+const { formatDuration } = require('../lib/format');
+
+
 /**
  * Facts about the repo you're in right now.
  *
@@ -39,8 +42,7 @@ async function collect(cfg, ctx) {
   }
 
   if (git.lastCommitAgeHours !== null && git.lastCommitAgeHours >= (cfg.staleHours ?? 8) && git.dirty > 0) {
-    const days = Math.floor(git.lastCommitAgeHours / 24);
-    const age = days >= 1 ? `${plural(days, 'day')}` : `${Math.round(git.lastCommitAgeHours)}h`;
+    const age = formatDuration(git.lastCommitAgeHours * 3600000);
     status.push({
       text: `${plural(git.dirty, 'file')} uncommitted · last commit ${age} ago`,
       priority: 40,

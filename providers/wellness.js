@@ -4,6 +4,7 @@ const fs = require('fs');
 const path = require('path');
 const paths = require('../lib/paths');
 const { readJson, writeJsonAtomic } = require('../lib/jsonio');
+const { formatHours } = require('../lib/format');
 
 /**
  * Time-aware wellness content.
@@ -178,7 +179,7 @@ async function collect(cfg, ctx) {
           // Deliberately not "N complete sleep cycles". Cycles run 70-120
           // minutes and lengthen through the night, so cycle arithmetic is
           // false precision. Total sleep duration is what the evidence is about.
-          text: `${hoursLeft.toFixed(1)}h until ${wake} — under 6h measurably impairs vigilance and next-day glucose handling`,
+          text: `${formatHours(hoursLeft)} until ${wake} — under 6h measurably impairs vigilance and next-day glucose handling`,
           priority: 80,
           source: 'wellness',
         });
@@ -201,7 +202,7 @@ async function collect(cfg, ctx) {
       // same graded corpus as everything else.
       const advice = (statusClaim || tipClaim);
       status.push({
-        text: `${activeHours.toFixed(1)}h active · ${advice.action} (${advice.evidence})`,
+        text: `${formatHours(activeHours)} active · ${advice.action} (${advice.evidence})`,
         priority: 50,
         source: 'wellness',
       });

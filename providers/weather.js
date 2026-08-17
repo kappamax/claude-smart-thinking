@@ -1,6 +1,7 @@
 'use strict';
 
 const { fetchJson } = require('../lib/fetch');
+const { formatDuration } = require('../lib/format');
 
 // Open-Meteo needs no API key, which keeps first-run setup to just a location.
 const ENDPOINT = 'https://api.open-meteo.com/v1/forecast';
@@ -76,9 +77,8 @@ async function collect(cfg, ctx) {
   // The whole point of the weather provider: surface it when it can still
   // change a decision, not as ambient noise all day.
   if (untilLeave !== null && untilLeave >= 0 && untilLeave <= promoteWindow) {
-    const mins = Math.round(untilLeave);
     status.push({
-      text: `Leaving in ${mins}m · ${line}`,
+      text: `Leaving in ${formatDuration(untilLeave * 60000)} · ${line}`,
       priority: 100,
       source: 'weather',
     });
