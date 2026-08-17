@@ -29,5 +29,11 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
-      - run: node bin/checklinks.js
+      # Name the file explicitly: the default prefers an installed deck, which
+      # is the wrong target when the point is to check what this repo ships.
+      - run: node bin/checklinks.js data/deck.sample.json
       - run: node bin/checkfeeds.js
+      # Fails only on a retraction or expression of concern. Errata and stale
+      # claims are reported without failing, since neither means the finding
+      # stopped holding.
+      - run: node bin/checkclaims.js

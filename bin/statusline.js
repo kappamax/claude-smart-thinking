@@ -48,10 +48,18 @@ function runWrapped(command, stdin) {
  * child would be tied to a process Claude Code reaps as soon as it has our
  * stdout, killing the fetch partway through.
  */
-function triggerRefresh(pluginRoot, workspace, mode) {
+function triggerRefresh(pluginRoot, workspace, mode, activity) {
   try {
     const args = [path.join(pluginRoot, 'bin', 'refresh.js'), '--root', pluginRoot];
     if (mode === 'rotate') args.push('--rotate');
+    // Cost and API duration only advance when Claude is actually working, so
+    // they are the closest thing to an "is the human here" signal available.
+    // The refresh has no stdin of its own, so they travel by argv.
+    if (activity) {
+      if (activity.sessionId) args.push('--session', activity.sessionId);
+      if (activity.cost != null) args.push('--cost', String(activity.cost));
+      if (activity.apiMs != null) args.push('--api-ms', String(activity.apiMs));
+    }
     // Hand the refresh the workspace Claude Code reported, rather than letting
     // it infer one from cwd — that's what makes context track the session.
     if (workspace) args.push('--cwd', workspace);
@@ -82,9 +90,15 @@ function main() {
   // Claude Code reports the active workspace on stdin; parsing it is what lets
   // the refresh detect the right repo when sessions span multiple directories.
   let workspace = null;
+  let activity = null;
   try {
     const payload = JSON.parse(stdin);
     workspace = (payload.workspace && payload.workspace.current_dir) || null;
+    activity = {
+      sessionId: payload.session_id || null,
+      cost: payload.cost ? payload.cost.total_cost_usd : null,
+      apiMs: payload.cost ? payload.cost.total_api_duration_ms : null,
+    };
   } catch { /* absent or malformed stdin just means we fall back to cwd */ }
 
   const cache = readJson(paths.cacheFile, null);
@@ -96,11 +110,11 @@ function main() {
   // costs nothing, so it runs far more often — that is what makes the spinner
   // text actually change while you sit there.
   if (age > maxAgeMs) {
-    triggerRefresh(pluginRoot, workspace);
+    triggerRefresh(pluginRoot, workspace, null, activity);
   } else {
     const rotateMs = (cfg.rotateIntervalSeconds ?? 90) * 1000;
     const rotatedAge = cache && cache.rotatedAt ? Date.now() - cache.rotatedAt : Infinity;
-    if (rotatedAge > rotateMs) triggerRefresh(pluginRoot, workspace, 'rotate');
+    if (rotatedAge > rotateMs) triggerRefresh(pluginRoot, workspace, 'rotate', activity);
   }
 
   const item = pickStatus(cache && cache.status, cfg.refreshIntervalSeconds ?? 30);

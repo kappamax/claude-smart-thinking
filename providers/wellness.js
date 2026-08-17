@@ -4,6 +4,7 @@ const fs = require('fs');
 const path = require('path');
 const paths = require('../lib/paths');
 const { readJson, writeJsonAtomic } = require('../lib/jsonio');
+const { formatHours } = require('../lib/format');
 
 /**
  * Time-aware wellness content.
@@ -43,23 +44,68 @@ function stateFile() {
 }
 
 /**
- * Session length is inferred from the first time we ran today, persisted
- * across the many short-lived refresh processes. There's no session-duration
- * field available to a background refresh, so this is the honest proxy.
+ * Cap on how much one tick may credit.
+ *
+ * This provider only runs on a full refresh, which is contentMaxAgeMinutes
+ * apart (20 by default) — not on the 90-second rotation. The cap therefore
+ * has to exceed the refresh interval or a normal working stretch is credited
+ * at a fraction of its length. It must also stay below idleResetMinutes (30),
+ * so the ordering that matters is: refresh interval < step cap < idle reset.
  */
-function trackSession(now) {
-  const state = readJson(stateFile(), {}) || {};
+const MAX_STEP_MS = 25 * 60 * 1000;
+
+/**
+ * How long you have actually been working, not how long Claude Code has been open.
+ *
+ * The first version measured wall-clock from the first tick and reset only
+ * after a 45-minute gap between ticks. But the status line re-renders on a
+ * timer for as long as the session exists, so the chain of ticks never broke
+ * and it happily reported "76.7h at the desk" for a window left open over a
+ * weekend. Elapsed time was never the right quantity.
+ *
+ * Claude Code gives no signal for "the human is present". What it does give,
+ * on the status line's stdin, is session cost and API duration — and those
+ * only advance when Claude is actually doing work for you. So time is
+ * accumulated only across ticks where one of them moved, in bounded steps, so
+ * an idle window contributes nothing however long it stays open.
+ *
+ * Still a proxy: reading output without prompting counts as idle. It errs
+ * toward under-counting, which is the right direction for a break reminder.
+ */
+function trackSession(now, activity = {}) {
+  let state = readJson(stateFile(), {}) || {};
   const nowMs = now.getTime();
-  const last = state.lastSeenAt || 0;
-  // A gap longer than the idle window means a new working stretch.
-  const IDLE_RESET_MS = 45 * 60 * 1000;
-  if (!state.startedAt || nowMs - last > IDLE_RESET_MS) state.startedAt = nowMs;
+
+  const cost = Number(activity.cost) || 0;
+  const apiMs = Number(activity.apiMs) || 0;
+  const sessionId = activity.sessionId || null;
+
+  // A new session restarts cost at zero, which would otherwise look like the
+  // counters going backwards and suppress every subsequent tick.
+  if (sessionId && state.sessionId && sessionId !== state.sessionId) state = { sessionId };
+  if (sessionId) state.sessionId = sessionId;
+
+  const gap = state.lastSeenAt ? nowMs - state.lastSeenAt : 0;
+  const idleResetMs = (activity.idleResetMinutes ?? 30) * 60000;
+  const advanced = cost > (state.lastCost ?? 0) || apiMs > (state.lastApiMs ?? 0);
+
+  const resumedFromIdle = gap > idleResetMs;
+  if (!state.activeMs || resumedFromIdle) state.activeMs = 0;
+  // The idle gap itself was not working time, so the tick that ends it starts
+  // the new stretch at zero rather than crediting a step for the interval.
+  // Bounded step otherwise: a suspended laptop must not donate hours at once.
+  if (advanced && gap > 0 && !resumedFromIdle) state.activeMs += Math.min(gap, MAX_STEP_MS);
+
   state.lastSeenAt = nowMs;
+  state.lastCost = Math.max(cost, state.lastCost ?? 0);
+  state.lastApiMs = Math.max(apiMs, state.lastApiMs ?? 0);
+
   try {
     fs.mkdirSync(paths.STATE_DIR, { recursive: true });
     writeJsonAtomic(stateFile(), state);
   } catch { /* tracking is best-effort */ }
-  return { hoursAtDesk: (nowMs - state.startedAt) / 3600000 };
+
+  return { activeHours: (state.activeMs || 0) / 3600000 };
 }
 
 /** The study design travels with the claim — that's the whole point. */
@@ -100,7 +146,7 @@ async function collect(cfg, ctx) {
 
   const now = ctx.now || new Date();
   const hour = now.getHours();
-  const { hoursAtDesk } = trackSession(now);
+  const { activeHours } = trackSession(now, ctx.activity || {});
 
   const tips = [];
   const status = [];
@@ -133,7 +179,7 @@ async function collect(cfg, ctx) {
           // Deliberately not "N complete sleep cycles". Cycles run 70-120
           // minutes and lengthen through the night, so cycle arithmetic is
           // false precision. Total sleep duration is what the evidence is about.
-          text: `${hoursLeft.toFixed(1)}h until ${wake} — under 6h measurably impairs vigilance and next-day glucose handling`,
+          text: `${formatHours(hoursLeft)} until ${wake} — under 6h measurably impairs vigilance and next-day glucose handling`,
           priority: 80,
           source: 'wellness',
         });
@@ -143,11 +189,20 @@ async function collect(cfg, ctx) {
 
   if (cfg.movement !== false) {
     const breakAfter = cfg.breakAfterHours ?? 1.5;
-    if (hoursAtDesk >= breakAfter) {
-      const c = pick(dayClaims, seed);
-      if (c) tips.push(toTip(c));
+    if (activeHours >= breakAfter && dayClaims.length > 0) {
+      // Rotate through the corpus rather than repeating one nudge. A prompt
+      // that says the same thing every ninety seconds gets tuned out, and
+      // this surface only works while it still has the reader's trust.
+      const [tipClaim, statusClaim] = pickDistinct(dayClaims, seed, 2);
+      if (tipClaim) tips.push(toTip(tipClaim));
+
+      // The old text hardcoded "look 20ft away for 20s" — the 20-20-20 rule,
+      // which this plugin's own corpus grades as contested after an RCT found
+      // no significant effect. Advice on the status line now comes from the
+      // same graded corpus as everything else.
+      const advice = (statusClaim || tipClaim);
       status.push({
-        text: `${hoursAtDesk.toFixed(1)}h at the desk · look 20ft away for 20s`,
+        text: `${formatHours(activeHours)} active · ${advice.action} (${advice.evidence})`,
         priority: 50,
         source: 'wellness',
       });

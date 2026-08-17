@@ -211,7 +211,8 @@ The status line hot path never blocks on the network, never writes to disk, and 
 
 ```bash
 node --test                 # 57 unit tests, no dependencies
-npm run test:links          # network: verify every deck url and feed still resolves
+npm run test:links          # network: deck urls, feeds, and a PubMed audit of the
+                            # health corpus for retractions and stale claims
 claude plugin validate .
 ```
 

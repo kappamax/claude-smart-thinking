@@ -110,7 +110,18 @@ async function main() {
     // The workspace dir comes from the status line's stdin payload when it
     // spawns us; the SessionStart hook already runs in the project directory.
     const workspace = argValue(process.argv, '--cwd') || process.cwd();
-    const ctx = { pluginRoot, now: new Date(), context: context.detect(workspace) };
+    const ctx = {
+      pluginRoot,
+      now: new Date(),
+      context: context.detect(workspace),
+      activity: {
+        sessionId: argValue(process.argv, '--session'),
+        cost: Number(argValue(process.argv, '--cost')) || 0,
+        apiMs: Number(argValue(process.argv, '--api-ms')) || 0,
+        idleResetMinutes: cfg.providers && cfg.providers.wellness
+          ? cfg.providers.wellness.idleResetMinutes : undefined,
+      },
+    };
     const { tips, status, errors } = await collectAll(cfg, ctx);
     for (const e of errors) log(`provider-error ${e}`);
 
