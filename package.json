@@ -1,11 +1,11 @@
 {
   "name": "claude-smart-thinking",
-  "version": "0.9.0",
+  "version": "0.9.1",
   "private": true,
   "description": "Tests and tooling for the smart-thinking Claude Code plugin. The plugin itself has no runtime dependencies.",
   "scripts": {
     "test": "node --test",
-    "test:links": "node bin/checklinks.js && node bin/checkfeeds.js",
+    "test:links": "node bin/checklinks.js && node bin/checkfeeds.js && node bin/checkclaims.js",
     "check": "npm test && claude plugin validate ."
   },
   "license": "MIT"

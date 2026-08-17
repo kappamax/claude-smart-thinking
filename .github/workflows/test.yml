@@ -31,3 +31,7 @@ jobs:
           node-version: '22'
       - run: node bin/checklinks.js
       - run: node bin/checkfeeds.js
+      # Fails only on a retraction or expression of concern. Errata and stale
+      # claims are reported without failing, since neither means the finding
+      # stopped holding.
+      - run: node bin/checkclaims.js

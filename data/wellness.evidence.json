@@ -1,5 +1,5 @@
 {
-  "note": "Health content, graded by evidence and linked to primary literature rather than Wikipedia. Every claim here names its study design. Anything contested is labelled contested and states both sides.",
+  "note": "Health content, graded by evidence and linked to primary literature rather than Wikipedia. Every claim here names its study design. Anything contested is labelled contested and states both sides. Each claim records when it was last read against its source; bin/checkclaims.js audits the corpus against PubMed for retractions and flags claims nobody has revisited.",
   "principle": "Health is the one category where being interesting is not enough. A confidently-worded wrong claim about your body is worse than no claim, and this surface gives no room for caveats \u2014 so the caveat goes in the text or the card doesn't ship. Preference order: systematic review or meta-analysis > large RCT > large cohort. Mechanism alone is not evidence of benefit.",
   "tiers": {
     "umbrella-review": "Systematic review of meta-analyses \u2014 the strongest tier here, because it weighs many independent reviews rather than one.",
@@ -15,7 +15,8 @@
       "evidence": "meta-analysis",
       "text": "The largest meta-analysis of meditation trials found moderate evidence it reduces anxiety, depression and pain \u2014 and low or insufficient evidence for attention, sleep, mood, weight or substance use. It works, for less than it's sold for",
       "source": "https://pubmed.ncbi.nlm.nih.gov/24395196/",
-      "action": "Use it for anxiety, low mood or pain. Don't expect it to fix focus or sleep."
+      "action": "Use it for anxiety, low mood or pain. Don't expect it to fix focus or sleep.",
+      "verified": "2026-08-17"
     },
     {
       "id": "med-mbsr-escitalopram",
@@ -23,7 +24,8 @@
       "evidence": "RCT",
       "text": "In a 2023 randomised non-inferiority trial, eight weeks of mindfulness-based stress reduction matched escitalopram for treating anxiety disorders",
       "source": "https://pubmed.ncbi.nlm.nih.gov/36350591/",
-      "action": "If you'd consider medication for anxiety, an eight-week MBSR course is an evidence-equivalent option worth discussing."
+      "action": "If you'd consider medication for anxiety, an eight-week MBSR course is an evidence-equivalent option worth discussing.",
+      "verified": "2026-08-17"
     },
     {
       "id": "med-mind-the-hype",
@@ -31,7 +33,8 @@
       "evidence": "meta-analysis",
       "text": "\"Mind the Hype\": a review by mindfulness researchers themselves found the field plagued by inconsistent definitions, weak controls and overstated claims. Treat confident mindfulness statistics with suspicion",
       "source": "https://pubmed.ncbi.nlm.nih.gov/29016274/",
-      "action": "Discount any single dramatic mindfulness result until it replicates with an active control."
+      "action": "Discount any single dramatic mindfulness result until it replicates with an active control.",
+      "verified": "2026-08-17"
     },
     {
       "id": "med-breathwork",
@@ -39,7 +42,8 @@
       "evidence": "RCT",
       "text": "Five minutes a day of cyclic sighing \u2014 a long inhale, a second shorter one, a slow extended exhale \u2014 improved mood and lowered respiratory rate more than equal-time mindfulness meditation in a randomised trial",
       "source": "https://pubmed.ncbi.nlm.nih.gov/36630953/",
-      "action": "Five minutes: inhale, a second short inhale on top, then a long slow exhale. Repeat."
+      "action": "Five minutes: inhale, a second short inhale on top, then a long slow exhale. Repeat.",
+      "verified": "2026-08-17"
     },
     {
       "id": "ex-depression",
@@ -47,7 +51,8 @@
       "evidence": "meta-analysis",
       "text": "A 2024 BMJ network meta-analysis of 218 trials found walking, jogging, yoga and strength training all produced meaningful reductions in depression, with larger effects at higher intensity",
       "source": "https://pubmed.ncbi.nlm.nih.gov/38355154/",
-      "action": "Pick the one you'll actually repeat \u2014 the modality mattered less than the intensity."
+      "action": "Pick the one you'll actually repeat \u2014 the modality mattered less than the intensity.",
+      "verified": "2026-08-17"
     },
     {
       "id": "ex-fitness-mortality",
@@ -55,7 +60,8 @@
       "evidence": "cohort",
       "text": "Across 122,000 treadmill tests, cardiorespiratory fitness tracked mortality with no observed ceiling \u2014 the fittest group kept gaining, and being unfit carried risk comparable to established disease",
       "source": "https://pubmed.ncbi.nlm.nih.gov/30646252/",
-      "action": "Train the top end occasionally. The benefit kept rising with fitness rather than plateauing."
+      "action": "Train the top end occasionally. The benefit kept rising with fitness rather than plateauing.",
+      "verified": "2026-08-17"
     },
     {
       "id": "ex-sitting-corrected",
@@ -63,7 +69,8 @@
       "evidence": "meta-analysis",
       "text": "Sitting is often called \"the new smoking\", but a harmonised meta-analysis of over a million people found 60\u201375 minutes of daily moderate activity essentially eliminated the association between sitting time and mortality",
       "source": "https://pubmed.ncbi.nlm.nih.gov/27475271/",
-      "action": "Stop worrying about desk hours and protect the hour of activity instead."
+      "action": "Stop worrying about desk hours and protect the hour of activity instead.",
+      "verified": "2026-08-17"
     },
     {
       "id": "sleep-cbti",
@@ -71,7 +78,8 @@
       "evidence": "meta-analysis",
       "text": "Cognitive behavioural therapy for insomnia, not medication, is the guideline-recommended first-line treatment for chronic insomnia \u2014 and unlike hypnotics its benefit persists after treatment stops",
       "source": "https://pubmed.ncbi.nlm.nih.gov/27136449/",
-      "action": "Ask for CBT-I before a prescription \u2014 several app-based programmes deliver it and work."
+      "action": "Ask for CBT-I before a prescription \u2014 several app-based programmes deliver it and work.",
+      "verified": "2026-08-17"
     },
     {
       "id": "sleep-weekend-debt",
@@ -79,7 +87,8 @@
       "evidence": "RCT",
       "text": "In a controlled laboratory study, weekend recovery sleep failed to prevent the metabolic damage of weekday sleep restriction. Insulin sensitivity was worse in the catch-up group than in those who stayed short",
       "source": "https://pubmed.ncbi.nlm.nih.gov/30827911/",
-      "action": "Protect weeknight sleep. A long Saturday doesn't buy the week back."
+      "action": "Protect weeknight sleep. A long Saturday doesn't buy the week back.",
+      "verified": "2026-08-17"
     },
     {
       "id": "sleep-vaccine",
@@ -87,7 +96,8 @@
       "evidence": "meta-analysis",
       "text": "A 2023 meta-analysis found that sleeping under six hours around the time of vaccination substantially reduced antibody response \u2014 with the effect clearest in men and in adults under 60",
       "source": "https://pubmed.ncbi.nlm.nih.gov/36917932/",
-      "action": "Book vaccinations after a normal night's sleep, not at the end of a short week."
+      "action": "Book vaccinations after a normal night's sleep, not at the end of a short week.",
+      "verified": "2026-08-17"
     },
     {
       "id": "sleep-glymphatic-contested",
@@ -95,7 +105,8 @@
       "evidence": "contested",
       "text": "The popular claim that sleep flushes waste from the brain is genuinely disputed: a 2024 Nature Neuroscience study measured clearance as *reduced* during sleep, and a later commentary disputed its methods. The story is not settled",
       "source": "https://pubmed.ncbi.nlm.nih.gov/38741022/",
-      "action": "Don't repeat this one as settled fact. Sleep's other benefits are far better evidenced."
+      "action": "Don't repeat this one as settled fact. Sleep's other benefits are far better evidenced.",
+      "verified": "2026-08-17"
     },
     {
       "id": "sleep-warm-bath",
@@ -103,7 +114,8 @@
       "evidence": "meta-analysis",
       "text": "A warm bath or shower one to two hours before bed shortens the time it takes to fall asleep \u2014 the mechanism is peripheral vasodilation dumping core heat, not the warmth itself",
       "source": "https://pubmed.ncbi.nlm.nih.gov/31102877/",
-      "action": "Bath or shower 60\u2013120 minutes before bed, not immediately before."
+      "action": "Bath or shower 60\u2013120 minutes before bed, not immediately before.",
+      "verified": "2026-08-17"
     },
     {
       "id": "sleep-caffeine-6h",
@@ -111,7 +123,8 @@
       "evidence": "RCT",
       "text": "400mg of caffeine six hours before bed cut objectively measured sleep by over an hour \u2014 and participants did not notice the disruption they were measurably experiencing",
       "source": "https://pubmed.ncbi.nlm.nih.gov/24235903/",
-      "action": "Set a caffeine curfew six hours before bed, and don't trust how you feel as the measure."
+      "action": "Set a caffeine curfew six hours before bed, and don't trust how you feel as the measure.",
+      "verified": "2026-08-17"
     },
     {
       "id": "sleep-cycle-caveat",
@@ -119,7 +132,8 @@
       "evidence": "contested",
       "text": "The \"90-minute sleep cycle\" is an average, not a schedule: real cycles run roughly 70\u2013120 minutes, lengthen across the night and vary by person. Timing a nap to land between cycles is a heuristic, not a measurement",
       "source": "https://www.ncbi.nlm.nih.gov/books/NBK526132/",
-      "action": "Ignore cycle arithmetic. Total sleep duration is the number with evidence behind it."
+      "action": "Ignore cycle arithmetic. Total sleep duration is the number with evidence behind it.",
+      "verified": "2026-08-17"
     },
     {
       "id": "sleep-alcohol-rem",
@@ -127,7 +141,8 @@
       "evidence": "meta-analysis",
       "text": "Alcohol shortens the time to fall asleep and then suppresses REM and fragments the second half of the night. It sedates rather than rests, and tolerance to the sedation develops faster than to the disruption",
       "source": "https://pubmed.ncbi.nlm.nih.gov/23347102/",
-      "action": "If you want the sleep, stop drinking three or more hours before bed."
+      "action": "If you want the sleep, stop drinking three or more hours before bed.",
+      "verified": "2026-08-17"
     },
     {
       "id": "nut-vitamin-d",
@@ -135,7 +150,8 @@
       "evidence": "RCT",
       "text": "VITAL randomised nearly 26,000 adults to vitamin D or placebo for five years: no reduction in cancer or cardiovascular disease. Supplementing a normal level fixes a number, not an outcome",
       "source": "https://pubmed.ncbi.nlm.nih.gov/30415629/",
-      "action": "Supplement to correct a measured deficiency, not as general insurance."
+      "action": "Supplement to correct a measured deficiency, not as general insurance.",
+      "verified": "2026-08-17"
     },
     {
       "id": "nut-omega3",
@@ -143,7 +159,8 @@
       "evidence": "meta-analysis",
       "text": "A Cochrane review of omega-3 supplements across 80,000+ participants found little or no effect on cardiovascular mortality \u2014 one of the clearest gaps between supplement marketing and trial evidence",
       "source": "https://pubmed.ncbi.nlm.nih.gov/32114706/",
-      "action": "Eat fish if you like it. Don't buy capsules expecting a cardiac benefit."
+      "action": "Eat fish if you like it. Don't buy capsules expecting a cardiac benefit.",
+      "verified": "2026-08-17"
     },
     {
       "id": "nut-hydration-myth",
@@ -151,7 +168,8 @@
       "evidence": "meta-analysis",
       "text": "The \"eight glasses of water a day\" rule has no identifiable scientific origin. A physiologist went looking for the source and found none \u2014 thirst regulates intake well in healthy adults",
       "source": "https://pubmed.ncbi.nlm.nih.gov/12376390/",
-      "action": "Drink to thirst. Count what's in food, coffee and tea toward the total."
+      "action": "Drink to thirst. Count what's in food, coffee and tea toward the total.",
+      "verified": "2026-08-17"
     },
     {
       "id": "eyes-202020-weak",
@@ -159,7 +177,8 @@
       "evidence": "contested",
       "text": "The 20-20-20 rule is recommended everywhere and supported by very little: a randomised trial of scheduled 20-second breaks found no significant effect on eye-strain symptoms. Blinking and blink quality may matter more",
       "source": "https://pubmed.ncbi.nlm.nih.gov/36473088/",
-      "action": "Blink deliberately and check your screen isn't drying your eyes. Don't rely on timed breaks alone."
+      "action": "Blink deliberately and check your screen isn't drying your eyes. Don't rely on timed breaks alone.",
+      "verified": "2026-08-17"
     },
     {
       "id": "social-connection",
@@ -167,7 +186,8 @@
       "evidence": "meta-analysis",
       "text": "A meta-analysis of 148 studies found strong social relationships associated with a 50% greater likelihood of survival \u2014 an effect size comparable to quitting smoking and larger than obesity or inactivity",
       "source": "https://pubmed.ncbi.nlm.nih.gov/20668659/",
-      "action": "Treat a standing weekly contact with someone as a health behaviour, not a luxury."
+      "action": "Treat a standing weekly contact with someone as a health behaviour, not a luxury.",
+      "verified": "2026-08-17"
     },
     {
       "id": "stretch-injury",
@@ -175,7 +195,8 @@
       "evidence": "RCT",
       "text": "A pragmatic randomised trial of stretching before and after activity found it did not meaningfully reduce injury risk. Warming up by moving is supported; holding a stretch first is not",
       "source": "https://pubmed.ncbi.nlm.nih.gov/19525241/",
-      "action": "Warm up by doing your activity slowly. Save long static holds for afterwards."
+      "action": "Warm up by doing your activity slowly. Save long static holds for afterwards.",
+      "verified": "2026-08-17"
     },
     {
       "id": "sleep-duration-u",
@@ -183,7 +204,8 @@
       "evidence": "cohort",
       "text": "The association between sleep duration and mortality is U-shaped: both short and long sleep track higher risk. Long sleep is more likely a marker of underlying illness than a cause of it",
       "source": "https://pubmed.ncbi.nlm.nih.gov/20469800/",
-      "action": "Aim for your natural duration rather than maximising. Long sleep is usually a symptom, not a strategy."
+      "action": "Aim for your natural duration rather than maximising. Long sleep is usually a symptom, not a strategy.",
+      "verified": "2026-08-17"
     },
     {
       "id": "alc-jcurve",
@@ -191,7 +213,8 @@
       "evidence": "umbrella-review",
       "text": "The claim that moderate drinking protects the heart does not survive bias correction. Across 107 cohorts, people who quit drinking because they were already ill had been counted as abstainers \u2014 remove that 'sick quitter' effect and the apparent benefit at low doses disappears",
       "action": "Don't count drinking as cardioprotective. If you drink, drink for the reasons you actually drink.",
-      "source": "https://pubmed.ncbi.nlm.nih.gov/38465993/"
+      "source": "https://pubmed.ncbi.nlm.nih.gov/38465993/",
+      "verified": "2026-08-17"
     },
     {
       "id": "ex-steps-plateau",
@@ -199,7 +222,8 @@
       "evidence": "meta-analysis",
       "text": "The 10,000-step target came from the name of a 1965 Japanese pedometer \u2014 manpo-kei, '10,000-step meter' \u2014 not from research. Pooling 15 cohorts, mortality risk flattens around 6,000\u20138,000 steps over 60, and 8,000\u201310,000 under",
       "action": "Treat 7,000 as the number that matters. Past the plateau you are buying very little.",
-      "source": "https://pubmed.ncbi.nlm.nih.gov/35247352/"
+      "source": "https://pubmed.ncbi.nlm.nih.gov/35247352/",
+      "verified": "2026-08-17"
     },
     {
       "id": "nut-upf",
@@ -207,7 +231,8 @@
       "evidence": "umbrella-review",
       "text": "An umbrella review of 45 pooled meta-analyses covering nearly 10 million people found consistent links between higher ultra-processed food intake and all-cause mortality, cardiovascular death and common mental disorders",
       "action": "Judge food by how heavily it is processed, not only by its macros.",
-      "source": "https://pubmed.ncbi.nlm.nih.gov/38418082/"
+      "source": "https://pubmed.ncbi.nlm.nih.gov/38418082/",
+      "verified": "2026-08-17"
     },
     {
       "id": "ex-strength-dose",
@@ -215,7 +240,8 @@
       "evidence": "meta-analysis",
       "text": "Muscle-strengthening work tracks 10\u201320% lower all-cause mortality independent of any aerobic exercise \u2014 and the curve is J-shaped, with the benefit maximal at 30\u201360 minutes a week and no further gain beyond about an hour",
       "action": "Two half-hour sessions a week. For this outcome, more is not better.",
-      "source": "https://pubmed.ncbi.nlm.nih.gov/35228201/"
+      "source": "https://pubmed.ncbi.nlm.nih.gov/35228201/",
+      "verified": "2026-08-17"
     },
     {
       "id": "nut-fibre",
@@ -223,7 +249,8 @@
       "evidence": "meta-analysis",
       "text": "A Lancet-commissioned series of systematic reviews found 25\u201330g of fibre a day associated with 15\u201330% lower mortality and disease incidence, with the benefit still rising at higher intakes",
       "action": "Fibre is the most under-eaten thing with this weight of evidence behind it. Aim for 25\u201330g.",
-      "source": "https://pubmed.ncbi.nlm.nih.gov/30638909/"
+      "source": "https://pubmed.ncbi.nlm.nih.gov/30638909/",
+      "verified": "2026-08-17"
     },
     {
       "id": "hearing-cognition",
@@ -231,7 +258,8 @@
       "evidence": "RCT",
       "text": "ACHIEVE randomised 977 older adults to hearing aids or health education. Among those at higher risk of decline, hearing intervention cut three-year cognitive loss by around half \u2014 though it showed no effect in the healthier subgroup",
       "action": "Treat hearing loss as a modifiable cognitive risk, not a cosmetic inconvenience.",
-      "source": "https://pubmed.ncbi.nlm.nih.gov/37478886/"
+      "source": "https://pubmed.ncbi.nlm.nih.gov/37478886/",
+      "verified": "2026-08-17"
     },
     {
       "id": "nut-protein",
@@ -239,7 +267,8 @@
       "evidence": "meta-analysis",
       "text": "Protein's benefit for muscle gain plateaus near 1.6g per kg of bodyweight per day. Beyond that, added protein produced no further gain in mass or strength",
       "action": "About 1.6g/kg a day if you train. Past that you are buying expensive urine.",
-      "source": "https://pubmed.ncbi.nlm.nih.gov/28698222/"
+      "source": "https://pubmed.ncbi.nlm.nih.gov/28698222/",
+      "verified": "2026-08-17"
     },
     {
       "id": "mh-behavioural-activation",
@@ -247,7 +276,8 @@
       "evidence": "RCT",
       "text": "Behavioural activation \u2014 systematically scheduling activity you value, without the cognitive work \u2014 was non-inferior to full CBT for depression, delivered by less specialised staff at substantially lower cost",
       "action": "If CBT waiting lists are long, behavioural activation is evidence-equivalent and far easier to access.",
-      "source": "https://pubmed.ncbi.nlm.nih.gov/27461440/"
+      "source": "https://pubmed.ncbi.nlm.nih.gov/27461440/",
+      "verified": "2026-08-17"
     },
     {
       "id": "nut-breakfast",
@@ -255,7 +285,8 @@
       "evidence": "meta-analysis",
       "text": "A systematic review of randomised trials found adding breakfast did not cause weight loss and skipping it did not cause weight gain. People who ate breakfast consumed slightly more over the day, not less",
       "action": "Eat breakfast if you want it. It is not a weight-loss lever.",
-      "source": "https://pubmed.ncbi.nlm.nih.gov/30700403/"
+      "source": "https://pubmed.ncbi.nlm.nih.gov/30700403/",
+      "verified": "2026-08-17"
     },
     {
       "id": "nut-trf",
@@ -263,7 +294,8 @@
       "evidence": "RCT",
       "text": "Time-restricted eating on a 16:8 window produced no meaningful weight advantage over eating across the whole day at matched calories \u2014 and a notable share of what was lost was lean mass",
       "action": "Use an eating window if it helps you eat less. The window itself is not the mechanism.",
-      "source": "https://pubmed.ncbi.nlm.nih.gov/32986097/"
+      "source": "https://pubmed.ncbi.nlm.nih.gov/32986097/",
+      "verified": "2026-08-17"
     },
     {
       "id": "back-imaging",
@@ -271,7 +303,8 @@
       "evidence": "meta-analysis",
       "text": "For ordinary low back pain with no red flags, early imaging does not improve pain, function or recovery \u2014 and is associated with more surgery. Scans routinely find degeneration in people who have no pain at all",
       "action": "Skip the scan for ordinary back pain absent red flags, and keep moving rather than resting.",
-      "source": "https://pubmed.ncbi.nlm.nih.gov/19200918/"
+      "source": "https://pubmed.ncbi.nlm.nih.gov/19200918/",
+      "verified": "2026-08-17"
     }
   ]
 }
