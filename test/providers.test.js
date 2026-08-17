@@ -17,6 +17,9 @@ const test = require('node:test');
 const assert = require('node:assert');
 
 const ROOT = path.resolve(__dirname, '..');
+// paths.STATE_DIR is CLAUDE_CONFIG_DIR/smart-thinking — clearing TMP directly
+// silently cleared nothing, which let state leak between tests.
+const STATE = path.join(TMP, 'smart-thinking');
 const news = require('../providers/news');
 const learn = require('../providers/learn');
 const wellness = require('../providers/wellness');
@@ -92,14 +95,14 @@ function deckCtx() {
 test('learn: a fresh deck does not serve one topic in a row', async () => {
   // Regression: unseen cards all scored Infinity, so the sort fell back to
   // deck order and the first refresh returned six consecutive Knuth cards.
-  fs.rmSync(path.join(TMP, 'learn-state.json'), { force: true });
+  fs.rmSync(path.join(STATE, 'learn-state.json'), { force: true });
   const res = await learn.collect({ count: 8, contextShare: 0 }, deckCtx());
   const tags = res.tips.map((t) => t.category);
   assert.ok(new Set(tags).size > 1, `expected a mix of topics, got ${tags.join(', ')}`);
 });
 
 test('learn: context-matched cards get a share of slots, not all of them', async () => {
-  fs.rmSync(path.join(TMP, 'learn-state.json'), { force: true });
+  fs.rmSync(path.join(STATE, 'learn-state.json'), { force: true });
   const ctx = { pluginRoot: ROOT, now: new Date(), context: { topics: new Set(['git', 'sql', 'http']) } };
   const res = await learn.collect({ count: 10, contextShare: 0.4 }, ctx);
 
@@ -109,14 +112,14 @@ test('learn: context-matched cards get a share of slots, not all of them', async
 });
 
 test('learn: no card is served twice in one draw', async () => {
-  fs.rmSync(path.join(TMP, 'learn-state.json'), { force: true });
+  fs.rmSync(path.join(STATE, 'learn-state.json'), { force: true });
   const res = await learn.collect({ count: 20, contextShare: 0.4 }, deckCtx());
   const texts = res.tips.map((t) => t.text);
   assert.strictEqual(new Set(texts).size, texts.length, 'duplicate cards in a single draw');
 });
 
 test('learn: the action travels with the card', async () => {
-  fs.rmSync(path.join(TMP, 'learn-state.json'), { force: true });
+  fs.rmSync(path.join(STATE, 'learn-state.json'), { force: true });
   const res = await learn.collect({ count: 30, contextShare: 0 }, deckCtx());
   assert.ok(res.tips.some((t) => t.action), 'actions are being dropped before rendering');
 });
@@ -137,7 +140,7 @@ test('wellness: sleep content appears late at night and not at midday', async ()
   assert.ok(night.tips.length > 0, 'no sleep content at 01:30');
   assert.ok(night.tips.every((t) => t.category === 'Sleep'), 'late night should be sleep-weighted');
 
-  fs.rmSync(path.join(TMP, 'wellness-state.json'), { force: true });
+  fs.rmSync(path.join(STATE, 'wellness-state.json'), { force: true });
   const noon = await wellness.collect(wCfg, { now: at(13), pluginRoot: ROOT });
   assert.ok(!noon.tips.some((t) => t.category === 'Sleep'), 'sleep content leaked into the afternoon');
 });
@@ -239,4 +242,124 @@ test('pickDistinct advances with the seed', () => {
   const a = wellness._pickDistinct(list, 0, 4).map((x) => x.id);
   const b = wellness._pickDistinct(list, 5, 4).map((x) => x.id);
   assert.notDeepStrictEqual(a, b, 'successive refreshes should show different claims');
+});
+
+// ------------------------------------------------ session activity tracking
+
+const WSTATE = path.join(STATE, 'wellness-state.json');
+const wellCfg = { sleep: false, movement: true, breakAfterHours: 0.01 };
+
+async function tick(atMs, activity) {
+  return wellness.collect(wellCfg, { now: new Date(atMs), pluginRoot: ROOT, activity });
+}
+
+test('an idle session accumulates no active time', async () => {
+  // Regression: this reported "76.7h at the desk" for a window left open over
+  // a weekend. The status line re-renders on a timer forever, so measuring
+  // elapsed wall-clock between ticks never stopped counting.
+  fs.rmSync(WSTATE, { force: true });
+  const t0 = Date.UTC(2026, 7, 17, 12, 0, 0);
+  const idle = { sessionId: 's1', cost: 1.5, apiMs: 1000 };
+
+  for (let i = 0; i < 200; i += 1) await tick(t0 + i * 90_000, idle); // 5 hours of ticks
+  const res = await tick(t0 + 200 * 90_000, idle);
+
+  assert.deepStrictEqual(res.status, [], 'idle ticks must not trigger a break prompt');
+  const state = JSON.parse(fs.readFileSync(WSTATE, 'utf8'));
+  assert.strictEqual(state.activeMs, 0, `idle session accrued ${state.activeMs}ms`);
+});
+
+test('active time accrues only while cost is advancing', async () => {
+  fs.rmSync(WSTATE, { force: true });
+  const t0 = Date.UTC(2026, 7, 17, 12, 0, 0);
+  let cost = 1;
+  for (let i = 1; i <= 10; i += 1) {
+    cost += 0.01; // Claude did work on each tick
+    await tick(t0 + i * 60_000, { sessionId: 's1', cost, apiMs: i * 100 });
+  }
+  const state = JSON.parse(fs.readFileSync(WSTATE, 'utf8'));
+  // Ten ticks a minute apart span nine intervals: the first tick only
+  // establishes a baseline, since there is no earlier instant to measure from.
+  assert.strictEqual(state.activeMs, 9 * 60_000, 'nine working minutes should count as nine');
+});
+
+test('a normal refresh interval is credited in full', async () => {
+  // This provider runs only on a full refresh, 20 minutes apart by default.
+  // A step cap below that interval would undercount every working stretch.
+  fs.rmSync(WSTATE, { force: true });
+  const t0 = Date.UTC(2026, 7, 17, 12, 0, 0);
+  await tick(t0, { sessionId: 's1', cost: 1, apiMs: 10 });
+  await tick(t0 + 20 * 60_000, { sessionId: 's1', cost: 2, apiMs: 20 });
+
+  const state = JSON.parse(fs.readFileSync(WSTATE, 'utf8'));
+  assert.strictEqual(state.activeMs, 20 * 60_000, 'a 20-minute working interval must count fully');
+});
+
+test('a single tick cannot credit more than the step cap', async () => {
+  // A machine suspended mid-session must not donate the whole gap at once.
+  fs.rmSync(WSTATE, { force: true });
+  const t0 = Date.UTC(2026, 7, 17, 12, 0, 0);
+  await tick(t0, { sessionId: 's1', cost: 1, apiMs: 10 });
+  await tick(t0 + 28 * 60_000, { sessionId: 's1', cost: 2, apiMs: 20 }); // under idle reset
+
+  const state = JSON.parse(fs.readFileSync(WSTATE, 'utf8'));
+  assert.strictEqual(state.activeMs, 25 * 60_000, `single step added ${state.activeMs}ms`);
+});
+
+test('the step cap sits between the refresh interval and the idle reset', () => {
+  const cfg = require('../lib/config').load();
+  const refreshMin = cfg.contentMaxAgeMinutes;
+  const idleMin = cfg.providers.wellness.idleResetMinutes;
+  assert.ok(refreshMin < 25, `step cap 25m must exceed the ${refreshMin}m refresh interval`);
+  assert.ok(25 < idleMin, `step cap 25m must fall below the ${idleMin}m idle reset`);
+});
+
+test('a gap beyond the idle window restarts the counter', async () => {
+  fs.rmSync(WSTATE, { force: true });
+  const t0 = Date.UTC(2026, 7, 17, 12, 0, 0);
+  let cost = 1;
+  for (let i = 1; i <= 5; i += 1) {
+    cost += 0.01;
+    await tick(t0 + i * 60_000, { sessionId: 's1', cost, apiMs: i });
+  }
+  await tick(t0 + 5 * 60_000 + 90 * 60_000, { sessionId: 's1', cost: cost + 1, apiMs: 99 });
+
+  const state = JSON.parse(fs.readFileSync(WSTATE, 'utf8'));
+  assert.ok(state.activeMs <= 5 * 60_000, 'a 90-minute break should have reset the stretch');
+});
+
+test('a new session resets the counters instead of stalling them', async () => {
+  // Cost restarts at zero each session; without a session check that looks
+  // like the counter running backwards, and nothing would ever accrue again.
+  fs.rmSync(WSTATE, { force: true });
+  const t0 = Date.UTC(2026, 7, 17, 12, 0, 0);
+  await tick(t0, { sessionId: 'old', cost: 50, apiMs: 9999 });
+
+  let cost = 0;
+  for (let i = 1; i <= 3; i += 1) {
+    cost += 0.01;
+    await tick(t0 + i * 60_000, { sessionId: 'new', cost, apiMs: i });
+  }
+  const state = JSON.parse(fs.readFileSync(WSTATE, 'utf8'));
+  assert.strictEqual(state.sessionId, 'new');
+  assert.ok(state.activeMs > 0, 'a fresh session with lower cost stopped accruing entirely');
+});
+
+test('the break prompt rotates its advice and never repeats the 20-20-20 rule', async () => {
+  // The old status line hardcoded "look 20ft away for 20s" — advice this
+  // plugin's own corpus grades as contested after a null RCT.
+  fs.rmSync(WSTATE, { force: true });
+  const t0 = Date.UTC(2026, 7, 17, 12, 0, 0);
+  let cost = 1;
+  const seen = new Set();
+  for (let i = 1; i <= 12; i += 1) {
+    cost += 0.5;
+    const res = await tick(t0 + i * 4 * 60_000, { sessionId: 's1', cost, apiMs: i * 10 });
+    for (const s of res.status) {
+      assert.ok(!/20ft|20-20-20/.test(s.text), `contested advice resurfaced: ${s.text}`);
+      assert.match(s.text, /\((meta-analysis|RCT|cohort|contested)\)$/, `ungraded advice: ${s.text}`);
+      seen.add(s.text.replace(/^[\d.]+h active · /, ''));
+    }
+  }
+  assert.ok(seen.size > 1, `advice never rotated (${seen.size} distinct)`);
 });
