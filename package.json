@@ -1,6 +1,6 @@
 {
   "name": "claude-smart-thinking",
-  "version": "0.12.8",
+  "version": "0.12.9",
   "private": true,
   "description": "Tests and tooling for the smart-thinking Claude Code plugin. The plugin itself has no runtime dependencies.",
   "scripts": {

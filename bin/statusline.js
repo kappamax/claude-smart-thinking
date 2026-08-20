@@ -15,8 +15,42 @@ const paths = require('../lib/paths');
 const config = require('../lib/config');
 const { readJson } = require('../lib/jsonio');
 
-const DIM = '\x1b[2m';
-const RESET = '\x1b[0m';
+/**
+ * Status line styling.
+ *
+ * This used ANSI faint (SGR 2) unconditionally, which many terminals render as
+ * near-black — unreadable on a dark background, which is most of them. Faint is
+ * a request to de-emphasise and terminals interpret it however they like, so it
+ * is the wrong tool for "slightly quieter than the line above".
+ *
+ * Default is now a mid-tone grey that is legible on both dark and light
+ * backgrounds. 'dim' remains available for anyone whose terminal renders faint
+ * sensibly, and 'plain' inherits the terminal's own foreground.
+ */
+const STATUS_STYLES = {
+  plain: null,
+  dim: '\x1b[2m',
+  grey: '\x1b[38;5;245m',
+  blue: '\x1b[38;5;110m',
+  green: '\x1b[38;5;108m',
+};
+const DEFAULT_STATUS_STYLE = 'grey';
+const FG_RESET = '\x1b[39m';
+const ATTR_RESET = '\x1b[0m';
+
+/**
+ * Status lines wrap too, and the same rule applies as for tips: a renderer that
+ * splits the string leaves every line after the first unstyled, so the escape
+ * is re-applied per word.
+ */
+function styleStatus(text, styleName) {
+  const open = STATUS_STYLES[styleName] !== undefined
+    ? STATUS_STYLES[styleName]
+    : STATUS_STYLES[DEFAULT_STATUS_STYLE];
+  if (!open) return text;
+  const close = open === STATUS_STYLES.dim ? ATTR_RESET : FG_RESET;
+  return `${text.split(' ').map((w) => (w ? `${open}${w}` : w)).join(' ')}${close}`;
+}
 
 function readStdin() {
   try {
@@ -130,7 +164,9 @@ function main() {
   }
 
   const item = pickStatus(cache && cache.status, cfg.refreshIntervalSeconds ?? 30);
-  if (item && item.text) lines.push(`${DIM}${item.text}${RESET}`);
+  if (item && item.text) {
+    lines.push(styleStatus(item.text, cfg.statusLine && cfg.statusLine.style));
+  }
 
   process.stdout.write(`${lines.join('\n')}\n`);
 }

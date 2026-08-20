@@ -2,6 +2,8 @@
 
 const test = require('node:test');
 const assert = require('node:assert');
+const fs = require('fs');
+const path = require('path');
 const { formatTip, osc8, terminalSupportsHyperlinks, SEP } = require('../lib/format');
 
 const ITEM = {
@@ -242,4 +244,16 @@ test('the action is italicised, wrap-safely, and closes before the hint', () => 
   assert.ok(out.lastIndexOf('\x1b[23m') < out.lastIndexOf('↗'), 'italic leaked past the action');
   // Re-applied per word so a wrap inside the action keeps it.
   assert.ok((out.match(/\x1b\[3m/g) || []).length > 1, 'italic not wrap-safe');
+});
+
+// ------------------------------------------------------- status line styling
+
+test('status line styling is readable and wrap-safe', () => {
+  // Regression: the status line used ANSI faint unconditionally, which many
+  // terminals render as near-black — unreadable on a dark background.
+  const src = fs.readFileSync(path.join(__dirname, '..', 'bin', 'statusline.js'), 'utf8');
+  assert.ok(!/lines\.push\(`\$\{DIM\}/.test(src), 'faint is no longer applied unconditionally');
+  assert.match(src, /DEFAULT_STATUS_STYLE = 'grey'/, 'default should be a legible mid-tone');
+  // Re-applied per word, for the same reason tips are.
+  assert.match(src, /text\.split\(' '\)\.map/, 'status styling must survive a wrap');
 });
