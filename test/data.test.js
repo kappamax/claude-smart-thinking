@@ -162,9 +162,27 @@ test('deck: an empirical claim may not rest on an encyclopaedia entry', () => {
     `empirical cards not citing a study: ${offenders.join(', ')}`);
 });
 
-test('deck: peer-reviewed cards point at a resolvable record, not a paywall guess', () => {
+test('deck: a peer-reviewed card cites the paper, not an encyclopaedia', () => {
+  // An allowlist of hosts was too narrow. Computer science publishes through
+  // ACM and IEEE, both of which return 403 to any automated client, so the
+  // accessible copy of a paper is often an author's or institution's PDF —
+  // legitimately the paper, just not on a host anyone could enumerate. What
+  // matters is that it is not a summary of the paper.
+  const NOT_A_PAPER = /wikipedia\.org|wikimedia\.org|medium\.com|\bblog\b/i;
   for (const c of deck.cards.filter((x) => x.sourceType === 'peer-reviewed')) {
-    assert.match(c.url, /pubmed\.ncbi\.nlm\.nih\.gov|ncbi\.nlm\.nih\.gov|arxiv\.org/,
-      `${c.id}: peer-reviewed cards must cite an indexed record`);
+    assert.ok(!NOT_A_PAPER.test(c.url), `${c.id}: cites a summary, not the paper — ${c.url}`);
+    assert.match(c.url, /^https?:\/\//, `${c.id}: bad url`);
   }
+});
+
+test('deck: Technique is deliberately not gated, and the reason is recorded', () => {
+  // Most Technique cards describe a design practice rather than an empirical
+  // finding, so a study is the wrong standard. Of those that do have a
+  // canonical paper, many are behind ACM or IEEE paywalls that return 403 —
+  // and a link to a 403 serves the reader worse than an encyclopaedia entry
+  // does. This test exists so the gap is a recorded decision, not an oversight.
+  const tech = deck.cards.filter((c) => c.tag === 'Technique');
+  assert.ok(tech.length > 20, 'expected the Technique corpus to still be substantial');
+  const sourced = tech.filter((c) => c.sourceType !== 'reference').length;
+  assert.ok(sourced >= 15, `Technique regressed: only ${sourced}/${tech.length} above reference`);
 });

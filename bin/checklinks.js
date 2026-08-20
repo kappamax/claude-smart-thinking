@@ -26,7 +26,7 @@ const TIMEOUT_MS = 15000;
  * requests a second they allow without an API key. A checker that invents
  * failures is worse than no checker, so these hosts get a single-file queue.
  */
-const THROTTLED = [{ match: /ncbi\.nlm\.nih\.gov$/, gapMs: 800 }];
+const THROTTLED = [{ match: /ncbi\.nlm\.nih\.gov$/, gapMs: 1300 }];
 const lastHit = new Map();
 
 function throttleFor(url) {
@@ -40,9 +40,17 @@ async function waitTurn(url) {
   const rule = throttleFor(url);
   if (!rule) return;
   const key = rule.match.source;
-  const prev = lastHit.get(key) || 0;
-  const wait = Math.max(0, prev + rule.gapMs - Date.now());
-  lastHit.set(key, Date.now() + wait);
+
+  // Reserve the next slot and advance the cursor by the gap. The first version
+  // stored `Date.now() + wait`, which evaluates to the slot just claimed rather
+  // than the one after it — so every worker reserved the same instant and the
+  // throttle did nothing. Two good PubMed links were reported as 429 because of
+  // it, which is precisely the false failure this function exists to prevent.
+  const now = Date.now();
+  const slot = Math.max(lastHit.get(key) || 0, now);
+  lastHit.set(key, slot + rule.gapMs);
+
+  const wait = slot - now;
   if (wait > 0) await new Promise((r) => setTimeout(r, wait));
 }
 
@@ -61,7 +69,7 @@ async function check(url) {
     if (res.status === 429) {
       // Back off and try once more; reporting this as a dead link would be a
       // false failure caused by the checker's own request rate.
-      await new Promise((r) => setTimeout(r, 5000));
+      await new Promise((r) => setTimeout(r, 8000));
       // The retry goes through the same queue, or it just re-triggers the limit.
       await waitTurn(url);
       const retry = await fetch(url, {

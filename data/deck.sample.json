@@ -28,9 +28,9 @@
       "id": "knuth-dlx",
       "tag": "Knuth",
       "text": "Dancing Links: in a doubly linked list, `x.left.right = x.right` removes a node \u2014 and `x.left.right = x` puts it back, because the removed node still points home. Backtracking for free.",
-      "url": "https://en.wikipedia.org/wiki/Dancing_Links",
+      "url": "https://arxiv.org/abs/cs/0011047",
       "action": "Reach for it on exact-cover problems \u2014 sudoku solvers, tiling, shift scheduling.",
-      "sourceType": "reference"
+      "sourceType": "peer-reviewed"
     },
     {
       "id": "knuth-literate",
@@ -995,9 +995,9 @@
       "id": "tech-hll",
       "tag": "Technique",
       "text": "HyperLogLog counts distinct items in about 1.5KB regardless of input size, with ~2% error. Redis uses it to count unique visitors in billions without storing a single one.",
-      "url": "https://en.wikipedia.org/wiki/HyperLogLog",
+      "url": "http://algo.inria.fr/flajolet/Publications/FlFuGaMe07.pdf",
       "action": "Use it when you need a count, not the items. Postgres and Redis both ship it.",
-      "sourceType": "reference"
+      "sourceType": "peer-reviewed"
     },
     {
       "id": "tech-consistent-hash",
@@ -1027,9 +1027,9 @@
       "id": "tech-crdt",
       "tag": "Technique",
       "text": "CRDTs are built so concurrent edits merge to the same result regardless of arrival order \u2014 collaborative editing with no central server and no conflict resolution step.",
-      "url": "https://en.wikipedia.org/wiki/Conflict-free_replicated_data_type",
+      "url": "https://hal.inria.fr/inria-00555588",
       "action": "Choose it when offline edits must merge without a server arbitrating \u2014 not when you need a strict global order.",
-      "sourceType": "reference"
+      "sourceType": "peer-reviewed"
     },
     {
       "id": "tech-lsm",
@@ -1043,9 +1043,9 @@
       "id": "tech-wal",
       "tag": "Technique",
       "text": "Write-ahead logging gets durability by recording what you intend to do before doing it. After a crash you replay intent \u2014 the same trick a temp-file-then-rename gives you at file scale.",
-      "url": "https://en.wikipedia.org/wiki/Write-ahead_logging",
+      "url": "https://martinfowler.com/articles/patterns-of-distributed-systems/wal.html",
       "action": "Any time you must survive a crash mid-update: record intent first, then act, then mark done.",
-      "sourceType": "reference"
+      "sourceType": "primary"
     },
     {
       "id": "tech-cow",
@@ -1115,9 +1115,9 @@
       "id": "tech-property-testing",
       "tag": "Technique",
       "text": "Property-based testing generates thousands of inputs against an invariant, then shrinks any failure to the smallest case that still breaks. You get the minimal reproduction for free.",
-      "url": "https://en.wikipedia.org/wiki/QuickCheck",
+      "url": "https://www.cs.tufts.edu/~nr/cs257/archive/john-hughes/quick.pdf",
       "action": "Write one invariant instead of twenty examples, and let it find the edge case you'd never type.",
-      "sourceType": "reference"
+      "sourceType": "peer-reviewed"
     },
     {
       "id": "tech-mutation",
@@ -1163,17 +1163,17 @@
       "id": "tech-circuit-breaker",
       "tag": "Technique",
       "text": "A circuit breaker stops calling a failing dependency entirely for a while. Retrying a service that's already overloaded is how a partial outage becomes a total one.",
-      "url": "https://en.wikipedia.org/wiki/Circuit_breaker_design_pattern",
+      "url": "https://martinfowler.com/bliki/CircuitBreaker.html",
       "action": "Wrap every call to a dependency that can be slow, and fail fast rather than queueing.",
-      "sourceType": "reference"
+      "sourceType": "primary"
     },
     {
       "id": "tech-backpressure",
       "tag": "Technique",
       "text": "Backpressure means a slow consumer can tell a fast producer to wait. Without it, queues grow until memory runs out \u2014 the failure surfaces far from the component that caused it.",
-      "url": "https://en.wikipedia.org/wiki/Back_pressure",
+      "url": "https://www.reactive-streams.org/",
       "action": "Bound your queues. An unbounded one converts a slowdown into an out-of-memory crash.",
-      "sourceType": "reference"
+      "sourceType": "primary"
     },
     {
       "id": "tech-littles-law",
@@ -1187,25 +1187,25 @@
       "id": "tech-conway",
       "tag": "Technique",
       "text": "Conway's law says systems mirror the communication structure of the organizations that build them. The inverse Conway manoeuvre reorganizes the teams to get the architecture you want.",
-      "url": "https://en.wikipedia.org/wiki/Conway%27s_law",
+      "url": "https://www.melconway.com/Home/Conways_Law.html",
       "action": "If you want a boundary in the system, put a team boundary there first.",
-      "sourceType": "reference"
+      "sourceType": "primary"
     },
     {
       "id": "tech-worse-is-better",
       "tag": "Technique",
       "text": "\"Worse is Better\": a simpler design that ships and spreads often beats a more correct one that doesn't. Richard Gabriel argued this against his own preferences and never fully talked himself into it.",
-      "url": "https://en.wikipedia.org/wiki/Worse_is_better",
+      "url": "https://www.dreamsongs.com/RiseOfWorseIsBetter.html",
       "action": "When choosing between shipping and completeness, notice which one you're actually optimising for.",
-      "sourceType": "reference"
+      "sourceType": "primary"
     },
     {
       "id": "tech-postel",
       "tag": "Technique",
       "text": "Postel's law \u2014 be liberal in what you accept \u2014 built the early internet and is now considered partly harmful: every accepted deviation becomes a permanent de-facto part of the protocol.",
-      "url": "https://en.wikipedia.org/wiki/Robustness_principle",
+      "url": "https://www.rfc-editor.org/rfc/rfc1122",
       "action": "Be strict in what you accept in anything new. Leniency you ship today is a compatibility burden forever.",
-      "sourceType": "reference"
+      "sourceType": "primary"
     },
     {
       "id": "tech-walking-skeleton",
@@ -1227,17 +1227,17 @@
       "id": "tech-chaos",
       "tag": "Technique",
       "text": "Chaos engineering injects failures deliberately in production, on the argument that the alternative isn't \"no failures\" but failures at 3am that nobody rehearsed.",
-      "url": "https://en.wikipedia.org/wiki/Chaos_engineering",
+      "url": "https://ieeexplore.ieee.org/document/7436642",
       "action": "Start by killing one instance in staging during working hours and watching what pages.",
-      "sourceType": "reference"
+      "sourceType": "peer-reviewed"
     },
     {
       "id": "tech-zero-copy",
       "tag": "Technique",
       "text": "Zero-copy sends a file to a socket without ever moving bytes through user space. Kafka's throughput is substantially a story about not copying data.",
-      "url": "https://en.wikipedia.org/wiki/Zero-copy",
+      "url": "https://man7.org/linux/man-pages/man2/sendfile.2.html",
       "action": "Serving files? Use sendfile rather than read-then-write, and skip user space entirely.",
-      "sourceType": "reference"
+      "sourceType": "primary"
     },
     {
       "id": "tech-arena",
