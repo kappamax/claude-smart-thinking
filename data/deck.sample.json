@@ -14,15 +14,15 @@
       "id": "knuth-reward",
       "tag": "Knuth",
       "text": "Knuth pays $2.56 for each error found in his books \u2014 \"one hexadecimal dollar.\" The uncashed checks are famously treasured more than the money.",
-      "url": "https://en.wikipedia.org/wiki/Knuth_reward_check",
-      "sourceType": "reference"
+      "url": "https://www-cs-faculty.stanford.edu/~knuth/faq.html",
+      "sourceType": "primary"
     },
     {
       "id": "knuth-tex",
       "tag": "Knuth",
       "text": "Knuth paused The Art of Computer Programming for nearly a decade to build TeX, because he couldn't stand how the second edition was typeset.",
-      "url": "https://en.wikipedia.org/wiki/TeX",
-      "sourceType": "reference"
+      "url": "https://www.tug.org/whatis.html",
+      "sourceType": "primary"
     },
     {
       "id": "knuth-dlx",
@@ -36,9 +36,9 @@
       "id": "knuth-literate",
       "tag": "Knuth",
       "text": "Literate programming inverts the usual order: you write for a human reader and the compiler extracts the code, rather than writing for the compiler and apologizing in comments.",
-      "url": "https://en.wikipedia.org/wiki/Literate_programming",
+      "url": "https://www-cs-faculty.stanford.edu/~knuth/lp.html",
       "action": "Write the explanation first and let the code follow it. If the prose won't come, the design isn't settled.",
-      "sourceType": "reference"
+      "sourceType": "primary"
     },
     {
       "id": "knuth-analysis",
@@ -52,8 +52,8 @@
       "id": "taocp-mmix",
       "tag": "Knuth",
       "text": "TAOCP's example machine MIX was retired for MMIX because MIX's design had aged badly \u2014 Knuth revised a fictional computer for realism.",
-      "url": "https://en.wikipedia.org/wiki/MMIX",
-      "sourceType": "reference"
+      "url": "https://www-cs-faculty.stanford.edu/~knuth/taocp.html",
+      "sourceType": "primary"
     },
     {
       "id": "bio-cell-ratio",
@@ -775,50 +775,50 @@
       "id": "knuth-tex-pi",
       "tag": "Knuth",
       "text": "TeX's version number converges to \u03c0 \u2014 3.14159265\u2026 \u2014 gaining a digit per release. METAFONT's converges to e. On Knuth's death both freeze permanently and any remaining bugs become features.",
-      "url": "https://en.wikipedia.org/wiki/TeX",
-      "sourceType": "reference"
+      "url": "https://www.tug.org/whatis.html",
+      "sourceType": "primary"
     },
     {
       "id": "knuth-bounty-double",
       "tag": "Knuth",
       "text": "The TeX bug bounty started at $2.56 and doubled every year, reaching $327.68. Knuth was betting the bugs would run out before the money did.",
-      "url": "https://en.wikipedia.org/wiki/Knuth_reward_check",
-      "sourceType": "reference"
+      "url": "https://www-cs-faculty.stanford.edu/~knuth/faq.html",
+      "sourceType": "primary"
     },
     {
       "id": "knuth-san-serriffe",
       "tag": "Knuth",
       "text": "Knuth's reward checks are drawn on the Bank of San Serriffe \u2014 a fictional island nation invented by The Guardian for an April Fools' supplement in 1977.",
-      "url": "https://en.wikipedia.org/wiki/San_Serriffe",
-      "sourceType": "reference"
+      "url": "https://www-cs-faculty.stanford.edu/~knuth/faq.html",
+      "sourceType": "primary"
     },
     {
       "id": "knuth-proved-not-tried",
       "tag": "Knuth",
       "text": "\"Beware of bugs in the above code; I have only proved it correct, not tried it.\" \u2014 Knuth, 1977, and still the most honest sentence in computer science.",
-      "url": "https://en.wikipedia.org/wiki/Donald_Knuth",
-      "sourceType": "reference"
+      "url": "https://www-cs-faculty.stanford.edu/~knuth/faq.html",
+      "sourceType": "primary"
     },
     {
       "id": "knuth-scope-creep",
       "tag": "Knuth",
       "text": "TAOCP started in 1962 as a single book about compilers. It is now planned as seven volumes, and he is still writing \u2014 the most consequential scope creep in publishing.",
-      "url": "https://en.wikipedia.org/wiki/The_Art_of_Computer_Programming",
-      "sourceType": "reference"
+      "url": "https://www-cs-faculty.stanford.edu/~knuth/taocp.html",
+      "sourceType": "primary"
     },
     {
       "id": "knuth-organ",
       "tag": "Knuth",
       "text": "Knuth has a pipe organ in his house and composed Fantasia Apocalyptica, a full-length organ work setting the Book of Revelation, premiered in 2018.",
-      "url": "https://en.wikipedia.org/wiki/Donald_Knuth",
-      "sourceType": "reference"
+      "url": "https://www-cs-faculty.stanford.edu/~knuth/fant.html",
+      "sourceType": "primary"
     },
     {
       "id": "knuth-surreal",
       "tag": "Knuth",
       "text": "Knuth wrote Surreal Numbers in a week in an Oslo hotel room \u2014 a novelette in which two people on a beach derive Conway's number system from scratch. A major mathematical idea introduced as fiction.",
-      "url": "https://en.wikipedia.org/wiki/Surreal_Numbers",
-      "sourceType": "reference"
+      "url": "https://www-cs-faculty.stanford.edu/~knuth/sn.html",
+      "sourceType": "primary"
     },
     {
       "id": "knuth-songs",
@@ -876,17 +876,17 @@
       "id": "lore-mother-demo",
       "tag": "Computing lore",
       "text": "In 90 minutes in 1968, Engelbart demonstrated the mouse, hypertext, windows, version control and video conferencing. It is remembered as The Mother of All Demos; most of it took decades to arrive.",
-      "url": "https://en.wikipedia.org/wiki/The_Mother_of_All_Demos",
+      "url": "https://dougengelbart.org/content/view/209/",
       "action": "When a demo looks decades early, ask what made it impossible to ship \u2014 usually cost, not the idea.",
-      "sourceType": "reference"
+      "sourceType": "primary"
     },
     {
       "id": "lore-mel",
       "tag": "Computing lore",
       "text": "A 1983 story about a programmer at Royal McBee, whose machine stored instructions on a spinning drum. Mel placed each instruction at the exact drum position the head would reach next, so the machine never waited. He thought optimising compilers were cheating.",
-      "url": "https://en.wikipedia.org/wiki/The_Story_of_Mel",
+      "url": "https://www.cs.utah.edu/~elb/folklore/mel.html",
       "action": "Before admiring a clever optimisation, ask who maintains it after the author leaves.",
-      "sourceType": "reference"
+      "sourceType": "primary"
     },
     {
       "id": "lore-trusting-trust",
@@ -900,9 +900,9 @@
       "id": "lore-ewd",
       "tag": "Computing lore",
       "text": "Dijkstra wrote roughly 1,300 numbered manuscripts by fountain pen, photocopied them, and mailed them to colleagues. The EWDs functioned as a personal, analogue blog for forty years.",
-      "url": "https://en.wikipedia.org/wiki/Edsger_W._Dijkstra",
+      "url": "https://www.cs.utexas.edu/~EWD/",
       "action": "Write the argument down and circulate it. Dijkstra's reach came from distribution, not from a platform.",
-      "sourceType": "reference"
+      "sourceType": "primary"
     },
     {
       "id": "lore-therac",
@@ -923,9 +923,9 @@
       "id": "lore-hamming",
       "tag": "Computing lore",
       "text": "Hamming: \"The purpose of computing is insight, not numbers.\" He also asked colleagues at lunch what the most important problem in their field was, and why they weren't working on it.",
-      "url": "https://en.wikipedia.org/wiki/Richard_Hamming",
+      "url": "https://www.cs.virginia.edu/~robins/YouAndYourResearch.html",
       "action": "Ask yourself Hamming's question about your own field, and write down the answer.",
-      "sourceType": "reference"
+      "sourceType": "primary"
     },
     {
       "id": "lore-y2k38",

@@ -93,6 +93,14 @@ test('evidence corpus: contested claims say so in the text', () => {
   }
 });
 
+test('feed catalog is documented as a reading list, not a tip source', () => {
+  // The provider that consumed it is gone. The file survives because the
+  // curation was real work and the sources were verified — but nothing should
+  // read it back into tips, so the note has to say so.
+  assert.match(catalog.note, /NOT wired into tips/i,
+    'the catalog must state that it no longer feeds the spinner');
+});
+
 test('feed catalog: every feed has a url, mode and rationale', () => {
   const modes = new Set(Object.keys(catalog.modes));
   for (const [name, bundle] of Object.entries(catalog.bundles)) {
