@@ -153,9 +153,11 @@ test('rounding never emits an impossible unit', () => {
 
 test('a coloured hyperlink tints the label and leaves the escape intact', () => {
   const out = formatTip(ITEM, 'hyperlink', {}, undefined, 'blue');
-  assert.ok(out.startsWith('Bread · \x1b[34m'), 'colour should open before the link');
-  assert.ok(out.includes('\x1b]8;;https://example.org/staling\x07'), 'OSC 8 opener was damaged');
-  assert.ok(out.endsWith('\x1b[39m'), 'colour should close at the end');
+  // Colour sits *inside* the OSC 8 label, not around it, so that it can be
+  // re-applied per word and survive the renderer wrapping the line.
+  assert.ok(out.startsWith('Bread · \x1b]8;;'), 'the link should open first');
+  assert.ok(out.includes('\x1b]8;;https://example.org/staling\x07\x1b[34m'), 'colour should start inside the label');
+  assert.ok(out.endsWith('\x1b]8;;\x07'), 'the link must close last');
   // 39 resets only the foreground; 0 would also clear any dim attribute the
   // surrounding line is using.
   assert.ok(!out.includes('\x1b[0m'), 'must not use a full reset');
@@ -182,4 +184,27 @@ test('an unknown colour name degrades to no colour rather than garbage', () => {
 test('a card with no url is never coloured', () => {
   const out = formatTip({ category: 'Project', text: '33 files, no tests.' }, 'hyperlink', {}, undefined, 'blue');
   assert.ok(!out.includes('\x1b['), 'nothing to link means nothing to tint');
+});
+
+test('colour is re-applied per word so a wrapped tip stays coloured', () => {
+  // A single leading SGR is terminal state and survives a wrap — unless the
+  // renderer splits the string and emits each line separately, which drops the
+  // colour on every continuation line.
+  const out = formatTip(ITEM, 'hyperlink', {}, undefined, 'blue');
+  const opens = (out.match(/\x1b\[34m/g) || []).length;
+  assert.ok(opens > 5, `expected the colour re-applied per word, saw ${opens} occurrences`);
+
+  // Every word of the visible label must carry it, so no wrap point is naked.
+  const label = ITEM.text.split(' ').filter(Boolean);
+  for (const w of label) {
+    assert.ok(out.includes(`\x1b[34m${w}`), `word not coloured: ${w}`);
+  }
+});
+
+test('the hyperlink still works with colour codes inside the label', () => {
+  const out = formatTip(ITEM, 'hyperlink', {}, undefined, 'blue');
+  assert.ok(out.includes(`\x1b]8;;${ITEM.url}\x07`), 'OSC 8 opener damaged');
+  assert.ok(out.endsWith('\x1b]8;;\x07'), 'OSC 8 must still close last');
+  // Exactly one reset, at the end of the label rather than sprinkled through.
+  assert.strictEqual((out.match(/\x1b\[39m/g) || []).length, 1);
 });

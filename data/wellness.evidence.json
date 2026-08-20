@@ -305,6 +305,87 @@
       "action": "Skip the scan for ordinary back pain absent red flags, and keep moving rather than resting.",
       "source": "https://pubmed.ncbi.nlm.nih.gov/19200918/",
       "verified": "2026-08-17"
+    },
+    {
+      "id": "myth-sugar-hyperactivity",
+      "topic": "Children",
+      "evidence": "meta-analysis",
+      "text": "Sugar does not make children hyperactive. A meta-analysis of double-blind trials found no effect on behaviour or cognition \u2014 but parents told their child had been given sugar rated the same child as more hyperactive, which is where the belief comes from",
+      "action": "Judge the behaviour without knowing what they ate. The expectation is doing the work.",
+      "source": "https://pubmed.ncbi.nlm.nih.gov/7474248/",
+      "verified": "2026-08-20"
+    },
+    {
+      "id": "myth-blue-light-lenses",
+      "topic": "Eyes",
+      "evidence": "meta-analysis",
+      "text": "A 2023 Cochrane review found blue-light filtering lenses give no measurable reduction in eye strain, no improvement in sleep quality, and no evidence of protecting the retina",
+      "action": "Don't pay extra for the coating. Brightness, distance and blinking are the levers that exist.",
+      "source": "https://pubmed.ncbi.nlm.nih.gov/37593770/",
+      "verified": "2026-08-20"
+    },
+    {
+      "id": "myth-knee-arthroscopy",
+      "topic": "Joints",
+      "evidence": "RCT",
+      "text": "For a degenerative meniscal tear with no injury behind it, arthroscopic partial meniscectomy performed no better than sham surgery \u2014 the group who got incisions and no procedure improved just as much",
+      "action": "For age-related knee pain, ask about exercise therapy before agreeing to arthroscopy.",
+      "source": "https://pubmed.ncbi.nlm.nih.gov/24369076/",
+      "verified": "2026-08-20"
+    },
+    {
+      "id": "myth-antioxidants",
+      "topic": "Nutrition",
+      "evidence": "meta-analysis",
+      "text": "Antioxidant supplements do not extend life. Pooling the randomised trials, beta-carotene and vitamin E were associated with *higher* mortality \u2014 the opposite of the reason people take them",
+      "action": "Eat the foods. The pill was never the mechanism, and at these doses it may be the harm.",
+      "source": "https://pubmed.ncbi.nlm.nih.gov/26018887/",
+      "verified": "2026-08-20"
+    },
+    {
+      "id": "myth-vitamin-c-colds",
+      "topic": "Nutrition",
+      "evidence": "meta-analysis",
+      "text": "Regular vitamin C does not reduce how often you catch a cold in the general population. It shortens duration by roughly 8% in adults \u2014 about half a day off a week-long cold",
+      "action": "Not worth taking to prevent colds. If you already do, expect hours rather than days.",
+      "source": "https://pubmed.ncbi.nlm.nih.gov/23440782/",
+      "verified": "2026-08-20"
+    },
+    {
+      "id": "myth-opioids-chronic-pain",
+      "topic": "Pain",
+      "evidence": "RCT",
+      "text": "Over twelve months, opioids were no better than non-opioid medication for chronic back, hip or knee pain \u2014 and the opioid group reported more side effects. The trial randomised patients to find out",
+      "action": "Ask to start on the non-opioid arm. The trial found nothing was lost by doing so.",
+      "source": "https://pubmed.ncbi.nlm.nih.gov/29509867/",
+      "verified": "2026-08-20"
+    },
+    {
+      "id": "myth-annual-physical",
+      "topic": "Screening",
+      "evidence": "meta-analysis",
+      "text": "General health checks in adults do not reduce overall, cardiovascular or cancer mortality. They do reliably increase the number of diagnoses and treatments",
+      "action": "Prioritise the targeted screening you're actually eligible for over a general once-over.",
+      "source": "https://pubmed.ncbi.nlm.nih.gov/30699470/",
+      "verified": "2026-08-20"
+    },
+    {
+      "id": "myth-probiotics-antibiotics",
+      "topic": "Gut",
+      "evidence": "RCT",
+      "text": "Taking probiotics after antibiotics *delayed* the gut microbiome returning to baseline \u2014 for months in some people \u2014 while an autologous faecal transplant restored it within days",
+      "action": "Don't reflexively take probiotics after a course of antibiotics. Fibre and fermented food are the safer default.",
+      "source": "https://pubmed.ncbi.nlm.nih.gov/30193113/",
+      "verified": "2026-08-20"
+    },
+    {
+      "id": "myth-glucosamine",
+      "topic": "Joints",
+      "evidence": "meta-analysis",
+      "text": "Across ten trials, glucosamine, chondroitin and the two combined produced no clinically relevant reduction in joint pain compared with placebo for hip or knee osteoarthritis",
+      "action": "Not worth the money for knee or hip arthritis. Loading the joint through exercise has far better evidence.",
+      "source": "https://pubmed.ncbi.nlm.nih.gov/20847017/",
+      "verified": "2026-08-20"
     }
   ]
 }
