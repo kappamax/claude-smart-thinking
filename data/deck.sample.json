@@ -559,54 +559,6 @@
       "sourceType": "primary"
     },
     {
-      "id": "health-caffeine",
-      "tag": "Health",
-      "text": "Caffeine's half-life is around 5\u20136 hours, so an afternoon coffee still has a quarter of its dose in you at midnight \u2014 often felt as poor sleep rather than wakefulness.",
-      "url": "https://en.wikipedia.org/wiki/Caffeine",
-      "action": "Set a cut-off six hours before bed and judge by your sleep, not by how awake you feel.",
-      "sourceType": "reference"
-    },
-    {
-      "id": "health-vo2",
-      "tag": "Health",
-      "text": "Cardiorespiratory fitness is among the strongest predictors of all-cause mortality \u2014 a larger effect than most single risk factors people worry about more.",
-      "url": "https://en.wikipedia.org/wiki/VO2_max",
-      "action": "Add one session a week hard enough that talking is difficult.",
-      "sourceType": "reference"
-    },
-    {
-      "id": "health-alcohol-rem",
-      "tag": "Health",
-      "text": "Alcohol shortens time to sleep and then suppresses REM and fragments the second half of the night. It sedates rather than rests.",
-      "url": "https://en.wikipedia.org/wiki/Alcohol_and_health",
-      "action": "Stop drinking three or more hours before bed if you want the sleep.",
-      "sourceType": "reference"
-    },
-    {
-      "id": "health-8glasses",
-      "tag": "Health",
-      "text": "The \"8 glasses of water a day\" rule has no solid evidence base and ignores water in food and other drinks. Thirst is a decent controller.",
-      "url": "https://en.wikipedia.org/wiki/Drinking_water",
-      "action": "Drink to thirst; count coffee, tea and food toward the total.",
-      "sourceType": "reference"
-    },
-    {
-      "id": "health-nap",
-      "tag": "Health",
-      "text": "Nap 20 minutes or 90, not 45. Waking from deep sleep mid-cycle produces the grogginess that makes people believe naps don't work for them.",
-      "url": "https://en.wikipedia.org/wiki/Power_nap",
-      "action": "Keep naps short and early, and don't use cycle arithmetic to time them.",
-      "sourceType": "reference"
-    },
-    {
-      "id": "health-stretching",
-      "tag": "Health",
-      "text": "Static stretching before exercise doesn't prevent injury and can slightly reduce power output. Warm up by moving; save long holds for afterwards.",
-      "url": "https://en.wikipedia.org/wiki/Stretching",
-      "action": "Do the first set of your activity at half effort as the warm-up.",
-      "sourceType": "reference"
-    },
-    {
       "id": "lang-basque",
       "tag": "Language",
       "text": "Basque is a language isolate with no proven relatives \u2014 it was spoken in Western Europe before Indo-European arrived and simply never yielded.",
@@ -1417,18 +1369,10 @@
     },
     {
       "id": "mech-anesthesia",
-      "tag": "Medicine",
+      "tag": "Physiology",
       "text": "We have used general anaesthesia since 1846 and still cannot fully explain how it works. The molecular mechanism by which it produces unconsciousness remains genuinely open.",
       "url": "https://en.wikipedia.org/wiki/General_anaesthesia",
       "action": "Hold mechanism explanations in medicine loosely. Working reliably and being understood are different things.",
-      "sourceType": "reference"
-    },
-    {
-      "id": "mech-hangover",
-      "tag": "Medicine",
-      "text": "Hangover severity tracks acetaldehyde and inflammatory cytokines more than dehydration. Congeners in darker spirits worsen it, which is why the drink matters as much as the dose.",
-      "url": "https://en.wikipedia.org/wiki/Hangover",
-      "action": "Lighter-coloured spirits and a slower pace help more than drinking water does.",
       "sourceType": "reference"
     },
     {

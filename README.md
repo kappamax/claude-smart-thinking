@@ -13,7 +13,7 @@ Leaving in 25m · 76°F overcast (feels 83°F)
   borrowing the filing system. → https://en.wikipedia.org/wiki/CRISPR
 ```
 
-**One useful line, plus a link to go deeper.** A fact with no path to follow up is trivia. Every card and every headline carries a URL, and `bin/checklinks.js` verifies they resolve — a plausible-looking link that 404s spends the reader's click and their trust. All 131 starter cards are link-checked.
+**One useful line, plus a link to go deeper.** A fact with no path to follow up is trivia. Every card and every headline carries a URL, and `bin/checklinks.js` verifies they resolve — a plausible-looking link that 404s spends the reader's click and their trust. Every link is verified by `bin/checklinks.js`, and `bin/checkclaims.js` audits the health corpus against PubMed for retractions.
 
 ## What's actually overridable
 
@@ -112,8 +112,8 @@ node bin/checklinks.js            # checks every deck URL resolves
 **Releasing.** `version` appears in both manifests and pins the plugin — users only receive an update when the string changes, so bump both on every release. **Patch-bump per change** (`0.12.0` → `0.12.1`); reserve a minor bump for something that genuinely changes what the plugin does. A test asserts the two manifests agree, because drift means installs resolve one version while the update check reads the other. Installs land in a version-stamped directory:
 
 ```
-~/.claude/plugins/cache/kappamax/smart-thinking/0.1.0/
-                                                  └── becomes 0.2.0 on update
+~/.claude/plugins/cache/kappamax/smart-thinking/0.12.0/
+                                                   └── becomes 0.12.1 on update
 ```
 
 That path *is* `${CLAUDE_PLUGIN_ROOT}`, which is why nothing durable may live inside it and why the SessionStart hook rewrites `statusLine.command` every session. Verified: after a version bump, the hook re-points the status line from `0.1.0` to `0.2.0` with no user action.

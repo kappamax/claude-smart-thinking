@@ -186,3 +186,18 @@ test('deck: Technique is deliberately not gated, and the reason is recorded', ()
   const sourced = tech.filter((c) => c.sourceType !== 'reference').length;
   assert.ok(sourced >= 15, `Technique regressed: only ${sourced}/${tech.length} above reference`);
 });
+
+test('health content lives in the graded corpus, never in the deck', () => {
+  // The deck carried six Health cards that duplicated corpus claims on
+  // Wikipedia links with no evidence grading — including the "nap 20 or 90
+  // minutes" cycle arithmetic that the corpus explicitly marks contested. The
+  // plugin could therefore serve a debunked claim and its correction in the
+  // same rotation. One home per domain, and for health that home is graded.
+  const CORPUS_OWNS = new Set(['Health', 'Sleep', 'Nutrition', 'Exercise',
+    'Meditation', 'Breathing', 'Mental health', 'Medicine', 'Alcohol']);
+  const offenders = deck.cards
+    .filter((c) => CORPUS_OWNS.has(c.tag))
+    .map((c) => `${c.id} (${c.tag})`);
+  assert.deepStrictEqual(offenders, [],
+    `health claims must move to wellness.evidence.json: ${offenders.join(', ')}`);
+});
