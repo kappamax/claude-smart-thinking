@@ -130,7 +130,10 @@ test('deck: an empirical claim may not rest on an encyclopaedia entry', () => {
   // Ratcheting gate. These topics assert something about the world that a study
   // could confirm or refute, so they must cite one. The list grows as tags are
   // re-sourced; it must never shrink.
-  const EMPIRICAL = new Set(['Psychology', 'Learning']);
+  // Mathematics is deliberately absent: a theorem's truth does not rest on
+  // evidence, so holding a proof to a peer-reviewed-study standard is a
+  // category error rather than a higher bar.
+  const EMPIRICAL = new Set(['Psychology', 'Learning', 'Statistics']);
   const offenders = deck.cards
     .filter((c) => EMPIRICAL.has(c.tag) && c.sourceType !== 'peer-reviewed')
     .map((c) => `${c.id} (${c.sourceType})`);

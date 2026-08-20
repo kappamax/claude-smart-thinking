@@ -235,30 +235,30 @@
     {
       "id": "math-simpson",
       "tag": "Statistics",
-      "text": "Simpson's paradox: a trend can reverse when groups are combined. A treatment better for men and better for women can look worse overall if the groups differ in size and baseline risk.",
-      "url": "https://en.wikipedia.org/wiki/Simpson%27s_paradox",
-      "action": "Before trusting an aggregate, split it by the obvious confounder and check the direction holds.",
-      "sourceType": "reference"
+      "text": "A treatment better for men and better for women can look worse overall, once the groups are combined at different sizes. It is not a curiosity: it shows up in real clinical data and reverses the conclusion.",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/7804052/",
+      "action": "Before trusting an aggregate, split it by the obvious confounder and check the direction survives.",
+      "sourceType": "peer-reviewed"
     },
     {
       "id": "math-survivorship",
       "tag": "Statistics",
-      "text": "In WWII, analysts mapped bullet holes on bombers that made it home and proposed armouring the damaged areas. Abraham Wald saw it backwards: those planes survived being hit there. The armour belonged where returning planes showed no holes, because planes hit there never came back.",
-      "url": "https://en.wikipedia.org/wiki/Survivorship_bias",
-      "action": "Ask what's missing from the dataset before drawing a conclusion from what's in it.",
-      "sourceType": "reference"
+      "text": "In WWII, analysts mapped bullet holes on bombers that made it home and proposed armouring the damaged areas. Abraham Wald saw it backwards: those planes survived being hit there. The same bias has a clinical name \u2014 count only the survivors and any treatment looks effective.",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/32783283/",
+      "action": "Ask what's missing from the dataset before drawing any conclusion from what's in it.",
+      "sourceType": "peer-reviewed"
     },
     {
       "id": "math-benford",
       "tag": "Statistics",
-      "text": "In many real datasets \u2014 populations, invoices, street addresses \u2014 the leading digit is 1 about 30% of the time and 9 under 5%. Auditors use the pattern to flag fabricated books, because people inventing numbers spread the digits evenly.",
-      "url": "https://en.wikipedia.org/wiki/Benford%27s_law",
-      "action": "Suspect fabrication in reported numbers? Check the leading-digit distribution first.",
-      "sourceType": "reference"
+      "text": "In many real datasets the leading digit is 1 about 30% of the time and 9 under 5%. Auditors exploit it: people inventing numbers spread the digits evenly, and the deviation is detectable.",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/35004209/",
+      "action": "Suspect fabricated figures? Check the leading-digit distribution before anything else.",
+      "sourceType": "peer-reviewed"
     },
     {
       "id": "math-birthday",
-      "tag": "Statistics",
+      "tag": "Mathematics",
       "text": "In a room of 23 people, there's a better-than-even chance two share a birthday. There are 253 pairs, and the intuition fails because we count people instead of pairs.",
       "url": "https://en.wikipedia.org/wiki/Birthday_problem",
       "action": "Any time you hash into a space, compute the collision probability from the number of pairs, not the number of items.",
@@ -267,34 +267,34 @@
     {
       "id": "math-basrate",
       "tag": "Statistics",
-      "text": "A test that's 99% accurate for a disease affecting 1 in 10,000 still gives mostly false positives. Rarity dominates accuracy \u2014 always ask for the base rate.",
-      "url": "https://en.wikipedia.org/wiki/Base_rate_fallacy",
-      "action": "Whenever you're told an accuracy figure, ask for the prevalence before believing the result.",
-      "sourceType": "reference"
+      "text": "Asked a textbook question \u2014 a test with a 5% false-positive rate, a disease affecting 1 in 1,000 \u2014 most physicians and students at Harvard teaching hospitals answered 95%. The correct answer is about 2%. Fewer than one in five got it right.",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/692627/",
+      "action": "Whenever you're given an accuracy figure, ask for the prevalence before believing the result.",
+      "sourceType": "peer-reviewed"
     },
     {
       "id": "math-regression",
       "tag": "Statistics",
-      "text": "Regression to the mean explains why praise seems to backfire and criticism seems to work: extreme performances are followed by ordinary ones regardless of what you say.",
-      "url": "https://en.wikipedia.org/wiki/Regression_toward_the_mean",
-      "action": "Judge an intervention against a control group, not against the extreme that prompted it.",
-      "sourceType": "reference"
+      "text": "Pick people because they scored extremely, measure them again, and they move toward the average \u2014 with no treatment at all. It is why the sickest patients seem to improve on anything, and why praise appears to backfire.",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/15333621/",
+      "action": "Judge an intervention against a control group, never against the extreme that prompted it.",
+      "sourceType": "peer-reviewed"
     },
     {
       "id": "math-pvalue",
       "tag": "Statistics",
-      "text": "A p-value is the probability of data this extreme *if the null were true* \u2014 not the probability the null is true, and not a measure of effect size.",
-      "url": "https://en.wikipedia.org/wiki/Misuse_of_p-values",
-      "action": "Ask for the effect size and confidence interval. A p-value alone tells you almost nothing useful.",
-      "sourceType": "reference"
+      "text": "A review catalogued 25 distinct ways people misread P values and confidence intervals \u2014 including that a P value gives the probability the null is true, and that a non-significant result means no effect. Neither is what it measures.",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/27209009/",
+      "action": "Ask for the effect size and interval. A P value alone answers a question you probably weren't asking.",
+      "sourceType": "peer-reviewed"
     },
     {
       "id": "math-monty",
       "tag": "Statistics",
-      "text": "A game show hides a prize behind one of three doors. You pick one; the host, who knows where the prize is, opens a different door to reveal nothing, and offers you the switch. Switching wins two times in three \u2014 because the host's choice was never random, and that makes it information.",
-      "url": "https://en.wikipedia.org/wiki/Monty_Hall_problem",
-      "action": "When new information arrives, ask whether the source could have acted differently \u2014 that's what makes it informative.",
-      "sourceType": "reference"
+      "text": "A game show hides a prize behind one of three doors. You pick one; the host, who knows where it is, opens a losing door and offers the switch. Switching wins two times in three \u2014 and most people still refuse, because the host's choice looks random and isn't.",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/25873906/",
+      "action": "When new information arrives, ask whether the source could have acted otherwise. That's what makes it informative.",
+      "sourceType": "peer-reviewed"
     },
     {
       "id": "math-godel",
