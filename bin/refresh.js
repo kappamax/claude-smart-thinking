@@ -9,7 +9,7 @@ const settings = require('../lib/settings');
 const context = require('../lib/context');
 const { readJson, writeJsonAtomic } = require('../lib/jsonio');
 const { collectAll, interleave } = require('../providers');
-const { formatTip } = require('../lib/format');
+const { formatTip, categoryColorMap } = require('../lib/format');
 
 const LOCK_STALE_MS = 2 * 60 * 1000;
 
@@ -81,8 +81,15 @@ function rotate(cfg) {
   writeJsonAtomic(paths.cacheFile, { ...cache, rotationOffset: offset, rotatedAt: Date.now() });
 
   const style = cfg.linkStyle || 'auto';
+  // Built from the whole pool, not just what's visible, so a category keeps its
+  // colour across rotations instead of changing every 30 seconds.
+  const categoryColors = categoryColorMap(pool.map((t) => t.category));
   settings.applyContent({
-    tips: dealt.map((t) => formatTip(t, style, process.env, undefined, cfg.linkColor || 'none')),
+    tips: dealt.map((t) => formatTip(t, style, process.env, undefined, cfg.linkColor || 'none', {
+      categoryColor: cfg.categoryColor !== false,
+      italicAction: cfg.italicAction !== false,
+      categoryColors,
+    })),
     verbs: cfg.spinnerVerbs && cfg.spinnerVerbs.enabled ? cfg.spinnerVerbs.verbs : null,
   });
   return true;
@@ -147,8 +154,13 @@ async function main() {
     });
 
     const style = cfg.linkStyle || 'auto';
+    const categoryColors = categoryColorMap(pool.map((t) => t.category));
     const applied = settings.applyContent({
-      tips: visible.map((t) => formatTip(t, style, process.env, undefined, cfg.linkColor || 'none')),
+      tips: visible.map((t) => formatTip(t, style, process.env, undefined, cfg.linkColor || 'none', {
+        categoryColor: cfg.categoryColor !== false,
+        italicAction: cfg.italicAction !== false,
+        categoryColors,
+      })),
       verbs: cfg.spinnerVerbs && cfg.spinnerVerbs.enabled ? cfg.spinnerVerbs.verbs : null,
     });
 

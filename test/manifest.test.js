@@ -79,3 +79,16 @@ test('no runtime state is shipped inside the plugin directory', () => {
     assert.ok(!fs.existsSync(path.join(ROOT, name)), `${name} must live in ~/.claude/smart-thinking/`);
   }
 });
+
+test('every test file parses, so none is silently skipped', () => {
+  // `node --test` reports a lower test count when a file throws at load rather
+  // than failing loudly — a duplicate const once dropped 26 tests and the run
+  // still looked almost green.
+  const { execFileSync } = require('child_process');
+  const dir = path.join(ROOT, 'test');
+  const files = fs.readdirSync(dir).filter((f) => f.endsWith('.test.js'));
+  assert.ok(files.length >= 5, `expected the full suite, found ${files.length} files`);
+  for (const f of files) {
+    execFileSync(process.execPath, ['--check', path.join(dir, f)], { stdio: 'pipe' });
+  }
+});

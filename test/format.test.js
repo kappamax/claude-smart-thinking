@@ -12,6 +12,10 @@ const ITEM = {
 };
 
 const ITERM = { TERM_PROGRAM: 'iTerm.app' };
+// Several tests below assert on exact structure and predate category colour and
+// italics, which are on by default. NO_DECOR turns the decoration off so each
+// test still checks the one thing it was written to check.
+const NO_DECOR = { categoryColor: false, italicAction: false };
 const PLAIN = { TERM_PROGRAM: 'Apple_Terminal' };
 
 test('hyperlink mode hides the url and keeps the text clickable', () => {
@@ -41,13 +45,13 @@ test('terminals without hyperlink support fall back to a visible url', () => {
 });
 
 test('action is rendered after the mechanism, with a marker', () => {
-  const out = formatTip(ITEM, 'none');
+  const out = formatTip(ITEM, 'none', {}, undefined, 'none', NO_DECOR);
   assert.ok(out.includes('▸ Freeze it; never refrigerate.'), 'action missing');
   assert.ok(out.indexOf(ITEM.text) < out.indexOf('▸'), 'mechanism must precede the action');
 });
 
 test('a card with no action renders without a dangling marker', () => {
-  const out = formatTip({ category: 'Knuth', text: 'Pays $2.56 per error.' }, 'none');
+  const out = formatTip({ category: 'Knuth', text: 'Pays $2.56 per error.' }, 'none', {}, undefined, 'none', NO_DECOR);
   assert.ok(!out.includes('▸'), 'no action means no marker');
   assert.strictEqual(out, `Knuth${SEP}Pays $2.56 per error.`);
 });
@@ -152,7 +156,7 @@ test('rounding never emits an impossible unit', () => {
 // ------------------------------------------------------------- link colour
 
 test('a coloured hyperlink tints the label and leaves the escape intact', () => {
-  const out = formatTip(ITEM, 'hyperlink', {}, undefined, 'blue');
+  const out = formatTip(ITEM, 'hyperlink', {}, undefined, 'blue', NO_DECOR);
   // Colour sits *inside* the OSC 8 label, not around it, so that it can be
   // re-applied per word and survive the renderer wrapping the line.
   assert.ok(out.startsWith('Bread · \x1b]8;;'), 'the link should open first');
@@ -171,18 +175,18 @@ test('url mode tints only the url, not the whole claim', () => {
 });
 
 test('colour none emits no escape at all', () => {
-  const out = formatTip(ITEM, 'hyperlink', {}, undefined, 'none');
+  const out = formatTip(ITEM, 'hyperlink', {}, undefined, 'none', NO_DECOR);
   assert.ok(!out.includes('\x1b[34m'));
   assert.ok(!out.includes('\x1b[39m'));
 });
 
 test('an unknown colour name degrades to no colour rather than garbage', () => {
-  const out = formatTip(ITEM, 'hyperlink', {}, undefined, 'chartreuse');
+  const out = formatTip(ITEM, 'hyperlink', {}, undefined, 'chartreuse', NO_DECOR);
   assert.ok(!/\x1b\[\d*m/.test(out), 'an unrecognised colour must not emit a partial escape');
 });
 
 test('a card with no url is never coloured', () => {
-  const out = formatTip({ category: 'Project', text: '33 files, no tests.' }, 'hyperlink', {}, undefined, 'blue');
+  const out = formatTip({ category: 'Project', text: '33 files, no tests.' }, 'hyperlink', {}, undefined, 'blue', NO_DECOR);
   assert.ok(!out.includes('\x1b['), 'nothing to link means nothing to tint');
 });
 
@@ -202,9 +206,40 @@ test('colour is re-applied per word so a wrapped tip stays coloured', () => {
 });
 
 test('the hyperlink still works with colour codes inside the label', () => {
-  const out = formatTip(ITEM, 'hyperlink', {}, undefined, 'blue');
+  const out = formatTip(ITEM, 'hyperlink', {}, undefined, 'blue', NO_DECOR);
   assert.ok(out.includes(`\x1b]8;;${ITEM.url}\x07`), 'OSC 8 opener damaged');
   assert.ok(out.endsWith('\x1b]8;;\x07'), 'OSC 8 must still close last');
   // Exactly one reset, at the end of the label rather than sprinkled through.
   assert.strictEqual((out.match(/\x1b\[39m/g) || []).length, 1);
+});
+
+test('category colours do not collide within a pool', () => {
+  // Hashing the name collided badly — 51 categories into a 32-colour palette
+  // put Bread, Joints, Psychology and Technique on the same hue, which defeats
+  // the entire point of colouring the label. Index assignment is collision-free
+  // up to the palette size, which comfortably exceeds any real pool.
+  const { categoryColorMap, CATEGORY_PALETTE } = require('../lib/format');
+  const pool = ['Sleep', 'Bread', 'Psychology', 'Technique', 'Knuth', 'Exercise',
+    'Nutrition', 'Travel', 'Statistics', 'Cooking', 'Biology', 'Design'];
+  const map = categoryColorMap(pool);
+  assert.strictEqual(new Set(Object.values(map)).size, pool.length, 'colours collided');
+  assert.ok(pool.length < CATEGORY_PALETTE.length, 'palette must exceed a realistic pool');
+});
+
+test('category colour assignment is stable across re-deals', () => {
+  const { categoryColorMap } = require('../lib/format');
+  const a = categoryColorMap(['Sleep', 'Bread', 'Knuth']);
+  // Same set, different order — a rotation must not reshuffle the colours.
+  const b = categoryColorMap(['Knuth', 'Sleep', 'Bread', 'Sleep']);
+  assert.deepStrictEqual(a, b);
+});
+
+test('the action is italicised, wrap-safely, and closes before the hint', () => {
+  const out = formatTip(ITEM, 'hyperlink', {}, undefined, 'blue');
+  assert.ok(out.includes('\x1b[3m'), 'action not italicised');
+  assert.ok(out.includes('\x1b[23m'), 'italic never closed');
+  // Italic must not bleed onto the trailing affordance.
+  assert.ok(out.lastIndexOf('\x1b[23m') < out.lastIndexOf('↗'), 'italic leaked past the action');
+  // Re-applied per word so a wrap inside the action keeps it.
+  assert.ok((out.match(/\x1b\[3m/g) || []).length > 1, 'italic not wrap-safe');
 });
