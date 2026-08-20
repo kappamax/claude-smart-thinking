@@ -386,6 +386,60 @@
       "action": "Not worth the money for knee or hip arthritis. Loading the joint through exercise has far better evidence.",
       "source": "https://pubmed.ncbi.nlm.nih.gov/20847017/",
       "verified": "2026-08-20"
+    },
+    {
+      "id": "social-isolation-vs-loneliness",
+      "topic": "Wellbeing",
+      "evidence": "meta-analysis",
+      "text": "Being isolated and feeling lonely are not the same risk. Across 90 cohorts and 2.2 million people, social isolation raised all-cause mortality by about a third while loneliness raised it by roughly a seventh \u2014 the objective lack of contact carried the larger effect",
+      "action": "Book the contact rather than waiting to feel like it. Attendance is doing more work here than mood.",
+      "source": "https://pubmed.ncbi.nlm.nih.gov/37337095/",
+      "verified": "2026-08-20"
+    },
+    {
+      "id": "burnout-definitions",
+      "topic": "Mental health",
+      "evidence": "meta-analysis",
+      "text": "Burnout statistics are close to meaningless. A review of 182 studies covering 109,628 physicians found at least 142 different definitions in use, and prevalence estimates ranging from 0% to 80.5% depending on which cut-off a study picked",
+      "action": "Distrust any burnout percentage you are quoted, including the alarming ones. Ask how it was measured.",
+      "source": "https://pubmed.ncbi.nlm.nih.gov/30326495/",
+      "verified": "2026-08-20"
+    },
+    {
+      "id": "burnout-interventions",
+      "topic": "Mental health",
+      "evidence": "meta-analysis",
+      "text": "Burnout does respond to intervention, modestly: pooling trials and cohorts, overall burnout fell from 54% to 44%, and both individual-focused and organisational approaches worked. The effect is real and it is not a cure",
+      "action": "Treat it as a workload and structure problem as much as a resilience one \u2014 organisational changes performed comparably to personal ones.",
+      "source": "https://pubmed.ncbi.nlm.nih.gov/27692469/",
+      "verified": "2026-08-20"
+    },
+    {
+      "id": "nut-diets-interchangeable",
+      "topic": "Nutrition",
+      "evidence": "meta-analysis",
+      "text": "A network meta-analysis of 14 named diets found they produce broadly similar modest weight loss and blood-pressure improvement at six months \u2014 and that most of the difference has faded by twelve. The argument between low-fat and low-carb is smaller than the argument suggests",
+      "action": "Pick the one you can still be doing in a year. Adherence, not macronutrient ratio, is the variable that moved.",
+      "source": "https://pubmed.ncbi.nlm.nih.gov/32238384/",
+      "verified": "2026-08-20"
+    },
+    {
+      "id": "nut-salt-substitute",
+      "topic": "Nutrition",
+      "evidence": "meta-analysis",
+      "text": "Swapping ordinary salt for a potassium-based substitute lowers blood pressure and reduces cardiovascular events \u2014 one of the few dietary changes with trial evidence behind a hard outcome rather than a marker",
+      "action": "Switch the salt in your kitchen, unless you have kidney disease or take a potassium-sparing drug, where added potassium is a real risk.",
+      "source": "https://pubmed.ncbi.nlm.nih.gov/35944931/",
+      "verified": "2026-08-20"
+    },
+    {
+      "id": "nut-mediterranean-uncertain",
+      "topic": "Nutrition",
+      "evidence": "contested",
+      "text": "The Mediterranean diet is the most confidently recommended dietary pattern there is, but a Cochrane review of the trials found the evidence for preventing cardiovascular disease to be low or moderate certainty at best. It may well work; it is not the settled case it is presented as",
+      "action": "Eat that way if you enjoy it \u2014 the downside risk is nil. Don't expect the effect size the confidence implies.",
+      "source": "https://pubmed.ncbi.nlm.nih.gov/30864165/",
+      "verified": "2026-08-20"
     }
   ]
 }

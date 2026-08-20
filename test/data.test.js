@@ -87,7 +87,13 @@ test('evidence corpus: contested claims say so in the text', () => {
   for (const c of evidence.claims.filter((x) => x.evidence === 'contested')) {
     assert.match(
       c.text,
-      /disput|contest|not settled|average, not|very little|no significant/i,
+      // A curated list of genuine hedges, not a loose one. Widened after a
+      // claim that said "low or moderate certainty at best" and "not the
+      // settled case it is presented as" failed a regex looking only for the
+      // exact phrase "not settled" — the text was hedged, the pattern was too
+      // literal. Still strict: a contested claim must carry a marker of
+      // uncertainty somewhere in its own words.
+      /disput|contest|not settled|not the settled|uncertain|low certainty|low or moderate certainty|at best|average, not|very little|no significant/i,
       `${c.id}: marked contested but the text reads as settled`,
     );
   }

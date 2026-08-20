@@ -348,8 +348,8 @@
       "id": "phys-moon-drift",
       "tag": "Physics",
       "text": "The Moon recedes about 3.8 cm per year, and Earth's day lengthens to match. Tidal friction is slowly trading our rotation for its orbit.",
-      "url": "https://en.wikipedia.org/wiki/Tidal_acceleration",
-      "sourceType": "reference"
+      "url": "https://science.nasa.gov/moon/",
+      "sourceType": "primary"
     },
     {
       "id": "phys-olbers",
@@ -442,9 +442,9 @@
       "id": "econ-comparative",
       "tag": "Economics",
       "text": "Comparative advantage means trade helps even when one party is better at everything \u2014 what matters is relative opportunity cost, not absolute skill.",
-      "url": "https://en.wikipedia.org/wiki/Comparative_advantage",
+      "url": "https://www.econlib.org/library/Ricardo/ricP.html",
       "action": "Delegate what you're merely good at, not just what you're bad at. The cost is what it displaces.",
-      "sourceType": "reference"
+      "sourceType": "primary"
     },
     {
       "id": "econ-goodhart",
@@ -616,33 +616,33 @@
       "id": "phil-theseus",
       "tag": "Philosophy",
       "text": "Replace a ship's planks one by one and it raises whether identity lives in material or continuity \u2014 the same question a long-refactored codebase eventually asks.",
-      "url": "https://en.wikipedia.org/wiki/Ship_of_Theseus",
+      "url": "https://plato.stanford.edu/entries/identity-time/",
       "action": "When identity matters \u2014 versioning, migrations, ship-of-Theseus refactors \u2014 decide up front whether continuity or substance is your criterion.",
-      "sourceType": "reference"
+      "sourceType": "primary"
     },
     {
       "id": "phil-occam",
       "tag": "Philosophy",
       "text": "Occam's razor says don't multiply entities beyond necessity \u2014 a tiebreaker between theories that explain equally well, not a claim that simpler is truer.",
-      "url": "https://en.wikipedia.org/wiki/Occam%27s_razor",
+      "url": "https://plato.stanford.edu/entries/simplicity/",
       "action": "Prefer the simpler explanation only after checking both actually fit the evidence.",
-      "sourceType": "reference"
+      "sourceType": "primary"
     },
     {
       "id": "phil-rawls",
       "tag": "Philosophy",
       "text": "Rawls' veil of ignorance: design the rules without knowing which position you'll occupy. It converts self-interest into a fairness test.",
-      "url": "https://en.wikipedia.org/wiki/Veil_of_ignorance",
+      "url": "https://plato.stanford.edu/entries/original-position/",
       "action": "Before setting a rule for a team, ask whether you'd accept it as the most junior person in it.",
-      "sourceType": "reference"
+      "sourceType": "primary"
     },
     {
       "id": "phil-stoic",
       "tag": "Philosophy",
       "text": "The Stoic dichotomy of control: sort everything into what you govern and what you don't, then spend effort only on the first pile.",
-      "url": "https://en.wikipedia.org/wiki/Stoicism",
+      "url": "https://classics.mit.edu/Epictetus/epicench.html",
       "action": "Write two lists for the thing that's worrying you, and act only from the first.",
-      "sourceType": "reference"
+      "sourceType": "primary"
     },
     {
       "id": "geo-africa",
@@ -1482,7 +1482,7 @@
   ],
   "sourceTypes": {
     "peer-reviewed": "A study, systematic review or meta-analysis in an indexed journal. Required for any card asserting something a study could confirm or refute.",
-    "primary": "The authoritative record for a settled fact: a specification, official documentation, an archive, or established textbook science where no current literature is being produced. Peer review does not apply \u2014 nobody is still publishing on the Maillard reaction's existence.",
+    "primary": "The authoritative record for a settled fact: a specification, official documentation, an archive, an original text, or a refereed scholarly reference such as the Stanford Encyclopedia of Philosophy \u2014 commissioned, refereed and attributed to a named specialist, which is categorically different from an open encyclopaedia. Also covers established textbook science where no current literature is being produced; nobody is still publishing on whether the Maillard reaction exists.",
     "reference": "An encyclopaedia entry. A staging state, not a destination: every card here is waiting to be re-sourced."
   }
 }
