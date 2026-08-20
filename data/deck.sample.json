@@ -517,10 +517,10 @@
     {
       "id": "food-msg",
       "tag": "Cooking",
-      "text": "\"Chinese restaurant syndrome\" traces to a single 1968 letter and never survived double-blind testing. Glutamate is abundant in parmesan and tomatoes.",
-      "url": "https://en.wikipedia.org/wiki/Monosodium_glutamate",
-      "action": "Use it. A pinch adds savouriness where salt alone would just taste salty.",
-      "sourceType": "reference"
+      "text": "\"Chinese restaurant syndrome\" traces to a single 1968 letter. A review of the controlled trials since found no consistent reproducible response to MSG at normal dietary amounts \u2014 and glutamate is abundant in parmesan, tomatoes and soy sauce.",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/16999713/",
+      "action": "Use it. A pinch adds savouriness where more salt would only taste salty.",
+      "sourceType": "peer-reviewed"
     },
     {
       "id": "food-salt-timing",
@@ -541,10 +541,10 @@
     {
       "id": "food-onion",
       "tag": "Cooking",
-      "text": "Onion tears come from a volatile sulfur compound that dissolves in water on your eye. Chilling the onion and keeping it wet both help; holding your breath doesn't.",
-      "url": "https://en.wikipedia.org/wiki/Syn-Propanethial-S-oxide",
-      "action": "Chill the onion first and keep the blade wet. Holding your breath does nothing.",
-      "sourceType": "reference"
+      "text": "Cutting an onion doesn't release the irritant \u2014 a dedicated enzyme manufactures it in the instant the cell breaks. Lachrymatory factor synthase was only identified in 2002; until then the compound was assumed to form on its own.",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/12384686/",
+      "action": "Chill the onion and keep the blade wet. Holding your breath does nothing, because the enzyme works at the cut.",
+      "sourceType": "peer-reviewed"
     },
     {
       "id": "food-baking-soda",
@@ -1270,10 +1270,10 @@
     {
       "id": "mech-gluten",
       "tag": "Bread",
-      "text": "Flour has no gluten in it. Glutenin and gliadin only link into gluten once hydrated \u2014 glutenin supplies elasticity, gliadin extensibility, and kneading aligns them into sheets that can trap gas.",
-      "url": "https://en.wikipedia.org/wiki/Gluten",
-      "action": "Knead until it passes the windowpane test \u2014 stretched thin enough to see light through without tearing.",
-      "sourceType": "reference"
+      "text": "Flour contains no gluten. Glutenin and gliadin only link into it once hydrated \u2014 glutenin supplying elasticity, gliadin extensibility \u2014 and kneading aligns them into sheets that can hold gas.",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/35608010/",
+      "action": "Knead until it passes the windowpane test: stretched thin enough to see light through without tearing.",
+      "sourceType": "peer-reviewed"
     },
     {
       "id": "mech-oven-spring",
@@ -1302,18 +1302,18 @@
     {
       "id": "mech-sourdough",
       "tag": "Bread",
-      "text": "In a sourdough starter, lactic acid bacteria outnumber yeast by roughly 100 to 1. They make the acid; the yeast makes the gas. The acidity also strengthens gluten and slows staling.",
-      "url": "https://en.wikipedia.org/wiki/Sourdough",
+      "text": "A sourdough starter is not mostly yeast. Culture-independent sequencing of traditional starters finds lactic acid bacteria dominating the population \u2014 they make the acid, the yeast makes the gas, and the acidity strengthens gluten and slows staling.",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/33158141/",
       "action": "Ferment warm for a milder lactic sourness, cool and slow for a sharper acetic one.",
-      "sourceType": "reference"
+      "sourceType": "peer-reviewed"
     },
     {
       "id": "mech-salt-dough",
       "tag": "Bread",
-      "text": "Salt slows fermentation and tightens gluten by screening the charges that make protein chains repel each other. Forget it and dough ferments fast, then slackens and tears.",
-      "url": "https://en.wikipedia.org/wiki/Gluten",
-      "action": "Use around 2% salt by flour weight, and hold it back during autolyse if you want gluten to develop faster.",
-      "sourceType": "reference"
+      "text": "Salt does more than season dough. It changes how water moves through the gluten network and how the dough handles \u2014 screening the charges that make protein chains repel, which is why an unsalted dough ferments fast then slackens and tears.",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/32304230/",
+      "action": "Around 2% salt by flour weight, held back during autolyse if you want gluten to develop faster.",
+      "sourceType": "peer-reviewed"
     },
     {
       "id": "mech-shortening",
@@ -1398,10 +1398,10 @@
     {
       "id": "mech-chocolate-temper",
       "tag": "Cooking",
-      "text": "Cocoa butter crystallises in six different forms. Tempering coaxes it into Form V \u2014 the only one that's glossy, snaps, and melts at body temperature. Untempered chocolate is the same molecules, badly stacked.",
-      "url": "https://en.wikipedia.org/wiki/Types_of_chocolate",
-      "action": "For dark chocolate: melt to ~45\u00b0C, cool to ~27\u00b0C, then rewarm to ~31\u00b0C before using.",
-      "sourceType": "reference"
+      "text": "Cocoa butter crystallises into six different forms, and only one \u2014 Form V \u2014 is glossy, snaps, and melts at body temperature. Untempered chocolate is the same molecules stacked badly.",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/40352747/",
+      "action": "For dark chocolate: melt to about 45\u00b0C, cool to 27\u00b0C, then rewarm to 31\u00b0C before using.",
+      "sourceType": "peer-reviewed"
     },
     {
       "id": "mech-coffee-extraction",
@@ -1430,10 +1430,10 @@
     {
       "id": "mech-capsaicin",
       "tag": "Chemistry",
-      "text": "Capsaicin binds the receptor that detects actual heat, so your nerves report a burn that isn't there. It's fat-soluble, which is why milk works and water doesn't.",
-      "url": "https://en.wikipedia.org/wiki/Capsaicin",
-      "action": "Reach for milk, yoghurt or something oily. Water just spreads it around.",
-      "sourceType": "reference"
+      "text": "Chilli heat is not a metaphor. Capsaicin binds the very receptor that detects genuinely damaging heat \u2014 the same channel fires at around 43\u00b0C \u2014 so the nerve reports a burn that isn't happening.",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/9349813/",
+      "action": "Reach for milk, yoghurt or something oily. Capsaicin is fat-soluble, so water just moves it around.",
+      "sourceType": "peer-reviewed"
     },
     {
       "id": "mech-bakingsoda-acid",
