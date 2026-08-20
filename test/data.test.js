@@ -114,3 +114,33 @@ test('feed catalog: feed urls are unique across bundles', () => {
     }
   }
 });
+
+test('deck: every card declares what kind of source it has', () => {
+  // "All data must be peer reviewed" is enforceable only if the kind of source
+  // is recorded. peer-reviewed = a study; primary = the authoritative record
+  // (a spec, official docs, an archive); reference = an encyclopaedia entry,
+  // which is a staging state, not a destination.
+  const allowed = new Set(['peer-reviewed', 'primary', 'reference']);
+  for (const c of deck.cards) {
+    assert.ok(allowed.has(c.sourceType), `${c.id}: bad sourceType "${c.sourceType}"`);
+  }
+});
+
+test('deck: an empirical claim may not rest on an encyclopaedia entry', () => {
+  // Ratcheting gate. These topics assert something about the world that a study
+  // could confirm or refute, so they must cite one. The list grows as tags are
+  // re-sourced; it must never shrink.
+  const EMPIRICAL = new Set(['Psychology', 'Learning']);
+  const offenders = deck.cards
+    .filter((c) => EMPIRICAL.has(c.tag) && c.sourceType !== 'peer-reviewed')
+    .map((c) => `${c.id} (${c.sourceType})`);
+  assert.deepStrictEqual(offenders, [],
+    `empirical cards not citing a study: ${offenders.join(', ')}`);
+});
+
+test('deck: peer-reviewed cards point at a resolvable record, not a paywall guess', () => {
+  for (const c of deck.cards.filter((x) => x.sourceType === 'peer-reviewed')) {
+    assert.match(c.url, /pubmed\.ncbi\.nlm\.nih\.gov|ncbi\.nlm\.nih\.gov|arxiv\.org/,
+      `${c.id}: peer-reviewed cards must cite an indexed record`);
+  }
+});

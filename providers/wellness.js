@@ -39,6 +39,34 @@ function loadEvidence(pluginRoot) {
 
 const SLEEP_TOPICS = new Set(['Sleep']);
 
+/**
+ * Stronger evidence gets picked more often.
+ *
+ * "Evidence is how you select it" taken literally: an umbrella review of many
+ * meta-analyses should surface more than a single cohort study. Weighting the
+ * candidate pool is the mechanism, so the tier changes the odds of being said
+ * rather than appearing in what is said.
+ *
+ * `contested` keeps a real weight on purpose. A widely-believed claim that the
+ * literature disputes is among the most useful things this surface can say.
+ */
+const TIER_WEIGHT = {
+  'umbrella-review': 4,
+  'meta-analysis': 3,
+  RCT: 3,
+  contested: 3,
+  cohort: 1,
+};
+
+function weighted(claims) {
+  const out = [];
+  for (const c of claims) {
+    const n = TIER_WEIGHT[c.evidence] ?? 1;
+    for (let i = 0; i < n; i += 1) out.push(c);
+  }
+  return out;
+}
+
 function stateFile() {
   return path.join(paths.STATE_DIR, 'wellness-state.json');
 }
@@ -108,11 +136,18 @@ function trackSession(now, activity = {}) {
   return { activeHours: (state.activeMs || 0) / 3600000 };
 }
 
-/** The study design travels with the claim — that's the whole point. */
+/**
+ * Evidence decides what gets said. It is not part of what gets said.
+ *
+ * Tips used to end with "(meta-analysis)" or "(RCT)", which was the grading
+ * leaking into the display — the same mistake as showing the raw URL. The
+ * reader wants the thing worth knowing; the study design is how it earned the
+ * slot, and belongs in the corpus, the audit and the ranking below.
+ */
 function toTip(claim) {
   return {
     category: claim.topic,
-    text: `${claim.text} (${claim.evidence})`,
+    text: claim.text,
     action: claim.action || null,
     url: claim.source,
     source: 'wellness',
@@ -132,17 +167,26 @@ function pick(list, seed) {
  * Walking by 1 can't collide until the list is exhausted.
  */
 function pickDistinct(list, seed, n) {
-  const count = Math.min(n, list.length);
+  if (list.length === 0) return [];
+  // Walking a weighted list can revisit the same claim, so distinctness is
+  // enforced by id rather than assumed from the stride.
   const start = Math.abs(seed) % list.length;
   const out = [];
-  for (let i = 0; i < count; i += 1) out.push(list[(start + i) % list.length]);
+  const seen = new Set();
+  for (let i = 0; i < list.length && out.length < n; i += 1) {
+    const c = list[(start + i) % list.length];
+    const key = c.id ?? c.text ?? String(i);
+    if (seen.has(key)) continue;
+    seen.add(key);
+    out.push(c);
+  }
   return out;
 }
 
 async function collect(cfg, ctx) {
   const claims = loadEvidence(ctx.pluginRoot || path.resolve(__dirname, '..'));
-  const sleepClaims = claims.filter((c) => SLEEP_TOPICS.has(c.topic));
-  const dayClaims = claims.filter((c) => !SLEEP_TOPICS.has(c.topic));
+  const sleepClaims = weighted(claims.filter((c) => SLEEP_TOPICS.has(c.topic)));
+  const dayClaims = weighted(claims.filter((c) => !SLEEP_TOPICS.has(c.topic)));
 
   const now = ctx.now || new Date();
   const hour = now.getHours();
@@ -214,7 +258,7 @@ async function collect(cfg, ctx) {
       // same graded corpus as everything else.
       const advice = statusClaim;
       status.push({
-        text: `${formatHours(activeHours)} active · ${advice.action} (${advice.evidence})`,
+        text: `${formatHours(activeHours)} active · ${advice.action}`,
         priority: 50,
         source: 'wellness',
       });

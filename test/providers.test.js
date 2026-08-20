@@ -169,7 +169,10 @@ test('wellness: repeated sleep tips are distinct', async () => {
 test('wellness: claims carry their evidence tier and a PubMed link', async () => {
   const res = await wellness.collect(wCfg, { now: at(1), pluginRoot: ROOT });
   for (const t of res.tips) {
-    assert.match(t.text, /\((umbrella-review|meta-analysis|RCT|cohort|contested)\)$/, `missing evidence tier: ${t.text}`);
+    // The tier must NOT be rendered — evidence selects the claim, it isn't
+    // part of the claim. It stays in the corpus for ranking and auditing.
+    assert.ok(!/\((umbrella-review|meta-analysis|RCT|cohort|contested)\)$/.test(t.text),
+      `evidence tier leaked into the text: ${t.text}`);
     assert.match(t.url, /ncbi\.nlm\.nih\.gov/, 'health claims must link primary literature');
     assert.ok(t.action, 'health claims must say what to do');
   }
@@ -370,7 +373,8 @@ test('the break prompt rotates its advice and never repeats the 20-20-20 rule', 
     const res = await tick(t0 + i * 4 * 60_000, { sessionId: 's1', cost, apiMs: i * 10 });
     for (const s of res.status) {
       assert.ok(!/20ft|20-20-20/.test(s.text), `contested advice resurfaced: ${s.text}`);
-      assert.match(s.text, /\((umbrella-review|meta-analysis|RCT|cohort|contested)\)$/, `ungraded advice: ${s.text}`);
+      assert.ok(!/\((umbrella-review|meta-analysis|RCT|cohort|contested)\)$/.test(s.text),
+        `evidence tier leaked into the status line: ${s.text}`);
       seen.add(s.text.replace(/^[\d.]+h active · /, ''));
     }
   }
