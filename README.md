@@ -169,6 +169,8 @@ A matching card lands harder — a Postgres note while you're in a Postgres repo
 
 ```jsonc
 {
+  "linkStyle": "auto",            // auto | hyperlink | url | none
+  "linkColor": "none",            // blue | brightBlue | cyan | none
   "refreshIntervalSeconds": 30,   // status line re-execution cadence
   "contentMaxAgeMinutes": 20,     // staleness before a background refetch
   "tipCount": 12,                 // size of the tip rotation queue

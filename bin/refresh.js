@@ -82,7 +82,7 @@ function rotate(cfg) {
 
   const style = cfg.linkStyle || 'auto';
   settings.applyContent({
-    tips: dealt.map((t) => formatTip(t, style)),
+    tips: dealt.map((t) => formatTip(t, style, process.env, undefined, cfg.linkColor || 'none')),
     verbs: cfg.spinnerVerbs && cfg.spinnerVerbs.enabled ? cfg.spinnerVerbs.verbs : null,
   });
   return true;
@@ -148,7 +148,7 @@ async function main() {
 
     const style = cfg.linkStyle || 'auto';
     const applied = settings.applyContent({
-      tips: visible.map((t) => formatTip(t, style)),
+      tips: visible.map((t) => formatTip(t, style, process.env, undefined, cfg.linkColor || 'none')),
       verbs: cfg.spinnerVerbs && cfg.spinnerVerbs.enabled ? cfg.spinnerVerbs.verbs : null,
     });
 

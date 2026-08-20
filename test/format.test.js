@@ -148,3 +148,38 @@ test('rounding never emits an impossible unit', () => {
     assert.ok(!/NaN|undefined|-/.test(out), `malformed output at ${ms}ms: ${out}`);
   }
 });
+
+// ------------------------------------------------------------- link colour
+
+test('a coloured hyperlink tints the label and leaves the escape intact', () => {
+  const out = formatTip(ITEM, 'hyperlink', {}, undefined, 'blue');
+  assert.ok(out.startsWith('Bread · \x1b[34m'), 'colour should open before the link');
+  assert.ok(out.includes('\x1b]8;;https://example.org/staling\x07'), 'OSC 8 opener was damaged');
+  assert.ok(out.endsWith('\x1b[39m'), 'colour should close at the end');
+  // 39 resets only the foreground; 0 would also clear any dim attribute the
+  // surrounding line is using.
+  assert.ok(!out.includes('\x1b[0m'), 'must not use a full reset');
+});
+
+test('url mode tints only the url, not the whole claim', () => {
+  const out = formatTip(ITEM, 'url', {}, undefined, 'blue');
+  const idx = out.indexOf('\x1b[34m');
+  assert.ok(idx > out.indexOf(ITEM.text), 'colour started before the url');
+  assert.ok(out.includes('\x1b[34mhttps://example.org/staling\x1b[39m'));
+});
+
+test('colour none emits no escape at all', () => {
+  const out = formatTip(ITEM, 'hyperlink', {}, undefined, 'none');
+  assert.ok(!out.includes('\x1b[34m'));
+  assert.ok(!out.includes('\x1b[39m'));
+});
+
+test('an unknown colour name degrades to no colour rather than garbage', () => {
+  const out = formatTip(ITEM, 'hyperlink', {}, undefined, 'chartreuse');
+  assert.ok(!/\x1b\[\d*m/.test(out), 'an unrecognised colour must not emit a partial escape');
+});
+
+test('a card with no url is never coloured', () => {
+  const out = formatTip({ category: 'Project', text: '33 files, no tests.' }, 'hyperlink', {}, undefined, 'blue');
+  assert.ok(!out.includes('\x1b['), 'nothing to link means nothing to tint');
+});
