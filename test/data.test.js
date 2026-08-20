@@ -115,6 +115,27 @@ test('feed catalog: feed urls are unique across bundles', () => {
   }
 });
 
+test('deck: the source vocabulary is documented in the data', () => {
+  // The definitions live alongside the cards so a future reader can see why a
+  // card citing a textbook is "primary" rather than assuming it is a mistake.
+  assert.ok(deck.sourceTypes, 'deck must document what each sourceType means');
+  for (const k of ['peer-reviewed', 'primary', 'reference']) {
+    assert.ok(deck.sourceTypes[k], `sourceType "${k}" is undocumented`);
+  }
+});
+
+test('deck: no gated tag may rest on an encyclopaedia entry', () => {
+  // A weaker ratchet than the peer-reviewed gate, for topics that are settled
+  // textbook science: nobody is still publishing on whether the Maillard
+  // reaction exists, so "primary" is the honest ceiling there. What is not
+  // acceptable is an encyclopaedia entry.
+  const NO_REFERENCE = new Set(['Cooking', 'Bread', 'Coffee', 'Chemistry']);
+  const offenders = deck.cards
+    .filter((c) => NO_REFERENCE.has(c.tag) && c.sourceType === 'reference')
+    .map((c) => c.id);
+  assert.deepStrictEqual(offenders, [], `still on an encyclopaedia: ${offenders.join(', ')}`);
+});
+
 test('deck: every card declares what kind of source it has', () => {
   // "All data must be peer reviewed" is enforceable only if the kind of source
   // is recorded. peer-reviewed = a study; primary = the authoritative record

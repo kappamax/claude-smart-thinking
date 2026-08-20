@@ -58,24 +58,26 @@
     {
       "id": "bio-cell-ratio",
       "tag": "Biology",
-      "text": "The \"10 bacterial cells per human cell\" figure was a 1970s back-of-envelope estimate. A 2016 recount put it near 1:1 \u2014 roughly 38 trillion bacteria to 30 trillion human cells.",
-      "url": "https://en.wikipedia.org/wiki/Human_microbiome",
-      "action": "Trace a striking ratio to its source before repeating it. This one survived forty years on an estimate nobody checked.",
-      "sourceType": "reference"
+      "text": "The \"10 bacterial cells per human cell\" ratio was a 1972 back-of-envelope estimate that went unchecked for forty years. A careful 2016 recount put it near 1:1 \u2014 about 38 trillion bacteria to 30 trillion human cells.",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/27541692/",
+      "action": "Trace a striking ratio to its source before repeating it. This one survived four decades on an estimate nobody revisited.",
+      "sourceType": "peer-reviewed"
     },
     {
       "id": "bio-mito",
       "tag": "Biology",
-      "text": "Mitochondria carry their own DNA and are inherited almost entirely from your mother, which makes mtDNA a clean maternal-line clock for tracing ancestry.",
-      "url": "https://en.wikipedia.org/wiki/Mitochondrial_DNA",
-      "sourceType": "reference"
+      "text": "Mitochondria carry their own DNA and you inherit it almost entirely from your mother \u2014 but not cleanly: a bottleneck during egg formation samples only a fraction of the mother's variants, which is why mitochondrial disease severity varies between siblings.",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/31611080/",
+      "sourceType": "peer-reviewed",
+      "action": "Treat maternal-line inheritance as a sampling process, not a copy."
     },
     {
       "id": "bio-crispr",
       "tag": "Biology",
-      "text": "CRISPR is a bacterial immune system \u2014 bacteria file away snippets of virus DNA to recognize repeat attackers. Gene editing is us borrowing the filing system.",
-      "url": "https://en.wikipedia.org/wiki/CRISPR",
-      "sourceType": "reference"
+      "text": "CRISPR is a bacterial immune system. Bacteria file snippets of virus DNA into their own genome to recognise repeat attackers \u2014 demonstrated in 2007, six years before anyone used it to edit anything. Gene editing is us borrowing the filing system.",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/17379808/",
+      "sourceType": "peer-reviewed",
+      "action": "When a tool seems to appear from nowhere, look for the organism that was already using it."
     },
     {
       "id": "bio-sickle",
@@ -102,17 +104,18 @@
     {
       "id": "bio-mycorrhizal",
       "tag": "Biology",
-      "text": "Trees trade sugar for phosphorus with fungal networks threading the soil, and can pass carbon to neighbors through them. The \"wood wide web\" framing is contested; the trading is not.",
-      "url": "https://en.wikipedia.org/wiki/Mycorrhizal_network",
-      "action": "Cite the nutrient trading, not the 'wood wide web' \u2014 the network narrative is contested and the trading isn't.",
-      "sourceType": "reference"
+      "text": "The \"wood wide web\" is on shakier ground than its popularity suggests: a 2023 review found the underlying claims about common mycorrhizal networks were supported by positive citation bias and overinterpreted results. Nutrient exchange is real; the network narrative is not established.",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/36782032/",
+      "action": "Cite the nutrient trading, not the network story \u2014 and treat confident claims about talking trees with suspicion.",
+      "sourceType": "peer-reviewed"
     },
     {
       "id": "bio-tardigrade",
       "tag": "Biology",
-      "text": "Tardigrades survive vacuum and extreme radiation by expelling nearly all their water and turning their cytoplasm into a glass-like solid \u2014 suspended, not tough.",
-      "url": "https://en.wikipedia.org/wiki/Tardigrade",
-      "sourceType": "reference"
+      "text": "Tardigrades survive near-total desiccation using disordered proteins that assemble into a glass-like solid, holding the cell's contents in place. It is suspension rather than toughness \u2014 and the protein works when transplanted into other cells.",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/38501490/",
+      "sourceType": "peer-reviewed",
+      "action": "Look for the mechanism that stops time rather than the one that resists force."
     },
     {
       "id": "bio-hgt",
@@ -125,9 +128,10 @@
     {
       "id": "bio-cephalopod-rna",
       "tag": "Biology",
-      "text": "Squid and octopuses extensively edit their own RNA, tuning proteins on the fly \u2014 apparently trading away the usual pace of DNA evolution to do it.",
-      "url": "https://en.wikipedia.org/wiki/RNA_editing",
-      "sourceType": "reference"
+      "text": "Squid and octopuses rewrite their own RNA on a massive scale, tuning proteins without touching the genome \u2014 and the sites that allow it are so conserved that they appear to have slowed genome evolution as the price.",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/28388405/",
+      "sourceType": "peer-reviewed",
+      "action": "Note the trade-off: flexibility at one level was paid for with rigidity at another."
     },
     {
       "id": "hist-alexandria",
@@ -172,9 +176,9 @@
       "id": "travel-eu261",
       "tag": "Travel",
       "text": "EU261 entitles you to \u20ac250\u2013600 cash for long delays and cancellations on flights departing the EU (or arriving on an EU carrier) \u2014 separate from a refund, and airlines rarely volunteer it.",
-      "url": "https://en.wikipedia.org/wiki/Flight_Compensation_Regulation",
+      "url": "https://eur-lex.europa.eu/eli/reg/2004/261/oj",
       "action": "Delayed 3h+ on an EU departure? Claim directly with the airline in writing; you don't need an agency.",
-      "sourceType": "reference"
+      "sourceType": "primary"
     },
     {
       "id": "travel-passport-6mo",
@@ -188,9 +192,9 @@
       "id": "travel-schengen",
       "tag": "Travel",
       "text": "The Schengen rule is 90 days within any rolling 180 \u2014 not per calendar year, and not reset by a quick hop out. It's a sliding window and overstays are logged.",
-      "url": "https://en.wikipedia.org/wiki/Schengen_Area",
+      "url": "https://home-affairs.ec.europa.eu/policies/schengen-borders-and-visa/schengen-area_en",
       "action": "Count backwards 180 days from your arrival and add up prior days before booking.",
-      "sourceType": "reference"
+      "sourceType": "primary"
     },
     {
       "id": "travel-incognito",
@@ -204,9 +208,9 @@
       "id": "travel-jetlag",
       "tag": "Travel",
       "text": "Light timing beats melatonin for jet lag: seek morning light when flying east, evening light when flying west. Light is the signal your circadian clock actually reads.",
-      "url": "https://en.wikipedia.org/wiki/Jet_lag",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/40383249/",
       "action": "Get outside on arrival at the right end of the day, and skip the melatonin experiments.",
-      "sourceType": "reference"
+      "sourceType": "peer-reviewed"
     },
     {
       "id": "travel-global-entry",
@@ -504,7 +508,7 @@
       "text": "The Maillard reaction needs roughly 140\u00b0C+, and water caps food at 100\u00b0C. That's why anything wet won't brown \u2014 dry the surface first.",
       "url": "https://en.wikipedia.org/wiki/Maillard_reaction",
       "action": "Dry the surface, use a hot pan, and don't crowd it \u2014 steam keeps food at 100\u00b0C and stops browning.",
-      "sourceType": "reference"
+      "sourceType": "primary"
     },
     {
       "id": "food-searing",
@@ -512,7 +516,7 @@
       "text": "Searing doesn't seal in juices; that was disproved over a century ago. Seared meat loses slightly more moisture \u2014 you do it for flavor.",
       "url": "https://en.wikipedia.org/wiki/Searing",
       "action": "Sear for flavour, and rely on temperature control for juiciness.",
-      "sourceType": "reference"
+      "sourceType": "primary"
     },
     {
       "id": "food-msg",
@@ -528,7 +532,7 @@
       "text": "Salt meat well in advance or immediately before cooking \u2014 never in the 3\u201340 minute window, when it's drawn moisture out but not yet reabsorbed it.",
       "url": "https://en.wikipedia.org/wiki/Brining",
       "action": "For a steak, salt it the night before or as it hits the pan. Never twenty minutes ahead.",
-      "sourceType": "reference"
+      "sourceType": "primary"
     },
     {
       "id": "food-resting",
@@ -536,7 +540,7 @@
       "text": "Resting meat lets the temperature even out and the proteins relax their grip on moisture. Cut immediately and it runs onto the board.",
       "url": "https://en.wikipedia.org/wiki/Doneness",
       "action": "Rest roughly five minutes for a steak, twenty or more for a roast, loosely covered.",
-      "sourceType": "reference"
+      "sourceType": "primary"
     },
     {
       "id": "food-onion",
@@ -552,7 +556,7 @@
       "text": "Baking soda needs an acid to work; baking powder brings its own. Swapping them without adjusting acid gives you a metallic tang or a flat cake.",
       "url": "https://en.wikipedia.org/wiki/Baking_powder",
       "action": "Check the recipe for an acid before substituting. No acid means powder.",
-      "sourceType": "reference"
+      "sourceType": "primary"
     },
     {
       "id": "health-caffeine",
@@ -1281,7 +1285,7 @@
       "text": "Oven spring is three things at once: trapped CO2 expanding, water turning to steam, and ethanol from fermentation boiling off at 78\u00b0C. The yeast also sprints, then dies around 60\u00b0C.",
       "url": "https://en.wikipedia.org/wiki/Baking",
       "action": "Preheat fully and load fast; most of the rise happens in the first ten minutes.",
-      "sourceType": "reference"
+      "sourceType": "primary"
     },
     {
       "id": "mech-staling",
@@ -1289,7 +1293,7 @@
       "text": "Stale bread isn't dry \u2014 it's starch retrogradation, amylopectin recrystallising. Heat reverses it; cold accelerates it.",
       "url": "https://en.wikipedia.org/wiki/Retrogradation_(starch)",
       "action": "Freeze what you won't eat within two days \u2014 never refrigerate. Reheat to about 60\u00b0C to reverse it.",
-      "sourceType": "reference"
+      "sourceType": "primary"
     },
     {
       "id": "mech-steam",
@@ -1297,7 +1301,7 @@
       "text": "Steam in the oven keeps the crust soft long enough for the loaf to finish expanding, and gelatinises surface starch into gloss. Without it the crust sets early and the bread tears where it wanted to rise.",
       "url": "https://en.wikipedia.org/wiki/Baking",
       "action": "Cover for the first 15\u201320 minutes with a lid or a tray of water, then uncover to colour.",
-      "sourceType": "reference"
+      "sourceType": "primary"
     },
     {
       "id": "mech-sourdough",
@@ -1321,7 +1325,7 @@
       "text": "Fat is called shortening because it physically shortens gluten strands \u2014 coating proteins so they can't link. That's the whole difference between bread and cake crumb.",
       "url": "https://en.wikipedia.org/wiki/Shortening",
       "action": "Add fat early for a tender crumb, after gluten has formed if you want chew.",
-      "sourceType": "reference"
+      "sourceType": "primary"
     },
     {
       "id": "mech-maillard-vs-caramel",
@@ -1329,7 +1333,7 @@
       "text": "Maillard browning and caramelisation are different reactions: Maillard needs an amino acid plus a reducing sugar and starts near 140\u00b0C; caramelisation is sugar decomposing alone, and needs more heat.",
       "url": "https://en.wikipedia.org/wiki/Maillard_reaction",
       "action": "Pat the surface dry and get it past 140\u00b0C \u2014 anything wet is capped at 100\u00b0C and will never brown.",
-      "sourceType": "reference"
+      "sourceType": "primary"
     },
     {
       "id": "mech-ice-slippery",
@@ -1337,7 +1341,7 @@
       "text": "Ice is not slippery because pressure melts it \u2014 that effect is far too small at skating temperatures. The surface carries a molecularly thin premelted liquid layer that exists regardless of pressure.",
       "url": "https://en.wikipedia.org/wiki/Premelting",
       "action": "If you repeat the pressure-melting explanation, stop \u2014 it's wrong at skating temperatures.",
-      "sourceType": "reference"
+      "sourceType": "primary"
     },
     {
       "id": "mech-microwave",
@@ -1369,7 +1373,7 @@
       "text": "Soap works because its molecules are split-personality: a water-loving head and a fat-loving tail. Against enveloped viruses it does something blunter \u2014 it dissolves the lipid membrane holding them together.",
       "url": "https://en.wikipedia.org/wiki/Soap",
       "action": "Twenty seconds of soap and water beats sanitiser on greasy or visibly soiled hands.",
-      "sourceType": "reference"
+      "sourceType": "primary"
     },
     {
       "id": "mech-stainless",
@@ -1385,7 +1389,7 @@
       "text": "Seasoning a cast iron pan isn't oil soaking into pores. It's polymerisation \u2014 heat cross-links the fat into a hard plastic-like layer bonded to the metal.",
       "url": "https://en.wikipedia.org/wiki/Seasoning_(cookware)",
       "action": "Season with a wipe so thin it looks dry, at high heat. Thick coats stay tacky because they never fully polymerise.",
-      "sourceType": "reference"
+      "sourceType": "primary"
     },
     {
       "id": "mech-emulsion",
@@ -1393,7 +1397,7 @@
       "text": "Mayonnaise is oil suspended in water, held apart by lecithin from egg yolk coating every droplet. Add oil faster than the lecithin can coat it and the emulsion breaks.",
       "url": "https://en.wikipedia.org/wiki/Emulsion",
       "action": "Add the oil drop by drop at the start. If it splits, whisk the broken mixture slowly into a fresh yolk.",
-      "sourceType": "reference"
+      "sourceType": "primary"
     },
     {
       "id": "mech-chocolate-temper",
@@ -1409,7 +1413,7 @@
       "text": "Coffee extracts in a fixed order: acids first, then sugars, then the bitter compounds last. Taste tells you where you stopped.",
       "url": "https://en.wikipedia.org/wiki/Coffee_preparation",
       "action": "Sour means under-extracted \u2014 grind finer or brew longer. Bitter means over \u2014 grind coarser or brew shorter.",
-      "sourceType": "reference"
+      "sourceType": "primary"
     },
     {
       "id": "mech-anesthesia",
@@ -1441,7 +1445,100 @@
       "text": "Baking soda needs an acid and reacts immediately; baking powder carries its own acid and usually reacts twice, once wet and once hot. Swapping them without adjusting acid gives you a soapy tang.",
       "url": "https://en.wikipedia.org/wiki/Baking_powder",
       "action": "No acid in the recipe? Use powder. Swapping in soda means adding an acid \u2014 buttermilk, yoghurt or vinegar.",
+      "sourceType": "primary"
+    },
+    {
+      "id": "travel-abx-resistance",
+      "tag": "Travel",
+      "text": "Travellers to South Asia acquire multidrug-resistant gut bacteria at startling rates \u2014 and taking antibiotics for a stomach upset while there sharply increases the chance you bring them home. The treatment is the risk factor.",
+      "action": "Rehydrate and wait it out. Save antibiotics for fever, blood, or an illness that stops you travelling.",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/30037325/",
+      "sourceType": "peer-reviewed"
+    },
+    {
+      "id": "travel-diarrhoea",
+      "tag": "Travel",
+      "text": "Most travellers' diarrhoea is self-limiting and resolves without treatment. The reflex to reach for antibiotics is what turns a bad two days into carriage of a resistant organism.",
+      "action": "Pack oral rehydration salts, not antibiotics. Salt and sugar in water is the intervention with the evidence.",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/35421294/",
+      "sourceType": "peer-reviewed"
+    },
+    {
+      "id": "travel-altitude",
+      "tag": "Travel",
+      "text": "Cusco, La Paz and Lhasa all sit high enough that altitude sickness is a real risk, not a nuisance \u2014 and fitness offers no protection. Rate of ascent is what matters; acetazolamide has the best trial support if you must go up fast.",
+      "action": "Sleep low, climb high, and give yourself two nights before doing anything strenuous.",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/40383249/",
+      "sourceType": "peer-reviewed"
+    },
+    {
+      "id": "travel-rabies",
+      "tag": "Travel",
+      "text": "Rabies is effectively 100% fatal once symptoms appear and the dog does not have to look ill. Post-exposure treatment works \u2014 but the immunoglobulin is often unavailable in exactly the countries where the risk is highest.",
+      "action": "In Asia or Africa, treat any dog, monkey or bat contact as urgent. Find out before you go where treatment is actually stocked.",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/40516802/",
+      "sourceType": "peer-reviewed"
+    },
+    {
+      "id": "travel-street-food",
+      "tag": "Travel",
+      "text": "The safety signal at a street stall is turnover, not appearance. Food-microbiology surveys of vending repeatedly find the hazard is holding time and temperature \u2014 food sitting warm \u2014 rather than the fact of being cooked outdoors.",
+      "action": "Eat where the queue is local and the wok never stops. Avoid anything lukewarm under a lamp, however clean the stall looks.",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/16857283/",
+      "sourceType": "peer-reviewed"
+    },
+    {
+      "id": "travel-baarle",
+      "tag": "Travel",
+      "text": "Baarle-Hertog is 22 fragments of Belgium scattered inside the Netherlands, several containing Dutch counter-enclaves. The border runs through living rooms, and front doors carry a flag tile showing which country you are entering.",
+      "action": "Go for the border, not the town. Householders once chose their nationality by moving the front door.",
+      "url": "https://en.wikipedia.org/wiki/Baarle-Hertog",
+      "sourceType": "reference"
+    },
+    {
+      "id": "travel-diomede",
+      "tag": "Travel",
+      "text": "The Diomede Islands sit 3.8 km apart in the Bering Strait and 21 hours apart on the calendar. From Little Diomede you look across at tomorrow.",
+      "action": "One of the few places where the date line is a thing you can see rather than a line on a chart.",
+      "url": "https://en.wikipedia.org/wiki/Diomede_Islands",
+      "sourceType": "reference"
+    },
+    {
+      "id": "travel-mauritania-train",
+      "tag": "Travel",
+      "text": "The Mauritania iron ore train runs over two kilometres long across the Sahara, and riding on top of the ore is free. There is no shelter, the dust is total, and it is one of the great overland journeys precisely because nothing about it is arranged for you.",
+      "action": "Bring a scarf, goggles and far more water than seems reasonable. The passenger car exists; the ore is the point.",
+      "url": "https://en.wikipedia.org/wiki/Mauritania_Railway",
+      "sourceType": "reference"
+    },
+    {
+      "id": "travel-socotra",
+      "tag": "Travel",
+      "text": "A third of Socotra's plant species grow nowhere else on Earth, including the dragon's blood tree \u2014 an umbrella of branches that bleeds red resin. It is what an island looks like after twenty million years alone.",
+      "action": "Endemism this high is a warning as much as an attraction: go lightly, and understand it is a conflict zone.",
+      "url": "https://en.wikipedia.org/wiki/Socotra",
+      "sourceType": "reference"
+    },
+    {
+      "id": "travel-shared-taxi",
+      "tag": "Travel",
+      "text": "Across much of West Africa, Central Asia and the Caucasus, shared taxis leave when they are full rather than at a time. The schedule is a number of passengers, which is why asking when it departs gets you a shrug.",
+      "action": "Arrive early to fill the car faster, or buy the empty seats if you are in a hurry. Both are normal.",
+      "url": "https://en.wikipedia.org/wiki/Share_taxi",
+      "sourceType": "reference"
+    },
+    {
+      "id": "travel-tipping-japan",
+      "tag": "Travel",
+      "text": "Tipping in Japan is not generous, it is confusing \u2014 service is priced in, and pressing cash on someone can oblige them to chase you down to return it.",
+      "action": "Learn the local norm before you arrive. Generosity that ignores the norm is about you, not them.",
+      "url": "https://en.wikipedia.org/wiki/Tipping",
       "sourceType": "reference"
     }
-  ]
+  ],
+  "sourceTypes": {
+    "peer-reviewed": "A study, systematic review or meta-analysis in an indexed journal. Required for any card asserting something a study could confirm or refute.",
+    "primary": "The authoritative record for a settled fact: a specification, official documentation, an archive, or established textbook science where no current literature is being produced. Peer review does not apply \u2014 nobody is still publishing on the Maillard reaction's existence.",
+    "reference": "An encyclopaedia entry. A staging state, not a destination: every card here is waiting to be re-sourced."
+  }
 }
