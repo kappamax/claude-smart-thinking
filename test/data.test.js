@@ -114,3 +114,75 @@ test('feed catalog: feed urls are unique across bundles', () => {
     }
   }
 });
+
+test('deck: the source vocabulary is documented in the data', () => {
+  // The definitions live alongside the cards so a future reader can see why a
+  // card citing a textbook is "primary" rather than assuming it is a mistake.
+  assert.ok(deck.sourceTypes, 'deck must document what each sourceType means');
+  for (const k of ['peer-reviewed', 'primary', 'reference']) {
+    assert.ok(deck.sourceTypes[k], `sourceType "${k}" is undocumented`);
+  }
+});
+
+test('deck: no gated tag may rest on an encyclopaedia entry', () => {
+  // A weaker ratchet than the peer-reviewed gate, for topics that are settled
+  // textbook science: nobody is still publishing on whether the Maillard
+  // reaction exists, so "primary" is the honest ceiling there. What is not
+  // acceptable is an encyclopaedia entry.
+  const NO_REFERENCE = new Set(['Cooking', 'Bread', 'Coffee', 'Chemistry']);
+  const offenders = deck.cards
+    .filter((c) => NO_REFERENCE.has(c.tag) && c.sourceType === 'reference')
+    .map((c) => c.id);
+  assert.deepStrictEqual(offenders, [], `still on an encyclopaedia: ${offenders.join(', ')}`);
+});
+
+test('deck: every card declares what kind of source it has', () => {
+  // "All data must be peer reviewed" is enforceable only if the kind of source
+  // is recorded. peer-reviewed = a study; primary = the authoritative record
+  // (a spec, official docs, an archive); reference = an encyclopaedia entry,
+  // which is a staging state, not a destination.
+  const allowed = new Set(['peer-reviewed', 'primary', 'reference']);
+  for (const c of deck.cards) {
+    assert.ok(allowed.has(c.sourceType), `${c.id}: bad sourceType "${c.sourceType}"`);
+  }
+});
+
+test('deck: an empirical claim may not rest on an encyclopaedia entry', () => {
+  // Ratcheting gate. These topics assert something about the world that a study
+  // could confirm or refute, so they must cite one. The list grows as tags are
+  // re-sourced; it must never shrink.
+  // Mathematics is deliberately absent: a theorem's truth does not rest on
+  // evidence, so holding a proof to a peer-reviewed-study standard is a
+  // category error rather than a higher bar.
+  const EMPIRICAL = new Set(['Psychology', 'Learning', 'Statistics']);
+  const offenders = deck.cards
+    .filter((c) => EMPIRICAL.has(c.tag) && c.sourceType !== 'peer-reviewed')
+    .map((c) => `${c.id} (${c.sourceType})`);
+  assert.deepStrictEqual(offenders, [],
+    `empirical cards not citing a study: ${offenders.join(', ')}`);
+});
+
+test('deck: a peer-reviewed card cites the paper, not an encyclopaedia', () => {
+  // An allowlist of hosts was too narrow. Computer science publishes through
+  // ACM and IEEE, both of which return 403 to any automated client, so the
+  // accessible copy of a paper is often an author's or institution's PDF —
+  // legitimately the paper, just not on a host anyone could enumerate. What
+  // matters is that it is not a summary of the paper.
+  const NOT_A_PAPER = /wikipedia\.org|wikimedia\.org|medium\.com|\bblog\b/i;
+  for (const c of deck.cards.filter((x) => x.sourceType === 'peer-reviewed')) {
+    assert.ok(!NOT_A_PAPER.test(c.url), `${c.id}: cites a summary, not the paper — ${c.url}`);
+    assert.match(c.url, /^https?:\/\//, `${c.id}: bad url`);
+  }
+});
+
+test('deck: Technique is deliberately not gated, and the reason is recorded', () => {
+  // Most Technique cards describe a design practice rather than an empirical
+  // finding, so a study is the wrong standard. Of those that do have a
+  // canonical paper, many are behind ACM or IEEE paywalls that return 403 —
+  // and a link to a 403 serves the reader worse than an encyclopaedia entry
+  // does. This test exists so the gap is a recorded decision, not an oversight.
+  const tech = deck.cards.filter((c) => c.tag === 'Technique');
+  assert.ok(tech.length > 20, 'expected the Technique corpus to still be substantial');
+  const sourced = tech.filter((c) => c.sourceType !== 'reference').length;
+  assert.ok(sourced >= 15, `Technique regressed: only ${sourced}/${tech.length} above reference`);
+});

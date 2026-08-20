@@ -137,12 +137,25 @@ function at(hour) {
 
 test('wellness: sleep content appears late at night and not at midday', async () => {
   const night = await wellness.collect(wCfg, { now: at(1), pluginRoot: ROOT });
-  assert.ok(night.tips.length > 0, 'no sleep content at 01:30');
-  assert.ok(night.tips.every((t) => t.category === 'Sleep'), 'late night should be sleep-weighted');
+  const sleepAtNight = night.tips.filter((t) => t.category === 'Sleep').length;
+  assert.ok(sleepAtNight > 0, 'no sleep content at 01:30');
+  // Sleep should dominate at night without being the only thing — daytime
+  // health claims run continuously so health isn't confined to 2am.
+  assert.ok(sleepAtNight > night.tips.length / 2, 'late night should be sleep-weighted');
 
   fs.rmSync(path.join(STATE, 'wellness-state.json'), { force: true });
   const noon = await wellness.collect(wCfg, { now: at(13), pluginRoot: ROOT });
   assert.ok(!noon.tips.some((t) => t.category === 'Sleep'), 'sleep content leaked into the afternoon');
+});
+
+test('wellness: health content appears during the day, not only after a break', async () => {
+  // Regression: the only non-sleep health tip was attached to the break
+  // prompt, which needs 90 minutes of measured work — so in practice health
+  // showed up late at night and almost never otherwise.
+  fs.rmSync(path.join(STATE, 'wellness-state.json'), { force: true });
+  const noon = await wellness.collect(wCfg, { now: at(13), pluginRoot: ROOT });
+  assert.ok(noon.tips.length > 0, 'no health content at 13:30 with no break earned');
+  assert.ok(noon.tips.every((t) => t.action), 'daytime health must still say what to do');
 });
 
 test('wellness: repeated sleep tips are distinct', async () => {
@@ -156,7 +169,10 @@ test('wellness: repeated sleep tips are distinct', async () => {
 test('wellness: claims carry their evidence tier and a PubMed link', async () => {
   const res = await wellness.collect(wCfg, { now: at(1), pluginRoot: ROOT });
   for (const t of res.tips) {
-    assert.match(t.text, /\((umbrella-review|meta-analysis|RCT|cohort|contested)\)$/, `missing evidence tier: ${t.text}`);
+    // The tier must NOT be rendered — evidence selects the claim, it isn't
+    // part of the claim. It stays in the corpus for ranking and auditing.
+    assert.ok(!/\((umbrella-review|meta-analysis|RCT|cohort|contested)\)$/.test(t.text),
+      `evidence tier leaked into the text: ${t.text}`);
     assert.match(t.url, /ncbi\.nlm\.nih\.gov/, 'health claims must link primary literature');
     assert.ok(t.action, 'health claims must say what to do');
   }
@@ -357,9 +373,28 @@ test('the break prompt rotates its advice and never repeats the 20-20-20 rule', 
     const res = await tick(t0 + i * 4 * 60_000, { sessionId: 's1', cost, apiMs: i * 10 });
     for (const s of res.status) {
       assert.ok(!/20ft|20-20-20/.test(s.text), `contested advice resurfaced: ${s.text}`);
-      assert.match(s.text, /\((umbrella-review|meta-analysis|RCT|cohort|contested)\)$/, `ungraded advice: ${s.text}`);
+      assert.ok(!/\((umbrella-review|meta-analysis|RCT|cohort|contested)\)$/.test(s.text),
+        `evidence tier leaked into the status line: ${s.text}`);
       seen.add(s.text.replace(/^[\d.]+h active · /, ''));
     }
   }
   assert.ok(seen.size > 1, `advice never rotated (${seen.size} distinct)`);
+});
+
+// ------------------------------------------------------------- literature
+
+test('literature: publication type maps to an evidence tier', () => {
+  const t = require('../providers/literature')._tierOf;
+  assert.strictEqual(t(['Meta-Analysis', 'Journal Article']), 'meta-analysis');
+  assert.strictEqual(t(['Systematic Review']), 'systematic review');
+  assert.strictEqual(t(['Randomized Controlled Trial']), 'RCT');
+  // Anything that got through the review-type filter is at least peer reviewed.
+  assert.strictEqual(t(['Journal Article']), 'peer-reviewed');
+  assert.strictEqual(t([]), 'peer-reviewed');
+});
+
+test('literature: no topics configured means no output, not an error', async () => {
+  const lit = require('../providers/literature');
+  const r = await lit.collect({ topics: [] }, { now: new Date() });
+  assert.deepStrictEqual(r.tips, []);
 });

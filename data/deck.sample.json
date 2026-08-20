@@ -7,1264 +7,1538 @@
       "tag": "Knuth",
       "text": "The famous \"premature optimization is the root of all evil\" line comes with a qualifier people drop: \"We should forget about small efficiencies, say about 97% of the time.\" The other 3% he meant seriously.",
       "url": "https://en.wikipedia.org/wiki/Program_optimization",
-      "action": "Profile first \u2014 then do optimise the 3% the profiler points at. The quote is used to excuse skipping both halves."
+      "action": "Profile first \u2014 then do optimise the 3% the profiler points at. The quote is used to excuse skipping both halves.",
+      "sourceType": "reference"
     },
     {
       "id": "knuth-reward",
       "tag": "Knuth",
       "text": "Knuth pays $2.56 for each error found in his books \u2014 \"one hexadecimal dollar.\" The uncashed checks are famously treasured more than the money.",
-      "url": "https://en.wikipedia.org/wiki/Knuth_reward_check"
+      "url": "https://en.wikipedia.org/wiki/Knuth_reward_check",
+      "sourceType": "reference"
     },
     {
       "id": "knuth-tex",
       "tag": "Knuth",
       "text": "Knuth paused The Art of Computer Programming for nearly a decade to build TeX, because he couldn't stand how the second edition was typeset.",
-      "url": "https://en.wikipedia.org/wiki/TeX"
+      "url": "https://en.wikipedia.org/wiki/TeX",
+      "sourceType": "reference"
     },
     {
       "id": "knuth-dlx",
       "tag": "Knuth",
       "text": "Dancing Links: in a doubly linked list, `x.left.right = x.right` removes a node \u2014 and `x.left.right = x` puts it back, because the removed node still points home. Backtracking for free.",
-      "url": "https://en.wikipedia.org/wiki/Dancing_Links",
-      "action": "Reach for it on exact-cover problems \u2014 sudoku solvers, tiling, shift scheduling."
+      "url": "https://arxiv.org/abs/cs/0011047",
+      "action": "Reach for it on exact-cover problems \u2014 sudoku solvers, tiling, shift scheduling.",
+      "sourceType": "peer-reviewed"
     },
     {
       "id": "knuth-literate",
       "tag": "Knuth",
       "text": "Literate programming inverts the usual order: you write for a human reader and the compiler extracts the code, rather than writing for the compiler and apologizing in comments.",
       "url": "https://en.wikipedia.org/wiki/Literate_programming",
-      "action": "Write the explanation first and let the code follow it. If the prose won't come, the design isn't settled."
+      "action": "Write the explanation first and let the code follow it. If the prose won't come, the design isn't settled.",
+      "sourceType": "reference"
     },
     {
       "id": "knuth-analysis",
       "tag": "Knuth",
       "text": "Knuth popularized analyzing algorithms by counting operations rather than timing runs \u2014 a machine-independent measure that survives the hardware it was written on.",
       "url": "https://en.wikipedia.org/wiki/Analysis_of_algorithms",
-      "action": "Reach for a complexity estimate before a stopwatch when you're choosing between approaches."
+      "action": "Reach for a complexity estimate before a stopwatch when you're choosing between approaches.",
+      "sourceType": "reference"
     },
     {
       "id": "taocp-mmix",
       "tag": "Knuth",
       "text": "TAOCP's example machine MIX was retired for MMIX because MIX's design had aged badly \u2014 Knuth revised a fictional computer for realism.",
-      "url": "https://en.wikipedia.org/wiki/MMIX"
+      "url": "https://en.wikipedia.org/wiki/MMIX",
+      "sourceType": "reference"
     },
     {
       "id": "bio-cell-ratio",
       "tag": "Biology",
-      "text": "The \"10 bacterial cells per human cell\" figure was a 1970s back-of-envelope estimate. A 2016 recount put it near 1:1 \u2014 roughly 38 trillion bacteria to 30 trillion human cells.",
-      "url": "https://en.wikipedia.org/wiki/Human_microbiome",
-      "action": "Trace a striking ratio to its source before repeating it. This one survived forty years on an estimate nobody checked."
+      "text": "The \"10 bacterial cells per human cell\" ratio was a 1972 back-of-envelope estimate that went unchecked for forty years. A careful 2016 recount put it near 1:1 \u2014 about 38 trillion bacteria to 30 trillion human cells.",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/27541692/",
+      "action": "Trace a striking ratio to its source before repeating it. This one survived four decades on an estimate nobody revisited.",
+      "sourceType": "peer-reviewed"
     },
     {
       "id": "bio-mito",
       "tag": "Biology",
-      "text": "Mitochondria carry their own DNA and are inherited almost entirely from your mother, which makes mtDNA a clean maternal-line clock for tracing ancestry.",
-      "url": "https://en.wikipedia.org/wiki/Mitochondrial_DNA"
+      "text": "Mitochondria carry their own DNA and you inherit it almost entirely from your mother \u2014 but not cleanly: a bottleneck during egg formation samples only a fraction of the mother's variants, which is why mitochondrial disease severity varies between siblings.",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/31611080/",
+      "sourceType": "peer-reviewed",
+      "action": "Treat maternal-line inheritance as a sampling process, not a copy."
     },
     {
       "id": "bio-crispr",
       "tag": "Biology",
-      "text": "CRISPR is a bacterial immune system \u2014 bacteria file away snippets of virus DNA to recognize repeat attackers. Gene editing is us borrowing the filing system.",
-      "url": "https://en.wikipedia.org/wiki/CRISPR"
+      "text": "CRISPR is a bacterial immune system. Bacteria file snippets of virus DNA into their own genome to recognise repeat attackers \u2014 demonstrated in 2007, six years before anyone used it to edit anything. Gene editing is us borrowing the filing system.",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/17379808/",
+      "sourceType": "peer-reviewed",
+      "action": "When a tool seems to appear from nowhere, look for the organism that was already using it."
     },
     {
       "id": "bio-sickle",
       "tag": "Biology",
       "text": "One copy of the sickle-cell allele protects against malaria; two copies cause disease. The gene persists precisely where malaria is common \u2014 heterozygote advantage.",
       "url": "https://en.wikipedia.org/wiki/Sickle_cell_trait",
-      "action": "When a harmful variant persists, look for what it protects against before calling it a defect."
+      "action": "When a harmful variant persists, look for what it protects against before calling it a defect.",
+      "sourceType": "reference"
     },
     {
       "id": "bio-genes",
       "tag": "Biology",
       "text": "Humans have ~20,000 protein-coding genes, fewer than a grain of rice. Complexity lives in regulation and splicing, not gene count.",
-      "url": "https://en.wikipedia.org/wiki/Human_genome"
+      "url": "https://en.wikipedia.org/wiki/Human_genome",
+      "sourceType": "reference"
     },
     {
       "id": "bio-banana",
       "tag": "Biology",
       "text": "Nearly every banana you've eaten is a Cavendish clone, genetically identical. Its predecessor, the Gros Michel, was wiped out commercially by a fungus \u2014 and the same thing is now happening to Cavendish.",
-      "url": "https://en.wikipedia.org/wiki/Cavendish_banana"
+      "url": "https://en.wikipedia.org/wiki/Cavendish_banana",
+      "sourceType": "reference"
     },
     {
       "id": "bio-mycorrhizal",
       "tag": "Biology",
-      "text": "Trees trade sugar for phosphorus with fungal networks threading the soil, and can pass carbon to neighbors through them. The \"wood wide web\" framing is contested; the trading is not.",
-      "url": "https://en.wikipedia.org/wiki/Mycorrhizal_network",
-      "action": "Cite the nutrient trading, not the 'wood wide web' \u2014 the network narrative is contested and the trading isn't."
+      "text": "The \"wood wide web\" is on shakier ground than its popularity suggests: a 2023 review found the underlying claims about common mycorrhizal networks were supported by positive citation bias and overinterpreted results. Nutrient exchange is real; the network narrative is not established.",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/36782032/",
+      "action": "Cite the nutrient trading, not the network story \u2014 and treat confident claims about talking trees with suspicion.",
+      "sourceType": "peer-reviewed"
     },
     {
       "id": "bio-tardigrade",
       "tag": "Biology",
-      "text": "Tardigrades survive vacuum and extreme radiation by expelling nearly all their water and turning their cytoplasm into a glass-like solid \u2014 suspended, not tough.",
-      "url": "https://en.wikipedia.org/wiki/Tardigrade"
+      "text": "Tardigrades survive near-total desiccation using disordered proteins that assemble into a glass-like solid, holding the cell's contents in place. It is suspension rather than toughness \u2014 and the protein works when transplanted into other cells.",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/38501490/",
+      "sourceType": "peer-reviewed",
+      "action": "Look for the mechanism that stops time rather than the one that resists force."
     },
     {
       "id": "bio-hgt",
       "tag": "Biology",
       "text": "Bacteria swap genes sideways between living cells, not just down to offspring. That horizontal transfer is why antibiotic resistance spreads across species so fast.",
       "url": "https://en.wikipedia.org/wiki/Horizontal_gene_transfer",
-      "action": "Finish the antibiotic course question aside \u2014 assume resistance spreads between species, not just within one."
+      "action": "Finish the antibiotic course question aside \u2014 assume resistance spreads between species, not just within one.",
+      "sourceType": "reference"
     },
     {
       "id": "bio-cephalopod-rna",
       "tag": "Biology",
-      "text": "Squid and octopuses extensively edit their own RNA, tuning proteins on the fly \u2014 apparently trading away the usual pace of DNA evolution to do it.",
-      "url": "https://en.wikipedia.org/wiki/RNA_editing"
+      "text": "Squid and octopuses rewrite their own RNA on a massive scale, tuning proteins without touching the genome \u2014 and the sites that allow it are so conserved that they appear to have slowed genome evolution as the price.",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/28388405/",
+      "sourceType": "peer-reviewed",
+      "action": "Note the trade-off: flexibility at one level was paid for with rigidity at another."
     },
     {
       "id": "hist-alexandria",
       "tag": "History",
       "text": "The Library of Alexandria wasn't destroyed in one fire. It declined over centuries through funding cuts, purges of scholars, and neglect \u2014 institutions usually die slowly.",
       "url": "https://en.wikipedia.org/wiki/Library_of_Alexandria",
-      "action": "Watch for the slow version: budget cuts and staff leaving. Institutions rarely die in one dramatic event."
+      "action": "Watch for the slow version: budget cuts and staff leaving. Institutions rarely die in one dramatic event.",
+      "sourceType": "reference"
     },
     {
       "id": "hist-bronze-collapse",
       "tag": "History",
       "text": "Around 1177 BCE most Eastern Mediterranean civilizations collapsed within decades of each other. The leading explanation isn't one invader but a cascade of failures across a tightly coupled trade network.",
       "url": "https://en.wikipedia.org/wiki/Late_Bronze_Age_collapse",
-      "action": "Map what your system shares with its neighbours. Tightly coupled networks fail together, not one at a time."
+      "action": "Map what your system shares with its neighbours. Tightly coupled networks fail together, not one at a time.",
+      "sourceType": "reference"
     },
     {
       "id": "hist-rosetta",
       "tag": "History",
       "text": "The Rosetta Stone worked because it repeated one decree in three scripts. Champollion cracked hieroglyphs by realizing they encoded sounds, not just ideas.",
-      "url": "https://en.wikipedia.org/wiki/Rosetta_Stone"
+      "url": "https://en.wikipedia.org/wiki/Rosetta_Stone",
+      "sourceType": "reference"
     },
     {
       "id": "hist-printing",
       "tag": "History",
       "text": "Movable type existed in China and Korea centuries before Gutenberg. His decisive additions were the metal alloy, the oil-based ink, and the screw press.",
       "url": "https://en.wikipedia.org/wiki/Printing_press",
-      "action": "When crediting an invention, ask which specific constraint the famous name actually solved."
+      "action": "When crediting an invention, ask which specific constraint the famous name actually solved.",
+      "sourceType": "reference"
     },
     {
       "id": "travel-dcc",
       "tag": "Travel",
       "text": "When a foreign card terminal offers to charge you in your home currency, decline. Dynamic currency conversion typically bakes in a 3\u20137% markup worse than your card's own rate.",
       "url": "https://en.wikipedia.org/wiki/Dynamic_currency_conversion",
-      "action": "Always choose to be charged in the local currency, at the terminal and online."
+      "action": "Always choose to be charged in the local currency, at the terminal and online.",
+      "sourceType": "reference"
     },
     {
       "id": "travel-eu261",
       "tag": "Travel",
       "text": "EU261 entitles you to \u20ac250\u2013600 cash for long delays and cancellations on flights departing the EU (or arriving on an EU carrier) \u2014 separate from a refund, and airlines rarely volunteer it.",
-      "url": "https://en.wikipedia.org/wiki/Flight_Compensation_Regulation",
-      "action": "Delayed 3h+ on an EU departure? Claim directly with the airline in writing; you don't need an agency."
+      "url": "https://eur-lex.europa.eu/eli/reg/2004/261/oj",
+      "action": "Delayed 3h+ on an EU departure? Claim directly with the airline in writing; you don't need an agency.",
+      "sourceType": "primary"
     },
     {
       "id": "travel-passport-6mo",
       "tag": "Travel",
       "text": "Many countries refuse entry unless your passport is valid 6+ months beyond arrival. The airline enforces it at check-in, so a technically-unexpired passport can still strand you.",
       "url": "https://en.wikipedia.org/wiki/Passport_validity",
-      "action": "Check expiry against six months past your return date before booking, not at the airport."
+      "action": "Check expiry against six months past your return date before booking, not at the airport.",
+      "sourceType": "reference"
     },
     {
       "id": "travel-schengen",
       "tag": "Travel",
       "text": "The Schengen rule is 90 days within any rolling 180 \u2014 not per calendar year, and not reset by a quick hop out. It's a sliding window and overstays are logged.",
-      "url": "https://en.wikipedia.org/wiki/Schengen_Area",
-      "action": "Count backwards 180 days from your arrival and add up prior days before booking."
+      "url": "https://home-affairs.ec.europa.eu/policies/schengen-borders-and-visa/schengen-area_en",
+      "action": "Count backwards 180 days from your arrival and add up prior days before booking.",
+      "sourceType": "primary"
     },
     {
       "id": "travel-incognito",
       "tag": "Travel",
       "text": "Incognito mode doesn't lower airfare. Prices swing on demand and inventory; the cookie-tracking theory has never held up in controlled tests.",
       "url": "https://en.wikipedia.org/wiki/Dynamic_pricing",
-      "action": "Book when the price is acceptable rather than performing rituals to hide from the airline."
+      "action": "Book when the price is acceptable rather than performing rituals to hide from the airline.",
+      "sourceType": "reference"
     },
     {
       "id": "travel-jetlag",
       "tag": "Travel",
       "text": "Light timing beats melatonin for jet lag: seek morning light when flying east, evening light when flying west. Light is the signal your circadian clock actually reads.",
-      "url": "https://en.wikipedia.org/wiki/Jet_lag",
-      "action": "Get outside on arrival at the right end of the day, and skip the melatonin experiments."
+      "url": "https://pubmed.ncbi.nlm.nih.gov/40383249/",
+      "action": "Get outside on arrival at the right end of the day, and skip the melatonin experiments.",
+      "sourceType": "peer-reviewed"
     },
     {
       "id": "travel-global-entry",
       "tag": "Travel",
       "text": "Global Entry includes TSA PreCheck for a modest premium over PreCheck alone, and many travel credit cards reimburse the fee outright.",
       "url": "https://www.cbp.gov/travel/trusted-traveler-programs/global-entry",
-      "action": "Check whether a card you already hold reimburses the fee before paying it."
+      "action": "Check whether a card you already hold reimburses the fee before paying it.",
+      "sourceType": "primary"
     },
     {
       "id": "travel-carryon-battery",
       "tag": "Travel",
       "text": "Lithium batteries and power banks must fly in the cabin, never checked. A fire in the hold is far harder to reach than one in the aisle.",
       "url": "https://www.faa.gov/hazmat/packsafe/lithium-batteries",
-      "action": "Move every power bank into your cabin bag before you check anything."
+      "action": "Move every power bank into your cabin bag before you check anything.",
+      "sourceType": "primary"
     },
     {
       "id": "travel-esim",
       "tag": "Travel",
       "text": "A local eSIM bought before departure usually beats roaming by an order of magnitude and activates before you land \u2014 no queue at the airport kiosk.",
       "url": "https://en.wikipedia.org/wiki/ESIM",
-      "action": "Install it the night before you fly, while you still have wifi you trust."
+      "action": "Install it the night before you fly, while you still have wifi you trust.",
+      "sourceType": "reference"
     },
     {
       "id": "math-simpson",
       "tag": "Statistics",
-      "text": "Simpson's paradox: a trend can reverse when groups are combined. A treatment better for men and better for women can look worse overall if the groups differ in size and baseline risk.",
-      "url": "https://en.wikipedia.org/wiki/Simpson%27s_paradox",
-      "action": "Before trusting an aggregate, split it by the obvious confounder and check the direction holds."
+      "text": "A treatment better for men and better for women can look worse overall, once the groups are combined at different sizes. It is not a curiosity: it shows up in real clinical data and reverses the conclusion.",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/7804052/",
+      "action": "Before trusting an aggregate, split it by the obvious confounder and check the direction survives.",
+      "sourceType": "peer-reviewed"
     },
     {
       "id": "math-survivorship",
       "tag": "Statistics",
-      "text": "In WWII, analysts mapped bullet holes on bombers that made it home and proposed armouring the damaged areas. Abraham Wald saw it backwards: those planes survived being hit there. The armour belonged where returning planes showed no holes, because planes hit there never came back.",
-      "url": "https://en.wikipedia.org/wiki/Survivorship_bias",
-      "action": "Ask what's missing from the dataset before drawing a conclusion from what's in it."
+      "text": "In WWII, analysts mapped bullet holes on bombers that made it home and proposed armouring the damaged areas. Abraham Wald saw it backwards: those planes survived being hit there. The same bias has a clinical name \u2014 count only the survivors and any treatment looks effective.",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/32783283/",
+      "action": "Ask what's missing from the dataset before drawing any conclusion from what's in it.",
+      "sourceType": "peer-reviewed"
     },
     {
       "id": "math-benford",
       "tag": "Statistics",
-      "text": "In many real datasets \u2014 populations, invoices, street addresses \u2014 the leading digit is 1 about 30% of the time and 9 under 5%. Auditors use the pattern to flag fabricated books, because people inventing numbers spread the digits evenly.",
-      "url": "https://en.wikipedia.org/wiki/Benford%27s_law",
-      "action": "Suspect fabrication in reported numbers? Check the leading-digit distribution first."
+      "text": "In many real datasets the leading digit is 1 about 30% of the time and 9 under 5%. Auditors exploit it: people inventing numbers spread the digits evenly, and the deviation is detectable.",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/35004209/",
+      "action": "Suspect fabricated figures? Check the leading-digit distribution before anything else.",
+      "sourceType": "peer-reviewed"
     },
     {
       "id": "math-birthday",
-      "tag": "Statistics",
+      "tag": "Mathematics",
       "text": "In a room of 23 people, there's a better-than-even chance two share a birthday. There are 253 pairs, and the intuition fails because we count people instead of pairs.",
       "url": "https://en.wikipedia.org/wiki/Birthday_problem",
-      "action": "Any time you hash into a space, compute the collision probability from the number of pairs, not the number of items."
+      "action": "Any time you hash into a space, compute the collision probability from the number of pairs, not the number of items.",
+      "sourceType": "reference"
     },
     {
       "id": "math-basrate",
       "tag": "Statistics",
-      "text": "A test that's 99% accurate for a disease affecting 1 in 10,000 still gives mostly false positives. Rarity dominates accuracy \u2014 always ask for the base rate.",
-      "url": "https://en.wikipedia.org/wiki/Base_rate_fallacy",
-      "action": "Whenever you're told an accuracy figure, ask for the prevalence before believing the result."
+      "text": "Asked a textbook question \u2014 a test with a 5% false-positive rate, a disease affecting 1 in 1,000 \u2014 most physicians and students at Harvard teaching hospitals answered 95%. The correct answer is about 2%. Fewer than one in five got it right.",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/692627/",
+      "action": "Whenever you're given an accuracy figure, ask for the prevalence before believing the result.",
+      "sourceType": "peer-reviewed"
     },
     {
       "id": "math-regression",
       "tag": "Statistics",
-      "text": "Regression to the mean explains why praise seems to backfire and criticism seems to work: extreme performances are followed by ordinary ones regardless of what you say.",
-      "url": "https://en.wikipedia.org/wiki/Regression_toward_the_mean",
-      "action": "Judge an intervention against a control group, not against the extreme that prompted it."
+      "text": "Pick people because they scored extremely, measure them again, and they move toward the average \u2014 with no treatment at all. It is why the sickest patients seem to improve on anything, and why praise appears to backfire.",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/15333621/",
+      "action": "Judge an intervention against a control group, never against the extreme that prompted it.",
+      "sourceType": "peer-reviewed"
     },
     {
       "id": "math-pvalue",
       "tag": "Statistics",
-      "text": "A p-value is the probability of data this extreme *if the null were true* \u2014 not the probability the null is true, and not a measure of effect size.",
-      "url": "https://en.wikipedia.org/wiki/Misuse_of_p-values",
-      "action": "Ask for the effect size and confidence interval. A p-value alone tells you almost nothing useful."
+      "text": "A review catalogued 25 distinct ways people misread P values and confidence intervals \u2014 including that a P value gives the probability the null is true, and that a non-significant result means no effect. Neither is what it measures.",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/27209009/",
+      "action": "Ask for the effect size and interval. A P value alone answers a question you probably weren't asking.",
+      "sourceType": "peer-reviewed"
     },
     {
       "id": "math-monty",
       "tag": "Statistics",
-      "text": "A game show hides a prize behind one of three doors. You pick one; the host, who knows where the prize is, opens a different door to reveal nothing, and offers you the switch. Switching wins two times in three \u2014 because the host's choice was never random, and that makes it information.",
-      "url": "https://en.wikipedia.org/wiki/Monty_Hall_problem",
-      "action": "When new information arrives, ask whether the source could have acted differently \u2014 that's what makes it informative."
+      "text": "A game show hides a prize behind one of three doors. You pick one; the host, who knows where it is, opens a losing door and offers the switch. Switching wins two times in three \u2014 and most people still refuse, because the host's choice looks random and isn't.",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/25873906/",
+      "action": "When new information arrives, ask whether the source could have acted otherwise. That's what makes it informative.",
+      "sourceType": "peer-reviewed"
     },
     {
       "id": "math-godel",
       "tag": "Mathematics",
       "text": "G\u00f6del showed any consistent system rich enough for arithmetic contains true statements it cannot prove. Completeness and consistency can't both be had.",
       "url": "https://en.wikipedia.org/wiki/G%C3%B6del%27s_incompleteness_theorems",
-      "action": "Be suspicious of any system claimed to be both complete and self-verifying \u2014 including your own test suite."
+      "action": "Be suspicious of any system claimed to be both complete and self-verifying \u2014 including your own test suite.",
+      "sourceType": "reference"
     },
     {
       "id": "math-euler",
       "tag": "Mathematics",
       "text": "e^(i\u03c0) + 1 = 0 links five fundamental constants in one line \u2014 it falls out of the fact that multiplying by e^(i\u03b8) is a rotation.",
-      "url": "https://en.wikipedia.org/wiki/Euler%27s_identity"
+      "url": "https://en.wikipedia.org/wiki/Euler%27s_identity",
+      "sourceType": "reference"
     },
     {
       "id": "math-cantor",
       "tag": "Mathematics",
       "text": "Some infinities are larger than others: the reals cannot be put in one-to-one correspondence with the integers. Cantor's diagonal argument fits in a paragraph.",
-      "url": "https://en.wikipedia.org/wiki/Cantor%27s_diagonal_argument"
+      "url": "https://en.wikipedia.org/wiki/Cantor%27s_diagonal_argument",
+      "sourceType": "reference"
     },
     {
       "id": "phys-gps",
       "tag": "Physics",
       "text": "GPS satellites must correct for relativity by about 38 microseconds a day. Skip it and positions drift some 10 km every day \u2014 relativity is infrastructure.",
       "url": "https://en.wikipedia.org/wiki/Error_analysis_for_the_Global_Positioning_System",
-      "action": "Treat 'too theoretical to matter' as a claim needing evidence. This one is in your phone."
+      "action": "Treat 'too theoretical to matter' as a claim needing evidence. This one is in your phone.",
+      "sourceType": "reference"
     },
     {
       "id": "phys-neutron",
       "tag": "Physics",
       "text": "A teaspoon of neutron star weighs roughly as much as a mountain \u2014 the star is essentially one atomic nucleus the size of a city.",
-      "url": "https://en.wikipedia.org/wiki/Neutron_star"
+      "url": "https://en.wikipedia.org/wiki/Neutron_star",
+      "sourceType": "reference"
     },
     {
       "id": "phys-tunneling",
       "tag": "Physics",
       "text": "The Sun isn't hot enough to fuse hydrogen classically. It shines because quantum tunneling lets protons pass a barrier they can't clear.",
-      "url": "https://en.wikipedia.org/wiki/Proton%E2%80%93proton_chain"
+      "url": "https://en.wikipedia.org/wiki/Proton%E2%80%93proton_chain",
+      "sourceType": "reference"
     },
     {
       "id": "phys-moon-drift",
       "tag": "Physics",
       "text": "The Moon recedes about 3.8 cm per year, and Earth's day lengthens to match. Tidal friction is slowly trading our rotation for its orbit.",
-      "url": "https://en.wikipedia.org/wiki/Tidal_acceleration"
+      "url": "https://en.wikipedia.org/wiki/Tidal_acceleration",
+      "sourceType": "reference"
     },
     {
       "id": "phys-olbers",
       "tag": "Physics",
       "text": "Olbers' paradox: in an infinite, eternal, uniform universe, every sightline ends on a star and the night sky should blaze. Darkness is evidence the universe had a beginning.",
-      "url": "https://en.wikipedia.org/wiki/Olbers%27_paradox"
+      "url": "https://en.wikipedia.org/wiki/Olbers%27_paradox",
+      "sourceType": "reference"
     },
     {
       "id": "phys-entropy-arrow",
       "tag": "Physics",
       "text": "Almost every fundamental law is time-symmetric. The reason you can tell a film is running backwards is statistical \u2014 entropy, not the equations.",
       "url": "https://en.wikipedia.org/wiki/Arrow_of_time",
-      "action": "When a process looks irreversible, ask whether it's the physics or just the statistics of many particles."
+      "action": "When a process looks irreversible, ask whether it's the physics or just the statistics of many particles.",
+      "sourceType": "reference"
     },
     {
       "id": "psy-spacing",
       "tag": "Learning",
-      "text": "Spacing beats massing: the same total study time spread over days produces markedly better retention than one block. Cramming optimizes for the test, not the year.",
-      "url": "https://en.wikipedia.org/wiki/Spacing_effect",
-      "action": "Split study time across days rather than lengthening a single session. Same hours, more retention."
+      "text": "Spacing beats massing: a synthesis of 254 studies found the same total study time spread across sessions produced substantially better recall than one block. Cramming optimises for the test, not the year.",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/16719566/",
+      "action": "Split study time across days rather than lengthening a single session. Same hours, more retention.",
+      "sourceType": "peer-reviewed"
     },
     {
       "id": "psy-testing",
       "tag": "Learning",
-      "text": "Retrieving an answer from memory strengthens it more than re-reading it. Testing isn't just measurement \u2014 it's the study method.",
-      "url": "https://en.wikipedia.org/wiki/Testing_effect",
-      "action": "Close the page and try to recall it before re-reading. The retrieval is the learning."
+      "text": "Being tested on material beats re-reading it, and the gap widens with delay: after a week, students who had been quizzed once recalled far more than those who studied the same passage repeatedly.",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/16507066/",
+      "action": "Close the page and try to recall it before re-reading. The retrieval is the learning.",
+      "sourceType": "peer-reviewed"
     },
     {
       "id": "psy-generation",
       "tag": "Learning",
-      "text": "You remember an answer you guessed wrong before being corrected better than one you were simply told. The failed attempt does the work.",
-      "url": "https://en.wikipedia.org/wiki/Generation_effect",
-      "action": "Guess before you look it up, even when you expect to be wrong."
+      "text": "Generating an answer yourself \u2014 even getting it wrong \u2014 beats being shown it. A meta-analytic review across 86 studies found the effect holds for words, facts and problems.",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/17645161/",
+      "action": "Guess before you look it up, even when you expect to be wrong.",
+      "sourceType": "peer-reviewed"
     },
     {
       "id": "psy-peakend",
       "tag": "Psychology",
-      "text": "We judge an experience by its most intense moment and its ending, largely ignoring duration. A longer ordeal with a gentler finish is remembered as better.",
-      "url": "https://en.wikipedia.org/wiki/Peak%E2%80%93end_rule",
-      "action": "Design the end of any experience deliberately \u2014 it weighs far more than its length."
+      "text": "Patients undergoing colonoscopy rated a longer procedure as less unpleasant than a shorter one, provided the last minutes were gentler. What is remembered tracks the peak and the ending, not the duration.",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/8857625/",
+      "action": "Design the end of any experience deliberately \u2014 it weighs far more than its length.",
+      "sourceType": "peer-reviewed"
     },
     {
       "id": "psy-curse",
       "tag": "Psychology",
-      "text": "The curse of knowledge: once you know something, you can't model not knowing it. It's why experts write bad documentation without noticing.",
-      "url": "https://en.wikipedia.org/wiki/Curse_of_knowledge",
-      "action": "Have someone unfamiliar follow your docs without help, and watch where they stop."
-    },
-    {
-      "id": "psy-zeigarnik",
-      "tag": "Psychology",
-      "text": "Unfinished tasks occupy memory more than finished ones. Stopping mid-sentence is a genuine trick for making tomorrow's start easier.",
-      "url": "https://en.wikipedia.org/wiki/Zeigarnik_effect",
-      "action": "Stop mid-task rather than at a clean boundary; tomorrow's start is much easier."
+      "text": "Once you know something you cannot model not knowing it. Adults told where an object was hidden systematically overestimated how easily a naive person would find it \u2014 which is why experts write documentation that assumes too much.",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/17576275/",
+      "action": "Have someone unfamiliar follow your docs without help, and watch where they stop.",
+      "sourceType": "peer-reviewed"
     },
     {
       "id": "psy-loss",
       "tag": "Psychology",
-      "text": "Losses feel roughly twice as strong as equivalent gains, which is why the identical choice flips when framed as avoiding a loss.",
-      "url": "https://en.wikipedia.org/wiki/Loss_aversion",
-      "action": "Reframe a decision as both a gain and a loss and see whether your answer changes. If it does, neither framing is the reason."
+      "text": "Loss aversion is real but weaker and more conditional than the familiar 2:1 figure suggests. A review of its origins found the ratio was never a stable constant, and losses loom largest when stakes are high and the choice is framed in isolation.",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/29663131/",
+      "action": "Reframe a decision as both a gain and a loss and see whether your answer changes. If it does, neither framing is the reason.",
+      "sourceType": "peer-reviewed"
     },
     {
       "id": "psy-anchor",
       "tag": "Psychology",
-      "text": "Anchoring works even with numbers known to be irrelevant \u2014 a random figure shifts subsequent estimates. Whoever names a number first shapes the range.",
-      "url": "https://en.wikipedia.org/wiki/Anchoring_effect",
-      "action": "In a negotiation, name your number first, or explicitly discard theirs before countering."
+      "text": "People asked to estimate a quantity after spinning a wheel of fortune gave answers pulled toward whatever number came up \u2014 a figure they had watched be generated at random.",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/17835457/",
+      "action": "In a negotiation, name your number first, or explicitly discard theirs before countering.",
+      "sourceType": "peer-reviewed"
     },
     {
       "id": "psy-dunning",
       "tag": "Psychology",
-      "text": "Dunning-Kruger is weaker and more contested than its pop version: some of the effect is a statistical artifact of noisy self-estimates regressing to the mean.",
-      "url": "https://en.wikipedia.org/wiki/Dunning%E2%80%93Kruger_effect",
-      "action": "Treat it as a caution about noisy self-assessment generally, not a licence to call other people incompetent."
+      "text": "The original finding was narrower than the meme: people in the bottom quartile of a skill overestimated their percentile rank, partly because judging your own competence requires the competence itself. Some of the effect is a statistical artefact of noisy self-estimates.",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/10626367/",
+      "action": "Treat it as a caution about noisy self-assessment generally, not a licence to call other people incompetent.",
+      "sourceType": "peer-reviewed"
     },
     {
       "id": "psy-cognitive-load",
       "tag": "Psychology",
-      "text": "Working memory holds about four chunks, not seven. Expertise is mostly building bigger chunks, not holding more of them.",
-      "url": "https://en.wikipedia.org/wiki/Working_memory",
-      "action": "Chunk it. If someone must hold more than about four things, give them a name for the group."
+      "text": "Working memory holds about four chunks, not seven. The famous seven came from a 1956 paper whose own author called it a coincidence; a later review put the real limit near four.",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/11515286/",
+      "action": "Chunk it. Past about four items, give people a name for the group instead of another item.",
+      "sourceType": "peer-reviewed"
     },
     {
       "id": "econ-comparative",
       "tag": "Economics",
       "text": "Comparative advantage means trade helps even when one party is better at everything \u2014 what matters is relative opportunity cost, not absolute skill.",
       "url": "https://en.wikipedia.org/wiki/Comparative_advantage",
-      "action": "Delegate what you're merely good at, not just what you're bad at. The cost is what it displaces."
+      "action": "Delegate what you're merely good at, not just what you're bad at. The cost is what it displaces.",
+      "sourceType": "reference"
     },
     {
       "id": "econ-goodhart",
       "tag": "Economics",
       "text": "Goodhart's law: when a measure becomes a target, it stops being a good measure. The metric gets optimized; the thing it proxied for doesn't.",
       "url": "https://en.wikipedia.org/wiki/Goodhart%27s_law",
-      "action": "Pair every target with a guard metric that would move if the target were being gamed."
+      "action": "Pair every target with a guard metric that would move if the target were being gamed.",
+      "sourceType": "reference"
     },
     {
       "id": "econ-jevons",
       "tag": "Economics",
       "text": "Jevons paradox: making a resource more efficient to use can increase total consumption, because efficiency makes it cheaper to use more.",
       "url": "https://en.wikipedia.org/wiki/Jevons_paradox",
-      "action": "Before buying efficiency to cut usage, check whether cheaper usage will just mean more of it."
+      "action": "Before buying efficiency to cut usage, check whether cheaper usage will just mean more of it.",
+      "sourceType": "reference"
     },
     {
       "id": "econ-baumol",
       "tag": "Economics",
       "text": "A string quartet needs the same four players and the same forty minutes it needed in 1800, so it can never get more productive. But its players' wages must still track the wider economy \u2014 which is why live music, teaching and care get steadily more expensive relative to manufactured goods.",
       "url": "https://en.wikipedia.org/wiki/Baumol_effect",
-      "action": "Don't judge a labour-intensive service by manufacturing price trends. It was never going to track them."
+      "action": "Don't judge a labour-intensive service by manufacturing price trends. It was never going to track them.",
+      "sourceType": "reference"
     },
     {
       "id": "econ-sunk",
       "tag": "Economics",
       "text": "Money already spent should never affect the next decision. That it reliably does is why \"we've come this far\" is such an expensive sentence.",
       "url": "https://en.wikipedia.org/wiki/Sunk_cost",
-      "action": "Ask what you'd choose if you were arriving fresh today. That's the only relevant question."
+      "action": "Ask what you'd choose if you were arriving fresh today. That's the only relevant question.",
+      "sourceType": "reference"
     },
     {
       "id": "econ-rule72",
       "tag": "Money",
       "text": "Rule of 72: divide 72 by the annual return to get the doubling time. At 6%, money doubles in about 12 years \u2014 good enough for mental arithmetic.",
       "url": "https://en.wikipedia.org/wiki/Rule_of_72",
-      "action": "Divide 72 by the rate for a fast doubling-time estimate you can do in your head."
+      "action": "Divide 72 by the rate for a fast doubling-time estimate you can do in your head.",
+      "sourceType": "reference"
     },
     {
       "id": "econ-fees",
       "tag": "Money",
       "text": "A 1% annual fee sounds trivial and eats roughly a quarter of a portfolio over 30 years, because it compounds against you every single year.",
       "url": "https://en.wikipedia.org/wiki/Expense_ratio",
-      "action": "Check the expense ratio on every fund you hold. Below 0.2% is achievable and the difference compounds."
+      "action": "Check the expense ratio on every fund you hold. Below 0.2% is achievable and the difference compounds.",
+      "sourceType": "reference"
     },
     {
       "id": "econ-veblen",
       "tag": "Economics",
       "text": "Veblen goods sell more as they get more expensive \u2014 price is the product. It breaks the demand curve taught in week one.",
       "url": "https://en.wikipedia.org/wiki/Veblen_good",
-      "action": "When price is the signal, cutting it can destroy demand. Test before discounting a premium product."
+      "action": "When price is the signal, cutting it can destroy demand. Test before discounting a premium product.",
+      "sourceType": "reference"
     },
     {
       "id": "food-maillard",
       "tag": "Cooking",
       "text": "The Maillard reaction needs roughly 140\u00b0C+, and water caps food at 100\u00b0C. That's why anything wet won't brown \u2014 dry the surface first.",
       "url": "https://en.wikipedia.org/wiki/Maillard_reaction",
-      "action": "Dry the surface, use a hot pan, and don't crowd it \u2014 steam keeps food at 100\u00b0C and stops browning."
+      "action": "Dry the surface, use a hot pan, and don't crowd it \u2014 steam keeps food at 100\u00b0C and stops browning.",
+      "sourceType": "primary"
     },
     {
       "id": "food-searing",
       "tag": "Cooking",
       "text": "Searing doesn't seal in juices; that was disproved over a century ago. Seared meat loses slightly more moisture \u2014 you do it for flavor.",
       "url": "https://en.wikipedia.org/wiki/Searing",
-      "action": "Sear for flavour, and rely on temperature control for juiciness."
+      "action": "Sear for flavour, and rely on temperature control for juiciness.",
+      "sourceType": "primary"
     },
     {
       "id": "food-msg",
       "tag": "Cooking",
-      "text": "\"Chinese restaurant syndrome\" traces to a single 1968 letter and never survived double-blind testing. Glutamate is abundant in parmesan and tomatoes.",
-      "url": "https://en.wikipedia.org/wiki/Monosodium_glutamate",
-      "action": "Use it. A pinch adds savouriness where salt alone would just taste salty."
+      "text": "\"Chinese restaurant syndrome\" traces to a single 1968 letter. A review of the controlled trials since found no consistent reproducible response to MSG at normal dietary amounts \u2014 and glutamate is abundant in parmesan, tomatoes and soy sauce.",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/16999713/",
+      "action": "Use it. A pinch adds savouriness where more salt would only taste salty.",
+      "sourceType": "peer-reviewed"
     },
     {
       "id": "food-salt-timing",
       "tag": "Cooking",
       "text": "Salt meat well in advance or immediately before cooking \u2014 never in the 3\u201340 minute window, when it's drawn moisture out but not yet reabsorbed it.",
       "url": "https://en.wikipedia.org/wiki/Brining",
-      "action": "For a steak, salt it the night before or as it hits the pan. Never twenty minutes ahead."
+      "action": "For a steak, salt it the night before or as it hits the pan. Never twenty minutes ahead.",
+      "sourceType": "primary"
     },
     {
       "id": "food-resting",
       "tag": "Cooking",
       "text": "Resting meat lets the temperature even out and the proteins relax their grip on moisture. Cut immediately and it runs onto the board.",
       "url": "https://en.wikipedia.org/wiki/Doneness",
-      "action": "Rest roughly five minutes for a steak, twenty or more for a roast, loosely covered."
+      "action": "Rest roughly five minutes for a steak, twenty or more for a roast, loosely covered.",
+      "sourceType": "primary"
     },
     {
       "id": "food-onion",
       "tag": "Cooking",
-      "text": "Onion tears come from a volatile sulfur compound that dissolves in water on your eye. Chilling the onion and keeping it wet both help; holding your breath doesn't.",
-      "url": "https://en.wikipedia.org/wiki/Syn-Propanethial-S-oxide",
-      "action": "Chill the onion first and keep the blade wet. Holding your breath does nothing."
+      "text": "Cutting an onion doesn't release the irritant \u2014 a dedicated enzyme manufactures it in the instant the cell breaks. Lachrymatory factor synthase was only identified in 2002; until then the compound was assumed to form on its own.",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/12384686/",
+      "action": "Chill the onion and keep the blade wet. Holding your breath does nothing, because the enzyme works at the cut.",
+      "sourceType": "peer-reviewed"
     },
     {
       "id": "food-baking-soda",
       "tag": "Cooking",
       "text": "Baking soda needs an acid to work; baking powder brings its own. Swapping them without adjusting acid gives you a metallic tang or a flat cake.",
       "url": "https://en.wikipedia.org/wiki/Baking_powder",
-      "action": "Check the recipe for an acid before substituting. No acid means powder."
+      "action": "Check the recipe for an acid before substituting. No acid means powder.",
+      "sourceType": "primary"
     },
     {
       "id": "health-caffeine",
       "tag": "Health",
       "text": "Caffeine's half-life is around 5\u20136 hours, so an afternoon coffee still has a quarter of its dose in you at midnight \u2014 often felt as poor sleep rather than wakefulness.",
       "url": "https://en.wikipedia.org/wiki/Caffeine",
-      "action": "Set a cut-off six hours before bed and judge by your sleep, not by how awake you feel."
+      "action": "Set a cut-off six hours before bed and judge by your sleep, not by how awake you feel.",
+      "sourceType": "reference"
     },
     {
       "id": "health-vo2",
       "tag": "Health",
       "text": "Cardiorespiratory fitness is among the strongest predictors of all-cause mortality \u2014 a larger effect than most single risk factors people worry about more.",
       "url": "https://en.wikipedia.org/wiki/VO2_max",
-      "action": "Add one session a week hard enough that talking is difficult."
+      "action": "Add one session a week hard enough that talking is difficult.",
+      "sourceType": "reference"
     },
     {
       "id": "health-alcohol-rem",
       "tag": "Health",
       "text": "Alcohol shortens time to sleep and then suppresses REM and fragments the second half of the night. It sedates rather than rests.",
       "url": "https://en.wikipedia.org/wiki/Alcohol_and_health",
-      "action": "Stop drinking three or more hours before bed if you want the sleep."
+      "action": "Stop drinking three or more hours before bed if you want the sleep.",
+      "sourceType": "reference"
     },
     {
       "id": "health-8glasses",
       "tag": "Health",
       "text": "The \"8 glasses of water a day\" rule has no solid evidence base and ignores water in food and other drinks. Thirst is a decent controller.",
       "url": "https://en.wikipedia.org/wiki/Drinking_water",
-      "action": "Drink to thirst; count coffee, tea and food toward the total."
+      "action": "Drink to thirst; count coffee, tea and food toward the total.",
+      "sourceType": "reference"
     },
     {
       "id": "health-nap",
       "tag": "Health",
       "text": "Nap 20 minutes or 90, not 45. Waking from deep sleep mid-cycle produces the grogginess that makes people believe naps don't work for them.",
       "url": "https://en.wikipedia.org/wiki/Power_nap",
-      "action": "Keep naps short and early, and don't use cycle arithmetic to time them."
+      "action": "Keep naps short and early, and don't use cycle arithmetic to time them.",
+      "sourceType": "reference"
     },
     {
       "id": "health-stretching",
       "tag": "Health",
       "text": "Static stretching before exercise doesn't prevent injury and can slightly reduce power output. Warm up by moving; save long holds for afterwards.",
       "url": "https://en.wikipedia.org/wiki/Stretching",
-      "action": "Do the first set of your activity at half effort as the warm-up."
+      "action": "Do the first set of your activity at half effort as the warm-up.",
+      "sourceType": "reference"
     },
     {
       "id": "lang-basque",
       "tag": "Language",
       "text": "Basque is a language isolate with no proven relatives \u2014 it was spoken in Western Europe before Indo-European arrived and simply never yielded.",
       "url": "https://en.wikipedia.org/wiki/Basque_language",
-      "action": "Before assuming two neighbouring things share an origin, check whether anyone has actually demonstrated it."
+      "action": "Before assuming two neighbouring things share an origin, check whether anyone has actually demonstrated it.",
+      "sourceType": "reference"
     },
     {
       "id": "lang-sapir",
       "tag": "Language",
       "text": "The strong claim that language determines thought is rejected; the weak version survives \u2014 language nudges what you notice and how fast you sort it.",
       "url": "https://en.wikipedia.org/wiki/Linguistic_relativity",
-      "action": "Treat strong claims that a language makes its speakers think differently with scepticism."
+      "action": "Treat strong claims that a language makes its speakers think differently with scepticism.",
+      "sourceType": "reference"
     },
     {
       "id": "lang-sign",
       "tag": "Language",
       "text": "Sign languages are full natural languages with their own grammar, not encodings of speech. British and American Sign Language are mutually unintelligible.",
-      "url": "https://en.wikipedia.org/wiki/Sign_language"
+      "url": "https://en.wikipedia.org/wiki/Sign_language",
+      "sourceType": "reference"
     },
     {
       "id": "lang-pie",
       "tag": "Language",
       "text": "English, Hindi, Farsi, Greek and Russian all descend from one unwritten language spoken ~6,000 years ago \u2014 reconstructed purely from patterned sound changes.",
-      "url": "https://en.wikipedia.org/wiki/Proto-Indo-European_language"
+      "url": "https://en.wikipedia.org/wiki/Proto-Indo-European_language",
+      "sourceType": "reference"
     },
     {
       "id": "art-golden",
       "tag": "Art",
       "text": "The golden ratio in the Parthenon and Renaissance painting is mostly retrofitted numerology; the measurements are chosen after the fact to fit.",
       "url": "https://en.wikipedia.org/wiki/Golden_ratio",
-      "action": "Choose spacing by what reads well and stays consistent, not by chasing 1.618."
+      "action": "Choose spacing by what reads well and stays consistent, not by chasing 1.618.",
+      "sourceType": "reference"
     },
     {
       "id": "music-temperament",
       "tag": "Music",
       "text": "Equal temperament makes every key equally usable by making every interval except the octave slightly out of tune \u2014 the piano is a negotiated compromise.",
       "url": "https://en.wikipedia.org/wiki/Equal_temperament",
-      "action": "If something sounds slightly off in every key equally, that's the compromise working as designed."
+      "action": "If something sounds slightly off in every key equally, that's the compromise working as designed.",
+      "sourceType": "reference"
     },
     {
       "id": "phil-chesterton",
       "tag": "Philosophy",
       "text": "Chesterton's fence: don't remove something until you know why it was put there. The reason it exists is often invisible precisely because it's working.",
       "url": "https://en.wikipedia.org/wiki/Chesterton%27s_fence",
-      "action": "Before deleting something odd, find out why it's there. If nobody knows, that's still an answer worth having."
+      "action": "Before deleting something odd, find out why it's there. If nobody knows, that's still an answer worth having.",
+      "sourceType": "reference"
     },
     {
       "id": "phil-theseus",
       "tag": "Philosophy",
       "text": "Replace a ship's planks one by one and it raises whether identity lives in material or continuity \u2014 the same question a long-refactored codebase eventually asks.",
       "url": "https://en.wikipedia.org/wiki/Ship_of_Theseus",
-      "action": "When identity matters \u2014 versioning, migrations, ship-of-Theseus refactors \u2014 decide up front whether continuity or substance is your criterion."
+      "action": "When identity matters \u2014 versioning, migrations, ship-of-Theseus refactors \u2014 decide up front whether continuity or substance is your criterion.",
+      "sourceType": "reference"
     },
     {
       "id": "phil-occam",
       "tag": "Philosophy",
       "text": "Occam's razor says don't multiply entities beyond necessity \u2014 a tiebreaker between theories that explain equally well, not a claim that simpler is truer.",
       "url": "https://en.wikipedia.org/wiki/Occam%27s_razor",
-      "action": "Prefer the simpler explanation only after checking both actually fit the evidence."
+      "action": "Prefer the simpler explanation only after checking both actually fit the evidence.",
+      "sourceType": "reference"
     },
     {
       "id": "phil-rawls",
       "tag": "Philosophy",
       "text": "Rawls' veil of ignorance: design the rules without knowing which position you'll occupy. It converts self-interest into a fairness test.",
       "url": "https://en.wikipedia.org/wiki/Veil_of_ignorance",
-      "action": "Before setting a rule for a team, ask whether you'd accept it as the most junior person in it."
+      "action": "Before setting a rule for a team, ask whether you'd accept it as the most junior person in it.",
+      "sourceType": "reference"
     },
     {
       "id": "phil-stoic",
       "tag": "Philosophy",
       "text": "The Stoic dichotomy of control: sort everything into what you govern and what you don't, then spend effort only on the first pile.",
       "url": "https://en.wikipedia.org/wiki/Stoicism",
-      "action": "Write two lists for the thing that's worrying you, and act only from the first."
+      "action": "Write two lists for the thing that's worrying you, and act only from the first.",
+      "sourceType": "reference"
     },
     {
       "id": "geo-africa",
       "tag": "Geography",
       "text": "Mercator badly understates equatorial regions: Africa fits the US, China, India and most of Europe inside it, despite looking comparable to Greenland.",
       "url": "https://en.wikipedia.org/wiki/Mercator_projection",
-      "action": "Use an equal-area projection whenever the map is making an argument about size."
+      "action": "Use an equal-area projection whenever the map is making an argument about size.",
+      "sourceType": "reference"
     },
     {
       "id": "write-inverted",
       "tag": "Writing",
       "text": "The inverted pyramid \u2014 conclusion first, detail after \u2014 comes from telegraph-era journalism, where the wire could cut out mid-story at any moment.",
       "url": "https://en.wikipedia.org/wiki/Inverted_pyramid_(journalism)",
-      "action": "Lead with the conclusion. Anyone who stops after one line should still have the answer."
+      "action": "Lead with the conclusion. Anyone who stops after one line should still have the answer.",
+      "sourceType": "reference"
     },
     {
       "id": "write-line-length",
       "tag": "Design",
       "text": "Set line length to roughly 45\u201375 characters. Longer and the eye loses the return sweep; shorter and the rhythm breaks every few words.",
       "url": "https://en.wikipedia.org/wiki/Line_length",
-      "action": "Set a max-width on body text \u2014 around 65 characters \u2014 instead of letting it run the full window."
+      "action": "Set a max-width on body text \u2014 around 65 characters \u2014 instead of letting it run the full window.",
+      "sourceType": "reference"
     },
     {
       "id": "design-contrast",
       "tag": "Design",
       "text": "WCAG asks for 4.5:1 contrast on body text. Most \"elegant\" light grey on white fails it, which is why the design looks fine on your monitor and not in sunlight.",
       "url": "https://www.w3.org/WAI/WCAG21/Understanding/contrast-minimum.html",
-      "action": "Run your palette through a contrast checker before shipping, and test it in sunlight."
+      "action": "Run your palette through a contrast checker before shipping, and test it in sunlight.",
+      "sourceType": "primary"
     },
     {
       "id": "design-fitts",
       "tag": "Design",
       "text": "Fitts's law: time to hit a target falls with size and rises with distance. It's why screen corners are the most valuable real estate \u2014 infinitely deep targets.",
       "url": "https://en.wikipedia.org/wiki/Fitts%27s_law",
-      "action": "Put frequent actions at edges and corners, and make destructive ones small and far away."
+      "action": "Put frequent actions at edges and corners, and make destructive ones small and far away.",
+      "sourceType": "reference"
     },
     {
       "id": "eng-git-reflog",
       "tag": "Git",
       "text": "`git reflog` records every HEAD move for ~90 days \u2014 almost nothing committed is truly lost after a bad reset.",
       "url": "https://git-scm.com/docs/git-reflog",
-      "action": "Before panicking about a lost commit, run `git reflog` and find the hash."
+      "action": "Before panicking about a lost commit, run `git reflog` and find the hash.",
+      "sourceType": "primary"
     },
     {
       "id": "eng-float-money",
       "tag": "Numbers",
       "text": "0.1 + 0.2 !== 0.3 in binary floating point. Represent money in integer minor units or a decimal type.",
       "url": "https://en.wikipedia.org/wiki/Floating-point_arithmetic",
-      "action": "Store money as integer cents or a decimal type. Never a float."
+      "action": "Store money as integer cents or a decimal type. Never a float.",
+      "sourceType": "reference"
     },
     {
       "id": "eng-idempotency",
       "tag": "Distributed",
       "text": "Any retryable write across a network needs an idempotency key. \"The request timed out\" never tells you whether the work happened.",
       "url": "https://en.wikipedia.org/wiki/Idempotence",
-      "action": "Generate the key client-side and send it on every retry of the same logical request."
+      "action": "Generate the key client-side and send it on every retry of the same logical request.",
+      "sourceType": "reference"
     },
     {
       "id": "eng-exactly-once",
       "tag": "Distributed",
       "text": "Exactly-once delivery is impossible; exactly-once *processing* is achievable via at-least-once delivery plus idempotent handlers.",
       "url": "https://en.wikipedia.org/wiki/Two_Generals%27_Problem",
-      "action": "Stop trying to make delivery exact. Make the handler safe to run twice."
+      "action": "Stop trying to make delivery exact. Make the handler safe to run twice.",
+      "sourceType": "reference"
     },
     {
       "id": "eng-backoff-jitter",
       "tag": "Reliability",
       "text": "Exponential backoff without jitter re-synchronizes your clients into a thundering herd. Randomize the delay.",
       "url": "https://aws.amazon.com/builders-library/timeouts-retries-and-backoff-with-jitter/",
-      "action": "Add full jitter to every retry \u2014 randomise the whole interval, not a small fraction of it."
+      "action": "Add full jitter to every retry \u2014 randomise the whole interval, not a small fraction of it.",
+      "sourceType": "primary"
     },
     {
       "id": "eng-utc-storage",
       "tag": "Dates",
       "text": "Store instants in UTC, but store future scheduled events with their intended timezone \u2014 legislatures move DST boundaries after you save the row.",
       "url": "https://en.wikipedia.org/wiki/Tz_database",
-      "action": "Store a future meeting as local time plus IANA zone, not as a UTC instant."
+      "action": "Store a future meeting as local time plus IANA zone, not as a UTC instant.",
+      "sourceType": "reference"
     },
     {
       "id": "eng-unicode-length",
       "tag": "Encoding",
       "text": "String length counts UTF-16 code units, not characters. Emoji and many scripts count as 2+ \u2014 truncating by length can split a character in half.",
       "url": "https://en.wikipedia.org/wiki/UTF-16",
-      "action": "Use a grapheme-aware library for anything user-visible \u2014 truncation, cursors, character counts."
+      "action": "Use a grapheme-aware library for anything user-visible \u2014 truncation, cursors, character counts.",
+      "sourceType": "reference"
     },
     {
       "id": "eng-timing-safe",
       "tag": "Security",
       "text": "Comparing secrets with == leaks length and prefix through timing. Use a constant-time comparison for tokens and signatures.",
       "url": "https://en.wikipedia.org/wiki/Timing_attack",
-      "action": "Use your language's constant-time compare for tokens, signatures and password hashes."
+      "action": "Use your language's constant-time compare for tokens, signatures and password hashes.",
+      "sourceType": "reference"
     },
     {
       "id": "eng-regex-catastrophic",
       "tag": "Security",
       "text": "Nested quantifiers like (a+)+ backtrack exponentially. A regex over user input is a denial-of-service surface.",
       "url": "https://en.wikipedia.org/wiki/ReDoS",
-      "action": "Never run a hand-written regex over user input without a timeout or a linear-time engine."
+      "action": "Never run a hand-written regex over user input without a timeout or a linear-time engine.",
+      "sourceType": "reference"
     },
     {
       "id": "eng-p99",
       "tag": "Performance",
       "text": "If a page makes 100 backend calls, your p99 latency is what a typical user experiences \u2014 averages hide the request that defines the page load.",
       "url": "https://en.wikipedia.org/wiki/Percentile",
-      "action": "Change your dashboards and alerts to percentiles this week."
+      "action": "Change your dashboards and alerts to percentiles this week.",
+      "sourceType": "reference"
     },
     {
       "id": "knuth-email",
       "tag": "Knuth",
       "text": "Knuth gave up email in 1990: \"Email is a wonderful thing for people whose role in life is to be on top of things. But not for me; my role is to be on the bottom of things.\"",
-      "url": "https://www-cs-faculty.stanford.edu/~knuth/email.html"
+      "url": "https://www-cs-faculty.stanford.edu/~knuth/email.html",
+      "sourceType": "primary"
     },
     {
       "id": "knuth-tex-pi",
       "tag": "Knuth",
       "text": "TeX's version number converges to \u03c0 \u2014 3.14159265\u2026 \u2014 gaining a digit per release. METAFONT's converges to e. On Knuth's death both freeze permanently and any remaining bugs become features.",
-      "url": "https://en.wikipedia.org/wiki/TeX"
+      "url": "https://en.wikipedia.org/wiki/TeX",
+      "sourceType": "reference"
     },
     {
       "id": "knuth-bounty-double",
       "tag": "Knuth",
       "text": "The TeX bug bounty started at $2.56 and doubled every year, reaching $327.68. Knuth was betting the bugs would run out before the money did.",
-      "url": "https://en.wikipedia.org/wiki/Knuth_reward_check"
+      "url": "https://en.wikipedia.org/wiki/Knuth_reward_check",
+      "sourceType": "reference"
     },
     {
       "id": "knuth-san-serriffe",
       "tag": "Knuth",
       "text": "Knuth's reward checks are drawn on the Bank of San Serriffe \u2014 a fictional island nation invented by The Guardian for an April Fools' supplement in 1977.",
-      "url": "https://en.wikipedia.org/wiki/San_Serriffe"
+      "url": "https://en.wikipedia.org/wiki/San_Serriffe",
+      "sourceType": "reference"
     },
     {
       "id": "knuth-proved-not-tried",
       "tag": "Knuth",
       "text": "\"Beware of bugs in the above code; I have only proved it correct, not tried it.\" \u2014 Knuth, 1977, and still the most honest sentence in computer science.",
-      "url": "https://en.wikipedia.org/wiki/Donald_Knuth"
+      "url": "https://en.wikipedia.org/wiki/Donald_Knuth",
+      "sourceType": "reference"
     },
     {
       "id": "knuth-scope-creep",
       "tag": "Knuth",
       "text": "TAOCP started in 1962 as a single book about compilers. It is now planned as seven volumes, and he is still writing \u2014 the most consequential scope creep in publishing.",
-      "url": "https://en.wikipedia.org/wiki/The_Art_of_Computer_Programming"
+      "url": "https://en.wikipedia.org/wiki/The_Art_of_Computer_Programming",
+      "sourceType": "reference"
     },
     {
       "id": "knuth-organ",
       "tag": "Knuth",
       "text": "Knuth has a pipe organ in his house and composed Fantasia Apocalyptica, a full-length organ work setting the Book of Revelation, premiered in 2018.",
-      "url": "https://en.wikipedia.org/wiki/Donald_Knuth"
+      "url": "https://en.wikipedia.org/wiki/Donald_Knuth",
+      "sourceType": "reference"
     },
     {
       "id": "knuth-surreal",
       "tag": "Knuth",
       "text": "Knuth wrote Surreal Numbers in a week in an Oslo hotel room \u2014 a novelette in which two people on a beach derive Conway's number system from scratch. A major mathematical idea introduced as fiction.",
-      "url": "https://en.wikipedia.org/wiki/Surreal_Numbers"
+      "url": "https://en.wikipedia.org/wiki/Surreal_Numbers",
+      "sourceType": "reference"
     },
     {
       "id": "knuth-songs",
       "tag": "Knuth",
       "text": "Knuth published a straight-faced paper on the space complexity of songs, proving you can achieve arbitrarily long songs with constant memory. \"That was the song that never ends\" is the optimal result.",
-      "url": "https://en.wikipedia.org/wiki/The_Complexity_of_Songs"
+      "url": "https://en.wikipedia.org/wiki/The_Complexity_of_Songs",
+      "sourceType": "reference"
     },
     {
       "id": "knuth-turing-36",
       "tag": "Knuth",
       "text": "Knuth won the Turing Award in 1974, at 36, for work he had largely done in his twenties while writing what he thought was one book.",
-      "url": "https://en.wikipedia.org/wiki/Turing_Award"
+      "url": "https://en.wikipedia.org/wiki/Turing_Award",
+      "sourceType": "reference"
     },
     {
       "id": "knuth-uparrow",
       "tag": "Knuth",
       "text": "Knuth's up-arrow notation extends exponentiation upward. 3\u2191\u2191\u21913 is already so large that writing it as a power tower would exhaust the observable universe.",
-      "url": "https://en.wikipedia.org/wiki/Knuth%27s_up-arrow_notation"
+      "url": "https://en.wikipedia.org/wiki/Knuth%27s_up-arrow_notation",
+      "sourceType": "reference"
     },
     {
       "id": "knuth-kmp",
       "tag": "Knuth",
       "text": "Knuth\u2013Morris\u2013Pratt searches text without ever backing up in the input: a failed match tells you exactly how far you may skip. The failure is the information.",
       "url": "https://en.wikipedia.org/wiki/Knuth%E2%80%93Morris%E2%80%93Pratt_algorithm",
-      "action": "When you write a matcher, ask what a failure tells you about how far you can safely skip."
+      "action": "When you write a matcher, ask what a failure tells you about how far you can safely skip.",
+      "sourceType": "reference"
     },
     {
       "id": "lore-first-bug",
       "tag": "Computing lore",
       "text": "The first computer \"bug\" was an actual moth, taped into a Harvard logbook in 1947 beside the note: \"First actual case of bug being found.\" The insect is still in the Smithsonian.",
-      "url": "https://en.wikipedia.org/wiki/Software_bug"
+      "url": "https://en.wikipedia.org/wiki/Software_bug",
+      "sourceType": "reference"
     },
     {
       "id": "lore-hamilton",
       "tag": "Computing lore",
       "text": "Margaret Hamilton coined the term \"software engineering\" \u2014 partly to get the work taken seriously. Her Apollo scheduler shed low-priority tasks when the 1202 alarm fired during descent, which is why Apollo 11 landed.",
       "url": "https://en.wikipedia.org/wiki/Margaret_Hamilton_(software_engineer)",
-      "action": "Design for the overload case: shed low-priority work rather than failing whole. That choice landed Apollo 11."
+      "action": "Design for the overload case: shed low-priority work rather than failing whole. That choice landed Apollo 11.",
+      "sourceType": "reference"
     },
     {
       "id": "lore-lovelace",
       "tag": "Computing lore",
       "text": "Ada Lovelace's 1843 notes contain what is generally called the first published algorithm for a machine \u2014 and the observation that it could operate on symbols, not just numbers. Babbage had not seen that.",
       "url": "https://en.wikipedia.org/wiki/Ada_Lovelace",
-      "action": "Ask what else your system could operate on if you stopped assuming its current data type."
+      "action": "Ask what else your system could operate on if you stopped assuming its current data type.",
+      "sourceType": "reference"
     },
     {
       "id": "lore-mother-demo",
       "tag": "Computing lore",
       "text": "In 90 minutes in 1968, Engelbart demonstrated the mouse, hypertext, windows, version control and video conferencing. It is remembered as The Mother of All Demos; most of it took decades to arrive.",
       "url": "https://en.wikipedia.org/wiki/The_Mother_of_All_Demos",
-      "action": "When a demo looks decades early, ask what made it impossible to ship \u2014 usually cost, not the idea."
+      "action": "When a demo looks decades early, ask what made it impossible to ship \u2014 usually cost, not the idea.",
+      "sourceType": "reference"
     },
     {
       "id": "lore-mel",
       "tag": "Computing lore",
       "text": "A 1983 story about a programmer at Royal McBee, whose machine stored instructions on a spinning drum. Mel placed each instruction at the exact drum position the head would reach next, so the machine never waited. He thought optimising compilers were cheating.",
       "url": "https://en.wikipedia.org/wiki/The_Story_of_Mel",
-      "action": "Before admiring a clever optimisation, ask who maintains it after the author leaves."
+      "action": "Before admiring a clever optimisation, ask who maintains it after the author leaves.",
+      "sourceType": "reference"
     },
     {
       "id": "lore-trusting-trust",
       "tag": "Computing lore",
       "text": "Ken Thompson showed a compiler can be taught to insert a backdoor into any program \u2014 and into future copies of itself \u2014 leaving no trace in any source code you can read.",
       "url": "https://en.wikipedia.org/wiki/Backdoor_(computing)",
-      "action": "Take reproducible builds seriously \u2014 comparing independently built binaries is the practical defence."
+      "action": "Take reproducible builds seriously \u2014 comparing independently built binaries is the practical defence.",
+      "sourceType": "reference"
     },
     {
       "id": "lore-ewd",
       "tag": "Computing lore",
       "text": "Dijkstra wrote roughly 1,300 numbered manuscripts by fountain pen, photocopied them, and mailed them to colleagues. The EWDs functioned as a personal, analogue blog for forty years.",
       "url": "https://en.wikipedia.org/wiki/Edsger_W._Dijkstra",
-      "action": "Write the argument down and circulate it. Dijkstra's reach came from distribution, not from a platform."
+      "action": "Write the argument down and circulate it. Dijkstra's reach came from distribution, not from a platform.",
+      "sourceType": "reference"
     },
     {
       "id": "lore-therac",
       "tag": "Computing lore",
       "text": "The Therac-25 gave lethal radiation doses because of a race condition that only appeared when an operator typed the sequence fast enough \u2014 so it surfaced with experience, not inexperience.",
       "url": "https://en.wikipedia.org/wiki/Therac-25",
-      "action": "Test the fast path a practised user takes, not just the careful one a tester takes."
+      "action": "Test the fast path a practised user takes, not just the careful one a tester takes.",
+      "sourceType": "reference"
     },
     {
       "id": "lore-brain-virus",
       "tag": "Computing lore",
       "text": "The first PC virus, Brain (1986), contained its authors' real names, address and phone number in Lahore. They wrote it as copy protection and were surprised when it spread worldwide.",
-      "url": "https://en.wikipedia.org/wiki/Brain_(computer_virus)"
+      "url": "https://en.wikipedia.org/wiki/Brain_(computer_virus)",
+      "sourceType": "reference"
     },
     {
       "id": "lore-hamming",
       "tag": "Computing lore",
       "text": "Hamming: \"The purpose of computing is insight, not numbers.\" He also asked colleagues at lunch what the most important problem in their field was, and why they weren't working on it.",
       "url": "https://en.wikipedia.org/wiki/Richard_Hamming",
-      "action": "Ask yourself Hamming's question about your own field, and write down the answer."
+      "action": "Ask yourself Hamming's question about your own field, and write down the answer.",
+      "sourceType": "reference"
     },
     {
       "id": "lore-y2k38",
       "tag": "Computing lore",
       "text": "32-bit Unix time overflows on 19 January 2038, at which point the clock reads 1901. The fix is well understood; finding every embedded system that needs it is not.",
       "url": "https://en.wikipedia.org/wiki/Year_2038_problem",
-      "action": "Audit any system storing time in a 32-bit signed int now, especially embedded ones."
+      "action": "Audit any system storing time in a 32-bit signed int now, especially embedded ones.",
+      "sourceType": "reference"
     },
     {
       "id": "tech-bloom",
       "tag": "Technique",
       "text": "A Bloom filter answers \"definitely not present\" or \"probably present\" \u2014 it can never miss something that is there. Chrome used one to check URLs against a malware list without shipping the list.",
       "url": "https://en.wikipedia.org/wiki/Bloom_filter",
-      "action": "Reading for it when a definite-no is cheap and a maybe-yes can be checked \u2014 cache misses, duplicate detection, blocklists."
+      "action": "Reading for it when a definite-no is cheap and a maybe-yes can be checked \u2014 cache misses, duplicate detection, blocklists.",
+      "sourceType": "reference"
     },
     {
       "id": "tech-hll",
       "tag": "Technique",
       "text": "HyperLogLog counts distinct items in about 1.5KB regardless of input size, with ~2% error. Redis uses it to count unique visitors in billions without storing a single one.",
-      "url": "https://en.wikipedia.org/wiki/HyperLogLog",
-      "action": "Use it when you need a count, not the items. Postgres and Redis both ship it."
+      "url": "http://algo.inria.fr/flajolet/Publications/FlFuGaMe07.pdf",
+      "action": "Use it when you need a count, not the items. Postgres and Redis both ship it.",
+      "sourceType": "peer-reviewed"
     },
     {
       "id": "tech-consistent-hash",
       "tag": "Technique",
       "text": "Consistent hashing places servers on a ring so adding one moves only 1/n of the keys. Naive modulo hashing moves nearly all of them \u2014 the difference between a rolling deploy and an outage.",
       "url": "https://en.wikipedia.org/wiki/Consistent_hashing",
-      "action": "If you shard by `hash % n`, fix it before you ever add a node."
+      "action": "If you shard by `hash % n`, fix it before you ever add a node.",
+      "sourceType": "reference"
     },
     {
       "id": "tech-merkle",
       "tag": "Technique",
       "text": "A Merkle tree lets you prove two enormous structures differ, and find where, by comparing a single hash and then descending. Git, rsync, and blockchains all lean on it.",
       "url": "https://en.wikipedia.org/wiki/Merkle_tree",
-      "action": "Reach for it whenever you sync large state and want to transfer only the differences."
+      "action": "Reach for it whenever you sync large state and want to transfer only the differences.",
+      "sourceType": "reference"
     },
     {
       "id": "tech-cas",
       "tag": "Technique",
       "text": "Git names every object by the hash of its contents, so identical files are stored exactly once and renames are free. Content addressing turns deduplication into a side effect.",
       "url": "https://en.wikipedia.org/wiki/Content-addressable_storage",
-      "action": "Key blobs by content hash rather than by name; dedup and integrity checks come free."
+      "action": "Key blobs by content hash rather than by name; dedup and integrity checks come free.",
+      "sourceType": "reference"
     },
     {
       "id": "tech-crdt",
       "tag": "Technique",
       "text": "CRDTs are built so concurrent edits merge to the same result regardless of arrival order \u2014 collaborative editing with no central server and no conflict resolution step.",
-      "url": "https://en.wikipedia.org/wiki/Conflict-free_replicated_data_type",
-      "action": "Choose it when offline edits must merge without a server arbitrating \u2014 not when you need a strict global order."
+      "url": "https://hal.inria.fr/inria-00555588",
+      "action": "Choose it when offline edits must merge without a server arbitrating \u2014 not when you need a strict global order.",
+      "sourceType": "peer-reviewed"
     },
     {
       "id": "tech-lsm",
       "tag": "Technique",
       "text": "LSM trees make writes fast by only ever appending, then merging sorted files in the background. It trades read amplification for write throughput \u2014 the reason Cassandra and RocksDB ingest so fast.",
       "url": "https://en.wikipedia.org/wiki/Log-structured_merge-tree",
-      "action": "Pick an LSM store for write-heavy workloads; pick a B-tree when reads dominate."
+      "action": "Pick an LSM store for write-heavy workloads; pick a B-tree when reads dominate.",
+      "sourceType": "reference"
     },
     {
       "id": "tech-wal",
       "tag": "Technique",
       "text": "Write-ahead logging gets durability by recording what you intend to do before doing it. After a crash you replay intent \u2014 the same trick a temp-file-then-rename gives you at file scale.",
-      "url": "https://en.wikipedia.org/wiki/Write-ahead_logging",
-      "action": "Any time you must survive a crash mid-update: record intent first, then act, then mark done."
+      "url": "https://martinfowler.com/articles/patterns-of-distributed-systems/wal.html",
+      "action": "Any time you must survive a crash mid-update: record intent first, then act, then mark done.",
+      "sourceType": "primary"
     },
     {
       "id": "tech-cow",
       "tag": "Technique",
       "text": "Copy-on-write means fork() doesn't copy memory: both processes share pages until one writes. Snapshots in ZFS and Docker layers are the same idea at a different altitude.",
       "url": "https://en.wikipedia.org/wiki/Copy-on-write",
-      "action": "Snapshot by sharing pages and copying only on write \u2014 the cheap way to give everyone their own view."
+      "action": "Snapshot by sharing pages and copying only on write \u2014 the cheap way to give everyone their own view.",
+      "sourceType": "reference"
     },
     {
       "id": "tech-rope",
       "tag": "Technique",
       "text": "A rope stores text as a tree of fragments, so inserting a character in a 2GB file doesn't move 2GB of bytes. It's why serious editors don't slow down on huge files.",
       "url": "https://en.wikipedia.org/wiki/Rope_(data_structure)",
-      "action": "If you're building an editor or diffing large text, don't hold it in one string."
+      "action": "If you're building an editor or diffing large text, don't hold it in one string.",
+      "sourceType": "reference"
     },
     {
       "id": "tech-skiplist",
       "tag": "Technique",
       "text": "A skip list gets balanced-tree performance from coin flips instead of rotations. Far easier to make lock-free, which is why concurrent maps often use one.",
       "url": "https://en.wikipedia.org/wiki/Skip_list",
-      "action": "Prefer it over a balanced tree when several threads write concurrently."
+      "action": "Prefer it over a balanced tree when several threads write concurrently.",
+      "sourceType": "reference"
     },
     {
       "id": "tech-unionfind",
       "tag": "Technique",
       "text": "Union-Find with path compression runs in almost constant amortized time \u2014 the bound involves the inverse Ackermann function, which is under 5 for any input that fits in the universe.",
       "url": "https://en.wikipedia.org/wiki/Disjoint-set_data_structure",
-      "action": "Reach for it for connectivity questions \u2014 grouping, cycle detection, flood fill."
+      "action": "Reach for it for connectivity questions \u2014 grouping, cycle detection, flood fill.",
+      "sourceType": "reference"
     },
     {
       "id": "tech-strangler",
       "tag": "Technique",
       "text": "The strangler fig pattern replaces a legacy system by routing traffic away piece by piece until nothing reaches the old one. Named for a vine that grows around a tree and outlives it.",
       "url": "https://martinfowler.com/bliki/StranglerFigApplication.html",
-      "action": "Route one endpoint at a time through a facade rather than planning a big-bang rewrite."
+      "action": "Route one endpoint at a time through a facade rather than planning a big-bang rewrite.",
+      "sourceType": "primary"
     },
     {
       "id": "tech-parse-dont-validate",
       "tag": "Technique",
       "text": "\"Parse, don't validate\": instead of checking a value and returning a boolean, return a narrower type that cannot hold the invalid case. The check then can't be forgotten downstream.",
       "url": "https://lexi-lambda.github.io/blog/2019/11/05/parse-don-t-validate/",
-      "action": "Replace `validateEmail(str): bool` with `parseEmail(str): Email | null` and the check can't be skipped later."
+      "action": "Replace `validateEmail(str): bool` with `parseEmail(str): Email | null` and the check can't be skipped later.",
+      "sourceType": "primary"
     },
     {
       "id": "tech-illegal-states",
       "tag": "Technique",
       "text": "Make illegal states unrepresentable: if a record can't be both \"loading\" and \"loaded\", model it as one sum type rather than two booleans that permit four states, two of them nonsense.",
       "url": "https://en.wikipedia.org/wiki/Algebraic_data_type",
-      "action": "Count the states your type permits. If some are nonsense, collapse them into one sum type."
+      "action": "Count the states your type permits. If some are nonsense, collapse them into one sum type.",
+      "sourceType": "reference"
     },
     {
       "id": "tech-functional-core",
       "tag": "Technique",
       "text": "Functional core, imperative shell: keep decisions in pure functions and push all I/O to a thin outer layer. The core needs no mocks, and the shell has almost no branches to test.",
       "url": "https://www.destroyallsoftware.com/screencasts/catalog/functional-core-imperative-shell",
-      "action": "Move the decisions out of the I/O and test them directly; the mocks disappear with them."
+      "action": "Move the decisions out of the I/O and test them directly; the mocks disappear with them.",
+      "sourceType": "primary"
     },
     {
       "id": "tech-property-testing",
       "tag": "Technique",
       "text": "Property-based testing generates thousands of inputs against an invariant, then shrinks any failure to the smallest case that still breaks. You get the minimal reproduction for free.",
-      "url": "https://en.wikipedia.org/wiki/QuickCheck",
-      "action": "Write one invariant instead of twenty examples, and let it find the edge case you'd never type."
+      "url": "https://www.cs.tufts.edu/~nr/cs257/archive/john-hughes/quick.pdf",
+      "action": "Write one invariant instead of twenty examples, and let it find the edge case you'd never type.",
+      "sourceType": "peer-reviewed"
     },
     {
       "id": "tech-mutation",
       "tag": "Technique",
       "text": "Mutation testing checks your tests by deliberately breaking the code \u2014 flip a comparison, delete a line. Tests that still pass were never testing that behaviour.",
       "url": "https://en.wikipedia.org/wiki/Mutation_testing",
-      "action": "Run it once on the module you trust most \u2014 that's where the false confidence lives."
+      "action": "Run it once on the module you trust most \u2014 that's where the false confidence lives.",
+      "sourceType": "reference"
     },
     {
       "id": "tech-expand-contract",
       "tag": "Technique",
       "text": "Expand-contract migrates a schema in three deploys: add the new column and write both, backfill and switch reads, then drop the old. No step requires downtime or a synchronized release.",
       "url": "https://martinfowler.com/bliki/ParallelChange.html",
-      "action": "Never ship a migration that requires code and schema to deploy simultaneously. Split it into three."
+      "action": "Never ship a migration that requires code and schema to deploy simultaneously. Split it into three.",
+      "sourceType": "primary"
     },
     {
       "id": "tech-branch-abstraction",
       "tag": "Technique",
       "text": "Branch by abstraction replaces a component on the main branch: introduce a seam, build the new implementation behind it, flip, delete. Long-lived feature branches stop being necessary.",
       "url": "https://martinfowler.com/bliki/BranchByAbstraction.html",
-      "action": "When a refactor is too big for one PR, add the seam first and merge that on its own."
+      "action": "When a refactor is too big for one PR, add the seam first and merge that on its own.",
+      "sourceType": "primary"
     },
     {
       "id": "tech-outbox",
       "tag": "Technique",
       "text": "The outbox pattern writes the message into the same database transaction as the data, then relays it separately \u2014 closing the gap where a commit succeeds and the publish doesn't.",
       "url": "https://microservices.io/patterns/data/transactional-outbox.html",
-      "action": "Stop publishing events from application code after a commit \u2014 write them to a table the commit covers."
+      "action": "Stop publishing events from application code after a commit \u2014 write them to a table the commit covers.",
+      "sourceType": "primary"
     },
     {
       "id": "tech-saga",
       "tag": "Technique",
       "text": "A saga replaces a distributed transaction with a sequence of local ones plus compensating actions. There's no rollback \u2014 only doing something that undoes the effect.",
       "url": "https://en.wikipedia.org/wiki/Long-running_transaction",
-      "action": "Design the compensating action at the same time as the forward one, not after the first failure."
+      "action": "Design the compensating action at the same time as the forward one, not after the first failure.",
+      "sourceType": "reference"
     },
     {
       "id": "tech-circuit-breaker",
       "tag": "Technique",
       "text": "A circuit breaker stops calling a failing dependency entirely for a while. Retrying a service that's already overloaded is how a partial outage becomes a total one.",
-      "url": "https://en.wikipedia.org/wiki/Circuit_breaker_design_pattern",
-      "action": "Wrap every call to a dependency that can be slow, and fail fast rather than queueing."
+      "url": "https://martinfowler.com/bliki/CircuitBreaker.html",
+      "action": "Wrap every call to a dependency that can be slow, and fail fast rather than queueing.",
+      "sourceType": "primary"
     },
     {
       "id": "tech-backpressure",
       "tag": "Technique",
       "text": "Backpressure means a slow consumer can tell a fast producer to wait. Without it, queues grow until memory runs out \u2014 the failure surfaces far from the component that caused it.",
-      "url": "https://en.wikipedia.org/wiki/Back_pressure",
-      "action": "Bound your queues. An unbounded one converts a slowdown into an out-of-memory crash."
+      "url": "https://www.reactive-streams.org/",
+      "action": "Bound your queues. An unbounded one converts a slowdown into an out-of-memory crash.",
+      "sourceType": "primary"
     },
     {
       "id": "tech-littles-law",
       "tag": "Technique",
       "text": "Little's law: work in progress equals throughput times cycle time. Cutting the number of things in flight shortens delivery time without anyone working faster.",
       "url": "https://en.wikipedia.org/wiki/Little%27s_law",
-      "action": "Cut work in progress before optimising anything. Fewer things in flight finishes them sooner."
+      "action": "Cut work in progress before optimising anything. Fewer things in flight finishes them sooner.",
+      "sourceType": "reference"
     },
     {
       "id": "tech-conway",
       "tag": "Technique",
       "text": "Conway's law says systems mirror the communication structure of the organizations that build them. The inverse Conway manoeuvre reorganizes the teams to get the architecture you want.",
-      "url": "https://en.wikipedia.org/wiki/Conway%27s_law",
-      "action": "If you want a boundary in the system, put a team boundary there first."
+      "url": "https://www.melconway.com/Home/Conways_Law.html",
+      "action": "If you want a boundary in the system, put a team boundary there first.",
+      "sourceType": "primary"
     },
     {
       "id": "tech-worse-is-better",
       "tag": "Technique",
       "text": "\"Worse is Better\": a simpler design that ships and spreads often beats a more correct one that doesn't. Richard Gabriel argued this against his own preferences and never fully talked himself into it.",
-      "url": "https://en.wikipedia.org/wiki/Worse_is_better",
-      "action": "When choosing between shipping and completeness, notice which one you're actually optimising for."
+      "url": "https://www.dreamsongs.com/RiseOfWorseIsBetter.html",
+      "action": "When choosing between shipping and completeness, notice which one you're actually optimising for.",
+      "sourceType": "primary"
     },
     {
       "id": "tech-postel",
       "tag": "Technique",
       "text": "Postel's law \u2014 be liberal in what you accept \u2014 built the early internet and is now considered partly harmful: every accepted deviation becomes a permanent de-facto part of the protocol.",
-      "url": "https://en.wikipedia.org/wiki/Robustness_principle",
-      "action": "Be strict in what you accept in anything new. Leniency you ship today is a compatibility burden forever."
+      "url": "https://www.rfc-editor.org/rfc/rfc1122",
+      "action": "Be strict in what you accept in anything new. Leniency you ship today is a compatibility burden forever.",
+      "sourceType": "primary"
     },
     {
       "id": "tech-walking-skeleton",
       "tag": "Technique",
       "text": "A walking skeleton is a thin end-to-end slice that runs in production before any feature is complete. It flushes out integration and deployment problems while they're still cheap.",
       "url": "https://wiki.c2.com/?WalkingSkeleton",
-      "action": "Deploy the empty end-to-end path in week one, before any feature is finished."
+      "action": "Deploy the empty end-to-end path in week one, before any feature is finished.",
+      "sourceType": "primary"
     },
     {
       "id": "tech-bisect",
       "tag": "Technique",
       "text": "git bisect finds the commit that broke something in log\u2082(n) steps \u2014 10 tests across a thousand commits. With `git bisect run` it's fully automatic.",
       "url": "https://git-scm.com/docs/git-bisect",
-      "action": "Next regression, use `git bisect run` with a one-line test script instead of reading diffs."
+      "action": "Next regression, use `git bisect run` with a one-line test script instead of reading diffs.",
+      "sourceType": "primary"
     },
     {
       "id": "tech-chaos",
       "tag": "Technique",
       "text": "Chaos engineering injects failures deliberately in production, on the argument that the alternative isn't \"no failures\" but failures at 3am that nobody rehearsed.",
-      "url": "https://en.wikipedia.org/wiki/Chaos_engineering",
-      "action": "Start by killing one instance in staging during working hours and watching what pages."
+      "url": "https://ieeexplore.ieee.org/document/7436642",
+      "action": "Start by killing one instance in staging during working hours and watching what pages.",
+      "sourceType": "peer-reviewed"
     },
     {
       "id": "tech-zero-copy",
       "tag": "Technique",
       "text": "Zero-copy sends a file to a socket without ever moving bytes through user space. Kafka's throughput is substantially a story about not copying data.",
-      "url": "https://en.wikipedia.org/wiki/Zero-copy",
-      "action": "Serving files? Use sendfile rather than read-then-write, and skip user space entirely."
+      "url": "https://man7.org/linux/man-pages/man2/sendfile.2.html",
+      "action": "Serving files? Use sendfile rather than read-then-write, and skip user space entirely.",
+      "sourceType": "primary"
     },
     {
       "id": "tech-arena",
       "tag": "Technique",
       "text": "Arena allocation frees an entire region at once instead of tracking individual objects. Per-request arenas make whole classes of leak and use-after-free structurally impossible.",
       "url": "https://en.wikipedia.org/wiki/Region-based_memory_management",
-      "action": "Allocate per request, free the whole arena at the end \u2014 leaks and use-after-free stop being possible."
+      "action": "Allocate per request, free the whole arena at the end \u2014 leaks and use-after-free stop being possible.",
+      "sourceType": "reference"
     },
     {
       "id": "tech-soa",
       "tag": "Technique",
       "text": "Structure-of-arrays instead of array-of-structures: store each field contiguously so a loop touching one field doesn't drag the others through cache. Often a several-fold speedup with no algorithmic change.",
       "url": "https://en.wikipedia.org/wiki/AoS_and_SoA",
-      "action": "If a hot loop touches one field of a big struct, split the fields into parallel arrays."
+      "action": "If a hot loop touches one field of a big struct, split the fields into parallel arrays.",
+      "sourceType": "reference"
     },
     {
       "id": "tech-amdahl",
       "tag": "Technique",
       "text": "Amdahl's law: if 10% of a program is serial, infinite processors still cap the speedup at 10\u00d7. Parallelism is bounded by the part you didn't parallelize.",
       "url": "https://en.wikipedia.org/wiki/Amdahl%27s_law",
-      "action": "Profile the serial fraction before adding workers. That number caps everything you'll gain."
+      "action": "Profile the serial fraction before adding workers. That number caps everything you'll gain.",
+      "sourceType": "reference"
     },
     {
       "id": "tech-second-system",
       "tag": "Technique",
       "text": "The second-system effect: the rewrite is where an engineer puts every idea they had to leave out of the first one. Brooks considered it the most dangerous system a person ever designs.",
       "url": "https://en.wikipedia.org/wiki/Second-system_effect",
-      "action": "On a rewrite, write down what you're deliberately not including before you start."
+      "action": "On a rewrite, write down what you're deliberately not including before you start.",
+      "sourceType": "reference"
     },
     {
       "id": "mech-gluten",
       "tag": "Bread",
-      "text": "Flour has no gluten in it. Glutenin and gliadin only link into gluten once hydrated \u2014 glutenin supplies elasticity, gliadin extensibility, and kneading aligns them into sheets that can trap gas.",
-      "url": "https://en.wikipedia.org/wiki/Gluten",
-      "action": "Knead until it passes the windowpane test \u2014 stretched thin enough to see light through without tearing."
+      "text": "Flour contains no gluten. Glutenin and gliadin only link into it once hydrated \u2014 glutenin supplying elasticity, gliadin extensibility \u2014 and kneading aligns them into sheets that can hold gas.",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/35608010/",
+      "action": "Knead until it passes the windowpane test: stretched thin enough to see light through without tearing.",
+      "sourceType": "peer-reviewed"
     },
     {
       "id": "mech-oven-spring",
       "tag": "Bread",
       "text": "Oven spring is three things at once: trapped CO2 expanding, water turning to steam, and ethanol from fermentation boiling off at 78\u00b0C. The yeast also sprints, then dies around 60\u00b0C.",
       "url": "https://en.wikipedia.org/wiki/Baking",
-      "action": "Preheat fully and load fast; most of the rise happens in the first ten minutes."
+      "action": "Preheat fully and load fast; most of the rise happens in the first ten minutes.",
+      "sourceType": "primary"
     },
     {
       "id": "mech-staling",
       "tag": "Bread",
       "text": "Stale bread isn't dry \u2014 it's starch retrogradation, amylopectin recrystallising. Heat reverses it; cold accelerates it.",
       "url": "https://en.wikipedia.org/wiki/Retrogradation_(starch)",
-      "action": "Freeze what you won't eat within two days \u2014 never refrigerate. Reheat to about 60\u00b0C to reverse it."
+      "action": "Freeze what you won't eat within two days \u2014 never refrigerate. Reheat to about 60\u00b0C to reverse it.",
+      "sourceType": "primary"
     },
     {
       "id": "mech-steam",
       "tag": "Bread",
       "text": "Steam in the oven keeps the crust soft long enough for the loaf to finish expanding, and gelatinises surface starch into gloss. Without it the crust sets early and the bread tears where it wanted to rise.",
       "url": "https://en.wikipedia.org/wiki/Baking",
-      "action": "Cover for the first 15\u201320 minutes with a lid or a tray of water, then uncover to colour."
+      "action": "Cover for the first 15\u201320 minutes with a lid or a tray of water, then uncover to colour.",
+      "sourceType": "primary"
     },
     {
       "id": "mech-sourdough",
       "tag": "Bread",
-      "text": "In a sourdough starter, lactic acid bacteria outnumber yeast by roughly 100 to 1. They make the acid; the yeast makes the gas. The acidity also strengthens gluten and slows staling.",
-      "url": "https://en.wikipedia.org/wiki/Sourdough",
-      "action": "Ferment warm for a milder lactic sourness, cool and slow for a sharper acetic one."
+      "text": "A sourdough starter is not mostly yeast. Culture-independent sequencing of traditional starters finds lactic acid bacteria dominating the population \u2014 they make the acid, the yeast makes the gas, and the acidity strengthens gluten and slows staling.",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/33158141/",
+      "action": "Ferment warm for a milder lactic sourness, cool and slow for a sharper acetic one.",
+      "sourceType": "peer-reviewed"
     },
     {
       "id": "mech-salt-dough",
       "tag": "Bread",
-      "text": "Salt slows fermentation and tightens gluten by screening the charges that make protein chains repel each other. Forget it and dough ferments fast, then slackens and tears.",
-      "url": "https://en.wikipedia.org/wiki/Gluten",
-      "action": "Use around 2% salt by flour weight, and hold it back during autolyse if you want gluten to develop faster."
+      "text": "Salt does more than season dough. It changes how water moves through the gluten network and how the dough handles \u2014 screening the charges that make protein chains repel, which is why an unsalted dough ferments fast then slackens and tears.",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/32304230/",
+      "action": "Around 2% salt by flour weight, held back during autolyse if you want gluten to develop faster.",
+      "sourceType": "peer-reviewed"
     },
     {
       "id": "mech-shortening",
       "tag": "Bread",
       "text": "Fat is called shortening because it physically shortens gluten strands \u2014 coating proteins so they can't link. That's the whole difference between bread and cake crumb.",
       "url": "https://en.wikipedia.org/wiki/Shortening",
-      "action": "Add fat early for a tender crumb, after gluten has formed if you want chew."
+      "action": "Add fat early for a tender crumb, after gluten has formed if you want chew.",
+      "sourceType": "primary"
     },
     {
       "id": "mech-maillard-vs-caramel",
       "tag": "Cooking",
       "text": "Maillard browning and caramelisation are different reactions: Maillard needs an amino acid plus a reducing sugar and starts near 140\u00b0C; caramelisation is sugar decomposing alone, and needs more heat.",
       "url": "https://en.wikipedia.org/wiki/Maillard_reaction",
-      "action": "Pat the surface dry and get it past 140\u00b0C \u2014 anything wet is capped at 100\u00b0C and will never brown."
+      "action": "Pat the surface dry and get it past 140\u00b0C \u2014 anything wet is capped at 100\u00b0C and will never brown.",
+      "sourceType": "primary"
     },
     {
       "id": "mech-ice-slippery",
       "tag": "Chemistry",
       "text": "Ice is not slippery because pressure melts it \u2014 that effect is far too small at skating temperatures. The surface carries a molecularly thin premelted liquid layer that exists regardless of pressure.",
       "url": "https://en.wikipedia.org/wiki/Premelting",
-      "action": "If you repeat the pressure-melting explanation, stop \u2014 it's wrong at skating temperatures."
+      "action": "If you repeat the pressure-melting explanation, stop \u2014 it's wrong at skating temperatures.",
+      "sourceType": "primary"
     },
     {
       "id": "mech-microwave",
       "tag": "Physics",
       "text": "Microwaves don't hit a resonant frequency of water \u2014 that's a persistent myth. They rotate water's dipoles through a flipping field, and the friction of that rotation is the heat.",
       "url": "https://en.wikipedia.org/wiki/Dielectric_heating",
-      "action": "Stir halfway through: heating follows the field rather than conducting, so cold spots persist."
+      "action": "Stir halfway through: heating follows the field rather than conducting, so cold spots persist.",
+      "sourceType": "reference"
     },
     {
       "id": "mech-bicycle",
       "tag": "Physics",
       "text": "Bicycles do not stay up because of gyroscopic effects. A 2011 Science paper built one with counter-rotating wheels cancelling both gyroscopic and trail effects, and it still self-stabilised.",
       "url": "https://pubmed.ncbi.nlm.nih.gov/21493854/",
-      "action": "Drop the gyroscope explanation; bicycle stability comes from steering geometry and mass distribution."
+      "action": "Drop the gyroscope explanation; bicycle stability comes from steering geometry and mass distribution.",
+      "sourceType": "peer-reviewed"
     },
     {
       "id": "mech-glass-flow",
       "tag": "Materials",
       "text": "Old cathedral glass is thicker at the bottom because of how it was made, not because glass flows. At room temperature the flow rate is effectively zero over the age of the universe.",
       "url": "https://en.wikipedia.org/wiki/Glass",
-      "action": "Don't use the cathedral-window story as an example of anything. It isn't true."
+      "action": "Don't use the cathedral-window story as an example of anything. It isn't true.",
+      "sourceType": "reference"
     },
     {
       "id": "mech-soap",
       "tag": "Chemistry",
       "text": "Soap works because its molecules are split-personality: a water-loving head and a fat-loving tail. Against enveloped viruses it does something blunter \u2014 it dissolves the lipid membrane holding them together.",
       "url": "https://en.wikipedia.org/wiki/Soap",
-      "action": "Twenty seconds of soap and water beats sanitiser on greasy or visibly soiled hands."
+      "action": "Twenty seconds of soap and water beats sanitiser on greasy or visibly soiled hands.",
+      "sourceType": "primary"
     },
     {
       "id": "mech-stainless",
       "tag": "Materials",
       "text": "Stainless steel doesn't resist rust by being inert. Chromium oxidises instantly into a dense passive layer a few atoms thick, which re-forms the moment you scratch it.",
       "url": "https://en.wikipedia.org/wiki/Passivation_(chemistry)",
-      "action": "Don't leave salt or acidic food sitting in a stainless pan \u2014 it can locally defeat the passive layer and pit it."
+      "action": "Don't leave salt or acidic food sitting in a stainless pan \u2014 it can locally defeat the passive layer and pit it.",
+      "sourceType": "reference"
     },
     {
       "id": "mech-cast-iron",
       "tag": "Cooking",
       "text": "Seasoning a cast iron pan isn't oil soaking into pores. It's polymerisation \u2014 heat cross-links the fat into a hard plastic-like layer bonded to the metal.",
       "url": "https://en.wikipedia.org/wiki/Seasoning_(cookware)",
-      "action": "Season with a wipe so thin it looks dry, at high heat. Thick coats stay tacky because they never fully polymerise."
+      "action": "Season with a wipe so thin it looks dry, at high heat. Thick coats stay tacky because they never fully polymerise.",
+      "sourceType": "primary"
     },
     {
       "id": "mech-emulsion",
       "tag": "Cooking",
       "text": "Mayonnaise is oil suspended in water, held apart by lecithin from egg yolk coating every droplet. Add oil faster than the lecithin can coat it and the emulsion breaks.",
       "url": "https://en.wikipedia.org/wiki/Emulsion",
-      "action": "Add the oil drop by drop at the start. If it splits, whisk the broken mixture slowly into a fresh yolk."
+      "action": "Add the oil drop by drop at the start. If it splits, whisk the broken mixture slowly into a fresh yolk.",
+      "sourceType": "primary"
     },
     {
       "id": "mech-chocolate-temper",
       "tag": "Cooking",
-      "text": "Cocoa butter crystallises in six different forms. Tempering coaxes it into Form V \u2014 the only one that's glossy, snaps, and melts at body temperature. Untempered chocolate is the same molecules, badly stacked.",
-      "url": "https://en.wikipedia.org/wiki/Types_of_chocolate",
-      "action": "For dark chocolate: melt to ~45\u00b0C, cool to ~27\u00b0C, then rewarm to ~31\u00b0C before using."
+      "text": "Cocoa butter crystallises into six different forms, and only one \u2014 Form V \u2014 is glossy, snaps, and melts at body temperature. Untempered chocolate is the same molecules stacked badly.",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/40352747/",
+      "action": "For dark chocolate: melt to about 45\u00b0C, cool to 27\u00b0C, then rewarm to 31\u00b0C before using.",
+      "sourceType": "peer-reviewed"
     },
     {
       "id": "mech-coffee-extraction",
       "tag": "Coffee",
       "text": "Coffee extracts in a fixed order: acids first, then sugars, then the bitter compounds last. Taste tells you where you stopped.",
       "url": "https://en.wikipedia.org/wiki/Coffee_preparation",
-      "action": "Sour means under-extracted \u2014 grind finer or brew longer. Bitter means over \u2014 grind coarser or brew shorter."
+      "action": "Sour means under-extracted \u2014 grind finer or brew longer. Bitter means over \u2014 grind coarser or brew shorter.",
+      "sourceType": "primary"
     },
     {
       "id": "mech-anesthesia",
       "tag": "Medicine",
       "text": "We have used general anaesthesia since 1846 and still cannot fully explain how it works. The molecular mechanism by which it produces unconsciousness remains genuinely open.",
       "url": "https://en.wikipedia.org/wiki/General_anaesthesia",
-      "action": "Hold mechanism explanations in medicine loosely. Working reliably and being understood are different things."
+      "action": "Hold mechanism explanations in medicine loosely. Working reliably and being understood are different things.",
+      "sourceType": "reference"
     },
     {
       "id": "mech-hangover",
       "tag": "Medicine",
       "text": "Hangover severity tracks acetaldehyde and inflammatory cytokines more than dehydration. Congeners in darker spirits worsen it, which is why the drink matters as much as the dose.",
       "url": "https://en.wikipedia.org/wiki/Hangover",
-      "action": "Lighter-coloured spirits and a slower pace help more than drinking water does."
+      "action": "Lighter-coloured spirits and a slower pace help more than drinking water does.",
+      "sourceType": "reference"
     },
     {
       "id": "mech-capsaicin",
       "tag": "Chemistry",
-      "text": "Capsaicin binds the receptor that detects actual heat, so your nerves report a burn that isn't there. It's fat-soluble, which is why milk works and water doesn't.",
-      "url": "https://en.wikipedia.org/wiki/Capsaicin",
-      "action": "Reach for milk, yoghurt or something oily. Water just spreads it around."
+      "text": "Chilli heat is not a metaphor. Capsaicin binds the very receptor that detects genuinely damaging heat \u2014 the same channel fires at around 43\u00b0C \u2014 so the nerve reports a burn that isn't happening.",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/9349813/",
+      "action": "Reach for milk, yoghurt or something oily. Capsaicin is fat-soluble, so water just moves it around.",
+      "sourceType": "peer-reviewed"
     },
     {
       "id": "mech-bakingsoda-acid",
       "tag": "Cooking",
       "text": "Baking soda needs an acid and reacts immediately; baking powder carries its own acid and usually reacts twice, once wet and once hot. Swapping them without adjusting acid gives you a soapy tang.",
       "url": "https://en.wikipedia.org/wiki/Baking_powder",
-      "action": "No acid in the recipe? Use powder. Swapping in soda means adding an acid \u2014 buttermilk, yoghurt or vinegar."
+      "action": "No acid in the recipe? Use powder. Swapping in soda means adding an acid \u2014 buttermilk, yoghurt or vinegar.",
+      "sourceType": "primary"
+    },
+    {
+      "id": "travel-abx-resistance",
+      "tag": "Travel",
+      "text": "Travellers to South Asia acquire multidrug-resistant gut bacteria at startling rates \u2014 and taking antibiotics for a stomach upset while there sharply increases the chance you bring them home. The treatment is the risk factor.",
+      "action": "Rehydrate and wait it out. Save antibiotics for fever, blood, or an illness that stops you travelling.",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/30037325/",
+      "sourceType": "peer-reviewed"
+    },
+    {
+      "id": "travel-diarrhoea",
+      "tag": "Travel",
+      "text": "Most travellers' diarrhoea is self-limiting and resolves without treatment. The reflex to reach for antibiotics is what turns a bad two days into carriage of a resistant organism.",
+      "action": "Pack oral rehydration salts, not antibiotics. Salt and sugar in water is the intervention with the evidence.",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/35421294/",
+      "sourceType": "peer-reviewed"
+    },
+    {
+      "id": "travel-altitude",
+      "tag": "Travel",
+      "text": "Cusco, La Paz and Lhasa all sit high enough that altitude sickness is a real risk, not a nuisance \u2014 and fitness offers no protection. Rate of ascent is what matters; acetazolamide has the best trial support if you must go up fast.",
+      "action": "Sleep low, climb high, and give yourself two nights before doing anything strenuous.",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/40383249/",
+      "sourceType": "peer-reviewed"
+    },
+    {
+      "id": "travel-rabies",
+      "tag": "Travel",
+      "text": "Rabies is effectively 100% fatal once symptoms appear and the dog does not have to look ill. Post-exposure treatment works \u2014 but the immunoglobulin is often unavailable in exactly the countries where the risk is highest.",
+      "action": "In Asia or Africa, treat any dog, monkey or bat contact as urgent. Find out before you go where treatment is actually stocked.",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/40516802/",
+      "sourceType": "peer-reviewed"
+    },
+    {
+      "id": "travel-street-food",
+      "tag": "Travel",
+      "text": "The safety signal at a street stall is turnover, not appearance. Food-microbiology surveys of vending repeatedly find the hazard is holding time and temperature \u2014 food sitting warm \u2014 rather than the fact of being cooked outdoors.",
+      "action": "Eat where the queue is local and the wok never stops. Avoid anything lukewarm under a lamp, however clean the stall looks.",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/16857283/",
+      "sourceType": "peer-reviewed"
+    },
+    {
+      "id": "travel-baarle",
+      "tag": "Travel",
+      "text": "Baarle-Hertog is 22 fragments of Belgium scattered inside the Netherlands, several containing Dutch counter-enclaves. The border runs through living rooms, and front doors carry a flag tile showing which country you are entering.",
+      "action": "Go for the border, not the town. Householders once chose their nationality by moving the front door.",
+      "url": "https://en.wikipedia.org/wiki/Baarle-Hertog",
+      "sourceType": "reference"
+    },
+    {
+      "id": "travel-diomede",
+      "tag": "Travel",
+      "text": "The Diomede Islands sit 3.8 km apart in the Bering Strait and 21 hours apart on the calendar. From Little Diomede you look across at tomorrow.",
+      "action": "One of the few places where the date line is a thing you can see rather than a line on a chart.",
+      "url": "https://en.wikipedia.org/wiki/Diomede_Islands",
+      "sourceType": "reference"
+    },
+    {
+      "id": "travel-mauritania-train",
+      "tag": "Travel",
+      "text": "The Mauritania iron ore train runs over two kilometres long across the Sahara, and riding on top of the ore is free. There is no shelter, the dust is total, and it is one of the great overland journeys precisely because nothing about it is arranged for you.",
+      "action": "Bring a scarf, goggles and far more water than seems reasonable. The passenger car exists; the ore is the point.",
+      "url": "https://en.wikipedia.org/wiki/Mauritania_Railway",
+      "sourceType": "reference"
+    },
+    {
+      "id": "travel-socotra",
+      "tag": "Travel",
+      "text": "A third of Socotra's plant species grow nowhere else on Earth, including the dragon's blood tree \u2014 an umbrella of branches that bleeds red resin. It is what an island looks like after twenty million years alone.",
+      "action": "Endemism this high is a warning as much as an attraction: go lightly, and understand it is a conflict zone.",
+      "url": "https://en.wikipedia.org/wiki/Socotra",
+      "sourceType": "reference"
+    },
+    {
+      "id": "travel-shared-taxi",
+      "tag": "Travel",
+      "text": "Across much of West Africa, Central Asia and the Caucasus, shared taxis leave when they are full rather than at a time. The schedule is a number of passengers, which is why asking when it departs gets you a shrug.",
+      "action": "Arrive early to fill the car faster, or buy the empty seats if you are in a hurry. Both are normal.",
+      "url": "https://en.wikipedia.org/wiki/Share_taxi",
+      "sourceType": "reference"
+    },
+    {
+      "id": "travel-tipping-japan",
+      "tag": "Travel",
+      "text": "Tipping in Japan is not generous, it is confusing \u2014 service is priced in, and pressing cash on someone can oblige them to chase you down to return it.",
+      "action": "Learn the local norm before you arrive. Generosity that ignores the norm is about you, not them.",
+      "url": "https://en.wikipedia.org/wiki/Tipping",
+      "sourceType": "reference"
     }
-  ]
+  ],
+  "sourceTypes": {
+    "peer-reviewed": "A study, systematic review or meta-analysis in an indexed journal. Required for any card asserting something a study could confirm or refute.",
+    "primary": "The authoritative record for a settled fact: a specification, official documentation, an archive, or established textbook science where no current literature is being produced. Peer review does not apply \u2014 nobody is still publishing on the Maillard reaction's existence.",
+    "reference": "An encyclopaedia entry. A staging state, not a destination: every card here is waiting to be re-sourced."
+  }
 }

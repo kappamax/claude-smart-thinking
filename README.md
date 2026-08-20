@@ -109,7 +109,7 @@ node bin/checklinks.js            # checks every deck URL resolves
 /plugin marketplace add kappamax/claude-smart-thinking
 ```
 
-**Releasing.** `version` appears in both manifests and pins the plugin — users only receive an update when the string changes, so bump both on every release. Installs land in a version-stamped directory:
+**Releasing.** `version` appears in both manifests and pins the plugin — users only receive an update when the string changes, so bump both on every release. **Patch-bump per change** (`0.12.0` → `0.12.1`); reserve a minor bump for something that genuinely changes what the plugin does. A test asserts the two manifests agree, because drift means installs resolve one version while the update check reads the other. Installs land in a version-stamped directory:
 
 ```
 ~/.claude/plugins/cache/kappamax/smart-thinking/0.1.0/
@@ -169,6 +169,8 @@ A matching card lands harder — a Postgres note while you're in a Postgres repo
 
 ```jsonc
 {
+  "linkStyle": "auto",            // auto | hyperlink | url | none
+  "linkColor": "none",            // blue | brightBlue | cyan | none
   "refreshIntervalSeconds": 30,   // status line re-execution cadence
   "contentMaxAgeMinutes": 20,     // staleness before a background refetch
   "tipCount": 12,                 // size of the tip rotation queue

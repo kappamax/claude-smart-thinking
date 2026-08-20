@@ -18,7 +18,44 @@ const { readJson } = require('../lib/jsonio');
 const CONCURRENCY = 8;
 const TIMEOUT_MS = 15000;
 
+/**
+ * Hosts that rate-limit, and how long to wait between hits.
+ *
+ * The checker reported HTTP 429 on a batch of perfectly good PubMed links,
+ * because eight workers hitting NCBI at once exceeds the roughly three
+ * requests a second they allow without an API key. A checker that invents
+ * failures is worse than no checker, so these hosts get a single-file queue.
+ */
+const THROTTLED = [{ match: /ncbi\.nlm\.nih\.gov$/, gapMs: 1300 }];
+const lastHit = new Map();
+
+function throttleFor(url) {
+  try {
+    const host = new URL(url).hostname;
+    return THROTTLED.find((t) => t.match.test(host)) || null;
+  } catch { return null; }
+}
+
+async function waitTurn(url) {
+  const rule = throttleFor(url);
+  if (!rule) return;
+  const key = rule.match.source;
+
+  // Reserve the next slot and advance the cursor by the gap. The first version
+  // stored `Date.now() + wait`, which evaluates to the slot just claimed rather
+  // than the one after it — so every worker reserved the same instant and the
+  // throttle did nothing. Two good PubMed links were reported as 429 because of
+  // it, which is precisely the false failure this function exists to prevent.
+  const now = Date.now();
+  const slot = Math.max(lastHit.get(key) || 0, now);
+  lastHit.set(key, slot + rule.gapMs);
+
+  const wait = slot - now;
+  if (wait > 0) await new Promise((r) => setTimeout(r, wait));
+}
+
 async function check(url) {
+  await waitTurn(url);
   const ac = new AbortController();
   const timer = setTimeout(() => ac.abort(), TIMEOUT_MS);
   try {
@@ -29,6 +66,18 @@ async function check(url) {
       // check from reporting false failures on links that work fine for humans.
       headers: { 'user-agent': 'Mozilla/5.0 (compatible; smart-thinking-linkcheck/0.1)' },
     });
+    if (res.status === 429) {
+      // Back off and try once more; reporting this as a dead link would be a
+      // false failure caused by the checker's own request rate.
+      await new Promise((r) => setTimeout(r, 8000));
+      // The retry goes through the same queue, or it just re-triggers the limit.
+      await waitTurn(url);
+      const retry = await fetch(url, {
+        redirect: 'follow',
+        headers: { 'user-agent': 'Mozilla/5.0 (compatible; smart-thinking-linkcheck/0.1)' },
+      });
+      return retry.ok ? null : `HTTP ${retry.status} (after retry)`;
+    }
     return res.ok ? null : `HTTP ${res.status}`;
   } catch (err) {
     return `ERR ${err.message}`;

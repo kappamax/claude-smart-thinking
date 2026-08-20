@@ -15,8 +15,42 @@ const paths = require('../lib/paths');
 const config = require('../lib/config');
 const { readJson } = require('../lib/jsonio');
 
-const DIM = '\x1b[2m';
-const RESET = '\x1b[0m';
+/**
+ * Status line styling.
+ *
+ * This used ANSI faint (SGR 2) unconditionally, which many terminals render as
+ * near-black — unreadable on a dark background, which is most of them. Faint is
+ * a request to de-emphasise and terminals interpret it however they like, so it
+ * is the wrong tool for "slightly quieter than the line above".
+ *
+ * Default is now a mid-tone grey that is legible on both dark and light
+ * backgrounds. 'dim' remains available for anyone whose terminal renders faint
+ * sensibly, and 'plain' inherits the terminal's own foreground.
+ */
+const STATUS_STYLES = {
+  plain: null,
+  dim: '\x1b[2m',
+  grey: '\x1b[38;5;245m',
+  blue: '\x1b[38;5;110m',
+  green: '\x1b[38;5;108m',
+};
+const DEFAULT_STATUS_STYLE = 'grey';
+const FG_RESET = '\x1b[39m';
+const ATTR_RESET = '\x1b[0m';
+
+/**
+ * Status lines wrap too, and the same rule applies as for tips: a renderer that
+ * splits the string leaves every line after the first unstyled, so the escape
+ * is re-applied per word.
+ */
+function styleStatus(text, styleName) {
+  const open = STATUS_STYLES[styleName] !== undefined
+    ? STATUS_STYLES[styleName]
+    : STATUS_STYLES[DEFAULT_STATUS_STYLE];
+  if (!open) return text;
+  const close = open === STATUS_STYLES.dim ? ATTR_RESET : FG_RESET;
+  return `${text.split(' ').map((w) => (w ? `${open}${w}` : w)).join(' ')}${close}`;
+}
 
 function readStdin() {
   try {
@@ -68,14 +102,26 @@ function triggerRefresh(pluginRoot, workspace, mode, activity) {
   } catch { /* a failed refresh must never break rendering */ }
 }
 
+const URGENT_PRIORITY = 60;
+
+/**
+ * Pick one status item.
+ *
+ * The old version always chose the highest-priority tier, which meant whichever
+ * provider happened to sit one point higher owned the line permanently — in
+ * practice "N files uncommitted" every render, all day. Only genuinely urgent
+ * items should pre-empt; everything else takes turns.
+ */
 function pickStatus(items, intervalSec) {
   if (!items || items.length === 0) return null;
-  const top = Math.max(...items.map((i) => i.priority ?? 0));
-  const tier = items.filter((i) => (i.priority ?? 0) === top);
+
+  const urgent = items.filter((i) => (i.priority ?? 0) >= URGENT_PRIORITY);
+  const pool = urgent.length ? urgent : items;
+
   // Time-sliced rotation keeps the hot path stateless: no counter to persist,
   // and every render within the same slice agrees on what to show.
   const slice = Math.floor(Date.now() / Math.max(1, intervalSec) / 1000);
-  return tier[slice % tier.length];
+  return pool[slice % pool.length];
 }
 
 function main() {
@@ -118,7 +164,9 @@ function main() {
   }
 
   const item = pickStatus(cache && cache.status, cfg.refreshIntervalSeconds ?? 30);
-  if (item && item.text) lines.push(`${DIM}${item.text}${RESET}`);
+  if (item && item.text) {
+    lines.push(styleStatus(item.text, cfg.statusLine && cfg.statusLine.style));
+  }
 
   process.stdout.write(`${lines.join('\n')}\n`);
 }
