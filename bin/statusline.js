@@ -68,14 +68,26 @@ function triggerRefresh(pluginRoot, workspace, mode, activity) {
   } catch { /* a failed refresh must never break rendering */ }
 }
 
+const URGENT_PRIORITY = 60;
+
+/**
+ * Pick one status item.
+ *
+ * The old version always chose the highest-priority tier, which meant whichever
+ * provider happened to sit one point higher owned the line permanently — in
+ * practice "N files uncommitted" every render, all day. Only genuinely urgent
+ * items should pre-empt; everything else takes turns.
+ */
 function pickStatus(items, intervalSec) {
   if (!items || items.length === 0) return null;
-  const top = Math.max(...items.map((i) => i.priority ?? 0));
-  const tier = items.filter((i) => (i.priority ?? 0) === top);
+
+  const urgent = items.filter((i) => (i.priority ?? 0) >= URGENT_PRIORITY);
+  const pool = urgent.length ? urgent : items;
+
   // Time-sliced rotation keeps the hot path stateless: no counter to persist,
   // and every render within the same slice agrees on what to show.
   const slice = Math.floor(Date.now() / Math.max(1, intervalSec) / 1000);
-  return tier[slice % tier.length];
+  return pool[slice % pool.length];
 }
 
 function main() {

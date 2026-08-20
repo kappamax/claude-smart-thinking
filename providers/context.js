@@ -28,17 +28,29 @@ async function collect(cfg, ctx) {
   if (git.dirty) parts.push(`${plural(git.dirty, 'file')} uncommitted`);
 
   if (parts.length) {
-    // Drifting far from upstream is the case worth interrupting for: it's the
-    // one that turns into a painful merge if it goes unnoticed all day.
+    // "N files uncommitted" is true every single day and therefore says almost
+    // nothing. It earns the status line only when it has become a real problem:
+    // far behind upstream, or a diff big enough to be unreviewable. Otherwise
+    // it sits at the bottom of the priority order where the rotation can reach
+    // it occasionally rather than pinning it there permanently.
     const behindThreshold = cfg.behindWarnThreshold ?? 20;
     const urgent = (git.behind || 0) >= behindThreshold
       || (git.dirty || 0) >= (cfg.dirtyWarnThreshold ?? 25);
 
-    status.push({
-      text: `${git.branch || 'detached'} · ${parts.join(' · ')}`,
-      priority: urgent ? 60 : 20,
-      source: 'context',
-    });
+    if (urgent) {
+      status.push({
+        text: `${git.branch || 'detached'} · ${parts.join(' · ')}`,
+        priority: 60,
+        source: 'context',
+      });
+    } else if ((git.behind || 0) > 0 || (git.ahead || 0) > 0) {
+      // Drift from upstream is at least news. Volume of local edits is not.
+      status.push({
+        text: `${git.branch || 'detached'} · ${parts.join(' · ')}`,
+        priority: 5,
+        source: 'context',
+      });
+    }
   }
 
   if (git.lastCommitAgeHours !== null && git.lastCommitAgeHours >= (cfg.staleHours ?? 8) && git.dirty > 0) {

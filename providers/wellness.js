@@ -187,20 +187,32 @@ async function collect(cfg, ctx) {
     }
   }
 
+  /**
+   * Health belongs in the rotation all day.
+   *
+   * Previously the only non-sleep health content was attached to the break
+   * prompt, which fires after 90 minutes of measured work — so in practice
+   * health showed up late at night and almost never otherwise. The corpus has
+   * two dozen daytime claims; they should be competing for slots continuously.
+   */
+  const dayTipCount = Math.max(0, cfg.dayTipCount ?? 3);
+  if (dayTipCount > 0 && dayClaims.length > 0) {
+    for (const c of pickDistinct(dayClaims, seed + 3, dayTipCount)) tips.push(toTip(c));
+  }
+
   if (cfg.movement !== false) {
     const breakAfter = cfg.breakAfterHours ?? 1.5;
     if (activeHours >= breakAfter && dayClaims.length > 0) {
       // Rotate through the corpus rather than repeating one nudge. A prompt
       // that says the same thing every ninety seconds gets tuned out, and
       // this surface only works while it still has the reader's trust.
-      const [tipClaim, statusClaim] = pickDistinct(dayClaims, seed, 2);
-      if (tipClaim) tips.push(toTip(tipClaim));
+      const [statusClaim] = pickDistinct(dayClaims, seed, 1);
 
       // The old text hardcoded "look 20ft away for 20s" — the 20-20-20 rule,
       // which this plugin's own corpus grades as contested after an RCT found
       // no significant effect. Advice on the status line now comes from the
       // same graded corpus as everything else.
-      const advice = (statusClaim || tipClaim);
+      const advice = statusClaim;
       status.push({
         text: `${formatHours(activeHours)} active · ${advice.action} (${advice.evidence})`,
         priority: 50,
