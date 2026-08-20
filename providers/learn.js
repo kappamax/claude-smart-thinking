@@ -25,13 +25,31 @@ const { readJson, writeJsonAtomic } = require('../lib/jsonio');
 const BASE_INTERVAL_MIN = 45;
 const MAX_INTERVAL_MIN = 60 * 24 * 7;
 
+/**
+ * Merge the shipped deck with the user's, rather than letting theirs replace it.
+ *
+ * The user's deck.json used to win outright, which quietly froze the deck at
+ * whatever the shipped version was on the day they copied it. It bit twice: a
+ * stale 131-card copy served the reference-manual cards for several releases
+ * after they were cut, and then a 185-card copy hid the entire travel batch —
+ * 20 cards in the shipped deck, 9 reaching the reader, with no error anywhere.
+ *
+ * Union by id, user entries winning on conflict. Shipped additions arrive
+ * automatically; edits and additions of their own survive an update. A card the
+ * user deletes will come back, which is the deliberate trade: silently losing
+ * new content is worse than an unwanted card reappearing, and `hidden: true`
+ * is the way to suppress one for good.
+ */
 function loadDeck(pluginRoot) {
-  const userDeck = readJson(paths.deckFile, null);
-  if (userDeck && Array.isArray(userDeck.cards) && userDeck.cards.length) return userDeck;
-
   const sample = path.join(pluginRoot, 'data', 'deck.sample.json');
-  if (fs.existsSync(sample)) return readJson(sample, { cards: [] });
-  return { cards: [] };
+  const shipped = fs.existsSync(sample) ? readJson(sample, { cards: [] }) : { cards: [] };
+  const user = readJson(paths.deckFile, null);
+
+  const byId = new Map();
+  for (const c of shipped.cards || []) byId.set(c.id, c);
+  for (const c of (user && user.cards) || []) byId.set(c.id, c);
+
+  return { cards: [...byId.values()].filter((c) => !c.hidden) };
 }
 
 function loadState() {

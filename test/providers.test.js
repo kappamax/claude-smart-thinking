@@ -347,3 +347,40 @@ test('literature: no topics configured means no output, not an error', async () 
   const r = await lit.collect({ topics: [] }, { now: new Date() });
   assert.deepStrictEqual(r.tips, []);
 });
+
+test('learn: a user deck adds to the shipped deck rather than replacing it', async () => {
+  // Regression, twice over. A user deck.json used to win outright, freezing the
+  // deck at whatever shipped the day it was copied — a 131-card copy kept
+  // serving cards that had been cut, and a 185-card copy hid the entire travel
+  // batch. 20 cards shipped, 9 reached the reader, and nothing errored.
+  const userDeck = path.join(STATE, 'deck.json');
+  fs.mkdirSync(STATE, { recursive: true });
+  fs.writeFileSync(userDeck, JSON.stringify({
+    cards: [{ id: 'mine-only', tag: 'Custom', text: 'A card of my own, long enough to pass.', url: 'https://example.test/x' }],
+  }));
+  try {
+    fs.rmSync(path.join(STATE, 'learn-state.json'), { force: true });
+    const res = await learn.collect({ count: 400, contextShare: 0 }, deckCtx());
+    const cats = new Set(res.tips.map((t) => t.category));
+    assert.ok(cats.has('Custom'), 'the user card was dropped');
+    assert.ok(cats.has('Travel'), 'shipped cards were shadowed by the user deck');
+    assert.ok(res.tips.length > 100, `expected the merged deck, got ${res.tips.length}`);
+  } finally {
+    fs.rmSync(userDeck, { force: true });
+  }
+});
+
+test('learn: a card marked hidden stays suppressed', async () => {
+  // The merge means a deleted card returns. `hidden` is the way to mean it.
+  const userDeck = path.join(STATE, 'deck.json');
+  fs.writeFileSync(userDeck, JSON.stringify({
+    cards: [{ id: 'travel-baarle', hidden: true, tag: 'Travel', text: 'x', url: 'https://x.test' }],
+  }));
+  try {
+    fs.rmSync(path.join(STATE, 'learn-state.json'), { force: true });
+    const res = await learn.collect({ count: 400, contextShare: 0 }, deckCtx());
+    assert.ok(!res.tips.some((t) => /Baarle/.test(t.text)), 'hidden card still surfaced');
+  } finally {
+    fs.rmSync(userDeck, { force: true });
+  }
+});

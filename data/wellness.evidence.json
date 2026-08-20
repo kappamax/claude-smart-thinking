@@ -11,39 +11,43 @@
   "claims": [
     {
       "id": "med-goyal-baseline",
-      "topic": "Meditation",
+      "topic": "Mind",
       "evidence": "meta-analysis",
       "text": "The largest meta-analysis of meditation trials found moderate evidence it reduces anxiety, depression and pain \u2014 and low or insufficient evidence for attention, sleep, mood, weight or substance use. It works, for less than it's sold for",
       "source": "https://pubmed.ncbi.nlm.nih.gov/24395196/",
       "action": "Use it for anxiety, low mood or pain. Don't expect it to fix focus or sleep.",
-      "verified": "2026-08-17"
+      "verified": "2026-08-17",
+      "subtopic": "Meditation"
     },
     {
       "id": "med-mbsr-escitalopram",
-      "topic": "Meditation",
+      "topic": "Mind",
       "evidence": "RCT",
       "text": "In a 2023 randomised non-inferiority trial, eight weeks of mindfulness-based stress reduction matched escitalopram for treating anxiety disorders",
       "source": "https://pubmed.ncbi.nlm.nih.gov/36350591/",
       "action": "If you'd consider medication for anxiety, an eight-week MBSR course is an evidence-equivalent option worth discussing.",
-      "verified": "2026-08-17"
+      "verified": "2026-08-17",
+      "subtopic": "Meditation"
     },
     {
       "id": "med-mind-the-hype",
-      "topic": "Meditation",
+      "topic": "Mind",
       "evidence": "meta-analysis",
       "text": "\"Mind the Hype\": a review by mindfulness researchers themselves found the field plagued by inconsistent definitions, weak controls and overstated claims. Treat confident mindfulness statistics with suspicion",
       "source": "https://pubmed.ncbi.nlm.nih.gov/29016274/",
       "action": "Discount any single dramatic mindfulness result until it replicates with an active control.",
-      "verified": "2026-08-17"
+      "verified": "2026-08-17",
+      "subtopic": "Meditation"
     },
     {
       "id": "med-breathwork",
-      "topic": "Breathing",
+      "topic": "Mind",
       "evidence": "RCT",
       "text": "Five minutes a day of cyclic sighing \u2014 a long inhale, a second shorter one, a slow extended exhale \u2014 improved mood and lowered respiratory rate more than equal-time mindfulness meditation in a randomised trial",
       "source": "https://pubmed.ncbi.nlm.nih.gov/36630953/",
       "action": "Five minutes: inhale, a second short inhale on top, then a long slow exhale. Repeat.",
-      "verified": "2026-08-17"
+      "verified": "2026-08-17",
+      "subtopic": "Breathing"
     },
     {
       "id": "ex-depression",
@@ -173,21 +177,23 @@
     },
     {
       "id": "eyes-202020-weak",
-      "topic": "Eyes",
+      "topic": "Senses",
       "evidence": "contested",
       "text": "The 20-20-20 rule is recommended everywhere and supported by very little: a randomised trial of scheduled 20-second breaks found no significant effect on eye-strain symptoms. Blinking and blink quality may matter more",
       "source": "https://pubmed.ncbi.nlm.nih.gov/36473088/",
       "action": "Blink deliberately and check your screen isn't drying your eyes. Don't rely on timed breaks alone.",
-      "verified": "2026-08-17"
+      "verified": "2026-08-17",
+      "subtopic": "Eyes"
     },
     {
       "id": "social-connection",
-      "topic": "Wellbeing",
+      "topic": "Mind",
       "evidence": "meta-analysis",
       "text": "A meta-analysis of 148 studies found strong social relationships associated with a 50% greater likelihood of survival \u2014 an effect size comparable to quitting smoking and larger than obesity or inactivity",
       "source": "https://pubmed.ncbi.nlm.nih.gov/20668659/",
       "action": "Treat a standing weekly contact with someone as a health behaviour, not a luxury.",
-      "verified": "2026-08-17"
+      "verified": "2026-08-17",
+      "subtopic": "Wellbeing"
     },
     {
       "id": "stretch-injury",
@@ -209,12 +215,13 @@
     },
     {
       "id": "alc-jcurve",
-      "topic": "Alcohol",
+      "topic": "Nutrition",
       "evidence": "umbrella-review",
       "text": "The claim that moderate drinking protects the heart does not survive bias correction. Across 107 cohorts, people who quit drinking because they were already ill had been counted as abstainers \u2014 remove that 'sick quitter' effect and the apparent benefit at low doses disappears",
       "action": "Don't count drinking as cardioprotective. If you drink, drink for the reasons you actually drink.",
       "source": "https://pubmed.ncbi.nlm.nih.gov/38465993/",
-      "verified": "2026-08-17"
+      "verified": "2026-08-17",
+      "subtopic": "Alcohol"
     },
     {
       "id": "ex-steps-plateau",
@@ -254,12 +261,13 @@
     },
     {
       "id": "hearing-cognition",
-      "topic": "Hearing",
+      "topic": "Senses",
       "evidence": "RCT",
       "text": "ACHIEVE randomised 977 older adults to hearing aids or health education. Among those at higher risk of decline, hearing intervention cut three-year cognitive loss by around half \u2014 though it showed no effect in the healthier subgroup",
       "action": "Treat hearing loss as a modifiable cognitive risk, not a cosmetic inconvenience.",
       "source": "https://pubmed.ncbi.nlm.nih.gov/37478886/",
-      "verified": "2026-08-17"
+      "verified": "2026-08-17",
+      "subtopic": "Hearing"
     },
     {
       "id": "nut-protein",
@@ -272,12 +280,13 @@
     },
     {
       "id": "mh-behavioural-activation",
-      "topic": "Mental health",
+      "topic": "Mind",
       "evidence": "RCT",
       "text": "Behavioural activation \u2014 systematically scheduling activity you value, without the cognitive work \u2014 was non-inferior to full CBT for depression, delivered by less specialised staff at substantially lower cost",
       "action": "If CBT waiting lists are long, behavioural activation is evidence-equivalent and far easier to access.",
       "source": "https://pubmed.ncbi.nlm.nih.gov/27461440/",
-      "verified": "2026-08-17"
+      "verified": "2026-08-17",
+      "subtopic": "Mental health"
     },
     {
       "id": "nut-breakfast",
@@ -299,39 +308,43 @@
     },
     {
       "id": "back-imaging",
-      "topic": "Back pain",
+      "topic": "Pain",
       "evidence": "meta-analysis",
       "text": "For ordinary low back pain with no red flags, early imaging does not improve pain, function or recovery \u2014 and is associated with more surgery. Scans routinely find degeneration in people who have no pain at all",
       "action": "Skip the scan for ordinary back pain absent red flags, and keep moving rather than resting.",
       "source": "https://pubmed.ncbi.nlm.nih.gov/19200918/",
-      "verified": "2026-08-17"
+      "verified": "2026-08-17",
+      "subtopic": "Back pain"
     },
     {
       "id": "myth-sugar-hyperactivity",
-      "topic": "Children",
+      "topic": "Medicine",
       "evidence": "meta-analysis",
       "text": "Sugar does not make children hyperactive. A meta-analysis of double-blind trials found no effect on behaviour or cognition \u2014 but parents told their child had been given sugar rated the same child as more hyperactive, which is where the belief comes from",
       "action": "Judge the behaviour without knowing what they ate. The expectation is doing the work.",
       "source": "https://pubmed.ncbi.nlm.nih.gov/7474248/",
-      "verified": "2026-08-20"
+      "verified": "2026-08-20",
+      "subtopic": "Children"
     },
     {
       "id": "myth-blue-light-lenses",
-      "topic": "Eyes",
+      "topic": "Senses",
       "evidence": "meta-analysis",
       "text": "A 2023 Cochrane review found blue-light filtering lenses give no measurable reduction in eye strain, no improvement in sleep quality, and no evidence of protecting the retina",
       "action": "Don't pay extra for the coating. Brightness, distance and blinking are the levers that exist.",
       "source": "https://pubmed.ncbi.nlm.nih.gov/37593770/",
-      "verified": "2026-08-20"
+      "verified": "2026-08-20",
+      "subtopic": "Eyes"
     },
     {
       "id": "myth-knee-arthroscopy",
-      "topic": "Joints",
+      "topic": "Pain",
       "evidence": "RCT",
       "text": "For a degenerative meniscal tear with no injury behind it, arthroscopic partial meniscectomy performed no better than sham surgery \u2014 the group who got incisions and no procedure improved just as much",
       "action": "For age-related knee pain, ask about exercise therapy before agreeing to arthroscopy.",
       "source": "https://pubmed.ncbi.nlm.nih.gov/24369076/",
-      "verified": "2026-08-20"
+      "verified": "2026-08-20",
+      "subtopic": "Joints"
     },
     {
       "id": "myth-antioxidants",
@@ -362,57 +375,63 @@
     },
     {
       "id": "myth-annual-physical",
-      "topic": "Screening",
+      "topic": "Medicine",
       "evidence": "meta-analysis",
       "text": "General health checks in adults do not reduce overall, cardiovascular or cancer mortality. They do reliably increase the number of diagnoses and treatments",
       "action": "Prioritise the targeted screening you're actually eligible for over a general once-over.",
       "source": "https://pubmed.ncbi.nlm.nih.gov/30699470/",
-      "verified": "2026-08-20"
+      "verified": "2026-08-20",
+      "subtopic": "Screening"
     },
     {
       "id": "myth-probiotics-antibiotics",
-      "topic": "Gut",
+      "topic": "Medicine",
       "evidence": "RCT",
       "text": "Taking probiotics after antibiotics *delayed* the gut microbiome returning to baseline \u2014 for months in some people \u2014 while an autologous faecal transplant restored it within days",
       "action": "Don't reflexively take probiotics after a course of antibiotics. Fibre and fermented food are the safer default.",
       "source": "https://pubmed.ncbi.nlm.nih.gov/30193113/",
-      "verified": "2026-08-20"
+      "verified": "2026-08-20",
+      "subtopic": "Gut"
     },
     {
       "id": "myth-glucosamine",
-      "topic": "Joints",
+      "topic": "Pain",
       "evidence": "meta-analysis",
       "text": "Across ten trials, glucosamine, chondroitin and the two combined produced no clinically relevant reduction in joint pain compared with placebo for hip or knee osteoarthritis",
       "action": "Not worth the money for knee or hip arthritis. Loading the joint through exercise has far better evidence.",
       "source": "https://pubmed.ncbi.nlm.nih.gov/20847017/",
-      "verified": "2026-08-20"
+      "verified": "2026-08-20",
+      "subtopic": "Joints"
     },
     {
       "id": "social-isolation-vs-loneliness",
-      "topic": "Wellbeing",
+      "topic": "Mind",
       "evidence": "meta-analysis",
       "text": "Being isolated and feeling lonely are not the same risk. Across 90 cohorts and 2.2 million people, social isolation raised all-cause mortality by about a third while loneliness raised it by roughly a seventh \u2014 the objective lack of contact carried the larger effect",
       "action": "Book the contact rather than waiting to feel like it. Attendance is doing more work here than mood.",
       "source": "https://pubmed.ncbi.nlm.nih.gov/37337095/",
-      "verified": "2026-08-20"
+      "verified": "2026-08-20",
+      "subtopic": "Wellbeing"
     },
     {
       "id": "burnout-definitions",
-      "topic": "Mental health",
+      "topic": "Mind",
       "evidence": "meta-analysis",
       "text": "Burnout statistics are close to meaningless. A review of 182 studies covering 109,628 physicians found at least 142 different definitions in use, and prevalence estimates ranging from 0% to 80.5% depending on which cut-off a study picked",
       "action": "Distrust any burnout percentage you are quoted, including the alarming ones. Ask how it was measured.",
       "source": "https://pubmed.ncbi.nlm.nih.gov/30326495/",
-      "verified": "2026-08-20"
+      "verified": "2026-08-20",
+      "subtopic": "Mental health"
     },
     {
       "id": "burnout-interventions",
-      "topic": "Mental health",
+      "topic": "Mind",
       "evidence": "meta-analysis",
       "text": "Burnout does respond to intervention, modestly: pooling trials and cohorts, overall burnout fell from 54% to 44%, and both individual-focused and organisational approaches worked. The effect is real and it is not a cure",
       "action": "Treat it as a workload and structure problem as much as a resilience one \u2014 organisational changes performed comparably to personal ones.",
       "source": "https://pubmed.ncbi.nlm.nih.gov/27692469/",
-      "verified": "2026-08-20"
+      "verified": "2026-08-20",
+      "subtopic": "Mental health"
     },
     {
       "id": "nut-diets-interchangeable",
@@ -440,6 +459,27 @@
       "action": "Eat that way if you enjoy it \u2014 the downside risk is nil. Don't expect the effect size the confidence implies.",
       "source": "https://pubmed.ncbi.nlm.nih.gov/30864165/",
       "verified": "2026-08-20"
+    },
+    {
+      "id": "pain-manipulation",
+      "topic": "Pain",
+      "subtopic": "Back pain",
+      "evidence": "meta-analysis",
+      "text": "Spinal manipulation for chronic low back pain produces improvements in pain and function similar to other recommended treatments \u2014 neither the dismissal nor the enthusiasm is supported. Serious harms were not found; transient soreness is common",
+      "action": "A reasonable option if you like it and it is affordable, judged against exercise rather than against nothing.",
+      "source": "https://pubmed.ncbi.nlm.nih.gov/30867144/",
+      "verified": "2026-08-20"
+    },
+    {
+      "id": "pain-massage",
+      "topic": "Pain",
+      "subtopic": "Back pain",
+      "evidence": "meta-analysis",
+      "text": "Massage for low back pain has short-term benefit on pain and function, but the Cochrane review graded the evidence low to very low certainty and found no lasting effect at follow-up",
+      "action": "Worth it for relief now. Don't buy a course of it expecting the benefit to persist.",
+      "source": "https://pubmed.ncbi.nlm.nih.gov/26329399/",
+      "verified": "2026-08-20"
     }
-  ]
+  ],
+  "domains": "Displayed category. Consolidated from sixteen overlapping topics \u2014 Back pain, Joints and Pain were three labels for one domain, and Screening was a kind of intervention rather than a subject. The specific topic is kept in `topic` for selection and filtering; `domain` is what the reader sees, which also keeps the number of colours in the index manageable."
 }
