@@ -376,3 +376,21 @@ test('the break prompt rotates its advice and never repeats the 20-20-20 rule', 
   }
   assert.ok(seen.size > 1, `advice never rotated (${seen.size} distinct)`);
 });
+
+// ------------------------------------------------------------- literature
+
+test('literature: publication type maps to an evidence tier', () => {
+  const t = require('../providers/literature')._tierOf;
+  assert.strictEqual(t(['Meta-Analysis', 'Journal Article']), 'meta-analysis');
+  assert.strictEqual(t(['Systematic Review']), 'systematic review');
+  assert.strictEqual(t(['Randomized Controlled Trial']), 'RCT');
+  // Anything that got through the review-type filter is at least peer reviewed.
+  assert.strictEqual(t(['Journal Article']), 'peer-reviewed');
+  assert.strictEqual(t([]), 'peer-reviewed');
+});
+
+test('literature: no topics configured means no output, not an error', async () => {
+  const lit = require('../providers/literature');
+  const r = await lit.collect({ topics: [] }, { now: new Date() });
+  assert.deepStrictEqual(r.tips, []);
+});
