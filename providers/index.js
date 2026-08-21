@@ -2,12 +2,11 @@
 
 const learn = require('./learn');
 const weather = require('./weather');
-const news = require('./news');
 const context = require('./context');
 const wellness = require('./wellness');
 const literature = require('./literature');
 
-const REGISTRY = { learn, weather, news, context, wellness, literature };
+const REGISTRY = { learn, weather, context, wellness, literature };
 
 /**
  * Run every enabled provider concurrently and isolate their failures.

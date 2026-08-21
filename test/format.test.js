@@ -253,7 +253,25 @@ test('status line styling is readable and wrap-safe', () => {
   // terminals render as near-black — unreadable on a dark background.
   const src = fs.readFileSync(path.join(__dirname, '..', 'bin', 'statusline.js'), 'utf8');
   assert.ok(!/lines\.push\(`\$\{DIM\}/.test(src), 'faint is no longer applied unconditionally');
-  assert.match(src, /DEFAULT_STATUS_STYLE = 'grey'/, 'default should be a legible mid-tone');
+  // Grey was legible but sat at the same weight as a typical first status line,
+  // so the two read as one block. A light tint separates them.
+  assert.match(src, /DEFAULT_STATUS_STYLE = 'lightBlue'/, 'default should be a light tint, not grey');
   // Re-applied per word, for the same reason tips are.
   assert.match(src, /text\.split\(' '\)\.map/, 'status styling must survive a wrap');
+});
+
+test('status line colours never collide with a category colour', () => {
+  // Category colours are an index — the eye learns that Sleep is always one
+  // hue. A status line sharing a hue would break that, so the two sets are
+  // kept disjoint by construction rather than by hoping.
+  const { CATEGORY_PALETTE } = require('../lib/format');
+  const src = fs.readFileSync(path.join(__dirname, '..', 'bin', 'statusline.js'), 'utf8');
+  const block = /STATUS_STYLES = \{([\s\S]*?)\};/.exec(src);
+  assert.ok(block, 'could not find the status style table');
+  const statusCodes = [...block[1].matchAll(/38;5;(\d+)m/g)].map((m) => Number(m[1]));
+  assert.ok(statusCodes.length >= 5, 'expected several status colour options');
+  for (const c of statusCodes) {
+    assert.ok(!CATEGORY_PALETTE.includes(c),
+      `status colour ${c} also belongs to a tip category`);
+  }
 });

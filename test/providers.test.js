@@ -20,71 +20,10 @@ const ROOT = path.resolve(__dirname, '..');
 // paths.STATE_DIR is CLAUDE_CONFIG_DIR/smart-thinking — clearing TMP directly
 // silently cleared nothing, which let state leak between tests.
 const STATE = path.join(TMP, 'smart-thinking');
-const news = require('../providers/news');
 const learn = require('../providers/learn');
 const wellness = require('../providers/wellness');
 const context = require('../providers/context');
 const { interleave, collectAll } = require('../providers');
-
-// ---------------------------------------------------------------- news
-
-const RSS = `<rss><channel>
-  <item><title>First &amp; foremost</title><link>https://ex.test/a</link><pubDate>Wed, 13 Aug 2026 10:00:00 GMT</pubDate></item>
-  <item><title><![CDATA[Second <b>item</b>]]></title><guid isPermaLink="true">https://ex.test/b</guid><pubDate>Tue, 12 Aug 2026 10:00:00 GMT</pubDate></item>
-</channel></rss>`;
-
-const ATOM = `<feed xmlns="http://www.w3.org/2005/Atom">
-  <entry><title>Atom one</title>
-    <link rel="alternate" href="https://ex.test/atom1"/>
-    <updated>2026-08-13T10:00:00Z</updated></entry>
-</feed>`;
-
-test('news: parses RSS items, decoding entities and CDATA', () => {
-  const items = news._parseFeed(RSS);
-  assert.strictEqual(items.length, 2);
-  assert.strictEqual(items[0].title, 'First & foremost');
-  assert.strictEqual(items[1].title, 'Second item', 'CDATA and inner tags should be stripped');
-});
-
-test('news: extracts the article url from RSS <link> and from guid', () => {
-  // Regression: headlines shipped with no url at all, which is the least
-  // useful thing this surface can show.
-  const items = news._parseFeed(RSS);
-  assert.strictEqual(items[0].url, 'https://ex.test/a');
-  assert.strictEqual(items[1].url, 'https://ex.test/b', 'permalink guid should be used as a fallback');
-});
-
-test('news: extracts the url from an Atom link href attribute', () => {
-  const items = news._parseFeed(ATOM);
-  assert.strictEqual(items[0].url, 'https://ex.test/atom1');
-});
-
-test('news: sample draws across the whole archive, not just the head', () => {
-  const items = Array.from({ length: 100 }, (_, i) => ({ title: `t${i}`, ts: i }));
-  const picked = news._sample(items, 5, Date.now());
-  assert.strictEqual(picked.length, 5);
-  assert.strictEqual(new Set(picked.map((p) => p.title)).size, 5, 'sample returned duplicates');
-  assert.ok(picked.some((p) => items.indexOf(p) > 20), 'evergreen sampling never reached the archive');
-});
-
-test('news: sample is stable within a time slice and moves between them', () => {
-  const items = Array.from({ length: 100 }, (_, i) => ({ title: `t${i}` }));
-  const t = 1_700_000_000_000;
-  const a = news._sample(items, 3, t).map((x) => x.title);
-  const b = news._sample(items, 3, t + 1000).map((x) => x.title);
-  const c = news._sample(items, 3, t + 20 * 60 * 1000).map((x) => x.title);
-  assert.deepStrictEqual(a, b, 'a refresh and its rotation must agree');
-  assert.notDeepStrictEqual(a, c, 'successive slices should land somewhere new');
-});
-
-test('news: a dead feed is isolated and reported, not swallowed', async () => {
-  const res = await news.collect(
-    { feeds: [{ label: 'Dead', url: 'https://this-host-does-not-exist.invalid/rss' }], maxPerFeed: 2 },
-    { now: new Date() },
-  );
-  assert.deepStrictEqual(res.tips, [], 'a broken feed must not produce items');
-  assert.ok(res.warnings.length > 0, 'a feed that stops contributing must be visible in the log');
-});
 
 // ---------------------------------------------------------------- learn
 
@@ -221,10 +160,20 @@ test('interleave round-robins sources so one feed cannot crowd out the deck', ()
 });
 
 test('a throwing provider degrades that source only', async () => {
-  const cfg = { providers: { learn: { enabled: true, count: 3 }, news: { enabled: true, feeds: ['https://bad.invalid/x'] } } };
-  const res = await collectAll(cfg, deckCtx());
-  assert.ok(res.tips.length > 0, 'a failing provider took down the whole refresh');
-  assert.ok(res.errors.length > 0, 'the failure was not reported');
+  // Injected rather than borrowing a real provider that happens to fail. This
+  // test previously leaned on the news provider hitting an unreachable host,
+  // and silently stopped testing anything when that provider was deleted — the
+  // assertion passed for the wrong reason until the registry changed.
+  const { REGISTRY } = require('../providers');
+  REGISTRY.__boom = { name: '__boom', collect: async () => { throw new Error('deliberate'); } };
+  try {
+    const cfg = { providers: { learn: { enabled: true, count: 3 }, __boom: { enabled: true } } };
+    const res = await collectAll(cfg, deckCtx());
+    assert.ok(res.tips.length > 0, 'a failing provider took down the whole refresh');
+    assert.ok(res.errors.some((e) => /deliberate/.test(e)), 'the failure was not reported');
+  } finally {
+    delete REGISTRY.__boom;
+  }
 });
 
 test.after(() => fs.rmSync(TMP, { recursive: true, force: true }));
@@ -397,4 +346,41 @@ test('literature: no topics configured means no output, not an error', async () 
   const lit = require('../providers/literature');
   const r = await lit.collect({ topics: [] }, { now: new Date() });
   assert.deepStrictEqual(r.tips, []);
+});
+
+test('learn: a user deck adds to the shipped deck rather than replacing it', async () => {
+  // Regression, twice over. A user deck.json used to win outright, freezing the
+  // deck at whatever shipped the day it was copied — a 131-card copy kept
+  // serving cards that had been cut, and a 185-card copy hid the entire travel
+  // batch. 20 cards shipped, 9 reached the reader, and nothing errored.
+  const userDeck = path.join(STATE, 'deck.json');
+  fs.mkdirSync(STATE, { recursive: true });
+  fs.writeFileSync(userDeck, JSON.stringify({
+    cards: [{ id: 'mine-only', tag: 'Custom', text: 'A card of my own, long enough to pass.', url: 'https://example.test/x' }],
+  }));
+  try {
+    fs.rmSync(path.join(STATE, 'learn-state.json'), { force: true });
+    const res = await learn.collect({ count: 400, contextShare: 0 }, deckCtx());
+    const cats = new Set(res.tips.map((t) => t.category));
+    assert.ok(cats.has('Custom'), 'the user card was dropped');
+    assert.ok(cats.has('Travel'), 'shipped cards were shadowed by the user deck');
+    assert.ok(res.tips.length > 100, `expected the merged deck, got ${res.tips.length}`);
+  } finally {
+    fs.rmSync(userDeck, { force: true });
+  }
+});
+
+test('learn: a card marked hidden stays suppressed', async () => {
+  // The merge means a deleted card returns. `hidden` is the way to mean it.
+  const userDeck = path.join(STATE, 'deck.json');
+  fs.writeFileSync(userDeck, JSON.stringify({
+    cards: [{ id: 'travel-baarle', hidden: true, tag: 'Travel', text: 'x', url: 'https://x.test' }],
+  }));
+  try {
+    fs.rmSync(path.join(STATE, 'learn-state.json'), { force: true });
+    const res = await learn.collect({ count: 400, contextShare: 0 }, deckCtx());
+    assert.ok(!res.tips.some((t) => /Baarle/.test(t.text)), 'hidden card still surfaced');
+  } finally {
+    fs.rmSync(userDeck, { force: true });
+  }
 });

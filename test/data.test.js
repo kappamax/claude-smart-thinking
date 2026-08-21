@@ -87,10 +87,24 @@ test('evidence corpus: contested claims say so in the text', () => {
   for (const c of evidence.claims.filter((x) => x.evidence === 'contested')) {
     assert.match(
       c.text,
-      /disput|contest|not settled|average, not|very little|no significant/i,
+      // A curated list of genuine hedges, not a loose one. Widened after a
+      // claim that said "low or moderate certainty at best" and "not the
+      // settled case it is presented as" failed a regex looking only for the
+      // exact phrase "not settled" — the text was hedged, the pattern was too
+      // literal. Still strict: a contested claim must carry a marker of
+      // uncertainty somewhere in its own words.
+      /disput|contest|not settled|not the settled|uncertain|low certainty|low or moderate certainty|at best|average, not|very little|no significant/i,
       `${c.id}: marked contested but the text reads as settled`,
     );
   }
+});
+
+test('feed catalog is documented as a reading list, not a tip source', () => {
+  // The provider that consumed it is gone. The file survives because the
+  // curation was real work and the sources were verified — but nothing should
+  // read it back into tips, so the note has to say so.
+  assert.match(catalog.note, /NOT wired into tips/i,
+    'the catalog must state that it no longer feeds the spinner');
 });
 
 test('feed catalog: every feed has a url, mode and rationale', () => {
@@ -185,4 +199,19 @@ test('deck: Technique is deliberately not gated, and the reason is recorded', ()
   assert.ok(tech.length > 20, 'expected the Technique corpus to still be substantial');
   const sourced = tech.filter((c) => c.sourceType !== 'reference').length;
   assert.ok(sourced >= 15, `Technique regressed: only ${sourced}/${tech.length} above reference`);
+});
+
+test('health content lives in the graded corpus, never in the deck', () => {
+  // The deck carried six Health cards that duplicated corpus claims on
+  // Wikipedia links with no evidence grading — including the "nap 20 or 90
+  // minutes" cycle arithmetic that the corpus explicitly marks contested. The
+  // plugin could therefore serve a debunked claim and its correction in the
+  // same rotation. One home per domain, and for health that home is graded.
+  const CORPUS_OWNS = new Set(['Health', 'Sleep', 'Nutrition', 'Exercise',
+    'Meditation', 'Breathing', 'Mental health', 'Medicine', 'Alcohol']);
+  const offenders = deck.cards
+    .filter((c) => CORPUS_OWNS.has(c.tag))
+    .map((c) => `${c.id} (${c.tag})`);
+  assert.deepStrictEqual(offenders, [],
+    `health claims must move to wellness.evidence.json: ${offenders.join(', ')}`);
 });

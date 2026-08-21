@@ -31,10 +31,26 @@ const STATUS_STYLES = {
   plain: null,
   dim: '\x1b[2m',
   grey: '\x1b[38;5;245m',
+  lightBlue: '\x1b[38;5;153m',
+  lavender: '\x1b[38;5;189m',
+  periwinkle: '\x1b[38;5;146m',
   blue: '\x1b[38;5;110m',
   green: '\x1b[38;5;108m',
 };
-const DEFAULT_STATUS_STYLE = 'grey';
+
+/**
+ * Light blue by default.
+ *
+ * Grey 245 was legible but sat at the same weight as a typical first status
+ * line, so the two read as one block and the plugin's line was invisible as a
+ * distinct thing. A light tint separates it without shouting.
+ *
+ * Every colour here is deliberately absent from CATEGORY_PALETTE in
+ * lib/format.js — a status line sharing a hue with a tip category would make
+ * the category colours stop working as an index, which is their only job. A
+ * test asserts the two sets stay disjoint.
+ */
+const DEFAULT_STATUS_STYLE = 'lightBlue';
 const FG_RESET = '\x1b[39m';
 const ATTR_RESET = '\x1b[0m';
 
