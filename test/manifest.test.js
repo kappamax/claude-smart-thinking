@@ -109,3 +109,17 @@ test('the freshness loop invokes a real command with a real bundle', () => {
   assert.ok(catalog.bundles[fallback[1]],
     `default bundle "${fallback[1]}" is not in the catalog`);
 });
+
+test('the scheduled cron line does not reference a versioned plugin path', () => {
+  // ${CLAUDE_PLUGIN_ROOT} is version-stamped and reaped after an update. A
+  // cron entry pointing into it would fail silently and the only symptom would
+  // be a deck that stopped growing — the same trap the status line hits, which
+  // is why the SessionStart hook rewrites that path every session. Cron has no
+  // such hook, so the line must not depend on the path at all.
+  const sh = fs.readFileSync(path.join(ROOT, 'bin/harvest.sh'), 'utf8');
+  const install = sh.slice(sh.indexOf('if [ "$MODE" = "install" ]'), sh.indexOf('if [ "$MODE" = "uninstall" ]'));
+  assert.ok(!/plugins\/cache|CLAUDE_PLUGIN_ROOT|BASH_SOURCE/.test(install),
+    'the installed cron line must not reference the plugin directory');
+  assert.ok(/claude -p/.test(install), 'it should invoke the slash command directly');
+  assert.ok(/< \/dev\/null/.test(install), 'cron has no stdin — close it explicitly');
+});
