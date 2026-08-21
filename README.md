@@ -163,6 +163,33 @@ Health — nap 20 minutes or 90…    Statistics — regression to the mean…
 
 A matching card lands harder — a Postgres note while you're in a Postgres repo beats one in the abstract. But if relevance took every slot the deck would collapse into a second work feed, which is exactly what this surface shouldn't be. The idle seconds are the one place a fact about tardigrades genuinely competes.
 
+## Freshness
+
+The honest position: **the teaching content is static.** The deck and the health
+corpus are files. Weather and repo state are live; nothing else is.
+
+Two attempts to make literature live at render time both failed the same way —
+a paper title is not a finding, and a background Node process cannot read an
+article and decide what is worth teaching. That judgement is the product.
+
+So the judgement is not automated; its *invocation* is:
+
+```bash
+bin/harvest.sh digest deep-eng          # read the feeds, write cards
+bin/harvest.sh research "sleep debt"    # read the literature, write claims
+
+# weekly, via crontab -e
+0 7 * * 1 cd /path/to/claude-smart-thinking && bin/harvest.sh digest curious >> ~/.claude/smart-thinking/harvest.log 2>&1
+```
+
+It runs the same command a person would type, headless via `claude -p`, so every
+card still went through a reading step. It spends tokens per run, which is the
+real cost of the only design that works — and why nothing here is on by default.
+
+What this deliberately does not do is surface anything unread. A feed item that
+nobody followed is a recommendation nobody checked, and that was the original
+complaint about news.
+
 ## Config
 
 `~/.claude/smart-thinking/config.json`, deep-merged over the defaults in `lib/config.js`.

@@ -92,3 +92,20 @@ test('every test file parses, so none is silently skipped', () => {
     execFileSync(process.execPath, ['--check', path.join(dir, f)], { stdio: 'pipe' });
   }
 });
+
+test('the freshness loop invokes a real command with a real bundle', () => {
+  // harvest.sh is the only thing bridging "new material exists" and "a card
+  // exists". If it referenced a command or bundle that had been renamed, the
+  // cron would fail silently at 7am on a Monday and nobody would notice the
+  // deck had stopped growing.
+  const sh = fs.readFileSync(path.join(ROOT, 'bin/harvest.sh'), 'utf8');
+  for (const cmd of ['thinking-digest', 'thinking-research']) {
+    assert.ok(sh.includes(`/${cmd}`), `harvest.sh references /${cmd}`);
+    assert.ok(fs.existsSync(path.join(ROOT, 'commands', `${cmd}.md`)), `${cmd} command missing`);
+  }
+  const catalog = JSON.parse(fs.readFileSync(path.join(ROOT, 'data/feeds.catalog.json'), 'utf8'));
+  const fallback = /thinking-digest \$\{ARG:-(\w[\w-]*)\}/.exec(sh);
+  assert.ok(fallback, 'could not find the default bundle in harvest.sh');
+  assert.ok(catalog.bundles[fallback[1]],
+    `default bundle "${fallback[1]}" is not in the catalog`);
+});
