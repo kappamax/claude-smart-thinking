@@ -12,8 +12,13 @@
 # whatever schedule you choose. New cards arrive without anyone remembering to
 # ask, and every card still went through a reading step.
 #
-# It spends tokens on each run. That is the honest cost of the only design that
-# works, and it is why nothing here is enabled by default.
+# Cost, accurately: on a Claude Code subscription this consumes plan usage — the
+# same five-hour and seven-day rate-limit windows a status line reports — not
+# API credits, and not an incremental bill. On an API key it bills per token.
+# Either way a run is small: three articles is a few thousand tokens of reading
+# plus a short write. The reason it is off by default is that it starts an
+# autonomous session that edits your deck, which should be a deliberate choice
+# rather than a surprise.
 #
 #   bin/harvest.sh digest deep-eng
 #   bin/harvest.sh research "sleep architecture"

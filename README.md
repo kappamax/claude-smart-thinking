@@ -183,8 +183,14 @@ bin/harvest.sh research "sleep debt"    # read the literature, write claims
 ```
 
 It runs the same command a person would type, headless via `claude -p`, so every
-card still went through a reading step. It spends tokens per run, which is the
-real cost of the only design that works — and why nothing here is on by default.
+card still went through a reading step.
+
+**Cost.** On a Claude Code subscription this draws on plan usage — the same
+five-hour and seven-day windows your status line reports — not API credits and
+not an incremental bill. On an API key it bills per token. A run is small either
+way: three articles is a few thousand tokens of reading plus a short write. It is
+off by default because it starts an autonomous session that edits your deck,
+which should be deliberate rather than a surprise.
 
 What this deliberately does not do is surface anything unread. A feed item that
 nobody followed is a recommendation nobody checked, and that was the original
