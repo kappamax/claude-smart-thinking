@@ -11,7 +11,7 @@
       "displayName": "Smart Thinking",
       "source": "./",
       "description": "Replaces Claude Code's idle spinner text with personalized, linked content: a wide learning deck, weather before you leave, your news feeds, and live repo state.",
-      "version": "0.12.15",
+      "version": "0.13.0",
       "author": {
         "name": "Kirk Lashley"
       },

@@ -109,3 +109,53 @@ test('the freshness loop invokes a real command with a real bundle', () => {
   assert.ok(catalog.bundles[fallback[1]],
     `default bundle "${fallback[1]}" is not in the catalog`);
 });
+
+test('the scheduled cron line does not reference a versioned plugin path', () => {
+  // ${CLAUDE_PLUGIN_ROOT} is version-stamped and reaped after an update. A
+  // cron entry pointing into it would fail silently and the only symptom would
+  // be a deck that stopped growing — the same trap the status line hits, which
+  // is why the SessionStart hook rewrites that path every session. Cron has no
+  // such hook, so the line must not depend on the path at all.
+  // Check the generated line, not the surrounding source. The first version
+  // grepped the whole install block and flagged the comment that explains why
+  // the path is avoided — the code was correct and the test was reading prose.
+  const sh = fs.readFileSync(path.join(ROOT, 'bin/harvest.sh'), 'utf8');
+  const lineAssign = /^\s*LINE="(.+)"$/m.exec(sh);
+  assert.ok(lineAssign, 'could not find the cron LINE assignment');
+  const line = lineAssign[1];
+
+  assert.ok(!/plugins\/cache|CLAUDE_PLUGIN_ROOT|BASH_SOURCE|HERE/.test(line),
+    `the cron line must not reference the plugin directory: ${line}`);
+  assert.ok(/claude -p/.test(line), 'it should invoke the slash command directly');
+  assert.ok(/< \/dev\/null/.test(line), 'cron has no stdin — close it explicitly');
+  // The marker is interpolated from $MARKER at runtime, so the literal string
+  // is not in the assignment — check the reference, and separately that the
+  // variable holds what uninstall greps for.
+  assert.ok(/\$MARKER\s*$/.test(line), 'the line must end with the marker so uninstall can find it');
+  assert.match(sh, /MARKER="# smart-thinking-harvest"/, 'the marker must be the string uninstall greps for');
+});
+
+test('every bin script loads without a missing dependency', () => {
+  // bin/checkfeeds.js required providers/news and broke silently when that
+  // provider was deleted — the network checkers are not in the unit suite, so
+  // nothing noticed until someone ran it by hand. Requiring each script surfaces
+  // a dangling import immediately.
+  // Resolve the imports statically rather than requiring the file: these are
+  // CLIs, so requiring one runs it and exits on a usage error, which says
+  // nothing about whether its dependencies exist.
+  const { execFileSync } = require('child_process');
+  const dir = path.join(ROOT, 'bin');
+  const scripts = fs.readdirSync(dir).filter((f) => f.endsWith('.js'));
+  assert.ok(scripts.length >= 5, `expected the bin scripts, found ${scripts.length}`);
+
+  for (const f of scripts) {
+    execFileSync(process.execPath, ['--check', path.join(dir, f)], { stdio: 'pipe' });
+    const src = fs.readFileSync(path.join(dir, f), 'utf8');
+    for (const m of src.matchAll(/require\(['"](\.[^'"]+)['"]\)/g)) {
+      const target = path.resolve(dir, m[1]);
+      const exists = fs.existsSync(target) || fs.existsSync(`${target}.js`)
+        || fs.existsSync(`${target}.json`);
+      assert.ok(exists, `bin/${f} imports a missing module: ${m[1]}`);
+    }
+  }
+});

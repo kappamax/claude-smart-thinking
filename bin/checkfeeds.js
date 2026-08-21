@@ -14,7 +14,27 @@
 const path = require('path');
 const paths = require('../lib/paths');
 const { readJson } = require('../lib/jsonio');
-const { _parseFeed: parseFeed } = require('../providers/news');
+/**
+ * A local parser, deliberately not imported from a provider.
+ *
+ * This used to require providers/news, and broke silently when that provider
+ * was deleted — the checker is network-only so it is not in the unit suite, and
+ * nothing noticed until it was run by hand. A checker with a dependency on
+ * something it is not checking is a checker that can rot.
+ */
+function parseFeed(xml) {
+  const blocks = xml.match(/<(item|entry)(?:\s[^>]*)?>[\s\S]*?<\/\1>/gi) || [];
+  return blocks.map((b) => {
+    const t = /<title(?:\s[^>]*)?>([\s\S]*?)<\/title>/i.exec(b);
+    const cdata = t && /<!\[CDATA\[([\s\S]*?)\]\]>/.exec(t[1]);
+    const title = ((cdata ? cdata[1] : (t ? t[1] : '')) || '')
+      .replace(/<[^>]+>/g, '').replace(/\s+/g, ' ').trim();
+    const atom = /<link\b[^>]*\bhref=["']([^"']+)["']/i.exec(b);
+    const rss = /<link(?:\s[^>]*)?>([\s\S]*?)<\/link>/i.exec(b);
+    const url = atom ? atom[1] : (rss && /^https?:/i.test(rss[1].trim()) ? rss[1].trim() : null);
+    return { title, url };
+  }).filter((i) => i.title);
+}
 
 const CONCURRENCY = 8;
 

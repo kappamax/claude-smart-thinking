@@ -34,11 +34,29 @@ On by default. Worth confirming two values:
 - `wakeTime` — used late at night to report the concrete trade ("5.5h until 07:00 — sleeping now gets you 3 complete cycles").
 - `lateNightStartHour` — when sleep content starts appearing, default 22.
 
-## 4. Learning deck
+## 4. Fresh news — offer it, and state the cost
+
+Ask whether they want new cards harvested from their feeds automatically. **Do not enable it silently**, and do not skip the caveat:
+
+> Fresh cards come from a scheduled Claude Code session that reads the articles and writes cards. On a subscription this draws on your plan usage — the same five-hour and seven-day windows your status line shows — rather than API credits, so there is no separate bill. A run is small: a few articles is a few thousand tokens of reading plus a short write. The reason it is opt-in is that it starts an autonomous session that edits your deck.
+
+The reason it works this way is worth explaining if they ask: surfacing feed *titles* directly was tried and removed, because a headline states no mechanism and nothing to do — recommending something nobody read. Reading the article is the whole value, and that needs a model, so it happens on a schedule instead of at render time.
+
+If they want it:
+
+```bash
+"${CLAUDE_PLUGIN_ROOT}/bin/harvest.sh" install <bundle>
+```
+
+Default is daily at 07:00 so something new is waiting at the start of the day. Pass a cron expression as the third argument to change it, and confirm the bundle with them first — `indie`, `deep-eng`, `science`, `history-culture`, `ideas`, `how-things-work`, `curious`. Show them the installed line, and mention `harvest.sh status` and `harvest.sh uninstall`.
+
+If they decline, say the commands are still there on demand: `/thinking-digest` and `/thinking-research`.
+
+## 5. Learning deck
 
 On by default with the bundled 185-card deck. Offer to copy `${CLAUDE_PLUGIN_ROOT}/data/deck.sample.json` to `~/.claude/smart-thinking/deck.json` so they can edit it, and mention `/thinking-deck <topic>` for generating more.
 
-## Then
+## Finally
 
 Write the config with Edit/Write, preserving keys already there, and run:
 

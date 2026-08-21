@@ -63,16 +63,51 @@ function saveState(state) {
 const UNSEEN_BASE = 1e6;
 const JITTER = 1e5;
 
-function dueScore(card, state, now) {
+/**
+ * Timely cards age; timeless ones don't.
+ *
+ * A harvested card about this week's release is worth a lot today and worth
+ * nothing in six months — but the deck had no notion of age, so anything
+ * written into it stayed forever and would slowly fill with stale news.
+ *
+ * `lifespan: "timely"` cards carry a `createdAt` and fade linearly to nothing
+ * over `ttlDays`, at which point they are excluded from selection rather than
+ * silently served as though still current. Retirement is not deletion — the
+ * card stays in the file for `bin/prune.js` to report, so a reset is a decision
+ * someone makes rather than something that happens behind them.
+ *
+ * The bonus sits well below UNSEEN_BASE on purpose: fresh news should compete
+ * hard, not evict every unseen timeless card.
+ */
+const FRESH_BONUS = 2e5;
+const DEFAULT_TTL_DAYS = 30;
+
+function freshness(card, now, ttlDefault) {
+  if (card.lifespan !== 'timely') return 1;
+  const created = Date.parse(card.createdAt || '');
+  // A timely card with no usable date cannot be aged, so treat it as expired
+  // rather than as permanently fresh — the safer failure for stale content.
+  if (Number.isNaN(created)) return 0;
+  const ttl = card.ttlDays || ttlDefault || DEFAULT_TTL_DAYS;
+  const ageDays = (now - created) / 86400000;
+  if (ageDays >= ttl) return 0;
+  return Math.max(0, 1 - ageDays / ttl);
+}
+
+function dueScore(card, state, now, ttlDefault) {
+  const fresh = freshness(card, now, ttlDefault);
+  if (fresh === 0) return null; // retired: excluded from selection entirely
+  const bonus = card.lifespan === 'timely' ? fresh * FRESH_BONUS : 0;
+
   const st = state[card.id];
   // Unseen cards outrank everything, but with a finite score plus jitter rather
   // than Infinity. Infinity made every unseen card tie, so the sort fell back
   // to deck order and a fresh deck served six consecutive cards on one topic.
-  if (!st) return UNSEEN_BASE + Math.random() * JITTER;
+  if (!st) return UNSEEN_BASE + Math.random() * JITTER + bonus;
   const exposures = st.exposures || 0;
   const interval = Math.min(BASE_INTERVAL_MIN * 2 ** exposures, MAX_INTERVAL_MIN);
   const elapsedMin = (now - (st.lastSuppliedAt || 0)) / 60000;
-  return elapsedMin - interval; // >0 means due; larger means more overdue
+  return elapsedMin - interval + bonus; // >0 means due; larger means more overdue
 }
 
 /** A card is relevant if its tag or explicit topics match the detected stack. */
@@ -97,8 +132,10 @@ async function collect(cfg, ctx) {
   const count = Math.max(1, cfg.count || 6);
   const detected = (ctx.context && ctx.context.topics) || new Set();
 
+  const ttlDefault = cfg.timelyTtlDays || DEFAULT_TTL_DAYS;
   const scored = deck.cards
-    .map((card) => ({ card, score: dueScore(card, state, now), relevant: isRelevant(card, detected) }))
+    .map((card) => ({ card, score: dueScore(card, state, now, ttlDefault), relevant: isRelevant(card, detected) }))
+    .filter((e) => e.score !== null) // retired timely cards drop out here
     .sort((a, b) => b.score - a.score);
 
   /**
@@ -160,4 +197,4 @@ async function collect(cfg, ctx) {
   return { tips, status: [], warnings };
 }
 
-module.exports = { name: 'learn', collect };
+module.exports = { name: 'learn', collect, _freshness: freshness, DEFAULT_TTL_DAYS };
