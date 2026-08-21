@@ -128,5 +128,9 @@ test('the scheduled cron line does not reference a versioned plugin path', () =>
     `the cron line must not reference the plugin directory: ${line}`);
   assert.ok(/claude -p/.test(line), 'it should invoke the slash command directly');
   assert.ok(/< \/dev\/null/.test(line), 'cron has no stdin — close it explicitly');
-  assert.ok(/# smart-thinking-harvest$/.test(line), 'the line must carry the marker so uninstall can find it');
+  // The marker is interpolated from $MARKER at runtime, so the literal string
+  // is not in the assignment — check the reference, and separately that the
+  // variable holds what uninstall greps for.
+  assert.ok(/\$MARKER\s*$/.test(line), 'the line must end with the marker so uninstall can find it');
+  assert.match(sh, /MARKER="# smart-thinking-harvest"/, 'the marker must be the string uninstall greps for');
 });
