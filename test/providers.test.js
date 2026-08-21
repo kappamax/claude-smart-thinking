@@ -384,3 +384,49 @@ test('learn: a card marked hidden stays suppressed', async () => {
     fs.rmSync(userDeck, { force: true });
   }
 });
+
+// ------------------------------------------------------------ freshness
+
+test('timely cards fade and then retire; timeless cards never do', () => {
+  const now = Date.parse('2026-08-21T12:00:00Z');
+  const day = 86400000;
+  const f = learn._freshness;
+
+  assert.strictEqual(f({ lifespan: 'timeless' }, now, 30), 1, 'timeless must not decay');
+
+  const mk = (ageDays, extra = {}) => ({
+    lifespan: 'timely', createdAt: new Date(now - ageDays * day).toISOString(), ...extra,
+  });
+  assert.strictEqual(f(mk(0), now, 30), 1, 'brand new should be fully fresh');
+  assert.ok(Math.abs(f(mk(15), now, 30) - 0.5) < 0.01, 'half-way through should be half fresh');
+  assert.strictEqual(f(mk(30), now, 30), 0, 'at the lifetime it retires');
+  assert.strictEqual(f(mk(400), now, 30), 0, 'long past, still retired');
+  assert.strictEqual(f(mk(10, { ttlDays: 5 }), now, 30), 0, 'a per-card ttl overrides the default');
+
+  // A timely card with no date cannot be aged. Treating it as fresh forever is
+  // the dangerous failure, so it counts as expired.
+  assert.strictEqual(f({ lifespan: 'timely' }, now, 30), 0, 'no createdAt means retired');
+});
+
+test('a retired timely card is excluded from selection', async () => {
+  const userDeck = path.join(STATE, 'deck.json');
+  fs.mkdirSync(STATE, { recursive: true });
+  const old = new Date(Date.now() - 400 * 86400000).toISOString();
+  fs.writeFileSync(userDeck, JSON.stringify({
+    cards: [
+      { id: 'stale-news', tag: 'News', lifespan: 'timely', createdAt: old,
+        text: 'Something that mattered a year ago and does not now.', url: 'https://x.test/a' },
+      { id: 'fresh-news', tag: 'News', lifespan: 'timely', createdAt: new Date().toISOString(),
+        text: 'Something that matters this week and is worth reading now.', url: 'https://x.test/b' },
+    ],
+  }));
+  try {
+    fs.rmSync(path.join(STATE, 'learn-state.json'), { force: true });
+    const res = await learn.collect({ count: 400, contextShare: 0 }, deckCtx());
+    const texts = res.tips.map((t) => t.text).join(' ');
+    assert.ok(!/mattered a year ago/.test(texts), 'a retired card was still served');
+    assert.ok(/matters this week/.test(texts), 'a fresh timely card should appear');
+  } finally {
+    fs.rmSync(userDeck, { force: true });
+  }
+});

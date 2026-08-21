@@ -215,3 +215,52 @@ test('health content lives in the graded corpus, never in the deck', () => {
   assert.deepStrictEqual(offenders, [],
     `health claims must move to wellness.evidence.json: ${offenders.join(', ')}`);
 });
+
+// Proper names, literal identifiers, and initialisms that are words in their own
+// right. Expanding these makes cards worse: MIX is a fictional machine's name,
+// HEAD is a git ref you type verbatim, and VITAL and ACHIEVE are trial acronyms
+// whose expansions tell a reader nothing.
+const ACRONYM_ALLOWLIST = new Set([
+  'MIX', 'MMIX', 'METAFONT', 'VITAL', 'ACHIEVE', 'EWD', 'TAOCP', 'BMJ', 'ZFS',
+  'HEAD', 'UTF-16', 'CRISPR', 'TeX', 'US', 'EU', 'APOD', 'WHO', 'MIT', 'NASA',
+  'IEEE', 'ACM',
+]);
+
+test('no card or claim uses an acronym it has not defined', () => {
+  // Spell it out, then put the acronym in brackets. "CRDTs are built so…"
+  // assumes the reader already knows, which defeats the point of a teaching
+  // surface — "Conflict-free replicated data types (CRDTs)" costs four words
+  // and loses nobody.
+  const items = [
+    ...deck.cards.map((c) => ({ id: c.id, t: `${c.text || ''} ${c.action || ''}` })),
+    ...evidence.claims.map((c) => ({ id: c.id, t: `${c.text || ''} ${c.action || ''}` })),
+  ];
+  const offenders = [];
+  for (const it of items) {
+    for (const m of it.t.matchAll(/\b([A-Z][A-Z0-9]{1,}(?:-[A-Z0-9]+)?)s?\b/g)) {
+      const a = m[1];
+      if (ACRONYM_ALLOWLIST.has(a)) continue;
+      // Defined if it appears in brackets, optionally with a following noun
+      // ("(LSM trees)") — that still tells the reader what the letters mean.
+      const defined = new RegExp(`\\(\\s*${a.replace(/-/g, '\\-')}[a-z ]*s?\\s*\\)`).test(it.t);
+      if (!defined) offenders.push(`${a} in ${it.id}`);
+    }
+  }
+  assert.deepStrictEqual(offenders, [], `undefined acronyms: ${offenders.join(', ')}`);
+});
+
+test('lifespan is declared, documented, and timely cards carry a date', () => {
+  assert.ok(deck.lifespans, 'the deck must document what each lifespan means');
+  for (const k of ['timeless', 'timely']) assert.ok(deck.lifespans[k], `lifespan "${k}" undocumented`);
+
+  for (const c of [...deck.cards, ...evidence.claims]) {
+    assert.ok(['timeless', 'timely'].includes(c.lifespan), `${c.id}: bad lifespan "${c.lifespan}"`);
+    if (c.lifespan === 'timely') {
+      // Without a date a timely card cannot be aged, and the provider treats it
+      // as already expired — better to catch that here than to ship a card that
+      // never appears.
+      assert.ok(c.createdAt && !Number.isNaN(Date.parse(c.createdAt)),
+        `${c.id}: timely cards need a parseable createdAt`);
+    }
+  }
+});

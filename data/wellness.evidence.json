@@ -17,17 +17,19 @@
       "source": "https://pubmed.ncbi.nlm.nih.gov/24395196/",
       "action": "Use it for anxiety, low mood or pain. Don't expect it to fix focus or sleep.",
       "verified": "2026-08-17",
-      "subtopic": "Meditation"
+      "subtopic": "Meditation",
+      "lifespan": "timeless"
     },
     {
       "id": "med-mbsr-escitalopram",
       "topic": "Mind",
       "evidence": "RCT",
-      "text": "In a 2023 randomised non-inferiority trial, eight weeks of mindfulness-based stress reduction matched escitalopram for treating anxiety disorders",
+      "text": "In a 2023 randomised non-inferiority trial, eight weeks of mindfulness-based stress reduction (MBSR) matched escitalopram for treating anxiety disorders",
       "source": "https://pubmed.ncbi.nlm.nih.gov/36350591/",
       "action": "If you'd consider medication for anxiety, an eight-week MBSR course is an evidence-equivalent option worth discussing.",
       "verified": "2026-08-17",
-      "subtopic": "Meditation"
+      "subtopic": "Meditation",
+      "lifespan": "timeless"
     },
     {
       "id": "med-mind-the-hype",
@@ -37,7 +39,8 @@
       "source": "https://pubmed.ncbi.nlm.nih.gov/29016274/",
       "action": "Discount any single dramatic mindfulness result until it replicates with an active control.",
       "verified": "2026-08-17",
-      "subtopic": "Meditation"
+      "subtopic": "Meditation",
+      "lifespan": "timeless"
     },
     {
       "id": "med-breathwork",
@@ -47,7 +50,8 @@
       "source": "https://pubmed.ncbi.nlm.nih.gov/36630953/",
       "action": "Five minutes: inhale, a second short inhale on top, then a long slow exhale. Repeat.",
       "verified": "2026-08-17",
-      "subtopic": "Breathing"
+      "subtopic": "Breathing",
+      "lifespan": "timeless"
     },
     {
       "id": "ex-depression",
@@ -56,7 +60,8 @@
       "text": "A 2024 BMJ network meta-analysis of 218 trials found walking, jogging, yoga and strength training all produced meaningful reductions in depression, with larger effects at higher intensity",
       "source": "https://pubmed.ncbi.nlm.nih.gov/38355154/",
       "action": "Pick the one you'll actually repeat \u2014 the modality mattered less than the intensity.",
-      "verified": "2026-08-17"
+      "verified": "2026-08-17",
+      "lifespan": "timeless"
     },
     {
       "id": "ex-fitness-mortality",
@@ -65,7 +70,8 @@
       "text": "Across 122,000 treadmill tests, cardiorespiratory fitness tracked mortality with no observed ceiling \u2014 the fittest group kept gaining, and being unfit carried risk comparable to established disease",
       "source": "https://pubmed.ncbi.nlm.nih.gov/30646252/",
       "action": "Train the top end occasionally. The benefit kept rising with fitness rather than plateauing.",
-      "verified": "2026-08-17"
+      "verified": "2026-08-17",
+      "lifespan": "timeless"
     },
     {
       "id": "ex-sitting-corrected",
@@ -74,16 +80,18 @@
       "text": "Sitting is often called \"the new smoking\", but a harmonised meta-analysis of over a million people found 60\u201375 minutes of daily moderate activity essentially eliminated the association between sitting time and mortality",
       "source": "https://pubmed.ncbi.nlm.nih.gov/27475271/",
       "action": "Stop worrying about desk hours and protect the hour of activity instead.",
-      "verified": "2026-08-17"
+      "verified": "2026-08-17",
+      "lifespan": "timeless"
     },
     {
       "id": "sleep-cbti",
       "topic": "Sleep",
       "evidence": "meta-analysis",
-      "text": "Cognitive behavioural therapy for insomnia, not medication, is the guideline-recommended first-line treatment for chronic insomnia \u2014 and unlike hypnotics its benefit persists after treatment stops",
+      "text": "Cognitive behavioural therapy for insomnia (CBT-I), not medication, is the guideline-recommended first-line treatment for chronic insomnia \u2014 and unlike hypnotics its benefit persists after treatment stops",
       "source": "https://pubmed.ncbi.nlm.nih.gov/27136449/",
       "action": "Ask for CBT-I before a prescription \u2014 several app-based programmes deliver it and work.",
-      "verified": "2026-08-17"
+      "verified": "2026-08-17",
+      "lifespan": "timeless"
     },
     {
       "id": "sleep-weekend-debt",
@@ -92,7 +100,8 @@
       "text": "In a controlled laboratory study, weekend recovery sleep failed to prevent the metabolic damage of weekday sleep restriction. Insulin sensitivity was worse in the catch-up group than in those who stayed short",
       "source": "https://pubmed.ncbi.nlm.nih.gov/30827911/",
       "action": "Protect weeknight sleep. A long Saturday doesn't buy the week back.",
-      "verified": "2026-08-17"
+      "verified": "2026-08-17",
+      "lifespan": "timeless"
     },
     {
       "id": "sleep-vaccine",
@@ -101,7 +110,8 @@
       "text": "A 2023 meta-analysis found that sleeping under six hours around the time of vaccination substantially reduced antibody response \u2014 with the effect clearest in men and in adults under 60",
       "source": "https://pubmed.ncbi.nlm.nih.gov/36917932/",
       "action": "Book vaccinations after a normal night's sleep, not at the end of a short week.",
-      "verified": "2026-08-17"
+      "verified": "2026-08-17",
+      "lifespan": "timeless"
     },
     {
       "id": "sleep-glymphatic-contested",
@@ -110,7 +120,8 @@
       "text": "The popular claim that sleep flushes waste from the brain is genuinely disputed: a 2024 Nature Neuroscience study measured clearance as *reduced* during sleep, and a later commentary disputed its methods. The story is not settled",
       "source": "https://pubmed.ncbi.nlm.nih.gov/38741022/",
       "action": "Don't repeat this one as settled fact. Sleep's other benefits are far better evidenced.",
-      "verified": "2026-08-17"
+      "verified": "2026-08-17",
+      "lifespan": "timeless"
     },
     {
       "id": "sleep-warm-bath",
@@ -119,7 +130,8 @@
       "text": "A warm bath or shower one to two hours before bed shortens the time it takes to fall asleep \u2014 the mechanism is peripheral vasodilation dumping core heat, not the warmth itself",
       "source": "https://pubmed.ncbi.nlm.nih.gov/31102877/",
       "action": "Bath or shower 60\u2013120 minutes before bed, not immediately before.",
-      "verified": "2026-08-17"
+      "verified": "2026-08-17",
+      "lifespan": "timeless"
     },
     {
       "id": "sleep-caffeine-6h",
@@ -128,7 +140,8 @@
       "text": "400mg of caffeine six hours before bed cut objectively measured sleep by over an hour \u2014 and participants did not notice the disruption they were measurably experiencing",
       "source": "https://pubmed.ncbi.nlm.nih.gov/24235903/",
       "action": "Set a caffeine curfew six hours before bed, and don't trust how you feel as the measure.",
-      "verified": "2026-08-17"
+      "verified": "2026-08-17",
+      "lifespan": "timeless"
     },
     {
       "id": "sleep-cycle-caveat",
@@ -137,16 +150,18 @@
       "text": "The \"90-minute sleep cycle\" is an average, not a schedule: real cycles run roughly 70\u2013120 minutes, lengthen across the night and vary by person. Timing a nap to land between cycles is a heuristic, not a measurement",
       "source": "https://www.ncbi.nlm.nih.gov/books/NBK526132/",
       "action": "Ignore cycle arithmetic. Total sleep duration is the number with evidence behind it.",
-      "verified": "2026-08-17"
+      "verified": "2026-08-17",
+      "lifespan": "timeless"
     },
     {
       "id": "sleep-alcohol-rem",
       "topic": "Sleep",
       "evidence": "meta-analysis",
-      "text": "Alcohol shortens the time to fall asleep and then suppresses REM and fragments the second half of the night. It sedates rather than rests, and tolerance to the sedation develops faster than to the disruption",
+      "text": "Alcohol shortens the time to fall asleep and then suppresses rapid eye movement (REM) sleep and fragments the second half of the night. It sedates rather than rests, and tolerance to the sedation develops faster than to the disruption",
       "source": "https://pubmed.ncbi.nlm.nih.gov/23347102/",
       "action": "If you want the sleep, stop drinking three or more hours before bed.",
-      "verified": "2026-08-17"
+      "verified": "2026-08-17",
+      "lifespan": "timeless"
     },
     {
       "id": "nut-vitamin-d",
@@ -155,7 +170,8 @@
       "text": "VITAL randomised nearly 26,000 adults to vitamin D or placebo for five years: no reduction in cancer or cardiovascular disease. Supplementing a normal level fixes a number, not an outcome",
       "source": "https://pubmed.ncbi.nlm.nih.gov/30415629/",
       "action": "Supplement to correct a measured deficiency, not as general insurance.",
-      "verified": "2026-08-17"
+      "verified": "2026-08-17",
+      "lifespan": "timeless"
     },
     {
       "id": "nut-omega3",
@@ -164,7 +180,8 @@
       "text": "A Cochrane review of omega-3 supplements across 80,000+ participants found little or no effect on cardiovascular mortality \u2014 one of the clearest gaps between supplement marketing and trial evidence",
       "source": "https://pubmed.ncbi.nlm.nih.gov/32114706/",
       "action": "Eat fish if you like it. Don't buy capsules expecting a cardiac benefit.",
-      "verified": "2026-08-17"
+      "verified": "2026-08-17",
+      "lifespan": "timeless"
     },
     {
       "id": "nut-hydration-myth",
@@ -173,7 +190,8 @@
       "text": "The \"eight glasses of water a day\" rule has no identifiable scientific origin. A physiologist went looking for the source and found none \u2014 thirst regulates intake well in healthy adults",
       "source": "https://pubmed.ncbi.nlm.nih.gov/12376390/",
       "action": "Drink to thirst. Count what's in food, coffee and tea toward the total.",
-      "verified": "2026-08-17"
+      "verified": "2026-08-17",
+      "lifespan": "timeless"
     },
     {
       "id": "eyes-202020-weak",
@@ -183,7 +201,8 @@
       "source": "https://pubmed.ncbi.nlm.nih.gov/36473088/",
       "action": "Blink deliberately and check your screen isn't drying your eyes. Don't rely on timed breaks alone.",
       "verified": "2026-08-17",
-      "subtopic": "Eyes"
+      "subtopic": "Eyes",
+      "lifespan": "timeless"
     },
     {
       "id": "social-connection",
@@ -193,7 +212,8 @@
       "source": "https://pubmed.ncbi.nlm.nih.gov/20668659/",
       "action": "Treat a standing weekly contact with someone as a health behaviour, not a luxury.",
       "verified": "2026-08-17",
-      "subtopic": "Wellbeing"
+      "subtopic": "Wellbeing",
+      "lifespan": "timeless"
     },
     {
       "id": "stretch-injury",
@@ -202,7 +222,8 @@
       "text": "A pragmatic randomised trial of stretching before and after activity found it did not meaningfully reduce injury risk. Warming up by moving is supported; holding a stretch first is not",
       "source": "https://pubmed.ncbi.nlm.nih.gov/19525241/",
       "action": "Warm up by doing your activity slowly. Save long static holds for afterwards.",
-      "verified": "2026-08-17"
+      "verified": "2026-08-17",
+      "lifespan": "timeless"
     },
     {
       "id": "sleep-duration-u",
@@ -211,7 +232,8 @@
       "text": "The association between sleep duration and mortality is U-shaped: both short and long sleep track higher risk. Long sleep is more likely a marker of underlying illness than a cause of it",
       "source": "https://pubmed.ncbi.nlm.nih.gov/20469800/",
       "action": "Aim for your natural duration rather than maximising. Long sleep is usually a symptom, not a strategy.",
-      "verified": "2026-08-17"
+      "verified": "2026-08-17",
+      "lifespan": "timeless"
     },
     {
       "id": "alc-jcurve",
@@ -221,7 +243,8 @@
       "action": "Don't count drinking as cardioprotective. If you drink, drink for the reasons you actually drink.",
       "source": "https://pubmed.ncbi.nlm.nih.gov/38465993/",
       "verified": "2026-08-17",
-      "subtopic": "Alcohol"
+      "subtopic": "Alcohol",
+      "lifespan": "timeless"
     },
     {
       "id": "ex-steps-plateau",
@@ -230,7 +253,8 @@
       "text": "The 10,000-step target came from the name of a 1965 Japanese pedometer \u2014 manpo-kei, '10,000-step meter' \u2014 not from research. Pooling 15 cohorts, mortality risk flattens around 6,000\u20138,000 steps over 60, and 8,000\u201310,000 under",
       "action": "Treat 7,000 as the number that matters. Past the plateau you are buying very little.",
       "source": "https://pubmed.ncbi.nlm.nih.gov/35247352/",
-      "verified": "2026-08-17"
+      "verified": "2026-08-17",
+      "lifespan": "timeless"
     },
     {
       "id": "nut-upf",
@@ -239,7 +263,8 @@
       "text": "An umbrella review of 45 pooled meta-analyses covering nearly 10 million people found consistent links between higher ultra-processed food intake and all-cause mortality, cardiovascular death and common mental disorders",
       "action": "Judge food by how heavily it is processed, not only by its macros.",
       "source": "https://pubmed.ncbi.nlm.nih.gov/38418082/",
-      "verified": "2026-08-17"
+      "verified": "2026-08-17",
+      "lifespan": "timeless"
     },
     {
       "id": "ex-strength-dose",
@@ -248,7 +273,8 @@
       "text": "Muscle-strengthening work tracks 10\u201320% lower all-cause mortality independent of any aerobic exercise \u2014 and the curve is J-shaped, with the benefit maximal at 30\u201360 minutes a week and no further gain beyond about an hour",
       "action": "Two half-hour sessions a week. For this outcome, more is not better.",
       "source": "https://pubmed.ncbi.nlm.nih.gov/35228201/",
-      "verified": "2026-08-17"
+      "verified": "2026-08-17",
+      "lifespan": "timeless"
     },
     {
       "id": "nut-fibre",
@@ -257,7 +283,8 @@
       "text": "A Lancet-commissioned series of systematic reviews found 25\u201330g of fibre a day associated with 15\u201330% lower mortality and disease incidence, with the benefit still rising at higher intakes",
       "action": "Fibre is the most under-eaten thing with this weight of evidence behind it. Aim for 25\u201330g.",
       "source": "https://pubmed.ncbi.nlm.nih.gov/30638909/",
-      "verified": "2026-08-17"
+      "verified": "2026-08-17",
+      "lifespan": "timeless"
     },
     {
       "id": "hearing-cognition",
@@ -267,7 +294,8 @@
       "action": "Treat hearing loss as a modifiable cognitive risk, not a cosmetic inconvenience.",
       "source": "https://pubmed.ncbi.nlm.nih.gov/37478886/",
       "verified": "2026-08-17",
-      "subtopic": "Hearing"
+      "subtopic": "Hearing",
+      "lifespan": "timeless"
     },
     {
       "id": "nut-protein",
@@ -276,17 +304,19 @@
       "text": "Protein's benefit for muscle gain plateaus near 1.6g per kg of bodyweight per day. Beyond that, added protein produced no further gain in mass or strength",
       "action": "About 1.6g/kg a day if you train. Past that you are buying expensive urine.",
       "source": "https://pubmed.ncbi.nlm.nih.gov/28698222/",
-      "verified": "2026-08-17"
+      "verified": "2026-08-17",
+      "lifespan": "timeless"
     },
     {
       "id": "mh-behavioural-activation",
       "topic": "Mind",
       "evidence": "RCT",
-      "text": "Behavioural activation \u2014 systematically scheduling activity you value, without the cognitive work \u2014 was non-inferior to full CBT for depression, delivered by less specialised staff at substantially lower cost",
-      "action": "If CBT waiting lists are long, behavioural activation is evidence-equivalent and far easier to access.",
+      "text": "Behavioural activation \u2014 systematically scheduling activity you value, without the cognitive work \u2014 was non-inferior to full cognitive behavioural therapy (CBT) for depression, delivered by less specialised staff at substantially lower cost",
+      "action": "If cognitive behavioural therapy waiting lists are long, behavioural activation is evidence-equivalent and far easier to access.",
       "source": "https://pubmed.ncbi.nlm.nih.gov/27461440/",
       "verified": "2026-08-17",
-      "subtopic": "Mental health"
+      "subtopic": "Mental health",
+      "lifespan": "timeless"
     },
     {
       "id": "nut-breakfast",
@@ -295,7 +325,8 @@
       "text": "A systematic review of randomised trials found adding breakfast did not cause weight loss and skipping it did not cause weight gain. People who ate breakfast consumed slightly more over the day, not less",
       "action": "Eat breakfast if you want it. It is not a weight-loss lever.",
       "source": "https://pubmed.ncbi.nlm.nih.gov/30700403/",
-      "verified": "2026-08-17"
+      "verified": "2026-08-17",
+      "lifespan": "timeless"
     },
     {
       "id": "nut-trf",
@@ -304,7 +335,8 @@
       "text": "Time-restricted eating on a 16:8 window produced no meaningful weight advantage over eating across the whole day at matched calories \u2014 and a notable share of what was lost was lean mass",
       "action": "Use an eating window if it helps you eat less. The window itself is not the mechanism.",
       "source": "https://pubmed.ncbi.nlm.nih.gov/32986097/",
-      "verified": "2026-08-17"
+      "verified": "2026-08-17",
+      "lifespan": "timeless"
     },
     {
       "id": "back-imaging",
@@ -314,7 +346,8 @@
       "action": "Skip the scan for ordinary back pain absent red flags, and keep moving rather than resting.",
       "source": "https://pubmed.ncbi.nlm.nih.gov/19200918/",
       "verified": "2026-08-17",
-      "subtopic": "Back pain"
+      "subtopic": "Back pain",
+      "lifespan": "timeless"
     },
     {
       "id": "myth-sugar-hyperactivity",
@@ -324,7 +357,8 @@
       "action": "Judge the behaviour without knowing what they ate. The expectation is doing the work.",
       "source": "https://pubmed.ncbi.nlm.nih.gov/7474248/",
       "verified": "2026-08-20",
-      "subtopic": "Children"
+      "subtopic": "Children",
+      "lifespan": "timeless"
     },
     {
       "id": "myth-blue-light-lenses",
@@ -334,7 +368,8 @@
       "action": "Don't pay extra for the coating. Brightness, distance and blinking are the levers that exist.",
       "source": "https://pubmed.ncbi.nlm.nih.gov/37593770/",
       "verified": "2026-08-20",
-      "subtopic": "Eyes"
+      "subtopic": "Eyes",
+      "lifespan": "timeless"
     },
     {
       "id": "myth-knee-arthroscopy",
@@ -344,7 +379,8 @@
       "action": "For age-related knee pain, ask about exercise therapy before agreeing to arthroscopy.",
       "source": "https://pubmed.ncbi.nlm.nih.gov/24369076/",
       "verified": "2026-08-20",
-      "subtopic": "Joints"
+      "subtopic": "Joints",
+      "lifespan": "timeless"
     },
     {
       "id": "myth-antioxidants",
@@ -353,7 +389,8 @@
       "text": "Antioxidant supplements do not extend life. Pooling the randomised trials, beta-carotene and vitamin E were associated with *higher* mortality \u2014 the opposite of the reason people take them",
       "action": "Eat the foods. The pill was never the mechanism, and at these doses it may be the harm.",
       "source": "https://pubmed.ncbi.nlm.nih.gov/26018887/",
-      "verified": "2026-08-20"
+      "verified": "2026-08-20",
+      "lifespan": "timeless"
     },
     {
       "id": "myth-vitamin-c-colds",
@@ -362,7 +399,8 @@
       "text": "Regular vitamin C does not reduce how often you catch a cold in the general population. It shortens duration by roughly 8% in adults \u2014 about half a day off a week-long cold",
       "action": "Not worth taking to prevent colds. If you already do, expect hours rather than days.",
       "source": "https://pubmed.ncbi.nlm.nih.gov/23440782/",
-      "verified": "2026-08-20"
+      "verified": "2026-08-20",
+      "lifespan": "timeless"
     },
     {
       "id": "myth-opioids-chronic-pain",
@@ -371,7 +409,8 @@
       "text": "Over twelve months, opioids were no better than non-opioid medication for chronic back, hip or knee pain \u2014 and the opioid group reported more side effects. The trial randomised patients to find out",
       "action": "Ask to start on the non-opioid arm. The trial found nothing was lost by doing so.",
       "source": "https://pubmed.ncbi.nlm.nih.gov/29509867/",
-      "verified": "2026-08-20"
+      "verified": "2026-08-20",
+      "lifespan": "timeless"
     },
     {
       "id": "myth-annual-physical",
@@ -381,7 +420,8 @@
       "action": "Prioritise the targeted screening you're actually eligible for over a general once-over.",
       "source": "https://pubmed.ncbi.nlm.nih.gov/30699470/",
       "verified": "2026-08-20",
-      "subtopic": "Screening"
+      "subtopic": "Screening",
+      "lifespan": "timeless"
     },
     {
       "id": "myth-probiotics-antibiotics",
@@ -391,7 +431,8 @@
       "action": "Don't reflexively take probiotics after a course of antibiotics. Fibre and fermented food are the safer default.",
       "source": "https://pubmed.ncbi.nlm.nih.gov/30193113/",
       "verified": "2026-08-20",
-      "subtopic": "Gut"
+      "subtopic": "Gut",
+      "lifespan": "timeless"
     },
     {
       "id": "myth-glucosamine",
@@ -401,7 +442,8 @@
       "action": "Not worth the money for knee or hip arthritis. Loading the joint through exercise has far better evidence.",
       "source": "https://pubmed.ncbi.nlm.nih.gov/20847017/",
       "verified": "2026-08-20",
-      "subtopic": "Joints"
+      "subtopic": "Joints",
+      "lifespan": "timeless"
     },
     {
       "id": "social-isolation-vs-loneliness",
@@ -411,7 +453,8 @@
       "action": "Book the contact rather than waiting to feel like it. Attendance is doing more work here than mood.",
       "source": "https://pubmed.ncbi.nlm.nih.gov/37337095/",
       "verified": "2026-08-20",
-      "subtopic": "Wellbeing"
+      "subtopic": "Wellbeing",
+      "lifespan": "timeless"
     },
     {
       "id": "burnout-definitions",
@@ -421,7 +464,8 @@
       "action": "Distrust any burnout percentage you are quoted, including the alarming ones. Ask how it was measured.",
       "source": "https://pubmed.ncbi.nlm.nih.gov/30326495/",
       "verified": "2026-08-20",
-      "subtopic": "Mental health"
+      "subtopic": "Mental health",
+      "lifespan": "timeless"
     },
     {
       "id": "burnout-interventions",
@@ -431,7 +475,8 @@
       "action": "Treat it as a workload and structure problem as much as a resilience one \u2014 organisational changes performed comparably to personal ones.",
       "source": "https://pubmed.ncbi.nlm.nih.gov/27692469/",
       "verified": "2026-08-20",
-      "subtopic": "Mental health"
+      "subtopic": "Mental health",
+      "lifespan": "timeless"
     },
     {
       "id": "nut-diets-interchangeable",
@@ -440,7 +485,8 @@
       "text": "A network meta-analysis of 14 named diets found they produce broadly similar modest weight loss and blood-pressure improvement at six months \u2014 and that most of the difference has faded by twelve. The argument between low-fat and low-carb is smaller than the argument suggests",
       "action": "Pick the one you can still be doing in a year. Adherence, not macronutrient ratio, is the variable that moved.",
       "source": "https://pubmed.ncbi.nlm.nih.gov/32238384/",
-      "verified": "2026-08-20"
+      "verified": "2026-08-20",
+      "lifespan": "timeless"
     },
     {
       "id": "nut-salt-substitute",
@@ -449,7 +495,8 @@
       "text": "Swapping ordinary salt for a potassium-based substitute lowers blood pressure and reduces cardiovascular events \u2014 one of the few dietary changes with trial evidence behind a hard outcome rather than a marker",
       "action": "Switch the salt in your kitchen, unless you have kidney disease or take a potassium-sparing drug, where added potassium is a real risk.",
       "source": "https://pubmed.ncbi.nlm.nih.gov/35944931/",
-      "verified": "2026-08-20"
+      "verified": "2026-08-20",
+      "lifespan": "timeless"
     },
     {
       "id": "nut-mediterranean-uncertain",
@@ -458,7 +505,8 @@
       "text": "The Mediterranean diet is the most confidently recommended dietary pattern there is, but a Cochrane review of the trials found the evidence for preventing cardiovascular disease to be low or moderate certainty at best. It may well work; it is not the settled case it is presented as",
       "action": "Eat that way if you enjoy it \u2014 the downside risk is nil. Don't expect the effect size the confidence implies.",
       "source": "https://pubmed.ncbi.nlm.nih.gov/30864165/",
-      "verified": "2026-08-20"
+      "verified": "2026-08-20",
+      "lifespan": "timeless"
     },
     {
       "id": "pain-manipulation",
@@ -468,7 +516,8 @@
       "text": "Spinal manipulation for chronic low back pain produces improvements in pain and function similar to other recommended treatments \u2014 neither the dismissal nor the enthusiasm is supported. Serious harms were not found; transient soreness is common",
       "action": "A reasonable option if you like it and it is affordable, judged against exercise rather than against nothing.",
       "source": "https://pubmed.ncbi.nlm.nih.gov/30867144/",
-      "verified": "2026-08-20"
+      "verified": "2026-08-20",
+      "lifespan": "timeless"
     },
     {
       "id": "pain-massage",
@@ -478,7 +527,8 @@
       "text": "Massage for low back pain has short-term benefit on pain and function, but the Cochrane review graded the evidence low to very low certainty and found no lasting effect at follow-up",
       "action": "Worth it for relief now. Don't buy a course of it expecting the benefit to persist.",
       "source": "https://pubmed.ncbi.nlm.nih.gov/26329399/",
-      "verified": "2026-08-20"
+      "verified": "2026-08-20",
+      "lifespan": "timeless"
     }
   ],
   "domains": "Displayed category. Consolidated from sixteen overlapping topics \u2014 Back pain, Joints and Pain were three labels for one domain, and Screening was a kind of intervention rather than a subject. The specific topic is kept in `topic` for selection and filtering; `domain` is what the reader sees, which also keeps the number of colours in the index manageable."

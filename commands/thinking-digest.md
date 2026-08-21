@@ -39,6 +39,12 @@ What does not:
 
 ## 3. Write the card
 
+A harvested card is almost always `timely` — say so, and date it, or it will still be in rotation next year:
+
+- **Never use an acronym you have not defined.** Spell it out, then put the acronym in brackets. "CRDTs are built so concurrent edits merge…" assumes the reader already knows, which defeats the point of a teaching surface; "Conflict-free replicated data types (CRDTs) are built so…" costs four words and loses nobody. Proper names and literal identifiers are exempt — MIX is a fictional machine, `HEAD` is a git ref you type verbatim — and a test enforces the rest.
+- **Say whether the card ages.** `lifespan: "timeless"` for anything that will read the same in ten years, which is most of the deck. `lifespan: "timely"` plus a `createdAt` for anything tied to a moment: it surfaces strongly while fresh, fades across its lifetime, and retires rather than quietly becoming wrong. `bin/prune.js` reports the retired ones so a reset is a decision, not a side effect.
+
+
 Append to `~/.claude/smart-thinking/deck.json` (or `data/deck.sample.json` when improving the shipped deck):
 
 ```json
@@ -48,7 +54,9 @@ Append to `~/.claude/smart-thinking/deck.json` (or `data/deck.sample.json` when 
   "text": "The mechanism, specific enough to be checkable.",
   "action": "What to do differently.",
   "url": "https://the-article-you-actually-read/",
-  "sourceType": "primary"
+  "sourceType": "primary",
+  "lifespan": "timely",
+  "createdAt": "YYYY-MM-DD"
 }
 ```
 

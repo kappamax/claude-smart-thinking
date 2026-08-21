@@ -177,6 +177,24 @@
           "url": "https://apod.nasa.gov/apod.rss",
           "mode": "recent",
           "why": "One astronomy picture a day, explained by astronomers. Running since 1995."
+        },
+        {
+          "label": "MIT Technology Review",
+          "url": "https://www.technologyreview.com/feed/",
+          "mode": "recent",
+          "why": "Reports on what a technology actually does and who it affects, rather than what was announced."
+        },
+        {
+          "label": "IEEE Spectrum",
+          "url": "https://spectrum.ieee.org/feeds/feed.rss",
+          "mode": "recent",
+          "why": "Engineering journalism written for engineers \u2014 depth on hardware and infrastructure the trade press skips."
+        },
+        {
+          "label": "Knowable Magazine",
+          "url": "https://knowablemagazine.org/rss",
+          "mode": "evergreen",
+          "why": "Published by Annual Reviews: working scientists explaining where a field actually stands."
         }
       ]
     },

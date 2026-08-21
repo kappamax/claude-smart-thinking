@@ -134,3 +134,28 @@ test('the scheduled cron line does not reference a versioned plugin path', () =>
   assert.ok(/\$MARKER\s*$/.test(line), 'the line must end with the marker so uninstall can find it');
   assert.match(sh, /MARKER="# smart-thinking-harvest"/, 'the marker must be the string uninstall greps for');
 });
+
+test('every bin script loads without a missing dependency', () => {
+  // bin/checkfeeds.js required providers/news and broke silently when that
+  // provider was deleted — the network checkers are not in the unit suite, so
+  // nothing noticed until someone ran it by hand. Requiring each script surfaces
+  // a dangling import immediately.
+  // Resolve the imports statically rather than requiring the file: these are
+  // CLIs, so requiring one runs it and exits on a usage error, which says
+  // nothing about whether its dependencies exist.
+  const { execFileSync } = require('child_process');
+  const dir = path.join(ROOT, 'bin');
+  const scripts = fs.readdirSync(dir).filter((f) => f.endsWith('.js'));
+  assert.ok(scripts.length >= 5, `expected the bin scripts, found ${scripts.length}`);
+
+  for (const f of scripts) {
+    execFileSync(process.execPath, ['--check', path.join(dir, f)], { stdio: 'pipe' });
+    const src = fs.readFileSync(path.join(dir, f), 'utf8');
+    for (const m of src.matchAll(/require\(['"](\.[^'"]+)['"]\)/g)) {
+      const target = path.resolve(dir, m[1]);
+      const exists = fs.existsSync(target) || fs.existsSync(`${target}.js`)
+        || fs.existsSync(`${target}.json`);
+      assert.ok(exists, `bin/${f} imports a missing module: ${m[1]}`);
+    }
+  }
+});
