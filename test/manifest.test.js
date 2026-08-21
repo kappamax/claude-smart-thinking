@@ -116,10 +116,17 @@ test('the scheduled cron line does not reference a versioned plugin path', () =>
   // be a deck that stopped growing — the same trap the status line hits, which
   // is why the SessionStart hook rewrites that path every session. Cron has no
   // such hook, so the line must not depend on the path at all.
+  // Check the generated line, not the surrounding source. The first version
+  // grepped the whole install block and flagged the comment that explains why
+  // the path is avoided — the code was correct and the test was reading prose.
   const sh = fs.readFileSync(path.join(ROOT, 'bin/harvest.sh'), 'utf8');
-  const install = sh.slice(sh.indexOf('if [ "$MODE" = "install" ]'), sh.indexOf('if [ "$MODE" = "uninstall" ]'));
-  assert.ok(!/plugins\/cache|CLAUDE_PLUGIN_ROOT|BASH_SOURCE/.test(install),
-    'the installed cron line must not reference the plugin directory');
-  assert.ok(/claude -p/.test(install), 'it should invoke the slash command directly');
-  assert.ok(/< \/dev\/null/.test(install), 'cron has no stdin — close it explicitly');
+  const lineAssign = /^\s*LINE="(.+)"$/m.exec(sh);
+  assert.ok(lineAssign, 'could not find the cron LINE assignment');
+  const line = lineAssign[1];
+
+  assert.ok(!/plugins\/cache|CLAUDE_PLUGIN_ROOT|BASH_SOURCE|HERE/.test(line),
+    `the cron line must not reference the plugin directory: ${line}`);
+  assert.ok(/claude -p/.test(line), 'it should invoke the slash command directly');
+  assert.ok(/< \/dev\/null/.test(line), 'cron has no stdin — close it explicitly');
+  assert.ok(/# smart-thinking-harvest$/.test(line), 'the line must carry the marker so uninstall can find it');
 });
