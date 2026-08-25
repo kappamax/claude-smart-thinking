@@ -35,6 +35,43 @@ ARG="${2:-}"
 if [ "$MODE" = "digest" ] && [ -z "$ARG" ]; then ARG="curious"; fi
 
 # ---------------------------------------------------------------------------
+# Plugin-provided slash commands resolve under the plugin's namespace, e.g.
+# /smart-thinking:thinking-digest — the un-namespaced command name alone is
+# silently rejected by `claude -p` (see the exit-code note below), so a
+# scheduled harvest built with the wrong prefix fails every run with nothing
+# to show for it. Derive the prefix from plugin.json instead of hardcoding it,
+# so a future plugin rename doesn't reintroduce this bug; SMART_THINKING_CMD_PREFIX
+# overrides it if needed.
+# ---------------------------------------------------------------------------
+PLUGIN_ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
+if [ -n "${SMART_THINKING_CMD_PREFIX:-}" ]; then
+  CMD_PREFIX="$SMART_THINKING_CMD_PREFIX"
+else
+  # Parse structurally rather than grepping for the first "name" match, which
+  # would silently match the nested author.name field if plugin.json's keys
+  # were ever reordered (e.g. by a key-sorting formatter).
+  CMD_PREFIX="$(node -pe 'JSON.parse(require("fs").readFileSync(process.argv[1], "utf8")).name' "$PLUGIN_ROOT/.claude-plugin/plugin.json" 2>/dev/null)"
+fi
+if [ -z "$CMD_PREFIX" ]; then
+  echo "Could not determine plugin command prefix from $PLUGIN_ROOT/.claude-plugin/plugin.json" >&2
+  exit 2
+fi
+
+# Reading a few articles and writing at most two cards doesn't need the
+# default model's full reasoning depth — Haiku is faster and cheaper for this
+# job. `research` keeps the full default model instead: grading evidence
+# tiers and running the claim audit is closer to the judgment the interactive
+# research command assumes than digest's simpler "worth a card or not" call.
+# SMART_THINKING_MODEL overrides either.
+if [ -n "${SMART_THINKING_MODEL:-}" ]; then
+  MODEL="$SMART_THINKING_MODEL"
+elif [ "$MODE" = "research" ]; then
+  MODEL=""
+else
+  MODEL="haiku"
+fi
+
+# ---------------------------------------------------------------------------
 # install / uninstall the schedule
 #
 # Editing someone's crontab is invasive, so this is explicit, idempotent, and
@@ -53,9 +90,11 @@ if [ "$MODE" = "install" ]; then
   # a couple of weeks later, so the cron would fail silently and the only
   # symptom would be a deck that stopped growing. Invoking the slash command
   # directly lets Claude Code resolve it from whatever version is installed.
-  PROMPT_TEXT="/thinking-digest $BUNDLE. Read the articles, write at most two cards into ~/.claude/smart-thinking/deck.json, and reject anything that would only restate a headline. Verify links before finishing."
+  PROMPT_TEXT="/$CMD_PREFIX:thinking-digest $BUNDLE. Read the articles, write at most two cards into ~/.claude/smart-thinking/deck.json, and reject anything that would only restate a headline. Verify links before finishing."
   LOGFILE="$HOME/.claude/smart-thinking/harvest.log"
-  LINE="$SCHED cd \$HOME && claude -p '$PROMPT_TEXT' --permission-mode acceptEdits < /dev/null >> $LOGFILE 2>&1 $MARKER"
+  MODEL_FLAG=""
+  if [ -n "$MODEL" ]; then MODEL_FLAG="--model $MODEL"; fi
+  LINE="$SCHED cd \$HOME && claude -p '$PROMPT_TEXT' $MODEL_FLAG --permission-mode acceptEdits < /dev/null >> $LOGFILE 2>&1 $MARKER"
   EXISTING="$(crontab -l 2>/dev/null || true)"
   if printf '%s\n' "$EXISTING" | grep -qF "$MARKER"; then
     echo "Replacing the existing smart-thinking schedule."
@@ -89,11 +128,11 @@ mkdir -p "$(dirname "$LOG")"
 
 case "$MODE" in
   digest)
-    PROMPT="/thinking-digest ${ARG:-curious}. Read the articles, write at most two cards into ~/.claude/smart-thinking/deck.json, and reject anything that would only restate a headline. Verify links before finishing. Report what you rejected and why."
+    PROMPT="/$CMD_PREFIX:thinking-digest ${ARG:-curious}. Read the articles, write at most two cards into ~/.claude/smart-thinking/deck.json, and reject anything that would only restate a headline. Verify links before finishing. Report what you rejected and why."
     ;;
   research)
     if [ -z "$ARG" ]; then echo "research needs a topic: bin/harvest.sh research \"burnout\"" >&2; exit 2; fi
-    PROMPT="/thinking-research ${ARG}. Add at most two claims to the health corpus. Reject anything whose finding you cannot state in one sentence. Run the tests and the claim audit before finishing."
+    PROMPT="/$CMD_PREFIX:thinking-research ${ARG}. Add at most two claims to the health corpus. Reject anything whose finding you cannot state in one sentence. Run the tests and the claim audit before finishing."
     ;;
   *)
     echo "usage: bin/harvest.sh {digest <bundle>|research <topic>|install [bundle] [cron]|uninstall|status}" >&2; exit 2
@@ -104,4 +143,24 @@ echo "=== $(date -u +%FT%TZ) harvest $MODE ${ARG} ==="
 
 # --permission-mode acceptEdits so it can write the deck without a prompt, but
 # it is still confined to the commands above rather than given a free brief.
-claude -p "$PROMPT" --permission-mode acceptEdits < /dev/null
+#
+# `claude -p` exits 0 even when the slash command is unrecognized, so a
+# broken invocation looks identical to a run that legitimately found nothing
+# worth a card. Check the output itself rather than trusting the exit code.
+STATUS=0
+# Bash 3.2 (macOS's stock /bin/bash) throws "unbound variable" on
+# "${arr[@]}" for an empty array under `set -u`, so branch on two full
+# commands rather than building a conditional args array.
+if [ -n "$MODEL" ]; then
+  OUTPUT="$(claude -p "$PROMPT" --model "$MODEL" --permission-mode acceptEdits < /dev/null 2>&1)" || STATUS=$?
+else
+  OUTPUT="$(claude -p "$PROMPT" --permission-mode acceptEdits < /dev/null 2>&1)" || STATUS=$?
+fi
+printf '%s\n' "$OUTPUT"
+if [ $STATUS -ne 0 ]; then
+  exit $STATUS
+fi
+if printf '%s\n' "$OUTPUT" | grep -qE '^Unknown command:'; then
+  echo "harvest.sh: '$PROMPT' was not recognized as a slash command (prefix '$CMD_PREFIX') — no cards were written." >&2
+  exit 1
+fi

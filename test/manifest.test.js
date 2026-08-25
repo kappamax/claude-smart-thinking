@@ -99,8 +99,16 @@ test('the freshness loop invokes a real command with a real bundle', () => {
   // cron would fail silently at 7am on a Monday and nobody would notice the
   // deck had stopped growing.
   const sh = fs.readFileSync(path.join(ROOT, 'bin/harvest.sh'), 'utf8');
+  // Plugin-provided commands resolve under the plugin's namespace
+  // (/smart-thinking:thinking-digest), not the bare form — harvest.sh must
+  // reference the namespaced command, built from plugin.json's name at
+  // runtime rather than hardcoded, so a plugin rename can't silently break it.
   for (const cmd of ['thinking-digest', 'thinking-research']) {
-    assert.ok(sh.includes(`/${cmd}`), `harvest.sh references /${cmd}`);
+    assert.ok(sh.includes(`:${cmd}`), `harvest.sh references the namespaced /${cmd} command`);
+    // Checked at every occurrence, not just "somewhere in the file" — a file
+    // with one correct call site and one reverted-to-bare call site must
+    // still fail here, since a single bare reference is enough to break cron.
+    assert.ok(!sh.includes(`/${cmd}`), `harvest.sh must not reference a bare /${cmd} command anywhere`);
     assert.ok(fs.existsSync(path.join(ROOT, 'commands', `${cmd}.md`)), `${cmd} command missing`);
   }
   const catalog = JSON.parse(fs.readFileSync(path.join(ROOT, 'data/feeds.catalog.json'), 'utf8'));
