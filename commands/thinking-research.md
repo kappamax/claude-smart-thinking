@@ -18,7 +18,7 @@ The judgement has to happen once, by someone reading. That is this command.
 node "${CLAUDE_PLUGIN_ROOT}/bin/research.js" "<topic>" --count 6
 ```
 
-It returns review-level work from journals whose output is broadly consequential, **with abstracts**. Add `--any-journal` if the curated set returns nothing, and judge quality yourself when you do.
+It returns review-level work from journals whose output is broadly consequential, **with abstracts**. If the curated journal set returns nothing on PubMed, it automatically falls back to Europe PMC — a separate index that still only surfaces candidates with a resolvable PubMed or PMC link. Add `--any-journal` if that still comes up empty, to widen the PubMed search itself, and judge quality yourself when you do.
 
 ## 2. Read the abstracts and decide what is worth saying
 

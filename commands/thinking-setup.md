@@ -50,7 +50,7 @@ If they want it:
 
 Default is daily at 07:00 so something new is waiting at the start of the day. Pass a cron expression as the third argument to change it, and confirm the bundle with them first — `indie`, `deep-eng`, `science`, `history-culture`, `ideas`, `how-things-work`, `curious`. Show them the installed line, and mention `harvest.sh status` and `harvest.sh uninstall`.
 
-If they decline, say the commands are still there on demand: `/thinking-digest` and `/thinking-research`.
+If they decline, say the commands are still there on demand: `/smart-thinking:thinking-digest` and `/smart-thinking:thinking-research`.
 
 ## 5. Learning deck
 
