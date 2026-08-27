@@ -58,6 +58,10 @@ function pluginRootFrom(argv) {
   return argValue(argv, '--root') || path.resolve(__dirname, '..');
 }
 
+function shouldWriteClaudeSettings(argv) {
+  return !argv.includes('--no-settings');
+}
+
 /**
  * Re-deal the visible tips from the cached pool. No network.
  *
@@ -84,14 +88,16 @@ function rotate(cfg) {
   // Built from the whole pool, not just what's visible, so a category keeps its
   // colour across rotations instead of changing every 30 seconds.
   const categoryColors = categoryColorMap(pool.map((t) => t.category));
-  settings.applyContent({
-    tips: dealt.map((t) => formatTip(t, style, process.env, undefined, cfg.linkColor || 'none', {
-      categoryColor: cfg.categoryColor !== false,
-      italicAction: cfg.italicAction !== false,
-      categoryColors,
-    })),
-    verbs: cfg.spinnerVerbs && cfg.spinnerVerbs.enabled ? cfg.spinnerVerbs.verbs : null,
-  });
+  if (shouldWriteClaudeSettings(process.argv)) {
+    settings.applyContent({
+      tips: dealt.map((t) => formatTip(t, style, process.env, undefined, cfg.linkColor || 'none', {
+        categoryColor: cfg.categoryColor !== false,
+        italicAction: cfg.italicAction !== false,
+        categoryColors,
+      })),
+      verbs: cfg.spinnerVerbs && cfg.spinnerVerbs.enabled ? cfg.spinnerVerbs.verbs : null,
+    });
+  }
   return true;
 }
 
@@ -155,7 +161,7 @@ async function main() {
 
     const style = cfg.linkStyle || 'auto';
     const categoryColors = categoryColorMap(pool.map((t) => t.category));
-    const applied = settings.applyContent({
+    const applied = shouldWriteClaudeSettings(process.argv) && settings.applyContent({
       tips: visible.map((t) => formatTip(t, style, process.env, undefined, cfg.linkColor || 'none', {
         categoryColor: cfg.categoryColor !== false,
         italicAction: cfg.italicAction !== false,

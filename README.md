@@ -1,6 +1,6 @@
 # smart-thinking
 
-Replaces Claude Code's idle spinner text with content worth reading.
+Replaces Claude Code's idle spinner text, or OpenCode's busy-state toast, with content worth reading.
 
 The time you spend watching *"Doodling…"* is captive attention. This plugin fills it with a wide learning deck, the weather in the hour before you leave, headlines from feeds you actually follow, and the state of the repo you're sitting in — all of it linked, so anything interesting has somewhere to go next.
 
@@ -70,6 +70,8 @@ Three deliberate choices:
 
 ## Install
 
+### Claude Code
+
 ```bash
 /plugin marketplace add kappamax/claude-smart-thinking   # or a local path
 /plugin install smart-thinking@kappamax
@@ -77,6 +79,40 @@ Three deliberate choices:
 ```
 
 `/thinking-setup` asks for a city (converted to coordinates for you), your leave-for-work time, and which feeds you follow. Learning works with no configuration.
+
+### OpenCode
+
+OpenCode does not expose its spinner text or a custom status-line hook. The native adapter therefore uses bounded-duration TUI toasts while a session is busy. It consumes no model context, stops its timer when the session becomes idle, and writes only under `~/.config/opencode/smart-thinking/`.
+
+Clone this repository somewhere stable, then add the adapter to `~/.config/opencode/opencode.json` (or `.jsonc`). Use an absolute `file://` URL:
+
+```json
+{
+  "$schema": "https://opencode.ai/config.json",
+  "plugin": [
+    [
+      "file:///Users/you/workspace/claude-smart-thinking/opencode/smart-thinking.ts",
+      {
+        "rotationSeconds": 90,
+        "toastDurationMs": 12000
+      }
+    ]
+  ]
+}
+```
+
+Quit and restart OpenCode after changing its config; plugins are loaded only at startup. The bundled learning deck works immediately. Optional configuration uses the same shape documented below, at `~/.config/opencode/smart-thinking/config.json`.
+
+To share an existing deck or configuration with Claude Code, point `stateDir` at it explicitly:
+
+```json
+[
+  "file:///Users/you/workspace/claude-smart-thinking/opencode/smart-thinking.ts",
+  { "stateDir": "~/.claude/smart-thinking" }
+]
+```
+
+The adapter starts the existing provider refresh in the background with `--no-settings`, so even a shared state directory does not modify Claude Code's `settings.json`. OpenCode toasts include the source URL as visible text; the TUI toast API does not currently expose clickable link labels.
 
 ## Packaging and distribution
 
@@ -198,7 +234,7 @@ complaint about news.
 
 ## Config
 
-`~/.claude/smart-thinking/config.json`, deep-merged over the defaults in `lib/config.js`.
+`~/.claude/smart-thinking/config.json` for Claude Code, or `~/.config/opencode/smart-thinking/config.json` for OpenCode, deep-merged over the defaults in `lib/config.js`.
 
 ```jsonc
 {
@@ -238,7 +274,7 @@ The status line hot path never blocks on the network, never writes to disk, and 
 
 ## Known limits
 
-- **Claude Code only.** All four settings are local CLI settings. Chat and Cowork render their thinking indicators server-side and expose no equivalent extension point.
+- **The renderers differ.** Claude Code supplies spinner-tip and status-line settings. OpenCode exposes neither, so its adapter uses temporary TUI toasts during `session.status: busy`. Claude Chat and Cowork still have no equivalent extension point.
 - **Tip freshness is bounded by settings reload.** Claude Code caches settings in-process; a watcher reloads them on change for files present at session start. Rewrites are picked up in practice, but if a tip looks stale, `/config` or a new session forces a reload. The status line has no such constraint.
 - **Exposure tracking counts tips *supplied*, not displayed** — Claude Code picks which supplied tip to render. Over many refreshes the two converge, since it sorts by least-recently-shown across a stable set of slot ids.
 
