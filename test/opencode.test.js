@@ -117,3 +117,21 @@ test('OpenCode refresh uses isolated state and never writes Claude settings', as
   ]);
   assert.strictEqual(children[0].options.env.SMART_THINKING_HOME, stateDir);
 });
+
+
+test('an expired status item is not shown, however long the cache sits', () => {
+  /**
+   * Regression: OpenCode toasted "2h 20m until 07:00" at half past noon. Two
+   * causes — the refresh carried yesterday's status forward (fixed in
+   * bin/refresh.js), and this adapter shows a cached item before the
+   * stale-triggered refresh finishes, so an item whose moment has passed could
+   * still surface. Providers stamp expiresAt; the reader has to honour it.
+   */
+  const cache = {
+    status: [{ text: '2h 20m until 07:00', priority: 80, expiresAt: 1000 }],
+    pool: [{ text: 'card one' }],
+  };
+  const picked = pickItem(cache, 0, 5000);
+  assert.strictEqual(picked.text, 'card one', 'an expired urgent item must not pre-empt');
+  assert.strictEqual(pickItem(cache, 0, 500).text, '2h 20m until 07:00', 'still live before it expires');
+});

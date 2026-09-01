@@ -430,3 +430,11 @@ test('a retired timely card is excluded from selection', async () => {
     fs.rmSync(userDeck, { force: true });
   }
 });
+
+
+test('wellness: the sleep countdown carries the moment it stops being true', () => {
+  // Without it, a consumer reading the cache has no way to tell a 01:00 item
+  // from a current one — and the cache is only rewritten on a full refresh.
+  const src = fs.readFileSync(path.join(ROOT, 'providers', 'wellness.js'), 'utf8');
+  assert.match(src, /expiresAt: target\.getTime\(\)/);
+});
