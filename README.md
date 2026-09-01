@@ -17,7 +17,7 @@ Leaving in 25m · 76°F overcast (feels 83°F)
 
 ## What's actually overridable
 
-Claude Code exposes three surfaces. Verified against the Zod schema compiled into **v2.1.226** — the published settings docs describe the first two as plain string arrays, which is stale and rejected by the schema.
+Claude Code exposes three surfaces. Verified against the Zod schema and tip loader compiled into **v2.1.252** — the published settings docs describe the first two as plain string arrays, which is stale and rejected by the schema.
 
 | Setting | What it controls | Dynamic? |
 |---|---|---|
@@ -28,7 +28,8 @@ Claude Code exposes three surfaces. Verified against the Zod schema compiled int
 ```jsonc
 spinnerTipsEnabled:  boolean
 spinnerVerbs:        { mode: "append"|"replace", verbs: string[] }
-spinnerTipsOverride: { excludeDefault?: boolean, tips: string[] }
+spinnerTipsOverride: { excludeDefault?: boolean, label?: string, tipsFile?: string,
+                       tips: (string | {id, text, cooldownSessions?, priority?})[] }
 statusLine:          { type:"command", command, padding?, refreshInterval? }
 ```
 
@@ -38,6 +39,24 @@ So this plugin uses both surfaces for what each is good at:
 
 - **Tips** get the attention but not the freshness → refreshed by rewriting `settings.json` out-of-band.
 - **Status line** gets the freshness → genuinely re-executed on a timer, so anything time-sensitive lives there.
+
+### Tips are sanitized; the status line is not
+
+A tip is not passed through to the renderer. Every one goes through this first:
+
+```js
+Bun.stripANSI(text)                          // SGR colour, gone
+  .replace(/[\t\n\r\u2028\u2029]+/g, ' ')
+  .replace(/[\p{Cc}\p{Cf}…]/gu, '')          // ESC itself, gone → OSC 8 gone
+  .replace(/ {2,}/g, ' ').trim()
+```
+
+then the tip is dropped entirely if it is empty or longer than **500 characters** (and only the first 200 tips are read at all).
+
+Colour is the smaller loss. An OSC 8 hyperlink carries its URL *inside* the escape, so a link-styled tip came out as plain text with a dangling `↗` and no destination at all — the reader lost the follow-up, not just the styling. So tips are built plain, with the URL visible as text, and terminals linkify that themselves. Anything over 500 characters is skipped at deal time so the next pool item takes the slot rather than the slot going silently empty.
+
+Status line output is *not* sanitized, so colour, the category index and OSC 8 links still work there.
+
 
 `excludeDefault: true` makes Claude Code serve *only* your tips, which also suppresses built-in tips and marketplace plugin-advertisement tips.
 
@@ -238,8 +257,9 @@ complaint about news.
 
 ```jsonc
 {
-  "linkStyle": "auto",            // auto | hyperlink | url | none
-  "linkColor": "none",            // blue | brightBlue | cyan | none
+  "linkStyle": "url",             // url | none — tips are sanitized, so OSC 8
+                                  //   hyperlinks cannot survive; see above
+  "linkColor": "none",            // inert for tips (escapes are stripped)
   "refreshIntervalSeconds": 30,   // status line re-execution cadence
   "contentMaxAgeMinutes": 20,     // staleness before a background refetch
   "tipCount": 12,                 // size of the tip rotation queue

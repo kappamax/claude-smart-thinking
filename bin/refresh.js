@@ -9,7 +9,7 @@ const settings = require('../lib/settings');
 const context = require('../lib/context');
 const { readJson, writeJsonAtomic } = require('../lib/jsonio');
 const { collectAll, interleave } = require('../providers');
-const { formatTip, categoryColorMap } = require('../lib/format');
+const { formatTipPlain, tipFitsSpinner } = require('../lib/format');
 
 const LOCK_STALE_MS = 2 * 60 * 1000;
 
@@ -63,6 +63,28 @@ function shouldWriteClaudeSettings(argv) {
 }
 
 /**
+ * Deal tips Claude Code will actually show.
+ *
+ * Two constraints, both imposed by the tip loader rather than by us: escapes
+ * are stripped (see formatTipPlain), and a tip over 500 characters is dropped
+ * with a warning nobody reads. So over-long items are skipped here and the
+ * next pool item takes the slot — a short tip in the slot beats an empty one.
+ */
+function dealTips(pool, offset, count, cfg) {
+  const style = cfg.linkStyle === 'none' ? 'none' : 'url';
+  const tips = [];
+  const chosen = [];
+  for (let i = 0; i < pool.length && tips.length < count; i += 1) {
+    const item = pool[(offset + i) % pool.length];
+    const text = formatTipPlain(item, style);
+    if (!tipFitsSpinner(text)) continue;
+    tips.push(text);
+    chosen.push(item);
+  }
+  return { tips, chosen };
+}
+
+/**
  * Re-deal the visible tips from the cached pool. No network.
  *
  * This is what makes tips actually alternate. Claude Code scores tips by
@@ -79,22 +101,13 @@ function rotate(cfg) {
   const count = Math.min(cfg.tipCount || 12, pool.length);
   const offset = ((cache.rotationOffset || 0) + count) % pool.length;
 
-  const dealt = [];
-  for (let i = 0; i < count; i += 1) dealt.push(pool[(offset + i) % pool.length]);
+  const { tips } = dealTips(pool, offset, count, cfg);
 
   writeJsonAtomic(paths.cacheFile, { ...cache, rotationOffset: offset, rotatedAt: Date.now() });
 
-  const style = cfg.linkStyle || 'auto';
-  // Built from the whole pool, not just what's visible, so a category keeps its
-  // colour across rotations instead of changing every 30 seconds.
-  const categoryColors = categoryColorMap(pool.map((t) => t.category));
   if (shouldWriteClaudeSettings(process.argv)) {
     settings.applyContent({
-      tips: dealt.map((t) => formatTip(t, style, process.env, undefined, cfg.linkColor || 'none', {
-        categoryColor: cfg.categoryColor !== false,
-        italicAction: cfg.italicAction !== false,
-        categoryColors,
-      })),
+      tips,
       verbs: cfg.spinnerVerbs && cfg.spinnerVerbs.enabled ? cfg.spinnerVerbs.verbs : null,
     });
   }
@@ -149,29 +162,34 @@ async function main() {
     // Keep a pool far larger than what's shown, so rotation has room to draw
     // from without going back to the network.
     const pool = interleave(tips, cfg.poolSize || 60);
-    const visible = pool.slice(0, cfg.tipCount || 12);
+    const dealt = dealTips(pool, 0, cfg.tipCount || 12, cfg);
 
     writeJsonAtomic(paths.cacheFile, {
       generatedAt: Date.now(),
       rotatedAt: Date.now(),
       rotationOffset: 0,
       pool: pool.length ? pool : previous.pool || [],
-      status: status.length ? status : previous.status || [],
+      /**
+       * Status is written as computed, including when that is nothing.
+       *
+       * Falling back to the previous status treated "no status right now" as a
+       * failure to be papered over, but every status item is scoped to a
+       * moment: the sleep warning only exists between 22:00 and 05:00, the
+       * break prompt only after a working stretch. Carrying the last one
+       * forward meant a 1am "2h 20m until 07:00" was still the highest-priority
+       * item at lunchtime the next day, because no later refresh ever produced
+       * a status to replace it. An empty status is a real answer.
+       */
+      status,
     });
 
-    const style = cfg.linkStyle || 'auto';
-    const categoryColors = categoryColorMap(pool.map((t) => t.category));
     const applied = shouldWriteClaudeSettings(process.argv) && settings.applyContent({
-      tips: visible.map((t) => formatTip(t, style, process.env, undefined, cfg.linkColor || 'none', {
-        categoryColor: cfg.categoryColor !== false,
-        italicAction: cfg.italicAction !== false,
-        categoryColors,
-      })),
+      tips: dealt.tips,
       verbs: cfg.spinnerVerbs && cfg.spinnerVerbs.enabled ? cfg.spinnerVerbs.verbs : null,
     });
 
     const topics = [...ctx.context.topics].sort().join(',') || 'none';
-    log(`refresh ok pool=${pool.length} shown=${visible.length} status=${status.length} settingsWritten=${applied} topics=${topics}`);
+    log(`refresh ok pool=${pool.length} shown=${dealt.tips.length} status=${status.length} settingsWritten=${applied} topics=${topics}`);
   } catch (err) {
     log(`refresh failed: ${err && err.stack ? err.stack : err}`);
     process.exitCode = 1;

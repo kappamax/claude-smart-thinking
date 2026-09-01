@@ -4,7 +4,7 @@ const test = require('node:test');
 const assert = require('node:assert');
 const fs = require('fs');
 const path = require('path');
-const { formatTip, osc8, terminalSupportsHyperlinks, SEP } = require('../lib/format');
+const { formatTip, osc8, terminalSupportsHyperlinks, SEP, DEFAULT_HINT } = require('../lib/format');
 
 const ITEM = {
   category: 'Bread',
@@ -274,4 +274,43 @@ test('status line colours never collide with a category colour', () => {
     assert.ok(!CATEGORY_PALETTE.includes(c),
       `status colour ${c} also belongs to a tip category`);
   }
+});
+
+
+// -------------------------------------------- the sanitized tip surface
+
+test('a tip written for the spinner carries no escape sequences', () => {
+  // Regression: Claude Code 2.1.252 runs every tip through Bun.stripANSI and
+  // then deletes every \p{Cc}/\p{Cf} character. Colour was discarded and - far
+  // worse - the OSC 8 escape holding the URL went with it, so a link-styled tip
+  // arrived as plain text with a dangling marker and no destination.
+  const { formatTipPlain } = require('../lib/format');
+  const out = formatTipPlain(ITEM);
+  assert.ok(!/[\x00-\x1f]/.test(out), `escape survived: ${JSON.stringify(out)}`);
+  assert.ok(out.includes('https://example.org/staling'), 'url must be visible as text');
+  assert.ok(!out.includes(DEFAULT_HINT), 'the hint belongs to hyperlink mode only');
+});
+
+test('linkStyle none still suppresses the url in a plain tip', () => {
+  const { formatTipPlain } = require('../lib/format');
+  const out = formatTipPlain(ITEM, 'none');
+  assert.ok(!out.includes('https://'), 'url should be omitted entirely');
+  assert.ok(out.startsWith(`Bread${SEP}`), 'category should survive');
+});
+
+test('a tip Claude Code would drop for length is rejected here first', () => {
+  // The loader drops anything over 500 characters with a warning nobody sees,
+  // which silently costs a slot. Rejecting it here lets the next pool item in.
+  const { tipFitsSpinner, TIP_MAX_CHARS } = require('../lib/format');
+  assert.strictEqual(TIP_MAX_CHARS, 500);
+  assert.ok(tipFitsSpinner('x'.repeat(TIP_MAX_CHARS)));
+  assert.ok(!tipFitsSpinner('x'.repeat(TIP_MAX_CHARS + 1)));
+  assert.ok(!tipFitsSpinner(''));
+});
+
+test('refresh deals tips through the plain formatter, never the coloured one', () => {
+  const src = fs.readFileSync(path.join(__dirname, '..', 'bin', 'refresh.js'), 'utf8');
+  assert.ok(!/\bformatTip\(/.test(src), 'refresh must not colour a tip the surface will strip');
+  assert.match(src, /formatTipPlain\(/);
+  assert.match(src, /tipFitsSpinner\(/);
 });

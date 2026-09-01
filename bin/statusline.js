@@ -128,11 +128,17 @@ const URGENT_PRIORITY = 60;
  * practice "N files uncommitted" every render, all day. Only genuinely urgent
  * items should pre-empt; everything else takes turns.
  */
-function pickStatus(items, intervalSec) {
+function pickStatus(items, intervalSec, now = Date.now()) {
   if (!items || items.length === 0) return null;
 
-  const urgent = items.filter((i) => (i.priority ?? 0) >= URGENT_PRIORITY);
-  const pool = urgent.length ? urgent : items;
+  // A provider may stamp an item with the moment it stops being true. The cache
+  // outlives that moment — it is only rewritten on a full refresh — so the
+  // reader has to honour the expiry rather than trust the item's presence.
+  const live = items.filter((i) => !i.expiresAt || i.expiresAt > now);
+  if (live.length === 0) return null;
+
+  const urgent = live.filter((i) => (i.priority ?? 0) >= URGENT_PRIORITY);
+  const pool = urgent.length ? urgent : live;
 
   // Time-sliced rotation keeps the hot path stateless: no counter to persist,
   // and every render within the same slice agrees on what to show.

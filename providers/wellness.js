@@ -225,6 +225,16 @@ async function collect(cfg, ctx) {
           // false precision. Total sleep duration is what the evidence is about.
           text: `${formatHours(hoursLeft)} until ${wake} — under 6h measurably impairs vigilance and next-day glucose handling`,
           priority: 80,
+          /**
+           * The countdown stops meaning anything once the night ends.
+           *
+           * Written down rather than left implicit because a consumer reads the
+           * cache, not the clock this was computed against: the host may have
+           * been closed since 01:00 and show the first item it finds before any
+           * refresh completes. An explicit expiry makes the item self-limiting
+           * however long the cache sits.
+           */
+          expiresAt: target.getTime(),
           source: 'wellness',
         });
       }
@@ -260,6 +270,9 @@ async function collect(cfg, ctx) {
       status.push({
         text: `${formatHours(activeHours)} active · ${advice.action}`,
         priority: 50,
+        // "3h active" is a measurement of a stretch that may already be over.
+        // One refresh interval of grace, then it has to be re-earned.
+        expiresAt: now.getTime() + MAX_STEP_MS,
         source: 'wellness',
       });
     }
